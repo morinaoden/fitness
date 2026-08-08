@@ -141,12 +141,23 @@
     color: white;
     font-weight: 600;
   }
-  .metric-block { margin-bottom: 18px; }
-  .metric-block h3 {
-    font-size: 0.82rem;
-    font-weight: 600;
+  .chart-legend {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
     color: var(--sub);
-    margin: 0 0 6px;
+  }
+  .legend-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex: none;
   }
   .weight-stats {
     display: flex;
@@ -172,7 +183,7 @@
   .chart-svg {
     display: block;
     width: 100%;
-    height: 180px;
+    height: 220px;
     touch-action: pan-y;
   }
   .chart-empty {
@@ -270,24 +281,16 @@
     <button class="period-btn" data-days="0">全期間</button>
   </div>
 
-  <div class="metric-block">
-    <h3>体重</h3>
-    <div class="weight-stats" id="weightStats"></div>
-    <div class="chart-wrap">
-      <svg class="chart-svg" id="weightChart"></svg>
-      <div class="chart-tooltip" id="weightTooltip"></div>
-      <div class="chart-empty" id="weightEmpty" hidden>まだデータがありません(初回同期をお待ちください)</div>
-    </div>
+  <div class="chart-legend">
+    <span class="legend-item"><span class="legend-dot" style="background:var(--accent)"></span>体重(左軸/kg)</span>
+    <span class="legend-item"><span class="legend-dot" style="background:var(--accent2)"></span>体脂肪率(右軸/%)</span>
   </div>
-
-  <div class="metric-block">
-    <h3>体脂肪率</h3>
-    <div class="weight-stats" id="fatStats"></div>
-    <div class="chart-wrap">
-      <svg class="chart-svg" id="fatChart"></svg>
-      <div class="chart-tooltip" id="fatTooltip"></div>
-      <div class="chart-empty" id="fatEmpty" hidden>まだデータがありません(初回同期をお待ちください)</div>
-    </div>
+  <div class="weight-stats" id="weightStats"></div>
+  <div class="weight-stats" id="fatStats"></div>
+  <div class="chart-wrap">
+    <svg class="chart-svg" id="weightFatChart"></svg>
+    <div class="chart-tooltip" id="chartTooltip"></div>
+    <div class="chart-empty" id="chartEmpty" hidden>まだデータがありません(初回同期をお待ちください)</div>
   </div>
 
   <button class="reset-btn" id="tableToggle" type="button">表で見る</button>
@@ -354,13 +357,19 @@
 
   loadState();
 
-  // --- weight / body-fat charts ---
+  // --- weight / body-fat dual-axis chart ---
   (function () {
     const SVGNS = 'http://www.w3.org/2000/svg';
     const periodRow = document.getElementById('periodRow');
     const tableToggle = document.getElementById('tableToggle');
     const tableWrap = document.getElementById('weightTableWrap');
     const tableBody = document.getElementById('weightTableBody');
+    const svg = document.getElementById('weightFatChart');
+    const wrap = svg.closest('.chart-wrap');
+    const emptyEl = document.getElementById('chartEmpty');
+    const tooltip = document.getElementById('chartTooltip');
+    const weightStatsEl = document.getElementById('weightStats');
+    const fatStatsEl = document.getElementById('fatStats');
 
     let currentDays = 90;
     let rawData = []; // [{date, weight_kg, body_fat_pct}]
@@ -378,156 +387,191 @@
       return 5;
     }
 
-    // Factory: one line chart bound to a single numeric field of rawData.
-    function createChart({ svgId, tooltipId, emptyId, statsId, field, unit, decimals, colorVar, label }) {
-      const svg = document.getElementById(svgId);
-      const wrap = svg.closest('.chart-wrap');
-      const emptyEl = document.getElementById(emptyId);
-      const tooltip = document.getElementById(tooltipId);
-      const statsEl = document.getElementById(statsId);
-      let allPoints = [];
-
-      function filtered() {
-        if (!allPoints.length) return [];
-        if (currentDays === 0) return allPoints;
-        const cutoff = allPoints[allPoints.length - 1].ts - currentDays * 86400000;
-        return allPoints.filter(p => p.ts >= cutoff);
-      }
-
-      function render() {
-        allPoints = rawData
-          .filter(d => d[field] != null)
-          .map(d => ({ date: new Date(d.date), ts: new Date(d.date).getTime(), value: d[field] }));
-
-        const pts = filtered();
-        svg.innerHTML = '';
-        tooltip.classList.remove('show');
-
-        if (pts.length < 2) {
-          emptyEl.hidden = false;
-          statsEl.innerHTML = '';
-          return;
-        }
-        emptyEl.hidden = true;
-
-        const width = wrap.clientWidth - 16;
-        const height = 180;
-        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-        svg.setAttribute('width', width);
-        svg.setAttribute('height', height);
-
-        const padL = 36, padR = 8, padT = 12, padB = 22;
-        const plotW = width - padL - padR;
-        const plotH = height - padT - padB;
-
-        const xs = pts.map(p => p.ts);
-        const vs = pts.map(p => p.value);
-        const minTs = Math.min(...xs), maxTs = Math.max(...xs);
-        let minV = Math.min(...vs), maxV = Math.max(...vs);
-        const vRange = maxV - minV || 1;
-        const step = niceStep(vRange);
-        minV = Math.floor(minV / step) * step - step;
-        maxV = Math.ceil(maxV / step) * step + step;
-
-        const xScale = ts => padL + (maxTs === minTs ? 0 : (ts - minTs) / (maxTs - minTs)) * plotW;
-        const yScale = v => padT + plotH - ((v - minV) / (maxV - minV)) * plotH;
-
-        // gridlines + y labels
-        const gridCount = 4;
-        for (let i = 0; i <= gridCount; i++) {
-          const v = minV + (maxV - minV) * (i / gridCount);
-          const y = yScale(v);
-          svg.appendChild(el('line', { x1: padL, x2: width - padR, y1: y, y2: y, stroke: 'var(--line)', 'stroke-width': 1 }));
-          const gLabel = el('text', { x: 4, y: y + 3, 'font-size': 10, fill: 'var(--sub)' });
-          gLabel.textContent = v.toFixed(decimals);
-          svg.appendChild(gLabel);
-        }
-
-        // x labels (first, middle, last)
-        const tickIdxs = [0, Math.floor((pts.length - 1) / 2), pts.length - 1];
-        tickIdxs.forEach(i => {
-          const p = pts[i];
-          const x = xScale(p.ts);
-          const xLabel = el('text', {
-            x: Math.min(Math.max(x, padL + 16), width - padR - 16),
-            y: height - 4, 'font-size': 10, fill: 'var(--sub)', 'text-anchor': 'middle'
-          });
-          xLabel.textContent = p.date.toISOString().slice(5, 10).replace('-', '/');
-          svg.appendChild(xLabel);
-        });
-
-        // line path
-        const d = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xScale(p.ts).toFixed(1)} ${yScale(p.value).toFixed(1)}`).join(' ');
-        svg.appendChild(el('path', {
-          d, fill: 'none', stroke: `var(${colorVar})`, 'stroke-width': 2,
-          'stroke-linecap': 'round', 'stroke-linejoin': 'round'
-        }));
-
-        // hover layer
-        const crosshair = el('line', { y1: padT, y2: padT + plotH, stroke: 'var(--sub)', 'stroke-width': 1, opacity: 0 });
-        const marker = el('circle', { r: 4, fill: `var(${colorVar})`, stroke: 'white', 'stroke-width': 1.5, opacity: 0 });
-        svg.appendChild(crosshair);
-        svg.appendChild(marker);
-
-        const hitRect = el('rect', { x: padL, y: padT, width: plotW, height: plotH, fill: 'transparent' });
-        svg.appendChild(hitRect);
-
-        function pointFromClientX(clientX) {
-          const rect = svg.getBoundingClientRect();
-          const x = ((clientX - rect.left) / rect.width) * width;
-          let nearest = pts[0], nd = Infinity;
-          for (const p of pts) {
-            const dist = Math.abs(xScale(p.ts) - x);
-            if (dist < nd) { nd = dist; nearest = p; }
-          }
-          return nearest;
-        }
-
-        function showAt(p, clientX) {
-          const x = xScale(p.ts), y = yScale(p.value);
-          crosshair.setAttribute('x1', x); crosshair.setAttribute('x2', x); crosshair.setAttribute('opacity', 1);
-          marker.setAttribute('cx', x); marker.setAttribute('cy', y); marker.setAttribute('opacity', 1);
-          const rect = wrap.getBoundingClientRect();
-          tooltip.style.left = (clientX - rect.left) + 'px';
-          tooltip.style.top = y + 'px';
-          tooltip.textContent = `${p.date.toISOString().slice(0, 10)}  ${p.value.toFixed(decimals)}${unit}`;
-          tooltip.classList.add('show');
-        }
-
-        hitRect.addEventListener('pointermove', e => showAt(pointFromClientX(e.clientX), e.clientX));
-        hitRect.addEventListener('pointerdown', e => showAt(pointFromClientX(e.clientX), e.clientX));
-        hitRect.addEventListener('pointerleave', () => {
-          crosshair.setAttribute('opacity', 0);
-          marker.setAttribute('opacity', 0);
-          tooltip.classList.remove('show');
-        });
-
-        // stats
-        const latest = pts[pts.length - 1].value;
-        const change = latest - pts[0].value;
-        const sign = change > 0 ? '+' : '';
-        statsEl.innerHTML = `
-          <div class="weight-stat"><div class="num">${latest.toFixed(decimals)}${unit}</div><div class="label">現在</div></div>
-          <div class="weight-stat"><div class="num">${sign}${change.toFixed(decimals)}${unit}</div><div class="label">期間の変化</div></div>
-        `;
-      }
-
-      return { render };
+    // Build a domain [min, max] padded to a "nice" step for a set of values.
+    function domainFor(values) {
+      let min = Math.min(...values), max = Math.max(...values);
+      const step = niceStep(max - min || 1);
+      min = Math.floor(min / step) * step - step;
+      max = Math.ceil(max / step) * step + step;
+      return [min, max];
     }
 
-    const weightChart = createChart({
-      svgId: 'weightChart', tooltipId: 'weightTooltip', emptyId: 'weightEmpty', statsId: 'weightStats',
-      field: 'weight_kg', unit: 'kg', decimals: 1, colorVar: '--accent', label: '体重'
-    });
-    const fatChart = createChart({
-      svgId: 'fatChart', tooltipId: 'fatTooltip', emptyId: 'fatEmpty', statsId: 'fatStats',
-      field: 'body_fat_pct', unit: '%', decimals: 1, colorVar: '--accent2', label: '体脂肪率'
-    });
+    // Build an SVG path `d` string, breaking into a new subpath after any gap.
+    function pathFor(points, xScale, yScale) {
+      let d = '';
+      let started = false;
+      for (const p of points) {
+        const cmd = started ? 'L' : 'M';
+        d += `${cmd} ${xScale(p.ts).toFixed(1)} ${yScale(p.value).toFixed(1)} `;
+        started = true;
+      }
+      return d.trim();
+    }
 
-    function renderAll() {
-      weightChart.render();
-      fatChart.render();
-      renderTable();
+    function filteredPoints(field) {
+      const pts = rawData
+        .filter(d => d[field] != null)
+        .map(d => ({ date: new Date(d.date), ts: new Date(d.date).getTime(), value: d[field] }));
+      if (!pts.length || currentDays === 0) return pts;
+      const cutoff = new Date(rawData[rawData.length - 1].date).getTime() - currentDays * 86400000;
+      return pts.filter(p => p.ts >= cutoff);
+    }
+
+    function renderStats(el, pts, unit, decimals) {
+      if (pts.length < 2) { el.innerHTML = ''; return; }
+      const latest = pts[pts.length - 1].value;
+      const change = latest - pts[0].value;
+      const sign = change > 0 ? '+' : '';
+      el.innerHTML = `
+        <div class="weight-stat"><div class="num">${latest.toFixed(decimals)}${unit}</div><div class="label">現在</div></div>
+        <div class="weight-stat"><div class="num">${sign}${change.toFixed(decimals)}${unit}</div><div class="label">期間の変化</div></div>
+      `;
+    }
+
+    function render() {
+      const weightPts = filteredPoints('weight_kg');
+      const fatPts = filteredPoints('body_fat_pct');
+
+      svg.innerHTML = '';
+      tooltip.classList.remove('show');
+
+      if (weightPts.length < 2 && fatPts.length < 2) {
+        emptyEl.hidden = false;
+        weightStatsEl.innerHTML = '';
+        fatStatsEl.innerHTML = '';
+        return;
+      }
+      emptyEl.hidden = true;
+
+      renderStats(weightStatsEl, weightPts, 'kg', 1);
+      renderStats(fatStatsEl, fatPts, '%', 1);
+
+      const width = wrap.clientWidth - 16;
+      const height = 220;
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      svg.setAttribute('width', width);
+      svg.setAttribute('height', height);
+
+      const padL = 38, padR = 40, padT = 12, padB = 22;
+      const plotW = width - padL - padR;
+      const plotH = height - padT - padB;
+
+      const allTs = [...weightPts, ...fatPts].map(p => p.ts);
+      const minTs = Math.min(...allTs), maxTs = Math.max(...allTs);
+      const xScale = ts => padL + (maxTs === minTs ? 0 : (ts - minTs) / (maxTs - minTs)) * plotW;
+
+      const [minW, maxW] = weightPts.length ? domainFor(weightPts.map(p => p.value)) : [0, 1];
+      const [minF, maxF] = fatPts.length ? domainFor(fatPts.map(p => p.value)) : [0, 1];
+      const yScaleW = v => padT + plotH - ((v - minW) / (maxW - minW)) * plotH;
+      const yScaleF = v => padT + plotH - ((v - minF) / (maxF - minF)) * plotH;
+
+      // gridlines (neutral) + left axis (weight, kg) + right axis (body fat, %)
+      const gridCount = 4;
+      for (let i = 0; i <= gridCount; i++) {
+        const y = padT + plotH * (i / gridCount);
+        svg.appendChild(el('line', { x1: padL, x2: width - padR, y1: y, y2: y, stroke: 'var(--line)', 'stroke-width': 1 }));
+
+        if (weightPts.length) {
+          const wVal = maxW - (maxW - minW) * (i / gridCount);
+          const wLabel = el('text', { x: 4, y: y + 3, 'font-size': 10, fill: 'var(--accent)' });
+          wLabel.textContent = wVal.toFixed(1);
+          svg.appendChild(wLabel);
+        }
+        if (fatPts.length) {
+          const fVal = maxF - (maxF - minF) * (i / gridCount);
+          const fLabel = el('text', { x: width - padR + 4, y: y + 3, 'font-size': 10, fill: 'var(--accent2)' });
+          fLabel.textContent = fVal.toFixed(1);
+          svg.appendChild(fLabel);
+        }
+      }
+
+      // x labels (first, middle, last) from whichever series has more points
+      const xRefPts = weightPts.length >= fatPts.length ? weightPts : fatPts;
+      const tickIdxs = [0, Math.floor((xRefPts.length - 1) / 2), xRefPts.length - 1];
+      tickIdxs.forEach(i => {
+        const p = xRefPts[i];
+        const x = xScale(p.ts);
+        const xLabel = el('text', {
+          x: Math.min(Math.max(x, padL + 16), width - padR - 16),
+          y: height - 4, 'font-size': 10, fill: 'var(--sub)', 'text-anchor': 'middle'
+        });
+        xLabel.textContent = p.date.toISOString().slice(5, 10).replace('-', '/');
+        svg.appendChild(xLabel);
+      });
+
+      // lines
+      if (weightPts.length >= 2) {
+        svg.appendChild(el('path', {
+          d: pathFor(weightPts, xScale, yScaleW), fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2,
+          'stroke-linecap': 'round', 'stroke-linejoin': 'round'
+        }));
+      }
+      if (fatPts.length >= 2) {
+        svg.appendChild(el('path', {
+          d: pathFor(fatPts, xScale, yScaleF), fill: 'none', stroke: 'var(--accent2)', 'stroke-width': 2,
+          'stroke-linecap': 'round', 'stroke-linejoin': 'round'
+        }));
+      }
+
+      // hover layer: shared crosshair, one marker per series
+      const crosshair = el('line', { y1: padT, y2: padT + plotH, stroke: 'var(--sub)', 'stroke-width': 1, opacity: 0 });
+      const markerW = el('circle', { r: 4, fill: 'var(--accent)', stroke: 'white', 'stroke-width': 1.5, opacity: 0 });
+      const markerF = el('circle', { r: 4, fill: 'var(--accent2)', stroke: 'white', 'stroke-width': 1.5, opacity: 0 });
+      svg.appendChild(crosshair);
+      svg.appendChild(markerW);
+      svg.appendChild(markerF);
+
+      const hitRect = el('rect', { x: padL, y: padT, width: plotW, height: plotH, fill: 'transparent' });
+      svg.appendChild(hitRect);
+
+      function nearest(pts, x) {
+        if (!pts.length) return null;
+        let best = pts[0], nd = Infinity;
+        for (const p of pts) {
+          const dist = Math.abs(xScale(p.ts) - x);
+          if (dist < nd) { nd = dist; best = p; }
+        }
+        return best;
+      }
+
+      function showAt(clientX) {
+        const rect = svg.getBoundingClientRect();
+        const x = ((clientX - rect.left) / rect.width) * width;
+        const w = nearest(weightPts, x);
+        const f = nearest(fatPts, x);
+        const refX = xScale((w || f).ts);
+
+        crosshair.setAttribute('x1', refX); crosshair.setAttribute('x2', refX); crosshair.setAttribute('opacity', 1);
+
+        let lines = [];
+        if (w) {
+          markerW.setAttribute('cx', xScale(w.ts)); markerW.setAttribute('cy', yScaleW(w.value)); markerW.setAttribute('opacity', 1);
+          lines.push(`体重 ${w.value.toFixed(1)}kg`);
+        } else {
+          markerW.setAttribute('opacity', 0);
+        }
+        if (f) {
+          markerF.setAttribute('cx', xScale(f.ts)); markerF.setAttribute('cy', yScaleF(f.value)); markerF.setAttribute('opacity', 1);
+          lines.push(`体脂肪率 ${f.value.toFixed(1)}%`);
+        } else {
+          markerF.setAttribute('opacity', 0);
+        }
+
+        const wrapRect = wrap.getBoundingClientRect();
+        tooltip.style.left = (clientX - wrapRect.left) + 'px';
+        tooltip.style.top = Math.min(w ? yScaleW(w.value) : Infinity, f ? yScaleF(f.value) : Infinity) + 'px';
+        tooltip.innerHTML = `${(w || f).date.toISOString().slice(0, 10)}<br>${lines.join('<br>')}`;
+        tooltip.classList.add('show');
+      }
+
+      hitRect.addEventListener('pointermove', e => showAt(e.clientX));
+      hitRect.addEventListener('pointerdown', e => showAt(e.clientX));
+      hitRect.addEventListener('pointerleave', () => {
+        crosshair.setAttribute('opacity', 0);
+        markerW.setAttribute('opacity', 0);
+        markerF.setAttribute('opacity', 0);
+        tooltip.classList.remove('show');
+      });
     }
 
     function renderTable() {
@@ -542,6 +586,11 @@
         tr.innerHTML = `<td>${d.date}</td><td>${d.weight_kg != null ? d.weight_kg.toFixed(1) + 'kg' : '-'}</td><td>${d.body_fat_pct != null ? d.body_fat_pct.toFixed(1) + '%' : '-'}</td>`;
         tableBody.appendChild(tr);
       }
+    }
+
+    function renderAll() {
+      render();
+      renderTable();
     }
 
     periodRow.addEventListener('click', e => {
@@ -567,10 +616,8 @@
         renderAll();
       })
       .catch(() => {
-        document.getElementById('weightEmpty').hidden = false;
-        document.getElementById('weightEmpty').textContent = 'データの取得に失敗しました';
-        document.getElementById('fatEmpty').hidden = false;
-        document.getElementById('fatEmpty').textContent = 'データの取得に失敗しました';
+        emptyEl.hidden = false;
+        emptyEl.textContent = 'データの取得に失敗しました';
       });
   })();
 </script>
