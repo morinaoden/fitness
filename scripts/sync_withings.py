@@ -45,29 +45,41 @@ def refresh_access_token():
 
 
 def fetch_weight(access_token):
-    result = post(MEASURE_URL, {
-        "action": "getmeas",
-        "meastypes": str(WEIGHT_MEASTYPE),
-        "category": "1",
-    }, headers={"Authorization": f"Bearer {access_token}"})
-    if result.get("status") != 0:
-        print(f"Measure fetch failed: {result}", file=sys.stderr)
-        sys.exit(1)
-    return result["body"]["measuregrps"]
+    measuregrps = []
+    offset = 0
+    while True:
+        data = {
+            "action": "getmeas",
+            "meastypes": str(WEIGHT_MEASTYPE),
+            "category": "1",
+        }
+        if offset:
+            data["offset"] = str(offset)
+        result = post(MEASURE_URL, data, headers={"Authorization": f"Bearer {access_token}"})
+        if result.get("status") != 0:
+            print(f"Measure fetch failed: {result}", file=sys.stderr)
+            sys.exit(1)
+        body = result["body"]
+        measuregrps.extend(body["measuregrps"])
+        if not body.get("more"):
+            break
+        offset = body["offset"]
+    return measuregrps
 
 
 def to_series(measuregrps):
-    points = {}
+    import datetime
+    by_day = {}
     for grp in measuregrps:
-        date = grp["date"]
+        day = datetime.datetime.utcfromtimestamp(grp["date"]).strftime("%Y-%m-%d")
         for m in grp["measures"]:
             if m["type"] != WEIGHT_MEASTYPE:
                 continue
             weight_kg = m["value"] * (10 ** m["unit"])
-            points[date] = round(weight_kg, 1)
+            by_day.setdefault(day, []).append(weight_kg)
     series = [
-        {"date": __import__("datetime").datetime.utcfromtimestamp(ts).strftime("%Y-%m-%d"), "weight_kg": w}
-        for ts, w in sorted(points.items())
+        {"date": day, "weight_kg": round(sum(ws) / len(ws), 1)}
+        for day, ws in sorted(by_day.items())
     ]
     return series
 
