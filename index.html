@@ -11,6 +11,7 @@
     --ink: #2b2b2b;
     --sub: #757066;
     --accent: #b3541e;
+    --accent2: #3d6b8a;
     --line: #e8e3dc;
   }
   * { box-sizing: border-box; }
@@ -140,6 +141,13 @@
     color: white;
     font-weight: 600;
   }
+  .metric-block { margin-bottom: 18px; }
+  .metric-block h3 {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--sub);
+    margin: 0 0 6px;
+  }
   .weight-stats {
     display: flex;
     gap: 20px;
@@ -161,10 +169,10 @@
     border-radius: 14px;
     padding: 12px 8px;
   }
-  #weightChart {
+  .chart-svg {
     display: block;
     width: 100%;
-    height: 200px;
+    height: 180px;
     touch-action: pan-y;
   }
   .chart-empty {
@@ -253,7 +261,7 @@
 </div>
 
 <div class="section">
-  <h2>体重の推移(Withings)</h2>
+  <h2>体重・体脂肪率の推移(Withings)</h2>
   <div class="period-row" id="periodRow">
     <button class="period-btn" data-days="30">1ヶ月</button>
     <button class="period-btn active" data-days="90">3ヶ月</button>
@@ -261,16 +269,31 @@
     <button class="period-btn" data-days="365">1年</button>
     <button class="period-btn" data-days="0">全期間</button>
   </div>
-  <div class="weight-stats" id="weightStats"></div>
-  <div class="chart-wrap">
-    <svg id="weightChart"></svg>
-    <div class="chart-tooltip" id="chartTooltip"></div>
-    <div class="chart-empty" id="chartEmpty" hidden>まだデータがありません(初回同期をお待ちください)</div>
+
+  <div class="metric-block">
+    <h3>体重</h3>
+    <div class="weight-stats" id="weightStats"></div>
+    <div class="chart-wrap">
+      <svg class="chart-svg" id="weightChart"></svg>
+      <div class="chart-tooltip" id="weightTooltip"></div>
+      <div class="chart-empty" id="weightEmpty" hidden>まだデータがありません(初回同期をお待ちください)</div>
+    </div>
   </div>
+
+  <div class="metric-block">
+    <h3>体脂肪率</h3>
+    <div class="weight-stats" id="fatStats"></div>
+    <div class="chart-wrap">
+      <svg class="chart-svg" id="fatChart"></svg>
+      <div class="chart-tooltip" id="fatTooltip"></div>
+      <div class="chart-empty" id="fatEmpty" hidden>まだデータがありません(初回同期をお待ちください)</div>
+    </div>
+  </div>
+
   <button class="reset-btn" id="tableToggle" type="button">表で見る</button>
   <div class="weight-table-wrap" id="weightTableWrap" hidden>
     <table>
-      <thead><tr><th>日付</th><th>体重</th></tr></thead>
+      <thead><tr><th>日付</th><th>体重</th><th>体脂肪率</th></tr></thead>
       <tbody id="weightTableBody"></tbody>
     </table>
   </div>
@@ -331,33 +354,21 @@
 
   loadState();
 
-  // --- weight chart ---
+  // --- weight / body-fat charts ---
   (function () {
     const SVGNS = 'http://www.w3.org/2000/svg';
-    const svg = document.getElementById('weightChart');
-    const wrap = svg.closest('.chart-wrap');
-    const emptyEl = document.getElementById('chartEmpty');
-    const tooltip = document.getElementById('chartTooltip');
-    const statsEl = document.getElementById('weightStats');
     const periodRow = document.getElementById('periodRow');
     const tableToggle = document.getElementById('tableToggle');
     const tableWrap = document.getElementById('weightTableWrap');
     const tableBody = document.getElementById('weightTableBody');
 
-    let allPoints = []; // [{date: Date, ts, weight}]
     let currentDays = 90;
+    let rawData = []; // [{date, weight_kg, body_fat_pct}]
 
     function el(tag, attrs) {
       const n = document.createElementNS(SVGNS, tag);
       for (const k in attrs) n.setAttribute(k, attrs[k]);
       return n;
-    }
-
-    function filtered() {
-      if (!allPoints.length) return [];
-      if (currentDays === 0) return allPoints;
-      const cutoff = allPoints[allPoints.length - 1].ts - currentDays * 86400000;
-      return allPoints.filter(p => p.ts >= cutoff);
     }
 
     function niceStep(range) {
@@ -367,128 +378,168 @@
       return 5;
     }
 
-    function render() {
-      const pts = filtered();
-      svg.innerHTML = '';
-      tooltip.classList.remove('show');
+    // Factory: one line chart bound to a single numeric field of rawData.
+    function createChart({ svgId, tooltipId, emptyId, statsId, field, unit, decimals, colorVar, label }) {
+      const svg = document.getElementById(svgId);
+      const wrap = svg.closest('.chart-wrap');
+      const emptyEl = document.getElementById(emptyId);
+      const tooltip = document.getElementById(tooltipId);
+      const statsEl = document.getElementById(statsId);
+      let allPoints = [];
 
-      if (pts.length < 2) {
-        emptyEl.hidden = false;
-        statsEl.innerHTML = '';
-        return;
-      }
-      emptyEl.hidden = true;
-
-      const width = wrap.clientWidth - 16;
-      const height = 200;
-      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-      svg.setAttribute('width', width);
-      svg.setAttribute('height', height);
-
-      const padL = 36, padR = 8, padT = 12, padB = 22;
-      const plotW = width - padL - padR;
-      const plotH = height - padT - padB;
-
-      const xs = pts.map(p => p.ts);
-      const ws = pts.map(p => p.weight);
-      const minTs = Math.min(...xs), maxTs = Math.max(...xs);
-      let minW = Math.min(...ws), maxW = Math.max(...ws);
-      const wRange = maxW - minW || 1;
-      const step = niceStep(wRange);
-      minW = Math.floor(minW / step) * step - step;
-      maxW = Math.ceil(maxW / step) * step + step;
-
-      const xScale = ts => padL + (maxTs === minTs ? 0 : (ts - minTs) / (maxTs - minTs)) * plotW;
-      const yScale = w => padT + plotH - ((w - minW) / (maxW - minW)) * plotH;
-
-      // gridlines + y labels
-      const gridCount = 4;
-      for (let i = 0; i <= gridCount; i++) {
-        const w = minW + (maxW - minW) * (i / gridCount);
-        const y = yScale(w);
-        svg.appendChild(el('line', { x1: padL, x2: width - padR, y1: y, y2: y, stroke: 'var(--line)', 'stroke-width': 1 }));
-        const label = el('text', { x: 4, y: y + 3, 'font-size': 10, fill: 'var(--sub)' });
-        label.textContent = w.toFixed(1);
-        svg.appendChild(label);
+      function filtered() {
+        if (!allPoints.length) return [];
+        if (currentDays === 0) return allPoints;
+        const cutoff = allPoints[allPoints.length - 1].ts - currentDays * 86400000;
+        return allPoints.filter(p => p.ts >= cutoff);
       }
 
-      // x labels (first, middle, last)
-      const tickIdxs = [0, Math.floor((pts.length - 1) / 2), pts.length - 1];
-      tickIdxs.forEach(i => {
-        const p = pts[i];
-        const x = xScale(p.ts);
-        const label = el('text', {
-          x: Math.min(Math.max(x, padL + 16), width - padR - 16),
-          y: height - 4, 'font-size': 10, fill: 'var(--sub)', 'text-anchor': 'middle'
-        });
-        label.textContent = p.date.toISOString().slice(5, 10).replace('-', '/');
-        svg.appendChild(label);
-      });
+      function render() {
+        allPoints = rawData
+          .filter(d => d[field] != null)
+          .map(d => ({ date: new Date(d.date), ts: new Date(d.date).getTime(), value: d[field] }));
 
-      // line path
-      const d = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xScale(p.ts).toFixed(1)} ${yScale(p.weight).toFixed(1)}`).join(' ');
-      svg.appendChild(el('path', {
-        d, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2,
-        'stroke-linecap': 'round', 'stroke-linejoin': 'round'
-      }));
-
-      // hover layer
-      const crosshair = el('line', { y1: padT, y2: padT + plotH, stroke: 'var(--sub)', 'stroke-width': 1, opacity: 0 });
-      const marker = el('circle', { r: 4, fill: 'var(--accent)', stroke: 'white', 'stroke-width': 1.5, opacity: 0 });
-      svg.appendChild(crosshair);
-      svg.appendChild(marker);
-
-      const hitRect = el('rect', { x: padL, y: padT, width: plotW, height: plotH, fill: 'transparent' });
-      svg.appendChild(hitRect);
-
-      function pointFromClientX(clientX) {
-        const rect = svg.getBoundingClientRect();
-        const x = ((clientX - rect.left) / rect.width) * width;
-        let nearest = pts[0], nd = Infinity;
-        for (const p of pts) {
-          const dist = Math.abs(xScale(p.ts) - x);
-          if (dist < nd) { nd = dist; nearest = p; }
-        }
-        return nearest;
-      }
-
-      function showAt(p, clientX) {
-        const x = xScale(p.ts), y = yScale(p.weight);
-        crosshair.setAttribute('x1', x); crosshair.setAttribute('x2', x); crosshair.setAttribute('opacity', 1);
-        marker.setAttribute('cx', x); marker.setAttribute('cy', y); marker.setAttribute('opacity', 1);
-        const rect = wrap.getBoundingClientRect();
-        tooltip.style.left = (clientX - rect.left) + 'px';
-        tooltip.style.top = y + 'px';
-        tooltip.textContent = `${p.date.toISOString().slice(0, 10)}  ${p.weight.toFixed(1)}kg`;
-        tooltip.classList.add('show');
-      }
-
-      hitRect.addEventListener('pointermove', e => showAt(pointFromClientX(e.clientX), e.clientX));
-      hitRect.addEventListener('pointerdown', e => showAt(pointFromClientX(e.clientX), e.clientX));
-      hitRect.addEventListener('pointerleave', () => {
-        crosshair.setAttribute('opacity', 0);
-        marker.setAttribute('opacity', 0);
+        const pts = filtered();
+        svg.innerHTML = '';
         tooltip.classList.remove('show');
-      });
 
-      // stats
-      const latest = pts[pts.length - 1].weight;
-      const change = latest - pts[0].weight;
-      const sign = change > 0 ? '+' : '';
-      statsEl.innerHTML = `
-        <div class="weight-stat"><div class="num">${latest.toFixed(1)}kg</div><div class="label">現在</div></div>
-        <div class="weight-stat"><div class="num">${sign}${change.toFixed(1)}kg</div><div class="label">期間の変化</div></div>
-      `;
+        if (pts.length < 2) {
+          emptyEl.hidden = false;
+          statsEl.innerHTML = '';
+          return;
+        }
+        emptyEl.hidden = true;
 
-      renderTable(pts);
+        const width = wrap.clientWidth - 16;
+        const height = 180;
+        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+        svg.setAttribute('width', width);
+        svg.setAttribute('height', height);
+
+        const padL = 36, padR = 8, padT = 12, padB = 22;
+        const plotW = width - padL - padR;
+        const plotH = height - padT - padB;
+
+        const xs = pts.map(p => p.ts);
+        const vs = pts.map(p => p.value);
+        const minTs = Math.min(...xs), maxTs = Math.max(...xs);
+        let minV = Math.min(...vs), maxV = Math.max(...vs);
+        const vRange = maxV - minV || 1;
+        const step = niceStep(vRange);
+        minV = Math.floor(minV / step) * step - step;
+        maxV = Math.ceil(maxV / step) * step + step;
+
+        const xScale = ts => padL + (maxTs === minTs ? 0 : (ts - minTs) / (maxTs - minTs)) * plotW;
+        const yScale = v => padT + plotH - ((v - minV) / (maxV - minV)) * plotH;
+
+        // gridlines + y labels
+        const gridCount = 4;
+        for (let i = 0; i <= gridCount; i++) {
+          const v = minV + (maxV - minV) * (i / gridCount);
+          const y = yScale(v);
+          svg.appendChild(el('line', { x1: padL, x2: width - padR, y1: y, y2: y, stroke: 'var(--line)', 'stroke-width': 1 }));
+          const gLabel = el('text', { x: 4, y: y + 3, 'font-size': 10, fill: 'var(--sub)' });
+          gLabel.textContent = v.toFixed(decimals);
+          svg.appendChild(gLabel);
+        }
+
+        // x labels (first, middle, last)
+        const tickIdxs = [0, Math.floor((pts.length - 1) / 2), pts.length - 1];
+        tickIdxs.forEach(i => {
+          const p = pts[i];
+          const x = xScale(p.ts);
+          const xLabel = el('text', {
+            x: Math.min(Math.max(x, padL + 16), width - padR - 16),
+            y: height - 4, 'font-size': 10, fill: 'var(--sub)', 'text-anchor': 'middle'
+          });
+          xLabel.textContent = p.date.toISOString().slice(5, 10).replace('-', '/');
+          svg.appendChild(xLabel);
+        });
+
+        // line path
+        const d = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xScale(p.ts).toFixed(1)} ${yScale(p.value).toFixed(1)}`).join(' ');
+        svg.appendChild(el('path', {
+          d, fill: 'none', stroke: `var(${colorVar})`, 'stroke-width': 2,
+          'stroke-linecap': 'round', 'stroke-linejoin': 'round'
+        }));
+
+        // hover layer
+        const crosshair = el('line', { y1: padT, y2: padT + plotH, stroke: 'var(--sub)', 'stroke-width': 1, opacity: 0 });
+        const marker = el('circle', { r: 4, fill: `var(${colorVar})`, stroke: 'white', 'stroke-width': 1.5, opacity: 0 });
+        svg.appendChild(crosshair);
+        svg.appendChild(marker);
+
+        const hitRect = el('rect', { x: padL, y: padT, width: plotW, height: plotH, fill: 'transparent' });
+        svg.appendChild(hitRect);
+
+        function pointFromClientX(clientX) {
+          const rect = svg.getBoundingClientRect();
+          const x = ((clientX - rect.left) / rect.width) * width;
+          let nearest = pts[0], nd = Infinity;
+          for (const p of pts) {
+            const dist = Math.abs(xScale(p.ts) - x);
+            if (dist < nd) { nd = dist; nearest = p; }
+          }
+          return nearest;
+        }
+
+        function showAt(p, clientX) {
+          const x = xScale(p.ts), y = yScale(p.value);
+          crosshair.setAttribute('x1', x); crosshair.setAttribute('x2', x); crosshair.setAttribute('opacity', 1);
+          marker.setAttribute('cx', x); marker.setAttribute('cy', y); marker.setAttribute('opacity', 1);
+          const rect = wrap.getBoundingClientRect();
+          tooltip.style.left = (clientX - rect.left) + 'px';
+          tooltip.style.top = y + 'px';
+          tooltip.textContent = `${p.date.toISOString().slice(0, 10)}  ${p.value.toFixed(decimals)}${unit}`;
+          tooltip.classList.add('show');
+        }
+
+        hitRect.addEventListener('pointermove', e => showAt(pointFromClientX(e.clientX), e.clientX));
+        hitRect.addEventListener('pointerdown', e => showAt(pointFromClientX(e.clientX), e.clientX));
+        hitRect.addEventListener('pointerleave', () => {
+          crosshair.setAttribute('opacity', 0);
+          marker.setAttribute('opacity', 0);
+          tooltip.classList.remove('show');
+        });
+
+        // stats
+        const latest = pts[pts.length - 1].value;
+        const change = latest - pts[0].value;
+        const sign = change > 0 ? '+' : '';
+        statsEl.innerHTML = `
+          <div class="weight-stat"><div class="num">${latest.toFixed(decimals)}${unit}</div><div class="label">現在</div></div>
+          <div class="weight-stat"><div class="num">${sign}${change.toFixed(decimals)}${unit}</div><div class="label">期間の変化</div></div>
+        `;
+      }
+
+      return { render };
     }
 
-    function renderTable(pts) {
+    const weightChart = createChart({
+      svgId: 'weightChart', tooltipId: 'weightTooltip', emptyId: 'weightEmpty', statsId: 'weightStats',
+      field: 'weight_kg', unit: 'kg', decimals: 1, colorVar: '--accent', label: '体重'
+    });
+    const fatChart = createChart({
+      svgId: 'fatChart', tooltipId: 'fatTooltip', emptyId: 'fatEmpty', statsId: 'fatStats',
+      field: 'body_fat_pct', unit: '%', decimals: 1, colorVar: '--accent2', label: '体脂肪率'
+    });
+
+    function renderAll() {
+      weightChart.render();
+      fatChart.render();
+      renderTable();
+    }
+
+    function renderTable() {
+      const cutoff = currentDays === 0 || !rawData.length
+        ? -Infinity
+        : new Date(rawData[rawData.length - 1].date).getTime() - currentDays * 86400000;
+      const rows = rawData.filter(d => new Date(d.date).getTime() >= cutoff);
       tableBody.innerHTML = '';
-      for (let i = pts.length - 1; i >= 0; i--) {
-        const p = pts[i];
+      for (let i = rows.length - 1; i >= 0; i--) {
+        const d = rows[i];
         const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${p.date.toISOString().slice(0, 10)}</td><td>${p.weight.toFixed(1)}kg</td>`;
+        tr.innerHTML = `<td>${d.date}</td><td>${d.weight_kg != null ? d.weight_kg.toFixed(1) + 'kg' : '-'}</td><td>${d.body_fat_pct != null ? d.body_fat_pct.toFixed(1) + '%' : '-'}</td>`;
         tableBody.appendChild(tr);
       }
     }
@@ -499,7 +550,7 @@
       periodRow.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentDays = Number(btn.dataset.days);
-      render();
+      renderAll();
     });
 
     tableToggle.addEventListener('click', () => {
@@ -507,15 +558,20 @@
       tableToggle.textContent = tableWrap.hidden ? '表で見る' : '表を閉じる';
     });
 
-    window.addEventListener('resize', () => { if (allPoints.length) render(); });
+    window.addEventListener('resize', () => { if (rawData.length) renderAll(); });
 
     fetch('data/weight.json')
       .then(r => r.ok ? r.json() : [])
       .then(data => {
-        allPoints = data.map(d => ({ date: new Date(d.date), ts: new Date(d.date).getTime(), weight: d.weight_kg }));
-        render();
+        rawData = data;
+        renderAll();
       })
-      .catch(() => { emptyEl.hidden = false; emptyEl.textContent = 'データの取得に失敗しました'; });
+      .catch(() => {
+        document.getElementById('weightEmpty').hidden = false;
+        document.getElementById('weightEmpty').textContent = 'データの取得に失敗しました';
+        document.getElementById('fatEmpty').hidden = false;
+        document.getElementById('fatEmpty').textContent = 'データの取得に失敗しました';
+      });
   })();
 </script>
 

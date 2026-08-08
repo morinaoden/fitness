@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Fetch weight measurements from the Withings API and write them to data/weight.json.
+"""Fetch weight & body-fat measurements from the Withings API and write them
+to data/weight.json.
 
 Withings rotates the refresh_token on every use: each call to the token
 endpoint returns a *new* refresh_token and invalidates the old one. This
 script writes the new refresh_token to $GITHUB_OUTPUT (as `new_refresh_token`)
 so the workflow can persist it back to the repo secret.
 """
+import datetime
 import json
 import os
 import sys
@@ -19,7 +21,14 @@ REFRESH_TOKEN = os.environ["WITHINGS_REFRESH_TOKEN"]
 TOKEN_URL = "https://wbsapi.withings.net/v2/oauth2"
 MEASURE_URL = "https://wbsapi.withings.net/measure"
 
-WEIGHT_MEASTYPE = 1  # Withings measure type code for body weight
+# Withings measure type codes
+WEIGHT_MEASTYPE = 1     # kg
+FAT_RATIO_MEASTYPE = 6  # %
+MEASTYPES = [WEIGHT_MEASTYPE, FAT_RATIO_MEASTYPE]
+FIELD_BY_TYPE = {
+    WEIGHT_MEASTYPE: "weight_kg",
+    FAT_RATIO_MEASTYPE: "body_fat_pct",
+}
 
 
 def post(url, data, headers=None):
@@ -44,13 +53,13 @@ def refresh_access_token():
     return body["access_token"], body["refresh_token"]
 
 
-def fetch_weight(access_token):
+def fetch_measures(access_token):
     measuregrps = []
     offset = 0
     while True:
         data = {
             "action": "getmeas",
-            "meastypes": str(WEIGHT_MEASTYPE),
+            "meastypes": ",".join(str(t) for t in MEASTYPES),
             "category": "1",
         }
         if offset:
@@ -68,25 +77,28 @@ def fetch_weight(access_token):
 
 
 def to_series(measuregrps):
-    import datetime
-    by_day = {}
+    by_day = {}  # day -> {field: [values]}
     for grp in measuregrps:
         day = datetime.datetime.utcfromtimestamp(grp["date"]).strftime("%Y-%m-%d")
         for m in grp["measures"]:
-            if m["type"] != WEIGHT_MEASTYPE:
+            field = FIELD_BY_TYPE.get(m["type"])
+            if field is None:
                 continue
-            weight_kg = m["value"] * (10 ** m["unit"])
-            by_day.setdefault(day, []).append(weight_kg)
-    series = [
-        {"date": day, "weight_kg": round(sum(ws) / len(ws), 1)}
-        for day, ws in sorted(by_day.items())
-    ]
+            value = m["value"] * (10 ** m["unit"])
+            by_day.setdefault(day, {}).setdefault(field, []).append(value)
+
+    series = []
+    for day, fields in sorted(by_day.items()):
+        entry = {"date": day}
+        for field, values in fields.items():
+            entry[field] = round(sum(values) / len(values), 1)
+        series.append(entry)
     return series
 
 
 def main():
     access_token, new_refresh_token = refresh_access_token()
-    measuregrps = fetch_weight(access_token)
+    measuregrps = fetch_measures(access_token)
     series = to_series(measuregrps)
 
     os.makedirs("data", exist_ok=True)
@@ -99,7 +111,7 @@ def main():
         with open(github_output, "a") as f:
             f.write(f"new_refresh_token={new_refresh_token}\n")
 
-    print(f"Wrote {len(series)} weight points to data/weight.json")
+    print(f"Wrote {len(series)} days of measurements to data/weight.json")
 
 
 if __name__ == "__main__":
