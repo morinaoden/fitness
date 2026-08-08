@@ -118,6 +118,88 @@
     padding: 8px 16px;
     border-radius: 999px;
   }
+
+  /* --- weight chart --- */
+  .period-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+  .period-btn {
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--sub);
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+  .period-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+    font-weight: 600;
+  }
+  .weight-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+  .weight-stat .num {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .weight-stat .label {
+    font-size: 0.72rem;
+    color: var(--sub);
+  }
+  .chart-wrap {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 8px;
+  }
+  #weightChart {
+    display: block;
+    width: 100%;
+    height: 200px;
+    touch-action: pan-y;
+  }
+  .chart-empty {
+    color: var(--sub);
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 60px 0;
+  }
+  .chart-tooltip {
+    position: absolute;
+    pointer-events: none;
+    background: var(--ink);
+    color: white;
+    font-size: 0.72rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transform: translate(-50%, -110%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.1s;
+  }
+  .chart-tooltip.show { opacity: 1; }
+  .weight-table-wrap {
+    max-height: 260px;
+    overflow-y: auto;
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .weight-table-wrap table { font-size: 0.82rem; }
+  .weight-table-wrap th {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
 </style>
 </head>
 <body>
@@ -168,6 +250,30 @@
     <tr data-key="sun-4"><td class="chk-col"><input type="checkbox"></td><td>ロータリートルソ</td><td>3×15</td><td>10〜15kg</td></tr>
     <tr class="cardio-row" data-key="sun-5"><td class="chk-col"><input type="checkbox"></td><td colspan="2">有酸素(お好みで)</td><td>15〜20分</td></tr>
   </table>
+</div>
+
+<div class="section">
+  <h2>体重の推移(Withings)</h2>
+  <div class="period-row" id="periodRow">
+    <button class="period-btn" data-days="30">1ヶ月</button>
+    <button class="period-btn active" data-days="90">3ヶ月</button>
+    <button class="period-btn" data-days="180">6ヶ月</button>
+    <button class="period-btn" data-days="365">1年</button>
+    <button class="period-btn" data-days="0">全期間</button>
+  </div>
+  <div class="weight-stats" id="weightStats"></div>
+  <div class="chart-wrap">
+    <svg id="weightChart"></svg>
+    <div class="chart-tooltip" id="chartTooltip"></div>
+    <div class="chart-empty" id="chartEmpty" hidden>まだデータがありません(初回同期をお待ちください)</div>
+  </div>
+  <button class="reset-btn" id="tableToggle" type="button">表で見る</button>
+  <div class="weight-table-wrap" id="weightTableWrap" hidden>
+    <table>
+      <thead><tr><th>日付</th><th>体重</th></tr></thead>
+      <tbody id="weightTableBody"></tbody>
+    </table>
+  </div>
 </div>
 
 <div class="section">
@@ -224,6 +330,193 @@
   });
 
   loadState();
+
+  // --- weight chart ---
+  (function () {
+    const SVGNS = 'http://www.w3.org/2000/svg';
+    const svg = document.getElementById('weightChart');
+    const wrap = svg.closest('.chart-wrap');
+    const emptyEl = document.getElementById('chartEmpty');
+    const tooltip = document.getElementById('chartTooltip');
+    const statsEl = document.getElementById('weightStats');
+    const periodRow = document.getElementById('periodRow');
+    const tableToggle = document.getElementById('tableToggle');
+    const tableWrap = document.getElementById('weightTableWrap');
+    const tableBody = document.getElementById('weightTableBody');
+
+    let allPoints = []; // [{date: Date, ts, weight}]
+    let currentDays = 90;
+
+    function el(tag, attrs) {
+      const n = document.createElementNS(SVGNS, tag);
+      for (const k in attrs) n.setAttribute(k, attrs[k]);
+      return n;
+    }
+
+    function filtered() {
+      if (!allPoints.length) return [];
+      if (currentDays === 0) return allPoints;
+      const cutoff = allPoints[allPoints.length - 1].ts - currentDays * 86400000;
+      return allPoints.filter(p => p.ts >= cutoff);
+    }
+
+    function niceStep(range) {
+      if (range <= 2) return 0.5;
+      if (range <= 5) return 1;
+      if (range <= 10) return 2;
+      return 5;
+    }
+
+    function render() {
+      const pts = filtered();
+      svg.innerHTML = '';
+      tooltip.classList.remove('show');
+
+      if (pts.length < 2) {
+        emptyEl.hidden = false;
+        statsEl.innerHTML = '';
+        return;
+      }
+      emptyEl.hidden = true;
+
+      const width = wrap.clientWidth - 16;
+      const height = 200;
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      svg.setAttribute('width', width);
+      svg.setAttribute('height', height);
+
+      const padL = 36, padR = 8, padT = 12, padB = 22;
+      const plotW = width - padL - padR;
+      const plotH = height - padT - padB;
+
+      const xs = pts.map(p => p.ts);
+      const ws = pts.map(p => p.weight);
+      const minTs = Math.min(...xs), maxTs = Math.max(...xs);
+      let minW = Math.min(...ws), maxW = Math.max(...ws);
+      const wRange = maxW - minW || 1;
+      const step = niceStep(wRange);
+      minW = Math.floor(minW / step) * step - step;
+      maxW = Math.ceil(maxW / step) * step + step;
+
+      const xScale = ts => padL + (maxTs === minTs ? 0 : (ts - minTs) / (maxTs - minTs)) * plotW;
+      const yScale = w => padT + plotH - ((w - minW) / (maxW - minW)) * plotH;
+
+      // gridlines + y labels
+      const gridCount = 4;
+      for (let i = 0; i <= gridCount; i++) {
+        const w = minW + (maxW - minW) * (i / gridCount);
+        const y = yScale(w);
+        svg.appendChild(el('line', { x1: padL, x2: width - padR, y1: y, y2: y, stroke: 'var(--line)', 'stroke-width': 1 }));
+        const label = el('text', { x: 4, y: y + 3, 'font-size': 10, fill: 'var(--sub)' });
+        label.textContent = w.toFixed(1);
+        svg.appendChild(label);
+      }
+
+      // x labels (first, middle, last)
+      const tickIdxs = [0, Math.floor((pts.length - 1) / 2), pts.length - 1];
+      tickIdxs.forEach(i => {
+        const p = pts[i];
+        const x = xScale(p.ts);
+        const label = el('text', {
+          x: Math.min(Math.max(x, padL + 16), width - padR - 16),
+          y: height - 4, 'font-size': 10, fill: 'var(--sub)', 'text-anchor': 'middle'
+        });
+        label.textContent = p.date.toISOString().slice(5, 10).replace('-', '/');
+        svg.appendChild(label);
+      });
+
+      // line path
+      const d = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${xScale(p.ts).toFixed(1)} ${yScale(p.weight).toFixed(1)}`).join(' ');
+      svg.appendChild(el('path', {
+        d, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2,
+        'stroke-linecap': 'round', 'stroke-linejoin': 'round'
+      }));
+
+      // hover layer
+      const crosshair = el('line', { y1: padT, y2: padT + plotH, stroke: 'var(--sub)', 'stroke-width': 1, opacity: 0 });
+      const marker = el('circle', { r: 4, fill: 'var(--accent)', stroke: 'white', 'stroke-width': 1.5, opacity: 0 });
+      svg.appendChild(crosshair);
+      svg.appendChild(marker);
+
+      const hitRect = el('rect', { x: padL, y: padT, width: plotW, height: plotH, fill: 'transparent' });
+      svg.appendChild(hitRect);
+
+      function pointFromClientX(clientX) {
+        const rect = svg.getBoundingClientRect();
+        const x = ((clientX - rect.left) / rect.width) * width;
+        let nearest = pts[0], nd = Infinity;
+        for (const p of pts) {
+          const dist = Math.abs(xScale(p.ts) - x);
+          if (dist < nd) { nd = dist; nearest = p; }
+        }
+        return nearest;
+      }
+
+      function showAt(p, clientX) {
+        const x = xScale(p.ts), y = yScale(p.weight);
+        crosshair.setAttribute('x1', x); crosshair.setAttribute('x2', x); crosshair.setAttribute('opacity', 1);
+        marker.setAttribute('cx', x); marker.setAttribute('cy', y); marker.setAttribute('opacity', 1);
+        const rect = wrap.getBoundingClientRect();
+        tooltip.style.left = (clientX - rect.left) + 'px';
+        tooltip.style.top = y + 'px';
+        tooltip.textContent = `${p.date.toISOString().slice(0, 10)}  ${p.weight.toFixed(1)}kg`;
+        tooltip.classList.add('show');
+      }
+
+      hitRect.addEventListener('pointermove', e => showAt(pointFromClientX(e.clientX), e.clientX));
+      hitRect.addEventListener('pointerdown', e => showAt(pointFromClientX(e.clientX), e.clientX));
+      hitRect.addEventListener('pointerleave', () => {
+        crosshair.setAttribute('opacity', 0);
+        marker.setAttribute('opacity', 0);
+        tooltip.classList.remove('show');
+      });
+
+      // stats
+      const latest = pts[pts.length - 1].weight;
+      const change = latest - pts[0].weight;
+      const sign = change > 0 ? '+' : '';
+      statsEl.innerHTML = `
+        <div class="weight-stat"><div class="num">${latest.toFixed(1)}kg</div><div class="label">現在</div></div>
+        <div class="weight-stat"><div class="num">${sign}${change.toFixed(1)}kg</div><div class="label">期間の変化</div></div>
+      `;
+
+      renderTable(pts);
+    }
+
+    function renderTable(pts) {
+      tableBody.innerHTML = '';
+      for (let i = pts.length - 1; i >= 0; i--) {
+        const p = pts[i];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${p.date.toISOString().slice(0, 10)}</td><td>${p.weight.toFixed(1)}kg</td>`;
+        tableBody.appendChild(tr);
+      }
+    }
+
+    periodRow.addEventListener('click', e => {
+      const btn = e.target.closest('.period-btn');
+      if (!btn) return;
+      periodRow.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentDays = Number(btn.dataset.days);
+      render();
+    });
+
+    tableToggle.addEventListener('click', () => {
+      tableWrap.hidden = !tableWrap.hidden;
+      tableToggle.textContent = tableWrap.hidden ? '表で見る' : '表を閉じる';
+    });
+
+    window.addEventListener('resize', () => { if (allPoints.length) render(); });
+
+    fetch('data/weight.json')
+      .then(r => r.ok ? r.json() : [])
+      .then(data => {
+        allPoints = data.map(d => ({ date: new Date(d.date), ts: new Date(d.date).getTime(), weight: d.weight_kg }));
+        render();
+      })
+      .catch(() => { emptyEl.hidden = false; emptyEl.textContent = 'データの取得に失敗しました'; });
+  })();
 </script>
 
 </body>
