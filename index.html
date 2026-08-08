@@ -3,59 +3,109 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>週3日トレーニングプログラム</title>
+<title>DYNAMIC TONE FITNESS | 週3日トレーニングプログラム</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- amCharts 5 (free for non-commercial use; shows an amCharts attribution link on the chart) -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Dark.js"></script>
+
 <style>
   :root {
-    --bg: #f7f5f2;
-    --card: #ffffff;
-    --ink: #2b2b2b;
-    --sub: #757066;
-    --accent: #b3541e;
-    --accent2: #3d6b8a;
-    --line: #e8e3dc;
+    --bg: #0A0A0C;
+    --card: #141418;
+    --surface: #1C1C22;
+    --line: #2E2E38;
+    --accent: #D4FF00;
+    --accent-hover: #C2EB00;
+    --accent2: #00F0FF;
+    --ink: #F4F4F6;
+    --sub: #8E8E9A;
+    --ink-inverse: #0A0A0C;
+    --font-display: 'Syne', 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
   }
   * { box-sizing: border-box; }
+  html { background: var(--bg); }
   body {
     margin: 0;
-    padding: 20px 14px 60px;
-    background: var(--bg);
+    padding: 0 14px 60px;
+    background:
+      radial-gradient(600px 300px at 50% -80px, rgba(212,255,0,0.10), transparent 70%),
+      var(--bg);
     color: var(--ink);
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    font-family: var(--font-body);
     line-height: 1.6;
   }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin: 0 -14px 22px;
+    padding: 16px 18px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 10, 12, 0.75);
+    border-bottom: 1px solid var(--line);
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+  .brand span { color: var(--accent); }
+  .brand-sub {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--sub);
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+
   h1 {
-    font-size: 1.3rem;
-    margin: 0 0 4px;
-    letter-spacing: 0.02em;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+    letter-spacing: 0.01em;
   }
   .lead {
     color: var(--sub);
     font-size: 0.85rem;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
+
   .day-card {
     background: var(--card);
-    border-radius: 14px;
-    padding: 16px 16px 8px;
+    border-radius: 20px;
+    padding: 18px 18px 10px;
     margin-bottom: 16px;
     border: 1px solid var(--line);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .day-title {
     display: flex;
     align-items: baseline;
-    gap: 8px;
-    margin-bottom: 10px;
+    gap: 10px;
+    margin-bottom: 12px;
   }
   .day-badge {
     background: var(--accent);
-    color: white;
-    font-size: 0.75rem;
-    padding: 2px 8px;
-    border-radius: 999px;
-    font-weight: 600;
+    color: var(--ink-inverse);
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(212, 255, 0, 0.25);
   }
   .day-name {
+    font-family: var(--font-display);
     font-size: 1.05rem;
     font-weight: 700;
   }
@@ -68,12 +118,13 @@
     text-align: left;
     color: var(--sub);
     font-weight: 600;
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
     padding: 6px 4px;
     border-bottom: 1px solid var(--line);
   }
   td {
-    padding: 8px 4px;
+    padding: 9px 4px;
     border-bottom: 1px solid var(--line);
   }
   tr:last-child td { border-bottom: none; }
@@ -81,16 +132,18 @@
   .col-set { width: 24%; color: var(--sub); }
   .col-w { width: 30%; font-weight: 600; }
   .cardio-row td {
-    color: var(--accent);
+    color: var(--accent2);
     font-weight: 600;
     padding-top: 10px;
   }
   .section {
-    margin-top: 22px;
+    margin-top: 26px;
   }
   .section h2 {
-    font-size: 1rem;
-    margin-bottom: 8px;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 10px;
   }
   ul {
     margin: 0;
@@ -109,66 +162,77 @@
     color: var(--sub);
     text-decoration: line-through;
   }
-  .reset-btn {
-    display: block;
-    margin: 24px auto 0;
-    background: var(--card);
-    border: 1px solid var(--line);
-    color: var(--sub);
-    font-size: 0.8rem;
-    padding: 8px 16px;
-    border-radius: 999px;
-  }
 
-  /* --- weight chart --- */
+  /* --- buttons --- */
+  .btn-primary {
+    display: block;
+    margin: 26px auto 0;
+    background: var(--accent);
+    border: none;
+    color: var(--ink-inverse);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 12px 26px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+  .btn-primary:hover {
+    transform: scale(1.02);
+    filter: brightness(1.08);
+  }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-secondary:hover { background: var(--surface); }
+
+  /* --- weight/fat chart --- */
   .period-row {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
   .period-btn {
-    background: var(--card);
+    background: transparent;
     border: 1px solid var(--line);
     color: var(--sub);
+    font-family: var(--font-body);
     font-size: 0.75rem;
-    padding: 5px 12px;
-    border-radius: 999px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    cursor: pointer;
   }
   .period-btn.active {
     background: var(--accent);
     border-color: var(--accent);
-    color: white;
-    font-weight: 600;
-  }
-  .chart-legend {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 10px;
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.78rem;
-    color: var(--sub);
-  }
-  .legend-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    flex: none;
+    color: var(--ink-inverse);
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(212, 255, 0, 0.25);
   }
   .weight-stats {
     display: flex;
-    gap: 20px;
+    gap: 22px;
     margin-bottom: 10px;
   }
   .weight-stat .num {
-    font-size: 1.2rem;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
     font-weight: 700;
     color: var(--ink);
   }
+  .weight-stat.fat .num { color: var(--accent2); }
+  .weight-stat.weight .num { color: var(--accent); }
   .weight-stat .label {
     font-size: 0.72rem;
     color: var(--sub);
@@ -177,14 +241,12 @@
     position: relative;
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 12px 8px;
+    border-radius: 20px;
+    padding: 8px;
   }
-  .chart-svg {
-    display: block;
+  #weightFatChartRoot {
     width: 100%;
-    height: 220px;
-    touch-action: pan-y;
+    height: 300px;
   }
   .chart-empty {
     color: var(--sub);
@@ -192,26 +254,12 @@
     text-align: center;
     padding: 60px 0;
   }
-  .chart-tooltip {
-    position: absolute;
-    pointer-events: none;
-    background: var(--ink);
-    color: white;
-    font-size: 0.72rem;
-    padding: 4px 8px;
-    border-radius: 6px;
-    transform: translate(-50%, -110%);
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.1s;
-  }
-  .chart-tooltip.show { opacity: 1; }
   .weight-table-wrap {
     max-height: 260px;
     overflow-y: auto;
     margin-top: 14px;
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 14px;
   }
   .weight-table-wrap table { font-size: 0.82rem; }
   .weight-table-wrap th {
@@ -222,6 +270,11 @@
 </style>
 </head>
 <body>
+
+<header class="topbar">
+  <div class="brand">DYNAMIC <span>TONE</span> FITNESS</div>
+  <span class="brand-sub">PERSONAL TRAINING LOG</span>
+</header>
 
 <h1>週3日トレーニングプログラム</h1>
 <p class="lead">水・土・日 / 各回1時間目安(有酸素15〜20分込み)</p>
@@ -281,19 +334,19 @@
     <button class="period-btn" data-days="0">全期間</button>
   </div>
 
-  <div class="chart-legend">
-    <span class="legend-item"><span class="legend-dot" style="background:var(--accent)"></span>体重(左軸/kg)</span>
-    <span class="legend-item"><span class="legend-dot" style="background:var(--accent2)"></span>体脂肪率(右軸/%)</span>
+  <div class="weight-stats">
+    <div class="weight-stat weight" id="weightStat1"></div>
+    <div class="weight-stat weight" id="weightStat2"></div>
+    <div class="weight-stat fat" id="fatStat1"></div>
+    <div class="weight-stat fat" id="fatStat2"></div>
   </div>
-  <div class="weight-stats" id="weightStats"></div>
-  <div class="weight-stats" id="fatStats"></div>
+
   <div class="chart-wrap">
-    <svg class="chart-svg" id="weightFatChart"></svg>
-    <div class="chart-tooltip" id="chartTooltip"></div>
+    <div id="weightFatChartRoot"></div>
     <div class="chart-empty" id="chartEmpty" hidden>まだデータがありません(初回同期をお待ちください)</div>
   </div>
 
-  <button class="reset-btn" id="tableToggle" type="button">表で見る</button>
+  <button class="btn-secondary" id="tableToggle" type="button" style="display:block;margin:14px auto 0;">表で見る</button>
   <div class="weight-table-wrap" id="weightTableWrap" hidden>
     <table>
       <thead><tr><th>日付</th><th>体重</th><th>体脂肪率</th></tr></thead>
@@ -320,7 +373,7 @@
   </ul>
 </div>
 
-<button class="reset-btn" id="resetBtn">今日のチェックをリセット</button>
+<button class="btn-primary" id="resetBtn">今日のチェックをリセット</button>
 
 <script>
   const rows = document.querySelectorAll('tr[data-key]');
@@ -357,227 +410,108 @@
 
   loadState();
 
-  // --- weight / body-fat dual-axis chart ---
+  // --- weight / body-fat dual-axis chart (amCharts 5) ---
   (function () {
-    const SVGNS = 'http://www.w3.org/2000/svg';
     const periodRow = document.getElementById('periodRow');
     const tableToggle = document.getElementById('tableToggle');
     const tableWrap = document.getElementById('weightTableWrap');
     const tableBody = document.getElementById('weightTableBody');
-    const svg = document.getElementById('weightFatChart');
-    const wrap = svg.closest('.chart-wrap');
     const emptyEl = document.getElementById('chartEmpty');
-    const tooltip = document.getElementById('chartTooltip');
-    const weightStatsEl = document.getElementById('weightStats');
-    const fatStatsEl = document.getElementById('fatStats');
+    const weightStat1 = document.getElementById('weightStat1');
+    const weightStat2 = document.getElementById('weightStat2');
+    const fatStat1 = document.getElementById('fatStat1');
+    const fatStat2 = document.getElementById('fatStat2');
 
     let currentDays = 90;
     let rawData = []; // [{date, weight_kg, body_fat_pct}]
+    let root, xAxis, weightSeries, fatSeries;
 
-    function el(tag, attrs) {
-      const n = document.createElementNS(SVGNS, tag);
-      for (const k in attrs) n.setAttribute(k, attrs[k]);
-      return n;
+    function initChart() {
+      root = am5.Root.new('weightFatChartRoot');
+      root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
+
+      const chart = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: true, panY: false, wheelX: 'panX', wheelY: 'zoomX', pinchZoomX: true,
+        paddingLeft: 0, paddingRight: 0
+      }));
+
+      const cursor = chart.set('cursor', am5xy.XYCursor.new(root, { behavior: 'none' }));
+      cursor.lineY.set('visible', false);
+
+      xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+        baseInterval: { timeUnit: 'day', count: 1 },
+        renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 }),
+        tooltip: am5.Tooltip.new(root, {})
+      }));
+
+      const yAxisWeight = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererY.new(root, {})
+      }));
+      yAxisWeight.get('renderer').labels.template.setAll({ fill: am5.color(0xD4FF00) });
+
+      const yAxisFat = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererY.new(root, { opposite: true })
+      }));
+      yAxisFat.get('renderer').labels.template.setAll({ fill: am5.color(0x00F0FF) });
+      yAxisFat.get('renderer').grid.template.setAll({ visible: false });
+
+      weightSeries = chart.series.push(am5xy.LineSeries.new(root, {
+        name: '体重(kg)',
+        xAxis, yAxis: yAxisWeight,
+        valueYField: 'weight_kg', valueXField: 'ts',
+        stroke: am5.color(0xD4FF00), fill: am5.color(0xD4FF00),
+        connect: false,
+        tooltip: am5.Tooltip.new(root, { labelText: '体重: {valueY}kg' })
+      }));
+      weightSeries.strokes.template.setAll({ strokeWidth: 2 });
+
+      fatSeries = chart.series.push(am5xy.LineSeries.new(root, {
+        name: '体脂肪率(%)',
+        xAxis, yAxis: yAxisFat,
+        valueYField: 'body_fat_pct', valueXField: 'ts',
+        stroke: am5.color(0x00F0FF), fill: am5.color(0x00F0FF),
+        connect: false,
+        tooltip: am5.Tooltip.new(root, { labelText: '体脂肪率: {valueY}%' })
+      }));
+      fatSeries.strokes.template.setAll({ strokeWidth: 2 });
+
+      const legend = chart.children.push(am5.Legend.new(root, {
+        centerX: am5.p50, x: am5.p50, marginTop: 4
+      }));
+      legend.labels.template.setAll({ fill: am5.color(0xF4F4F6), fontSize: 12, fontFamily: "'Plus Jakarta Sans', sans-serif" });
+      legend.data.setAll(chart.series.values);
+
+      chart.appear(600, 100);
     }
 
-    function niceStep(range) {
-      if (range <= 2) return 0.5;
-      if (range <= 5) return 1;
-      if (range <= 10) return 2;
-      return 5;
-    }
-
-    // Build a domain [min, max] padded to a "nice" step for a set of values.
-    function domainFor(values) {
-      let min = Math.min(...values), max = Math.max(...values);
-      const step = niceStep(max - min || 1);
-      min = Math.floor(min / step) * step - step;
-      max = Math.ceil(max / step) * step + step;
-      return [min, max];
-    }
-
-    // Build an SVG path `d` string, breaking into a new subpath after any gap.
-    function pathFor(points, xScale, yScale) {
-      let d = '';
-      let started = false;
-      for (const p of points) {
-        const cmd = started ? 'L' : 'M';
-        d += `${cmd} ${xScale(p.ts).toFixed(1)} ${yScale(p.value).toFixed(1)} `;
-        started = true;
-      }
-      return d.trim();
-    }
-
-    function filteredPoints(field) {
-      const pts = rawData
-        .filter(d => d[field] != null)
-        .map(d => ({ date: new Date(d.date), ts: new Date(d.date).getTime(), value: d[field] }));
-      if (!pts.length || currentDays === 0) return pts;
-      const cutoff = new Date(rawData[rawData.length - 1].date).getTime() - currentDays * 86400000;
-      return pts.filter(p => p.ts >= cutoff);
-    }
-
-    function renderStats(el, pts, unit, decimals) {
-      if (pts.length < 2) { el.innerHTML = ''; return; }
-      const latest = pts[pts.length - 1].value;
-      const change = latest - pts[0].value;
+    function statHtml(pts, field, unit, decimals, label) {
+      const vals = pts.filter(d => d[field] != null);
+      if (vals.length < 2) return '';
+      const latest = vals[vals.length - 1][field];
+      const change = latest - vals[0][field];
       const sign = change > 0 ? '+' : '';
-      el.innerHTML = `
-        <div class="weight-stat"><div class="num">${latest.toFixed(decimals)}${unit}</div><div class="label">現在</div></div>
-        <div class="weight-stat"><div class="num">${sign}${change.toFixed(decimals)}${unit}</div><div class="label">期間の変化</div></div>
-      `;
+      return { latest: latest.toFixed(decimals) + unit, change: sign + change.toFixed(decimals) + unit, label };
     }
 
-    function render() {
-      const weightPts = filteredPoints('weight_kg');
-      const fatPts = filteredPoints('body_fat_pct');
+    function renderStats() {
+      const cutoff = periodCutoff();
+      const pts = rawData.filter(d => new Date(d.date).getTime() >= cutoff);
+      const w = statHtml(pts, 'weight_kg', 'kg', 1);
+      const f = statHtml(pts, 'body_fat_pct', '%', 1);
+      weightStat1.innerHTML = w ? `<div class="num">${w.latest}</div><div class="label">現在の体重</div>` : '';
+      weightStat2.innerHTML = w ? `<div class="num">${w.change}</div><div class="label">期間の変化</div>` : '';
+      fatStat1.innerHTML = f ? `<div class="num">${f.latest}</div><div class="label">現在の体脂肪率</div>` : '';
+      fatStat2.innerHTML = f ? `<div class="num">${f.change}</div><div class="label">期間の変化</div>` : '';
+    }
 
-      svg.innerHTML = '';
-      tooltip.classList.remove('show');
-
-      if (weightPts.length < 2 && fatPts.length < 2) {
-        emptyEl.hidden = false;
-        weightStatsEl.innerHTML = '';
-        fatStatsEl.innerHTML = '';
-        return;
-      }
-      emptyEl.hidden = true;
-
-      renderStats(weightStatsEl, weightPts, 'kg', 1);
-      renderStats(fatStatsEl, fatPts, '%', 1);
-
-      const width = wrap.clientWidth - 16;
-      const height = 220;
-      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-      svg.setAttribute('width', width);
-      svg.setAttribute('height', height);
-
-      const padL = 38, padR = 40, padT = 12, padB = 22;
-      const plotW = width - padL - padR;
-      const plotH = height - padT - padB;
-
-      const allTs = [...weightPts, ...fatPts].map(p => p.ts);
-      const minTs = Math.min(...allTs), maxTs = Math.max(...allTs);
-      const xScale = ts => padL + (maxTs === minTs ? 0 : (ts - minTs) / (maxTs - minTs)) * plotW;
-
-      const [minW, maxW] = weightPts.length ? domainFor(weightPts.map(p => p.value)) : [0, 1];
-      const [minF, maxF] = fatPts.length ? domainFor(fatPts.map(p => p.value)) : [0, 1];
-      const yScaleW = v => padT + plotH - ((v - minW) / (maxW - minW)) * plotH;
-      const yScaleF = v => padT + plotH - ((v - minF) / (maxF - minF)) * plotH;
-
-      // gridlines (neutral) + left axis (weight, kg) + right axis (body fat, %)
-      const gridCount = 4;
-      for (let i = 0; i <= gridCount; i++) {
-        const y = padT + plotH * (i / gridCount);
-        svg.appendChild(el('line', { x1: padL, x2: width - padR, y1: y, y2: y, stroke: 'var(--line)', 'stroke-width': 1 }));
-
-        if (weightPts.length) {
-          const wVal = maxW - (maxW - minW) * (i / gridCount);
-          const wLabel = el('text', { x: 4, y: y + 3, 'font-size': 10, fill: 'var(--accent)' });
-          wLabel.textContent = wVal.toFixed(1);
-          svg.appendChild(wLabel);
-        }
-        if (fatPts.length) {
-          const fVal = maxF - (maxF - minF) * (i / gridCount);
-          const fLabel = el('text', { x: width - padR + 4, y: y + 3, 'font-size': 10, fill: 'var(--accent2)' });
-          fLabel.textContent = fVal.toFixed(1);
-          svg.appendChild(fLabel);
-        }
-      }
-
-      // x labels (first, middle, last) from whichever series has more points
-      const xRefPts = weightPts.length >= fatPts.length ? weightPts : fatPts;
-      const tickIdxs = [0, Math.floor((xRefPts.length - 1) / 2), xRefPts.length - 1];
-      tickIdxs.forEach(i => {
-        const p = xRefPts[i];
-        const x = xScale(p.ts);
-        const xLabel = el('text', {
-          x: Math.min(Math.max(x, padL + 16), width - padR - 16),
-          y: height - 4, 'font-size': 10, fill: 'var(--sub)', 'text-anchor': 'middle'
-        });
-        xLabel.textContent = p.date.toISOString().slice(5, 10).replace('-', '/');
-        svg.appendChild(xLabel);
-      });
-
-      // lines
-      if (weightPts.length >= 2) {
-        svg.appendChild(el('path', {
-          d: pathFor(weightPts, xScale, yScaleW), fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2,
-          'stroke-linecap': 'round', 'stroke-linejoin': 'round'
-        }));
-      }
-      if (fatPts.length >= 2) {
-        svg.appendChild(el('path', {
-          d: pathFor(fatPts, xScale, yScaleF), fill: 'none', stroke: 'var(--accent2)', 'stroke-width': 2,
-          'stroke-linecap': 'round', 'stroke-linejoin': 'round'
-        }));
-      }
-
-      // hover layer: shared crosshair, one marker per series
-      const crosshair = el('line', { y1: padT, y2: padT + plotH, stroke: 'var(--sub)', 'stroke-width': 1, opacity: 0 });
-      const markerW = el('circle', { r: 4, fill: 'var(--accent)', stroke: 'white', 'stroke-width': 1.5, opacity: 0 });
-      const markerF = el('circle', { r: 4, fill: 'var(--accent2)', stroke: 'white', 'stroke-width': 1.5, opacity: 0 });
-      svg.appendChild(crosshair);
-      svg.appendChild(markerW);
-      svg.appendChild(markerF);
-
-      const hitRect = el('rect', { x: padL, y: padT, width: plotW, height: plotH, fill: 'transparent' });
-      svg.appendChild(hitRect);
-
-      function nearest(pts, x) {
-        if (!pts.length) return null;
-        let best = pts[0], nd = Infinity;
-        for (const p of pts) {
-          const dist = Math.abs(xScale(p.ts) - x);
-          if (dist < nd) { nd = dist; best = p; }
-        }
-        return best;
-      }
-
-      function showAt(clientX) {
-        const rect = svg.getBoundingClientRect();
-        const x = ((clientX - rect.left) / rect.width) * width;
-        const w = nearest(weightPts, x);
-        const f = nearest(fatPts, x);
-        const refX = xScale((w || f).ts);
-
-        crosshair.setAttribute('x1', refX); crosshair.setAttribute('x2', refX); crosshair.setAttribute('opacity', 1);
-
-        let lines = [];
-        if (w) {
-          markerW.setAttribute('cx', xScale(w.ts)); markerW.setAttribute('cy', yScaleW(w.value)); markerW.setAttribute('opacity', 1);
-          lines.push(`体重 ${w.value.toFixed(1)}kg`);
-        } else {
-          markerW.setAttribute('opacity', 0);
-        }
-        if (f) {
-          markerF.setAttribute('cx', xScale(f.ts)); markerF.setAttribute('cy', yScaleF(f.value)); markerF.setAttribute('opacity', 1);
-          lines.push(`体脂肪率 ${f.value.toFixed(1)}%`);
-        } else {
-          markerF.setAttribute('opacity', 0);
-        }
-
-        const wrapRect = wrap.getBoundingClientRect();
-        tooltip.style.left = (clientX - wrapRect.left) + 'px';
-        tooltip.style.top = Math.min(w ? yScaleW(w.value) : Infinity, f ? yScaleF(f.value) : Infinity) + 'px';
-        tooltip.innerHTML = `${(w || f).date.toISOString().slice(0, 10)}<br>${lines.join('<br>')}`;
-        tooltip.classList.add('show');
-      }
-
-      hitRect.addEventListener('pointermove', e => showAt(e.clientX));
-      hitRect.addEventListener('pointerdown', e => showAt(e.clientX));
-      hitRect.addEventListener('pointerleave', () => {
-        crosshair.setAttribute('opacity', 0);
-        markerW.setAttribute('opacity', 0);
-        markerF.setAttribute('opacity', 0);
-        tooltip.classList.remove('show');
-      });
+    function periodCutoff() {
+      if (!rawData.length) return -Infinity;
+      if (currentDays === 0) return -Infinity;
+      return new Date(rawData[rawData.length - 1].date).getTime() - currentDays * 86400000;
     }
 
     function renderTable() {
-      const cutoff = currentDays === 0 || !rawData.length
-        ? -Infinity
-        : new Date(rawData[rawData.length - 1].date).getTime() - currentDays * 86400000;
+      const cutoff = periodCutoff();
       const rows = rawData.filter(d => new Date(d.date).getTime() >= cutoff);
       tableBody.innerHTML = '';
       for (let i = rows.length - 1; i >= 0; i--) {
@@ -588,8 +522,16 @@
       }
     }
 
-    function renderAll() {
-      render();
+    function applyPeriod() {
+      if (!xAxis || !rawData.length) return;
+      if (currentDays === 0) {
+        xAxis.zoom(0, 1);
+      } else {
+        const maxTs = new Date(rawData[rawData.length - 1].date).getTime();
+        const minTs = maxTs - currentDays * 86400000;
+        xAxis.zoomToDates(new Date(minTs), new Date(maxTs + 86400000));
+      }
+      renderStats();
       renderTable();
     }
 
@@ -599,7 +541,7 @@
       periodRow.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentDays = Number(btn.dataset.days);
-      renderAll();
+      applyPeriod();
     });
 
     tableToggle.addEventListener('click', () => {
@@ -607,13 +549,23 @@
       tableToggle.textContent = tableWrap.hidden ? '表で見る' : '表を閉じる';
     });
 
-    window.addEventListener('resize', () => { if (rawData.length) renderAll(); });
-
     fetch('data/weight.json')
       .then(r => r.ok ? r.json() : [])
       .then(data => {
         rawData = data;
-        renderAll();
+        if (!rawData.length) {
+          emptyEl.hidden = false;
+          return;
+        }
+        initChart();
+        const chartData = rawData.map(d => ({
+          ts: new Date(d.date).getTime(),
+          weight_kg: d.weight_kg != null ? d.weight_kg : null,
+          body_fat_pct: d.body_fat_pct != null ? d.body_fat_pct : null
+        }));
+        weightSeries.data.setAll(chartData);
+        fatSeries.data.setAll(chartData);
+        applyPeriod();
       })
       .catch(() => {
         emptyEl.hidden = false;
