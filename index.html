@@ -460,7 +460,7 @@
         xAxis, yAxis: yAxisWeight,
         valueYField: 'weight_kg', valueXField: 'ts',
         stroke: am5.color(0xD4FF00), fill: am5.color(0xD4FF00),
-        connect: false,
+        connect: true,
         tooltip: am5.Tooltip.new(root, { labelText: '体重: {valueY}kg' })
       }));
       weightSeries.strokes.template.setAll({ strokeWidth: 2 });
@@ -470,7 +470,7 @@
         xAxis, yAxis: yAxisFat,
         valueYField: 'body_fat_pct', valueXField: 'ts',
         stroke: am5.color(0x00F0FF), fill: am5.color(0x00F0FF),
-        connect: false,
+        connect: true,
         tooltip: am5.Tooltip.new(root, { labelText: '体脂肪率: {valueY}%' })
       }));
       fatSeries.strokes.template.setAll({ strokeWidth: 2 });
