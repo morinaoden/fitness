@@ -30,8 +30,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- data/weight.json; then
-            git add data/weight.json
+          if ! git diff --quiet -- data/weight.json data/.sync_state.json; then
+            git add data/weight.json data/.sync_state.json
             git commit -m "Sync Withings weight data"
             git push
           else
