@@ -47,3 +47,17 @@ jobs:
           GH_TOKEN: ${{ secrets.WITHINGS_GH_PAT }}
         run: |
           gh secret set WITHINGS_REFRESH_TOKEN --body "${{ steps.sync.outputs.new_refresh_token }}" --repo "${{ github.repository }}"
+
+      # Mirrors data/weight.json to a Google Sheet so it can be referenced
+      # as a live knowledge source (e.g. a claude.ai Project's Google Drive
+      # connector). Skipped until GOOGLE_SHEET_ID / GOOGLE_SERVICE_ACCOUNT_KEY
+      # secrets are configured. Requires the sheet to be shared with the
+      # service account's email as Editor.
+      - name: Push data to Google Sheet
+        if: ${{ secrets.GOOGLE_SHEET_ID != '' }}
+        env:
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: |
+          pip install --quiet google-api-python-client google-auth
+          python3 scripts/update_sheet.py
