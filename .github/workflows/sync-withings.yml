@@ -2,7 +2,7 @@ name: Sync Withings Weight
 
 on:
   schedule:
-    - cron: "0 21 * * *"  # 06:00 JST daily
+    - cron: "0 23 * * *"  # 08:00 JST daily (measurements happen 5-7am JST; 1hr buffer for Withings cloud sync lag)
   workflow_dispatch: {}
 
 permissions:
