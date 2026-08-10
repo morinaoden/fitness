@@ -54,10 +54,13 @@ jobs:
       # secrets are configured. Requires the sheet to be shared with the
       # service account's email as Editor.
       - name: Push data to Google Sheet
-        if: ${{ secrets.GOOGLE_SHEET_ID != '' }}
         env:
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
         run: |
+          if [ -z "$GOOGLE_SHEET_ID" ]; then
+            echo "GOOGLE_SHEET_ID not set, skipping Google Sheet sync"
+            exit 0
+          fi
           pip install --quiet google-api-python-client google-auth
           python3 scripts/update_sheet.py
