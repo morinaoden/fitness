@@ -17,7 +17,6 @@ from googleapiclient.discovery import build
 SHEET_ID = os.environ["GOOGLE_SHEET_ID"]
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 DATA_PATH = "data/weight.json"
-SHEET_RANGE = "Sheet1"  # overwritten wholesale each run
 
 
 def load_rows():
@@ -39,11 +38,17 @@ def main():
     rows = load_rows()
 
     sheet = service.spreadsheets()
+    # Don't assume the tab is named "Sheet1" -- look up whatever the first
+    # tab is actually called (e.g. a CSV-imported sheet may be "Untitled").
+    meta = sheet.get(spreadsheetId=SHEET_ID, fields="sheets.properties.title").execute()
+    sheet_title = meta["sheets"][0]["properties"]["title"]
+    sheet_range = f"'{sheet_title}'"
+
     # Clear existing content first so removed/shrunk data doesn't leave stale rows.
-    sheet.values().clear(spreadsheetId=SHEET_ID, range=SHEET_RANGE).execute()
+    sheet.values().clear(spreadsheetId=SHEET_ID, range=sheet_range).execute()
     sheet.values().update(
         spreadsheetId=SHEET_ID,
-        range=SHEET_RANGE,
+        range=sheet_range,
         valueInputOption="RAW",
         body={"values": rows},
     ).execute()
