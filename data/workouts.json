@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "date": "2026-08-16",
+    "duration_min": 5.0,
+    "calories": 30,
+    "avg_heartrate": null,
+    "max_heartrate": null,
+    "sessions": 1,
+    "types": [
+      "Traditional Strength Training"
+    ]
+  }
+]
