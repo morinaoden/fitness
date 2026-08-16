@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DYNAMIC TONE FITNESS | 食事管理</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- amCharts 5 (free for non-commercial use; shows an amCharts attribution link on the chart) -->
+<script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Dark.js"></script>
+
+<style>
+  :root {
+    --bg: #0A0A0C;
+    --card: #141418;
+    --surface: #1C1C22;
+    --line: #2E2E38;
+    --accent: #D4FF00;
+    --accent-hover: #C2EB00;
+    --accent2: #00F0FF;
+    --ink: #F4F4F6;
+    --sub: #8E8E9A;
+    --ink-inverse: #0A0A0C;
+    --font-display: 'Syne', 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    padding: 0 14px 60px;
+    background:
+      radial-gradient(600px 300px at 50% -80px, rgba(212,255,0,0.10), transparent 70%),
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin: 0 -14px 22px;
+    padding: 16px 18px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 10, 12, 0.75);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+  .brand span { color: var(--accent); }
+  .brand-sub {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--sub);
+    letter-spacing: 0.08em;
+    margin-top: 2px;
+  }
+  .topnav {
+    display: flex;
+    gap: 6px;
+  }
+  .topnav-link {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--sub);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    text-decoration: none;
+  }
+  .topnav-link.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--ink-inverse);
+    box-shadow: 0 0 16px rgba(212, 255, 0, 0.25);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+    letter-spacing: 0.01em;
+  }
+  .lead {
+    color: var(--sub);
+    font-size: 0.85rem;
+    margin-bottom: 22px;
+  }
+  .section { margin-top: 26px; }
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  th {
+    text-align: left;
+    color: var(--sub);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    padding: 6px 4px;
+    border-bottom: 1px solid var(--line);
+  }
+  td { padding: 9px 4px; border-bottom: 1px solid var(--line); }
+  tr:last-child td { border-bottom: none; }
+
+  /* --- buttons --- */
+  .btn-primary {
+    display: block;
+    margin: 26px auto 0;
+    background: var(--accent);
+    border: none;
+    color: var(--ink-inverse);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 12px 26px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+  }
+  .btn-primary:hover { transform: scale(1.02); filter: brightness(1.08); }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-secondary:hover { background: var(--surface); }
+  .btn-tiny {
+    background: transparent;
+    border: 1px dashed var(--line);
+    color: var(--sub);
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    cursor: pointer;
+  }
+  .btn-tiny:hover { background: var(--surface); color: var(--ink); }
+
+  /* --- period buttons (shared with weight/running style) --- */
+  .period-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .period-btn {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--sub);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    cursor: pointer;
+  }
+  .period-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--ink-inverse);
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(212, 255, 0, 0.25);
+  }
+
+  /* --- meal input cards --- */
+  .meal-card {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 16px;
+    border: 1px solid var(--line);
+  }
+  .meal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .meal-head-left { display: flex; align-items: baseline; gap: 10px; }
+  .meal-badge {
+    background: var(--accent);
+    color: var(--ink-inverse);
+    font-size: 0.72rem;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(212, 255, 0, 0.25);
+  }
+  .meal-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+  input[type="time"], input[type="number"], input[type="text"], textarea, input[type="date"] {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    padding: 8px 10px;
+    border-radius: 10px;
+    width: 100%;
+  }
+  input[type="time"] { width: auto; }
+  textarea { resize: vertical; min-height: 60px; }
+  label {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--sub);
+    letter-spacing: 0.03em;
+    margin-bottom: 4px;
+  }
+  .field { margin-bottom: 10px; }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  @media (max-width: 480px) {
+    .field-row { grid-template-columns: 1fr; }
+  }
+
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0 4px;
+    min-height: 28px;
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 9999px;
+    padding: 4px 6px 4px 12px;
+    font-size: 0.76rem;
+  }
+  .chip .chip-name { font-weight: 600; }
+  .chip .chip-kcal { color: var(--sub); }
+  .chip button {
+    background: transparent;
+    border: none;
+    color: var(--sub);
+    cursor: pointer;
+    font-size: 0.78rem;
+    line-height: 1;
+    padding: 3px 5px;
+  }
+  .chip button:hover { color: var(--ink); }
+  .chip .qty-val { min-width: 1.2em; text-align: center; font-weight: 700; }
+  .meal-sub-total {
+    font-size: 0.78rem;
+    color: var(--accent2);
+    margin-top: 4px;
+  }
+  .empty-hint { font-size: 0.76rem; color: var(--sub); }
+
+  .today-summary {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .today-stat .num {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .today-stat .num.over { color: #FF5C5C; }
+  .today-stat .label { font-size: 0.72rem; color: var(--sub); }
+
+  .add-food-panel {
+    margin-top: 20px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 18px;
+  }
+  .add-food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 560px) {
+    .add-food-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .target-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 560px) {
+    .target-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .chart-wrap {
+    position: relative;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 8px;
+  }
+  #kcalChartRoot { width: 100%; height: 300px; }
+  .chart-empty { color: var(--sub); font-size: 0.85rem; text-align: center; padding: 60px 0; }
+
+  .history-table-wrap {
+    max-height: 320px;
+    overflow-y: auto;
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .history-table-wrap table { font-size: 0.8rem; }
+  .history-table-wrap th { position: sticky; top: 0; background: var(--card); }
+
+  .save-status {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--accent2);
+    margin-top: 8px;
+    min-height: 1.2em;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <div class="brand">DYNAMIC <span>TONE</span> FITNESS</div>
+      <span class="brand-sub">PERSONAL TRAINING LOG</span>
+    </div>
+    <nav class="topnav">
+      <a href="index.html" class="topnav-link">トレーニング</a>
+      <a href="meals.html" class="topnav-link active">食事</a>
+    </nav>
+  </div>
+</header>
+
+<h1>食事管理</h1>
+<p class="lead" id="todayLabel">今日の食事を記録します</p>
+
+<p class="empty-hint">食べたものはできるだけ具材ごとに書くと精度が上がります(例:「サンドイッチ」より「食パン、ゆで卵、ツナ、マヨネーズ」)。チップにマウスを乗せると使用した分量・データ出典が見られます。</p>
+
+<div id="mealCards"></div>
+
+<div class="add-food-panel">
+  <details>
+    <summary style="cursor:pointer; font-family: var(--font-display); font-weight:700; font-size:0.92rem;">辞書にない食品を登録する</summary>
+    <p class="empty-hint" style="margin-top:10px;">登録すると次回から食事欄のテキストから自動で認識されるようになります。パッケージ商品はバーコード(JANコード)で検索すると自動入力できます。</p>
+
+    <div class="field-row" style="margin-top:6px;">
+      <div class="field"><label>バーコード(JANコード)</label><input type="text" id="barcodeInput" inputmode="numeric" placeholder="例: 4902705099555"></div>
+      <div class="field"><label>追加先の食事</label><select id="barcodeTargetSlot"></select></div>
+      <div class="field" style="display:flex; align-items:flex-end;">
+        <button class="btn-secondary" id="barcodeSearchBtn" type="button">Open Food Factsで検索</button>
+      </div>
+    </div>
+    <span class="save-status" id="barcodeStatus"></span>
+
+    <div class="add-food-grid" style="margin-top:14px;">
+      <div class="field"><label>食品名</label><input type="text" id="newFoodName" placeholder="例: 鶏胸肉のソテー"></div>
+      <div class="field"><label>読み替え(カンマ区切り・任意)</label><input type="text" id="newFoodAliases" placeholder="例: チキンソテー"></div>
+      <div class="field"><label>単位(任意)</label><input type="text" id="newFoodUnit" placeholder="例: 1人前"></div>
+      <div class="field"><label>カロリー(kcal)</label><input type="number" id="newFoodKcal" min="0" step="1"></div>
+      <div class="field"><label>たんぱく質(g)</label><input type="number" id="newFoodP" min="0" step="0.1"></div>
+      <div class="field"><label>脂質(g)</label><input type="number" id="newFoodF" min="0" step="0.1"></div>
+      <div class="field"><label>炭水化物(g)</label><input type="number" id="newFoodC" min="0" step="0.1"></div>
+    </div>
+    <button class="btn-secondary" id="addFoodBtn" type="button" style="margin-top:8px;">辞書に登録(次回以降も自動認識)</button>
+    <button class="btn-secondary" id="addOnceBtn" type="button" style="margin-top:8px;">今回の食事にだけ追加(辞書には保存しない)</button>
+    <span class="save-status" id="addFoodStatus" style="display:inline-block; margin-left:10px;"></span>
+    <p class="empty-hint" id="offAttribution" hidden style="margin-top:10px;">栄養データ: <a href="https://jp.openfoodfacts.org/" target="_blank" rel="noopener" style="color:var(--sub);">Open Food Facts</a>(ODbLライセンス)より取得</p>
+  </details>
+  <p class="empty-hint" style="margin-top:12px;">食品辞書は文部科学省「日本食品標準成分表(八訂)増補2025年」の可食部100gあたり成分値をもとに、一般的な1人前の分量に換算して作成しています。丼・カレー等の料理は代表的な材料構成からの目安、プロテイン等の栄養成分表がない食品は市販品の一般的な値を使用しています。</p>
+</div>
+
+<button class="btn-primary" id="saveBtn">今日の記録を保存</button>
+<div class="save-status" id="saveStatus"></div>
+
+<div class="section">
+  <h2>目標カロリー・PFC</h2>
+  <div class="target-grid">
+    <div class="field"><label>目標カロリー(kcal)</label><input type="number" id="targetKcal" min="0" step="10"></div>
+    <div class="field"><label>たんぱく質(g)</label><input type="number" id="targetP" min="0" step="1"></div>
+    <div class="field"><label>脂質(g)</label><input type="number" id="targetF" min="0" step="1"></div>
+    <div class="field"><label>炭水化物(g)</label><input type="number" id="targetC" min="0" step="1"></div>
+  </div>
+  <button class="btn-secondary" id="saveTargetBtn" type="button" style="margin-top:10px;">目標を保存</button>
+  <span class="save-status" id="targetStatus" style="display:inline-block; margin-left:10px;"></span>
+</div>
+
+<div class="section">
+  <h2>今日の推定値 vs 目標</h2>
+  <div class="today-summary" id="todaySummary"></div>
+</div>
+
+<div class="section">
+  <h2>推定カロリーの推移</h2>
+  <div class="period-row" id="historyPeriodRow">
+    <button class="period-btn" data-days="30">1ヶ月</button>
+    <button class="period-btn active" data-days="90">3ヶ月</button>
+    <button class="period-btn" data-days="180">6ヶ月</button>
+    <button class="period-btn" data-days="365">1年</button>
+    <button class="period-btn" data-days="0">全期間</button>
+  </div>
+
+  <div class="chart-wrap">
+    <div id="kcalChartRoot"></div>
+    <div class="chart-empty" id="historyChartEmpty">まだ記録がありません(「今日の記録を保存」から記録を始めてください)</div>
+  </div>
+
+  <button class="btn-secondary" id="historyTableToggle" type="button" style="display:block;margin:14px auto 0;">表で見る</button>
+  <div class="history-table-wrap" id="historyTableWrap" hidden>
+    <table>
+      <thead><tr><th>日付</th><th>kcal</th><th>P</th><th>F</th><th>C</th><th>水分</th><th>飲酒</th><th>メモ</th></tr></thead>
+      <tbody id="historyTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(function () {
+  const MEAL_SLOTS = [
+    { key: 'breakfast', badge: '朝食', defaultTime: '07:30' },
+    { key: 'lunch', badge: '昼食', defaultTime: '12:00' },
+    { key: 'dinner', badge: '夕食', defaultTime: '19:00' },
+    { key: 'snack', badge: '間食', defaultTime: '15:00' }
+  ];
+  const LS_LOG = 'mealLog:v1';        // { "2026-08-16": record, ... }
+  const LS_TARGET = 'mealTargets:v1'; // { kcal, p, f, c }
+  const LS_EXTRA_DB = 'foodDbExtra:v1'; // [ {name, aliases, unit, kcal, p, f, c}, ... ]
+
+  function todayStr() {
+    const d = new Date();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    return `${d.getFullYear()}-${mm}-${dd}`;
+  }
+  const TODAY = todayStr();
+  document.getElementById('todayLabel').textContent = `${TODAY} の食事を記録します`;
+
+  function loadJSON(key, fallback) {
+    try {
+      const v = localStorage.getItem(key);
+      return v ? JSON.parse(v) : fallback;
+    } catch (e) { return fallback; }
+  }
+  function saveJSON(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
+
+  let foodDb = []; // merged base + extra
+  let extraDb = loadJSON(LS_EXTRA_DB, []);
+  let mealLog = loadJSON(LS_LOG, {});
+  let targets = loadJSON(LS_TARGET, { kcal: 2000, p: 100, f: 60, c: 250 });
+
+  document.getElementById('targetKcal').value = targets.kcal ?? '';
+  document.getElementById('targetP').value = targets.p ?? '';
+  document.getElementById('targetF').value = targets.f ?? '';
+  document.getElementById('targetC').value = targets.c ?? '';
+
+  // per-slot editing state (only relevant for today's form, resets on reload)
+  // manual: items added via barcode lookup / "add to this meal only" (not saved to the food dictionary)
+  const slotState = {}; // key -> { qty: {name:qty}, excluded: Set(name), manual: [{entry, qty}] }
+  MEAL_SLOTS.forEach(s => { slotState[s.key] = { qty: {}, excluded: new Set(), manual: [] }; });
+
+  // --- render meal input cards ---
+  const mealCardsEl = document.getElementById('mealCards');
+  const existing = mealLog[TODAY] && mealLog[TODAY].meals || {};
+
+  MEAL_SLOTS.forEach(slot => {
+    const ex = existing[slot.key] || {};
+    const card = document.createElement('div');
+    card.className = 'meal-card';
+    card.dataset.key = slot.key;
+    card.innerHTML = `
+      <div class="meal-head">
+        <div class="meal-head-left">
+          <span class="meal-badge">${slot.badge}</span>
+          <span class="meal-name">${slot.badge}の記録</span>
+        </div>
+        <input type="time" class="f-time" value="${ex.time || slot.defaultTime}">
+      </div>
+      <div class="field">
+        <label>食べたもの</label>
+        <textarea class="f-text" placeholder="例: ご飯、味噌汁、鮭、卵焼き">${ex.text || ''}</textarea>
+      </div>
+      <div class="chip-row"></div>
+      <div class="meal-sub-total"></div>
+      <div class="field-row">
+        <div class="field"><label>水分摂取(ml)</label><input type="number" class="f-water" min="0" step="50" value="${ex.water_ml ?? ''}"></div>
+        <div class="field"><label>飲酒(自由記述)</label><input type="text" class="f-alcohol" placeholder="例: ビール500ml" value="${ex.alcohol || ''}"></div>
+        <div class="field"><label>体調・満腹感メモ</label><input type="text" class="f-memo" placeholder="例: 満腹" value="${ex.memo || ''}"></div>
+      </div>
+    `;
+    mealCardsEl.appendChild(card);
+  });
+
+  // track which meal card the user last interacted with, so barcode lookups
+  // default to a sensible target slot
+  let lastFocusedSlotKey = MEAL_SLOTS[0].key;
+  mealCardsEl.addEventListener('focusin', e => {
+    const card = e.target.closest('.meal-card');
+    if (card) lastFocusedSlotKey = card.dataset.key;
+  });
+
+  const barcodeTargetSlotEl = document.getElementById('barcodeTargetSlot');
+  MEAL_SLOTS.forEach(slot => {
+    const opt = document.createElement('option');
+    opt.value = slot.key;
+    opt.textContent = slot.badge;
+    barcodeTargetSlotEl.appendChild(opt);
+  });
+  const addFoodDetailsEl = document.querySelector('.add-food-panel details');
+  addFoodDetailsEl.addEventListener('toggle', () => {
+    if (addFoodDetailsEl.open) barcodeTargetSlotEl.value = lastFocusedSlotKey;
+  });
+
+  // --- food matching ---
+  function buildDb() {
+    foodDb = [].concat(window.__baseFoodDb || [], extraDb);
+  }
+
+  function matchFoods(text) {
+    if (!text) return [];
+    const candidates = [];
+    foodDb.forEach(entry => {
+      const names = [entry.name].concat(entry.aliases || []);
+      names.forEach(n => { if (n) candidates.push({ text: n, entry }); });
+    });
+    candidates.sort((a, b) => b.text.length - a.text.length);
+    const used = [];
+    const results = [];
+    const seen = new Set();
+    candidates.forEach(({ text: name, entry }) => {
+      let idx = text.indexOf(name);
+      while (idx !== -1) {
+        const end = idx + name.length;
+        const overlap = used.some(([s, e]) => idx < e && end > s);
+        if (!overlap) {
+          used.push([idx, end]);
+          if (!seen.has(entry.name)) {
+            seen.add(entry.name);
+            results.push(entry);
+          }
+        }
+        idx = text.indexOf(name, idx + 1);
+      }
+    });
+    return results;
+  }
+
+  function computeSlotItems(key) {
+    const card = mealCardsEl.querySelector(`.meal-card[data-key="${key}"]`);
+    const text = card.querySelector('.f-text').value;
+    const alcohol = card.querySelector('.f-alcohol').value;
+    const combined = text + ' ' + alcohol;
+    const found = matchFoods(combined);
+    const st = slotState[key];
+    const fromText = found
+      .filter(entry => !st.excluded.has(entry.name))
+      .map(entry => ({ entry, qty: st.qty[entry.name] || 1, manual: false }));
+    const fromTextNames = new Set(fromText.map(it => it.entry.name));
+    const fromManual = st.manual
+      .filter(m => !fromTextNames.has(m.entry.name))
+      .map(m => ({ entry: m.entry, qty: st.qty[m.entry.name] || m.qty || 1, manual: true }));
+    return fromText.concat(fromManual);
+  }
+
+  function slotTotals(items) {
+    return items.reduce((acc, it) => {
+      acc.kcal += it.entry.kcal * it.qty;
+      acc.p += it.entry.p * it.qty;
+      acc.f += it.entry.f * it.qty;
+      acc.c += it.entry.c * it.qty;
+      return acc;
+    }, { kcal: 0, p: 0, f: 0, c: 0 });
+  }
+
+  function renderSlotChips(key) {
+    const card = mealCardsEl.querySelector(`.meal-card[data-key="${key}"]`);
+    const chipRow = card.querySelector('.chip-row');
+    const subTotal = card.querySelector('.meal-sub-total');
+    const items = computeSlotItems(key);
+    chipRow.innerHTML = '';
+    if (!items.length) {
+      chipRow.innerHTML = '<span class="empty-hint">食べたものを入力すると、認識できた食品がここに表示されます</span>';
+    }
+    items.forEach(({ entry, qty, manual }) => {
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.title = `${entry.unit || ''}${entry.source ? ' / 出典: ' + entry.source : ''}${manual ? ' / この食事にのみ追加(辞書未登録)' : ''}`;
+      chip.innerHTML = `
+        <span class="chip-name">${manual ? '📷 ' : ''}${entry.name}</span>
+        <span class="chip-kcal">${Math.round(entry.kcal * qty)}kcal</span>
+        <button type="button" data-act="minus">−</button>
+        <span class="qty-val">${qty}</span>
+        <button type="button" data-act="plus">＋</button>
+        <button type="button" data-act="remove">×</button>
+      `;
+      chip.querySelector('[data-act="minus"]').addEventListener('click', () => {
+        const st = slotState[key];
+        const cur = st.qty[entry.name] || 1;
+        st.qty[entry.name] = Math.max(1, cur - 1);
+        renderSlotChips(key);
+        renderTodaySummary();
+      });
+      chip.querySelector('[data-act="plus"]').addEventListener('click', () => {
+        const st = slotState[key];
+        const cur = st.qty[entry.name] || 1;
+        st.qty[entry.name] = cur + 1;
+        renderSlotChips(key);
+        renderTodaySummary();
+      });
+      chip.querySelector('[data-act="remove"]').addEventListener('click', () => {
+        const st = slotState[key];
+        if (manual) {
+          st.manual = st.manual.filter(m => m.entry.name !== entry.name);
+        } else {
+          st.excluded.add(entry.name);
+        }
+        renderSlotChips(key);
+        renderTodaySummary();
+      });
+      chipRow.appendChild(chip);
+    });
+    const totals = slotTotals(items);
+    subTotal.textContent = items.length
+      ? `小計: ${Math.round(totals.kcal)}kcal (P${totals.p.toFixed(1)} / F${totals.f.toFixed(1)} / C${totals.c.toFixed(1)})`
+      : '';
+  }
+
+  function renderTodaySummary() {
+    let totals = { kcal: 0, p: 0, f: 0, c: 0 };
+    MEAL_SLOTS.forEach(slot => {
+      const items = computeSlotItems(slot.key);
+      const t = slotTotals(items);
+      totals.kcal += t.kcal; totals.p += t.p; totals.f += t.f; totals.c += t.c;
+    });
+    const el = document.getElementById('todaySummary');
+    function stat(label, actual, target, unit) {
+      const over = target && actual > target;
+      return `<div class="today-stat">
+        <div class="num${over ? ' over' : ''}">${Math.round(actual)}${unit}${target ? ` / ${target}${unit}` : ''}</div>
+        <div class="label">${label}</div>
+      </div>`;
+    }
+    el.innerHTML =
+      stat('カロリー', totals.kcal, targets.kcal, 'kcal') +
+      stat('たんぱく質', totals.p, targets.p, 'g') +
+      stat('脂質', totals.f, targets.f, 'g') +
+      stat('炭水化物', totals.c, targets.c, 'g');
+    return totals;
+  }
+
+  let debounceTimer;
+  mealCardsEl.addEventListener('input', e => {
+    const card = e.target.closest('.meal-card');
+    if (!card) return;
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      renderSlotChips(card.dataset.key);
+      renderTodaySummary();
+    }, 400);
+  });
+
+  // --- Open Food Facts barcode lookup ---
+  // Product endpoint has CORS enabled (world.openfoodfacts.org/api/v2) and needs no auth for reads.
+  // Full-text search is a separate service without CORS, so only barcode lookup works from the browser.
+  function readFormEntry() {
+    const name = document.getElementById('newFoodName').value.trim();
+    const kcal = parseFloat(document.getElementById('newFoodKcal').value);
+    if (!name || isNaN(kcal)) return null;
+    const aliases = document.getElementById('newFoodAliases').value
+      .split(',').map(s => s.trim()).filter(Boolean);
+    return {
+      name,
+      aliases,
+      unit: document.getElementById('newFoodUnit').value.trim(),
+      kcal,
+      p: parseFloat(document.getElementById('newFoodP').value) || 0,
+      f: parseFloat(document.getElementById('newFoodF').value) || 0,
+      c: parseFloat(document.getElementById('newFoodC').value) || 0
+    };
+  }
+  function fillForm(entry) {
+    document.getElementById('newFoodName').value = entry.name;
+    document.getElementById('newFoodUnit').value = entry.unit || '';
+    document.getElementById('newFoodKcal').value = entry.kcal;
+    document.getElementById('newFoodP').value = entry.p;
+    document.getElementById('newFoodF').value = entry.f;
+    document.getElementById('newFoodC').value = entry.c;
+  }
+  function clearForm() {
+    ['newFoodName', 'newFoodAliases', 'newFoodUnit', 'newFoodKcal', 'newFoodP', 'newFoodF', 'newFoodC']
+      .forEach(id => document.getElementById(id).value = '');
+  }
+
+  document.getElementById('barcodeSearchBtn').addEventListener('click', () => {
+    const barcode = document.getElementById('barcodeInput').value.trim();
+    const status = document.getElementById('barcodeStatus');
+    const attribution = document.getElementById('offAttribution');
+    if (!/^\d{8,14}$/.test(barcode)) {
+      status.style.color = '#FF5C5C';
+      status.textContent = 'JANコード(8〜14桁の数字)を入力してください';
+      return;
+    }
+    status.style.color = 'var(--sub)';
+    status.textContent = '検索中...';
+    attribution.hidden = true;
+    const fields = 'product_name,product_name_ja,brands,nutriments,serving_size,quantity';
+    fetch(`https://world.openfoodfacts.org/api/v2/product/${encodeURIComponent(barcode)}.json?fields=${fields}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.status !== 1 || !data.product) {
+          status.style.color = '#FF5C5C';
+          status.textContent = 'Open Food Factsに登録が見つかりませんでした。手入力してください。';
+          return;
+        }
+        const p = data.product;
+        const n = p.nutriments || {};
+        const baseName = p.product_name_ja || p.product_name || `商品(${barcode})`;
+        const name = p.brands ? `${baseName}（${p.brands}）` : baseName;
+        const hasServing = p.serving_size && n['energy-kcal_serving'] != null;
+        const entry = hasServing
+          ? {
+              name, unit: p.serving_size,
+              kcal: Math.round(n['energy-kcal_serving']),
+              p: +(n.proteins_serving || 0).toFixed(1),
+              f: +(n.fat_serving || 0).toFixed(1),
+              c: +(n.carbohydrates_serving || 0).toFixed(1)
+            }
+          : {
+              name, unit: '100gあたり',
+              kcal: Math.round(n['energy-kcal_100g'] || 0),
+              p: +(n.proteins_100g || 0).toFixed(1),
+              f: +(n.fat_100g || 0).toFixed(1),
+              c: +(n.carbohydrates_100g || 0).toFixed(1)
+            };
+        fillForm(entry);
+        attribution.hidden = false;
+        status.style.color = 'var(--accent2)';
+        status.textContent = `「${name}」の情報を取得しました。内容を確認のうえ登録してください。`;
+      })
+      .catch(() => {
+        status.style.color = '#FF5C5C';
+        status.textContent = '通信に失敗しました。しばらくしてから再度お試しください。';
+      });
+  });
+
+  document.getElementById('addOnceBtn').addEventListener('click', () => {
+    const status = document.getElementById('addFoodStatus');
+    const entry = readFormEntry();
+    if (!entry) {
+      status.style.color = '#FF5C5C';
+      status.textContent = '食品名とカロリーは必須です';
+      return;
+    }
+    entry.source = entry.source || 'openfoodfacts(この食事のみ)';
+    const key = barcodeTargetSlotEl.value || lastFocusedSlotKey;
+    slotState[key].manual.push({ entry, qty: 1 });
+    clearForm();
+    status.style.color = 'var(--accent2)';
+    const slotBadge = MEAL_SLOTS.find(s => s.key === key).badge;
+    status.textContent = `「${entry.name}」を${slotBadge}に追加しました(辞書には保存していません)`;
+    renderSlotChips(key);
+    renderTodaySummary();
+  });
+
+  // --- add food to dictionary ---
+  document.getElementById('addFoodBtn').addEventListener('click', () => {
+    const status = document.getElementById('addFoodStatus');
+    const entry = readFormEntry();
+    if (!entry) {
+      status.style.color = '#FF5C5C';
+      status.textContent = '食品名とカロリーは必須です';
+      return;
+    }
+    extraDb.push(entry);
+    saveJSON(LS_EXTRA_DB, extraDb);
+    buildDb();
+    clearForm();
+    status.style.color = 'var(--accent2)';
+    status.textContent = `「${entry.name}」を辞書に登録しました`;
+    MEAL_SLOTS.forEach(s => renderSlotChips(s.key));
+    renderTodaySummary();
+  });
+
+  // --- save target ---
+  document.getElementById('saveTargetBtn').addEventListener('click', () => {
+    targets = {
+      kcal: parseFloat(document.getElementById('targetKcal').value) || 0,
+      p: parseFloat(document.getElementById('targetP').value) || 0,
+      f: parseFloat(document.getElementById('targetF').value) || 0,
+      c: parseFloat(document.getElementById('targetC').value) || 0
+    };
+    saveJSON(LS_TARGET, targets);
+    const status = document.getElementById('targetStatus');
+    status.textContent = '目標を保存しました';
+    renderTodaySummary();
+    renderHistoryChart();
+    setTimeout(() => { status.textContent = ''; }, 2500);
+  });
+
+  // --- save today's record ---
+  document.getElementById('saveBtn').addEventListener('click', () => {
+    const record = { date: TODAY, meals: {} };
+    let dayTotals = { kcal: 0, p: 0, f: 0, c: 0 };
+    let waterTotal = 0;
+    const alcoholParts = [];
+    const memoParts = [];
+    MEAL_SLOTS.forEach(slot => {
+      const card = mealCardsEl.querySelector(`.meal-card[data-key="${slot.key}"]`);
+      const time = card.querySelector('.f-time').value;
+      const text = card.querySelector('.f-text').value;
+      const water = parseFloat(card.querySelector('.f-water').value) || 0;
+      const alcohol = card.querySelector('.f-alcohol').value;
+      const memo = card.querySelector('.f-memo').value;
+      const items = computeSlotItems(slot.key);
+      const t = slotTotals(items);
+      record.meals[slot.key] = {
+        time, text, water_ml: water, alcohol, memo,
+        items: items.map(it => ({ name: it.entry.name, qty: it.qty })),
+        kcal: t.kcal, p: t.p, f: t.f, c: t.c
+      };
+      dayTotals.kcal += t.kcal; dayTotals.p += t.p; dayTotals.f += t.f; dayTotals.c += t.c;
+      waterTotal += water;
+      if (alcohol) alcoholParts.push(`${slot.badge}:${alcohol}`);
+      if (memo) memoParts.push(`${slot.badge}:${memo}`);
+    });
+    record.totals = {
+      kcal: dayTotals.kcal, p: dayTotals.p, f: dayTotals.f, c: dayTotals.c,
+      water_ml: waterTotal, alcohol: alcoholParts.join(' / '), memo: memoParts.join(' / ')
+    };
+    mealLog[TODAY] = record;
+    saveJSON(LS_LOG, mealLog);
+    const status = document.getElementById('saveStatus');
+    status.textContent = `${TODAY} の記録を保存しました`;
+    setTimeout(() => { status.textContent = ''; }, 3000);
+    renderHistoryChart();
+    renderHistoryTable();
+  });
+
+  // --- history chart (amCharts5) ---
+  let currentDays = 90;
+  let root, xAxis, kcalSeries, targetSeries;
+  const chartEmptyEl = document.getElementById('historyChartEmpty');
+  const periodRow = document.getElementById('historyPeriodRow');
+  const tableToggle = document.getElementById('historyTableToggle');
+  const tableWrap = document.getElementById('historyTableWrap');
+  const tableBody = document.getElementById('historyTableBody');
+
+  function sortedHistory() {
+    return Object.values(mealLog).sort((a, b) => a.date.localeCompare(b.date));
+  }
+
+  function periodCutoff(hist) {
+    if (!hist.length) return -Infinity;
+    if (currentDays === 0) return -Infinity;
+    return new Date(hist[hist.length - 1].date).getTime() - currentDays * 86400000;
+  }
+
+  function initChart() {
+    root = am5.Root.new('kcalChartRoot');
+    root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
+
+    const chart = root.container.children.push(am5xy.XYChart.new(root, {
+      panX: true, panY: false, wheelX: 'panX', wheelY: 'zoomX', pinchZoomX: true,
+      paddingLeft: 0, paddingRight: 0
+    }));
+
+    const cursor = chart.set('cursor', am5xy.XYCursor.new(root, { behavior: 'none' }));
+    cursor.lineY.set('visible', false);
+
+    xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+      baseInterval: { timeUnit: 'day', count: 1 },
+      renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 }),
+      tooltip: am5.Tooltip.new(root, {})
+    }));
+
+    const yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+      min: 0,
+      renderer: am5xy.AxisRendererY.new(root, {})
+    }));
+
+    kcalSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
+      name: '推定カロリー(kcal)',
+      xAxis, yAxis,
+      valueYField: 'kcal', valueXField: 'ts',
+      fill: am5.color(0xD4FF00), stroke: am5.color(0xD4FF00),
+      tooltip: am5.Tooltip.new(root, { labelText: '推定: {valueY}kcal' })
+    }));
+    kcalSeries.columns.template.setAll({ width: am5.percent(60), fillOpacity: 0.85 });
+
+    targetSeries = chart.series.push(am5xy.LineSeries.new(root, {
+      name: '目標カロリー(kcal)',
+      xAxis, yAxis,
+      valueYField: 'target', valueXField: 'ts',
+      stroke: am5.color(0x00F0FF), fill: am5.color(0x00F0FF),
+      connect: true,
+      tooltip: am5.Tooltip.new(root, { labelText: '目標: {valueY}kcal' })
+    }));
+    targetSeries.strokes.template.setAll({ strokeWidth: 2, strokeDasharray: [4, 4] });
+
+    const legend = chart.children.push(am5.Legend.new(root, {
+      centerX: am5.p50, x: am5.p50, marginTop: 4
+    }));
+    legend.labels.template.setAll({ fill: am5.color(0xF4F4F6), fontSize: 12, fontFamily: "'Plus Jakarta Sans', sans-serif" });
+    legend.data.setAll(chart.series.values);
+
+    chart.appear(600, 100);
+  }
+
+  function renderHistoryChart() {
+    const hist = sortedHistory();
+    if (!hist.length) {
+      chartEmptyEl.hidden = false;
+      return;
+    }
+    chartEmptyEl.hidden = true;
+    if (!root) initChart();
+    const data = hist.map(r => ({
+      ts: new Date(r.date).getTime(),
+      kcal: r.totals.kcal,
+      target: targets.kcal || null
+    }));
+    kcalSeries.data.setAll(data);
+    targetSeries.data.setAll(data);
+    applyPeriod();
+  }
+
+  function applyPeriod() {
+    const hist = sortedHistory();
+    if (!xAxis || !hist.length) return;
+    if (currentDays === 0) {
+      xAxis.zoom(0, 1);
+    } else {
+      const maxTs = new Date(hist[hist.length - 1].date).getTime();
+      const minTs = maxTs - currentDays * 86400000;
+      xAxis.zoomToDates(new Date(minTs), new Date(maxTs + 86400000));
+    }
+  }
+
+  function renderHistoryTable() {
+    const hist = sortedHistory();
+    const cutoff = periodCutoff(hist);
+    const rows = hist.filter(r => new Date(r.date).getTime() >= cutoff);
+    tableBody.innerHTML = '';
+    for (let i = rows.length - 1; i >= 0; i--) {
+      const r = rows[i];
+      const t = r.totals;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${r.date}</td><td>${Math.round(t.kcal)}</td><td>${t.p.toFixed(1)}</td><td>${t.f.toFixed(1)}</td><td>${t.c.toFixed(1)}</td><td>${t.water_ml || 0}ml</td><td>${t.alcohol || '-'}</td><td>${t.memo || '-'}</td>`;
+      tableBody.appendChild(tr);
+    }
+  }
+
+  periodRow.addEventListener('click', e => {
+    const btn = e.target.closest('.period-btn');
+    if (!btn) return;
+    periodRow.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentDays = Number(btn.dataset.days);
+    applyPeriod();
+    renderHistoryTable();
+  });
+
+  tableToggle.addEventListener('click', () => {
+    tableWrap.hidden = !tableWrap.hidden;
+    tableToggle.textContent = tableWrap.hidden ? '表で見る' : '表を閉じる';
+  });
+
+  // --- init ---
+  fetch('data/food_db.json')
+    .then(r => r.ok ? r.json() : [])
+    .then(base => {
+      window.__baseFoodDb = base;
+      buildDb();
+      MEAL_SLOTS.forEach(s => renderSlotChips(s.key));
+      renderTodaySummary();
+      renderHistoryChart();
+      renderHistoryTable();
+    })
+    .catch(() => {
+      window.__baseFoodDb = [];
+      buildDb();
+      MEAL_SLOTS.forEach(s => renderSlotChips(s.key));
+      renderTodaySummary();
+      renderHistoryChart();
+      renderHistoryTable();
+    });
+})();
+</script>
+
+</body>
+</html>
