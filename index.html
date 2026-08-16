@@ -399,6 +399,36 @@
 </div>
 
 <div class="section">
+  <h2>ランニング記録(Xiaomi Band → Zepp → Strava)</h2>
+  <div class="period-row" id="runPeriodRow">
+    <button class="period-btn" data-days="30">1ヶ月</button>
+    <button class="period-btn active" data-days="90">3ヶ月</button>
+    <button class="period-btn" data-days="180">6ヶ月</button>
+    <button class="period-btn" data-days="365">1年</button>
+    <button class="period-btn" data-days="0">全期間</button>
+  </div>
+
+  <div class="run-stats">
+    <div class="run-stat distance" id="runStat1"></div>
+    <div class="run-stat distance" id="runStat2"></div>
+    <div class="run-stat pace" id="runStat3"></div>
+  </div>
+
+  <div class="chart-wrap">
+    <div id="runningChartRoot"></div>
+    <div class="chart-empty" id="runChartEmpty" hidden>まだデータがありません(Strava連携の初回同期をお待ちください)</div>
+  </div>
+
+  <button class="btn-secondary" id="runTableToggle" type="button" style="display:block;margin:14px auto 0;">表で見る</button>
+  <div class="running-table-wrap" id="runTableWrap" hidden>
+    <table>
+      <thead><tr><th>日付</th><th>距離</th><th>ペース</th><th>獲得標高</th></tr></thead>
+      <tbody id="runTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
   <h2>体重・体脂肪率の推移(Withings)</h2>
   <div class="period-row" id="periodRow">
     <button class="period-btn" data-days="30">1ヶ月</button>
@@ -425,36 +455,6 @@
     <table>
       <thead><tr><th>日付</th><th>体重</th><th>体脂肪率</th></tr></thead>
       <tbody id="weightTableBody"></tbody>
-    </table>
-  </div>
-</div>
-
-<div class="section">
-  <h2>ランニング記録(Xiaomi Band → Zepp → Strava)</h2>
-  <div class="period-row" id="runPeriodRow">
-    <button class="period-btn" data-days="30">1ヶ月</button>
-    <button class="period-btn active" data-days="90">3ヶ月</button>
-    <button class="period-btn" data-days="180">6ヶ月</button>
-    <button class="period-btn" data-days="365">1年</button>
-    <button class="period-btn" data-days="0">全期間</button>
-  </div>
-
-  <div class="run-stats">
-    <div class="run-stat distance" id="runStat1"></div>
-    <div class="run-stat distance" id="runStat2"></div>
-    <div class="run-stat pace" id="runStat3"></div>
-  </div>
-
-  <div class="chart-wrap">
-    <div id="runningChartRoot"></div>
-    <div class="chart-empty" id="runChartEmpty" hidden>まだデータがありません(Strava連携の初回同期をお待ちください)</div>
-  </div>
-
-  <button class="btn-secondary" id="runTableToggle" type="button" style="display:block;margin:14px auto 0;">表で見る</button>
-  <div class="running-table-wrap" id="runTableWrap" hidden>
-    <table>
-      <thead><tr><th>日付</th><th>距離</th><th>ペース</th><th>獲得標高</th></tr></thead>
-      <tbody id="runTableBody"></tbody>
     </table>
   </div>
 </div>
