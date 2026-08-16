@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DYNAMIC TONE FITNESS | 週3日トレーニングプログラム</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -52,6 +53,34 @@
     -webkit-backdrop-filter: blur(16px);
     background: rgba(10, 10, 12, 0.75);
     border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .topnav {
+    display: flex;
+    gap: 6px;
+  }
+  .topnav-link {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--sub);
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    text-decoration: none;
+  }
+  .topnav-link.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--ink-inverse);
+    box-shadow: 0 0 16px rgba(212, 255, 0, 0.25);
   }
   .brand {
     font-family: var(--font-display);
@@ -267,13 +296,58 @@
     top: 0;
     background: var(--card);
   }
+
+  /* --- running chart --- */
+  .run-stats {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .run-stat .num {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .run-stat.distance .num { color: var(--accent); }
+  .run-stat.pace .num { color: var(--accent2); }
+  .run-stat .label {
+    font-size: 0.72rem;
+    color: var(--sub);
+  }
+  #runningChartRoot {
+    width: 100%;
+    height: 300px;
+  }
+  .running-table-wrap {
+    max-height: 260px;
+    overflow-y: auto;
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .running-table-wrap table { font-size: 0.82rem; }
+  .running-table-wrap th {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+  }
 </style>
 </head>
 <body>
 
 <header class="topbar">
-  <div class="brand">DYNAMIC <span>TONE</span> FITNESS</div>
-  <span class="brand-sub">PERSONAL TRAINING LOG</span>
+  <div class="topbar-inner">
+    <div>
+      <div class="brand">DYNAMIC <span>TONE</span> FITNESS</div>
+      <span class="brand-sub">PERSONAL TRAINING LOG</span>
+    </div>
+    <nav class="topnav">
+      <a href="index.html" class="topnav-link active">トレーニング</a>
+      <a href="meals.html" class="topnav-link">食事</a>
+    </nav>
+  </div>
 </header>
 
 <h1>週3日トレーニングプログラム</h1>
@@ -351,6 +425,66 @@
     <table>
       <thead><tr><th>日付</th><th>体重</th><th>体脂肪率</th></tr></thead>
       <tbody id="weightTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <h2>ランニング記録(Xiaomi Band → Zepp → Strava)</h2>
+  <div class="period-row" id="runPeriodRow">
+    <button class="period-btn" data-days="30">1ヶ月</button>
+    <button class="period-btn active" data-days="90">3ヶ月</button>
+    <button class="period-btn" data-days="180">6ヶ月</button>
+    <button class="period-btn" data-days="365">1年</button>
+    <button class="period-btn" data-days="0">全期間</button>
+  </div>
+
+  <div class="run-stats">
+    <div class="run-stat distance" id="runStat1"></div>
+    <div class="run-stat distance" id="runStat2"></div>
+    <div class="run-stat pace" id="runStat3"></div>
+  </div>
+
+  <div class="chart-wrap">
+    <div id="runningChartRoot"></div>
+    <div class="chart-empty" id="runChartEmpty" hidden>まだデータがありません(Strava連携の初回同期をお待ちください)</div>
+  </div>
+
+  <button class="btn-secondary" id="runTableToggle" type="button" style="display:block;margin:14px auto 0;">表で見る</button>
+  <div class="running-table-wrap" id="runTableWrap" hidden>
+    <table>
+      <thead><tr><th>日付</th><th>距離</th><th>ペース</th><th>獲得標高</th></tr></thead>
+      <tbody id="runTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <h2>ワークアウト記録(Apple Watch → Strava)</h2>
+  <div class="period-row" id="workoutPeriodRow">
+    <button class="period-btn" data-days="30">1ヶ月</button>
+    <button class="period-btn active" data-days="90">3ヶ月</button>
+    <button class="period-btn" data-days="180">6ヶ月</button>
+    <button class="period-btn" data-days="365">1年</button>
+    <button class="period-btn" data-days="0">全期間</button>
+  </div>
+
+  <div class="run-stats">
+    <div class="run-stat distance" id="workoutStat1"></div>
+    <div class="run-stat distance" id="workoutStat2"></div>
+    <div class="run-stat pace" id="workoutStat3"></div>
+  </div>
+
+  <div class="chart-wrap">
+    <div id="workoutChartRoot"></div>
+    <div class="chart-empty" id="workoutChartEmpty" hidden>まだデータがありません(Apple Watchでワークアウトを記録し、StravaのHealth自動同期をONにしてください)</div>
+  </div>
+
+  <button class="btn-secondary" id="workoutTableToggle" type="button" style="display:block;margin:14px auto 0;">表で見る</button>
+  <div class="running-table-wrap" id="workoutTableWrap" hidden>
+    <table>
+      <thead><tr><th>日付</th><th>時間</th><th>平均心拍</th><th>消費カロリー</th><th>種目</th></tr></thead>
+      <tbody id="workoutTableBody"></tbody>
     </table>
   </div>
 </div>
@@ -565,6 +699,342 @@
         }));
         weightSeries.data.setAll(chartData);
         fatSeries.data.setAll(chartData);
+        applyPeriod();
+      })
+      .catch(() => {
+        emptyEl.hidden = false;
+        emptyEl.textContent = 'データの取得に失敗しました';
+      });
+  })();
+
+  // --- running distance / pace chart (amCharts 5) ---
+  (function () {
+    const periodRow = document.getElementById('runPeriodRow');
+    const tableToggle = document.getElementById('runTableToggle');
+    const tableWrap = document.getElementById('runTableWrap');
+    const tableBody = document.getElementById('runTableBody');
+    const emptyEl = document.getElementById('runChartEmpty');
+    const runStat1 = document.getElementById('runStat1');
+    const runStat2 = document.getElementById('runStat2');
+    const runStat3 = document.getElementById('runStat3');
+
+    let currentDays = 90;
+    let rawData = []; // [{date, distance_km, duration_min, pace_min_per_km, elevation_gain_m, runs}]
+    let root, xAxis, distanceSeries, paceSeries;
+
+    function formatPace(p) {
+      if (p == null) return '-';
+      const min = Math.floor(p);
+      const sec = Math.round((p - min) * 60);
+      return `${min}'${String(sec).padStart(2, '0')}"/km`;
+    }
+
+    function initChart() {
+      root = am5.Root.new('runningChartRoot');
+      root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
+
+      const chart = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: true, panY: false, wheelX: 'panX', wheelY: 'zoomX', pinchZoomX: true,
+        paddingLeft: 0, paddingRight: 0
+      }));
+
+      const cursor = chart.set('cursor', am5xy.XYCursor.new(root, { behavior: 'none' }));
+      cursor.lineY.set('visible', false);
+
+      xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+        baseInterval: { timeUnit: 'day', count: 1 },
+        renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 }),
+        tooltip: am5.Tooltip.new(root, {})
+      }));
+
+      const yAxisDistance = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        min: 0,
+        renderer: am5xy.AxisRendererY.new(root, {})
+      }));
+      yAxisDistance.get('renderer').labels.template.setAll({ fill: am5.color(0xD4FF00) });
+
+      // Inversed so a faster (lower) pace plots higher, matching "better = up".
+      const yAxisPace = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererY.new(root, { opposite: true, inversed: true })
+      }));
+      yAxisPace.get('renderer').labels.template.setAll({ fill: am5.color(0x00F0FF) });
+      yAxisPace.get('renderer').grid.template.setAll({ visible: false });
+
+      distanceSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
+        name: '距離(km)',
+        xAxis, yAxis: yAxisDistance,
+        valueYField: 'distance_km', valueXField: 'ts',
+        fill: am5.color(0xD4FF00), stroke: am5.color(0xD4FF00),
+        tooltip: am5.Tooltip.new(root, { labelText: '距離: {valueY}km' })
+      }));
+      distanceSeries.columns.template.setAll({ width: am5.percent(60), fillOpacity: 0.85 });
+
+      paceSeries = chart.series.push(am5xy.LineSeries.new(root, {
+        name: 'ペース(分/km)',
+        xAxis, yAxis: yAxisPace,
+        valueYField: 'pace_min_per_km', valueXField: 'ts',
+        stroke: am5.color(0x00F0FF), fill: am5.color(0x00F0FF),
+        connect: false,
+        tooltip: am5.Tooltip.new(root, {
+          labelText: 'ペース: {valueY}分/km'
+        })
+      }));
+      paceSeries.strokes.template.setAll({ strokeWidth: 2 });
+      paceSeries.bullets.push(() => am5.Bullet.new(root, {
+        sprite: am5.Circle.new(root, { radius: 3, fill: am5.color(0x00F0FF) })
+      }));
+
+      const legend = chart.children.push(am5.Legend.new(root, {
+        centerX: am5.p50, x: am5.p50, marginTop: 4
+      }));
+      legend.labels.template.setAll({ fill: am5.color(0xF4F4F6), fontSize: 12, fontFamily: "'Plus Jakarta Sans', sans-serif" });
+      legend.data.setAll(chart.series.values);
+
+      chart.appear(600, 100);
+    }
+
+    function periodCutoff() {
+      if (!rawData.length) return -Infinity;
+      if (currentDays === 0) return -Infinity;
+      return new Date(rawData[rawData.length - 1].date).getTime() - currentDays * 86400000;
+    }
+
+    function renderStats() {
+      const cutoff = periodCutoff();
+      const pts = rawData.filter(d => new Date(d.date).getTime() >= cutoff);
+      if (!pts.length) {
+        runStat1.innerHTML = '';
+        runStat2.innerHTML = '';
+        runStat3.innerHTML = '';
+        return;
+      }
+      const totalDistance = pts.reduce((s, d) => s + d.distance_km, 0);
+      const totalDuration = pts.reduce((s, d) => s + d.duration_min, 0);
+      const totalRuns = pts.reduce((s, d) => s + d.runs, 0);
+      const avgPace = totalDistance > 0 ? totalDuration / totalDistance : null;
+      runStat1.innerHTML = `<div class="num">${totalDistance.toFixed(1)}km</div><div class="label">期間の合計距離</div>`;
+      runStat2.innerHTML = `<div class="num">${totalRuns}回</div><div class="label">期間のラン回数</div>`;
+      runStat3.innerHTML = `<div class="num">${formatPace(avgPace)}</div><div class="label">平均ペース</div>`;
+    }
+
+    function renderTable() {
+      const cutoff = periodCutoff();
+      const rows = rawData.filter(d => new Date(d.date).getTime() >= cutoff);
+      tableBody.innerHTML = '';
+      for (let i = rows.length - 1; i >= 0; i--) {
+        const d = rows[i];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${d.date}</td><td>${d.distance_km.toFixed(2)}km</td><td>${formatPace(d.pace_min_per_km)}</td><td>${d.elevation_gain_m != null ? d.elevation_gain_m.toFixed(0) + 'm' : '-'}</td>`;
+        tableBody.appendChild(tr);
+      }
+    }
+
+    function applyPeriod() {
+      if (!xAxis || !rawData.length) return;
+      if (currentDays === 0) {
+        xAxis.zoom(0, 1);
+      } else {
+        const maxTs = new Date(rawData[rawData.length - 1].date).getTime();
+        const minTs = maxTs - currentDays * 86400000;
+        xAxis.zoomToDates(new Date(minTs), new Date(maxTs + 86400000));
+      }
+      renderStats();
+      renderTable();
+    }
+
+    periodRow.addEventListener('click', e => {
+      const btn = e.target.closest('.period-btn');
+      if (!btn) return;
+      periodRow.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentDays = Number(btn.dataset.days);
+      applyPeriod();
+    });
+
+    tableToggle.addEventListener('click', () => {
+      tableWrap.hidden = !tableWrap.hidden;
+      tableToggle.textContent = tableWrap.hidden ? '表で見る' : '表を閉じる';
+    });
+
+    fetch('data/running.json')
+      .then(r => r.ok ? r.json() : [])
+      .then(data => {
+        rawData = data;
+        if (!rawData.length) {
+          emptyEl.hidden = false;
+          return;
+        }
+        initChart();
+        const chartData = rawData.map(d => ({
+          ts: new Date(d.date).getTime(),
+          distance_km: d.distance_km,
+          pace_min_per_km: d.pace_min_per_km
+        }));
+        distanceSeries.data.setAll(chartData);
+        paceSeries.data.setAll(chartData);
+        applyPeriod();
+      })
+      .catch(() => {
+        emptyEl.hidden = false;
+        emptyEl.textContent = 'データの取得に失敗しました';
+      });
+  })();
+
+  // --- workout duration / heart-rate chart (amCharts 5) ---
+  (function () {
+    const periodRow = document.getElementById('workoutPeriodRow');
+    const tableToggle = document.getElementById('workoutTableToggle');
+    const tableWrap = document.getElementById('workoutTableWrap');
+    const tableBody = document.getElementById('workoutTableBody');
+    const emptyEl = document.getElementById('workoutChartEmpty');
+    const workoutStat1 = document.getElementById('workoutStat1');
+    const workoutStat2 = document.getElementById('workoutStat2');
+    const workoutStat3 = document.getElementById('workoutStat3');
+
+    let currentDays = 90;
+    let rawData = []; // [{date, duration_min, calories, avg_heartrate, max_heartrate, sessions, types}]
+    let root, xAxis, durationSeries, hrSeries;
+
+    function initChart() {
+      root = am5.Root.new('workoutChartRoot');
+      root.setThemes([am5themes_Animated.new(root), am5themes_Dark.new(root)]);
+
+      const chart = root.container.children.push(am5xy.XYChart.new(root, {
+        panX: true, panY: false, wheelX: 'panX', wheelY: 'zoomX', pinchZoomX: true,
+        paddingLeft: 0, paddingRight: 0
+      }));
+
+      const cursor = chart.set('cursor', am5xy.XYCursor.new(root, { behavior: 'none' }));
+      cursor.lineY.set('visible', false);
+
+      xAxis = chart.xAxes.push(am5xy.DateAxis.new(root, {
+        baseInterval: { timeUnit: 'day', count: 1 },
+        renderer: am5xy.AxisRendererX.new(root, { minGridDistance: 50 }),
+        tooltip: am5.Tooltip.new(root, {})
+      }));
+
+      const yAxisDuration = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        min: 0,
+        renderer: am5xy.AxisRendererY.new(root, {})
+      }));
+      yAxisDuration.get('renderer').labels.template.setAll({ fill: am5.color(0xD4FF00) });
+
+      const yAxisHr = chart.yAxes.push(am5xy.ValueAxis.new(root, {
+        renderer: am5xy.AxisRendererY.new(root, { opposite: true })
+      }));
+      yAxisHr.get('renderer').labels.template.setAll({ fill: am5.color(0x00F0FF) });
+      yAxisHr.get('renderer').grid.template.setAll({ visible: false });
+
+      durationSeries = chart.series.push(am5xy.ColumnSeries.new(root, {
+        name: '運動時間(分)',
+        xAxis, yAxis: yAxisDuration,
+        valueYField: 'duration_min', valueXField: 'ts',
+        fill: am5.color(0xD4FF00), stroke: am5.color(0xD4FF00),
+        tooltip: am5.Tooltip.new(root, { labelText: '運動時間: {valueY}分' })
+      }));
+      durationSeries.columns.template.setAll({ width: am5.percent(60), fillOpacity: 0.85 });
+
+      hrSeries = chart.series.push(am5xy.LineSeries.new(root, {
+        name: '平均心拍(bpm)',
+        xAxis, yAxis: yAxisHr,
+        valueYField: 'avg_heartrate', valueXField: 'ts',
+        stroke: am5.color(0x00F0FF), fill: am5.color(0x00F0FF),
+        connect: false,
+        tooltip: am5.Tooltip.new(root, { labelText: '平均心拍: {valueY}bpm' })
+      }));
+      hrSeries.strokes.template.setAll({ strokeWidth: 2 });
+      hrSeries.bullets.push(() => am5.Bullet.new(root, {
+        sprite: am5.Circle.new(root, { radius: 3, fill: am5.color(0x00F0FF) })
+      }));
+
+      const legend = chart.children.push(am5.Legend.new(root, {
+        centerX: am5.p50, x: am5.p50, marginTop: 4
+      }));
+      legend.labels.template.setAll({ fill: am5.color(0xF4F4F6), fontSize: 12, fontFamily: "'Plus Jakarta Sans', sans-serif" });
+      legend.data.setAll(chart.series.values);
+
+      chart.appear(600, 100);
+    }
+
+    function periodCutoff() {
+      if (!rawData.length) return -Infinity;
+      if (currentDays === 0) return -Infinity;
+      return new Date(rawData[rawData.length - 1].date).getTime() - currentDays * 86400000;
+    }
+
+    function renderStats() {
+      const cutoff = periodCutoff();
+      const pts = rawData.filter(d => new Date(d.date).getTime() >= cutoff);
+      if (!pts.length) {
+        workoutStat1.innerHTML = '';
+        workoutStat2.innerHTML = '';
+        workoutStat3.innerHTML = '';
+        return;
+      }
+      const totalDuration = pts.reduce((s, d) => s + d.duration_min, 0);
+      const totalSessions = pts.reduce((s, d) => s + d.sessions, 0);
+      const hrPts = pts.filter(d => d.avg_heartrate != null);
+      const avgHr = hrPts.length ? hrPts.reduce((s, d) => s + d.avg_heartrate, 0) / hrPts.length : null;
+      workoutStat1.innerHTML = `<div class="num">${Math.round(totalDuration)}分</div><div class="label">期間の合計運動時間</div>`;
+      workoutStat2.innerHTML = `<div class="num">${totalSessions}回</div><div class="label">期間のワークアウト回数</div>`;
+      workoutStat3.innerHTML = `<div class="num">${avgHr != null ? Math.round(avgHr) + 'bpm' : '-'}</div><div class="label">平均心拍</div>`;
+    }
+
+    function renderTable() {
+      const cutoff = periodCutoff();
+      const rows = rawData.filter(d => new Date(d.date).getTime() >= cutoff);
+      tableBody.innerHTML = '';
+      for (let i = rows.length - 1; i >= 0; i--) {
+        const d = rows[i];
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${d.date}</td><td>${d.duration_min.toFixed(0)}分</td><td>${d.avg_heartrate != null ? Math.round(d.avg_heartrate) + 'bpm' : '-'}</td><td>${d.calories != null ? d.calories + 'kcal' : '-'}</td><td>${(d.types || []).join(', ') || '-'}</td>`;
+        tableBody.appendChild(tr);
+      }
+    }
+
+    function applyPeriod() {
+      if (!xAxis || !rawData.length) return;
+      if (currentDays === 0) {
+        xAxis.zoom(0, 1);
+      } else {
+        const maxTs = new Date(rawData[rawData.length - 1].date).getTime();
+        const minTs = maxTs - currentDays * 86400000;
+        xAxis.zoomToDates(new Date(minTs), new Date(maxTs + 86400000));
+      }
+      renderStats();
+      renderTable();
+    }
+
+    periodRow.addEventListener('click', e => {
+      const btn = e.target.closest('.period-btn');
+      if (!btn) return;
+      periodRow.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentDays = Number(btn.dataset.days);
+      applyPeriod();
+    });
+
+    tableToggle.addEventListener('click', () => {
+      tableWrap.hidden = !tableWrap.hidden;
+      tableToggle.textContent = tableWrap.hidden ? '表で見る' : '表を閉じる';
+    });
+
+    fetch('data/workouts.json')
+      .then(r => r.ok ? r.json() : [])
+      .then(data => {
+        rawData = data;
+        if (!rawData.length) {
+          emptyEl.hidden = false;
+          return;
+        }
+        initChart();
+        const chartData = rawData.map(d => ({
+          ts: new Date(d.date).getTime(),
+          duration_min: d.duration_min,
+          avg_heartrate: d.avg_heartrate
+        }));
+        durationSeries.data.setAll(chartData);
+        hrSeries.data.setAll(chartData);
         applyPeriod();
       })
       .catch(() => {
