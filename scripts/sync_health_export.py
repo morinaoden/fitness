@@ -1,65 +1,69 @@
 #!/usr/bin/env python3
-"""Merge a Health Auto Export webhook payload into data/running.json and
-data/workouts.json.
+"""Merge a "Health Exporter & Shortcuts" export payload into
+data/running.json and data/workouts.json.
 
 Triggered by the "Sync Apple Health Export Data" GitHub Actions workflow,
 which runs on a `repository_dispatch` event of type `health-export`. The
-event's `client_payload` is passed in via the $PAYLOAD env var (as JSON)
-and is expected to look like Health Auto Export's REST API export format:
+event's `client_payload` is passed in via the $PAYLOAD env var (as JSON).
 
-    {"data": {"workouts": [ {...}, {...} ]}}
+Confirmed shape (from a real export on 2026-08-16), NOT the generic HealthKit
+export format some other apps use:
 
-See https://github.com/Lybron/health-auto-export/wiki/API-Export---JSON-Format
-Field names/shapes there are not fully documented, so this script logs the
-raw payload it receives and skips (rather than crashes on) any workout it
-can't fully parse -- check the Action's log if data looks wrong or missing
-and adjust FIELD parsing below to match what actually arrives.
+    {
+      "exportInfo": {"startDate": "...", "endDate": "...", "workoutCount": N, ...},
+      "workouts": [
+        {
+          "activityType": "running" | "coreTraining" | ... (HealthKit camelCase type),
+          "duration": <seconds, float>,
+          "startDate": "2026-08-09T22:08:55Z",
+          "endDate": "2026-08-09T22:47:38Z",
+          "source": "Zepp" | "<name>'s Apple Watch" | "ヘルスケア" | ...,
+          "events": [{"type": "lap", "startDate": "...", "endDate": "..."}],
+          "statistics": {
+            "HKQuantityTypeIdentifierActiveEnergyBurned": {"sum": 331, "unit": "kcal"},
+            "HKQuantityTypeIdentifierDistanceWalkingRunning": {"sum": 3180, "unit": "m"},
+            "HKQuantityTypeIdentifierHeartRate": {"average": 84.0, "max": 89, "min": 80, "unit": "count/min"}
+          }
+        },
+        ...
+      ]
+    }
+
+Day bucketing uses JST (UTC+9) since this project's other sync scripts and
+schedules are JST-based, while the export's dates are UTC.
 """
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 RUNNING_DATA_PATH = "data/running.json"
 WORKOUT_DATA_PATH = "data/workouts.json"
 
-# Health Auto Export's workout `name` field for outdoor/indoor runs. Add more
-# variants here (case-insensitive) if real payloads use different wording.
-RUN_NAMES = {"running", "run"}
+JST = timezone(timedelta(hours=9))
+
+# HealthKit activityType values (camelCase) treated as "running" for
+# data/running.json; everything else goes to data/workouts.json.
+RUN_ACTIVITY_TYPES = {"running"}
+
+# Apple Watch itself won't save a workout shorter than this, but data from
+# other sources (Zepp, manual Health entries, etc.) isn't bound by that rule
+# -- skip near-zero-duration entries here too so they don't produce nonsense
+# stats (e.g. 0 min but nonzero distance).
+MIN_DURATION_S = 60
 
 
-def qty(field):
-    """Fields like activeEnergyBurned/avgHeartRate/distance arrive as
-    {"qty": <number>, "units": "..."} or are simply absent."""
-    if isinstance(field, dict):
-        return field.get("qty")
-    if isinstance(field, (int, float)):
-        return field
-    return None
+def stat(statistics, key):
+    return (statistics or {}).get(key) or {}
 
 
-def parse_datetime(s):
+def parse_iso(s):
     if not s:
         return None
-    # Health Auto Export uses "yyyy-MM-dd HH:mm:ss Z" (e.g. "2026-08-16 19:00:00 +0900")
-    for fmt in ("%Y-%m-%d %H:%M:%S %z", "%Y-%m-%dT%H:%M:%S%z"):
-        try:
-            return datetime.strptime(s, fmt)
-        except ValueError:
-            continue
-    return None
-
-
-def to_km(distance_field):
-    d = qty(distance_field)
-    if d is None:
+    try:
+        return datetime.fromisoformat(s.replace("Z", "+00:00"))
+    except ValueError:
         return None
-    units = distance_field.get("units", "km") if isinstance(distance_field, dict) else "km"
-    if units in ("mi", "mile", "miles"):
-        return d * 1.60934
-    if units in ("m", "meter", "meters"):
-        return d / 1000
-    return d  # assume already km
 
 
 def load_by_day(path):
@@ -92,36 +96,41 @@ def main():
         print(f"Failed to parse PAYLOAD as JSON: {e}", file=sys.stderr)
         sys.exit(1)
 
-    workouts = (payload.get("data") or {}).get("workouts") or []
+    workouts = payload.get("workouts") or []
     print(f"Received {len(workouts)} workout(s)")
 
     run_by_day = {}
     workout_by_day = {}
 
     for w in workouts:
-        name = str(w.get("name", "")).strip()
-        start = parse_datetime(w.get("start"))
-        end = parse_datetime(w.get("end"))
+        activity_type = str(w.get("activityType", "")).strip()
+        start = parse_iso(w.get("startDate"))
         if not start:
-            print(f"Skipping workout with unparseable start date: {w}", file=sys.stderr)
+            print(f"Skipping workout with unparseable startDate: {w}", file=sys.stderr)
             continue
-        day = start.date().isoformat()
 
         duration_s = w.get("duration")
-        if duration_s is None and end:
-            duration_s = (end - start).total_seconds()
-        duration_min = (duration_s or 0) / 60
+        if duration_s is None:
+            end = parse_iso(w.get("endDate"))
+            duration_s = (end - start).total_seconds() if end else 0
+        if duration_s < MIN_DURATION_S:
+            print(f"Skipping workout shorter than {MIN_DURATION_S}s: {w}", file=sys.stderr)
+            continue
+        duration_min = duration_s / 60
 
-        calories = qty(w.get("activeEnergyBurned"))
-        avg_hr = qty(w.get("avgHeartRate"))
-        max_hr = qty(w.get("maxHeartRate"))
-        distance_km = to_km(w.get("distance"))
+        day = (start.astimezone(JST)).date().isoformat()
+        statistics = w.get("statistics") or {}
 
-        if name.lower() in RUN_NAMES:
+        calories = stat(statistics, "HKQuantityTypeIdentifierActiveEnergyBurned").get("sum")
+        distance_m = stat(statistics, "HKQuantityTypeIdentifierDistanceWalkingRunning").get("sum")
+        hr = stat(statistics, "HKQuantityTypeIdentifierHeartRate")
+        avg_hr, max_hr = hr.get("average"), hr.get("max")
+
+        if activity_type in RUN_ACTIVITY_TYPES:
             bucket = run_by_day.setdefault(day, {
                 "distance_km": 0.0, "duration_min": 0.0, "elevation_gain_m": 0.0, "runs": 0
             })
-            bucket["distance_km"] += distance_km or 0
+            bucket["distance_km"] += (distance_m or 0) / 1000
             bucket["duration_min"] += duration_min
             bucket["runs"] += 1
         else:
@@ -138,8 +147,8 @@ def main():
             if max_hr:
                 bucket["max_hr"] = max(bucket["max_hr"] or 0, max_hr)
             bucket["sessions"] += 1
-            if name:
-                bucket["types"].add(name)
+            if activity_type:
+                bucket["types"].add(activity_type)
 
     updated_run_days = []
     for day, b in run_by_day.items():
@@ -149,7 +158,7 @@ def main():
             "distance_km": round(distance_km, 2),
             "duration_min": round(b["duration_min"], 1),
             "pace_min_per_km": round(b["duration_min"] / distance_km, 2) if distance_km > 0 else None,
-            "elevation_gain_m": 0.0,  # Health Auto Export workouts don't include this; left at 0
+            "elevation_gain_m": 0.0,  # not present in this export format
             "runs": b["runs"],
         })
 
