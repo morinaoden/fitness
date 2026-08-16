@@ -1,13 +1,13 @@
 [
   {
     "date": "2026-08-16",
-    "duration_min": 5.0,
-    "calories": 30,
-    "avg_heartrate": null,
-    "max_heartrate": null,
+    "duration_min": 1.5,
+    "calories": 3,
+    "avg_heartrate": 84.0,
+    "max_heartrate": 89,
     "sessions": 1,
     "types": [
-      "Traditional Strength Training"
+      "coreTraining"
     ]
   }
 ]
