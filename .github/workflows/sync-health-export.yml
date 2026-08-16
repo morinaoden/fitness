@@ -1,0 +1,39 @@
+name: Sync Apple Health Export Data
+
+# Triggered externally (not on a schedule) by a Cloudflare Worker that
+# receives Health Auto Export's REST API automation POST, wraps it in the
+# {event_type, client_payload} envelope this API requires, and forwards it
+# here. See scripts/sync_health_export.py for the payload shape expected.
+on:
+  repository_dispatch:
+    types: [health-export]
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Parse and merge Health Auto Export payload
+        env:
+          PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: python3 scripts/sync_health_export.py
+
+      - name: Commit data/running.json and data/workouts.json if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- data/running.json data/workouts.json; then
+            git add data/running.json data/workouts.json
+            git commit -m "Sync Apple Health workout data"
+            git push
+          else
+            echo "No change in workout data"
+          fi
