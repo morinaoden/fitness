@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Fetch running + workout data from Strava
+      - name: Fetch running data from Strava
         id: sync
         env:
           STRAVA_CLIENT_ID: ${{ secrets.STRAVA_CLIENT_ID }}
@@ -26,12 +26,12 @@ jobs:
           STRAVA_REFRESH_TOKEN: ${{ secrets.STRAVA_REFRESH_TOKEN }}
         run: python3 scripts/sync_strava.py
 
-      - name: Commit data/running.json and data/workouts.json if changed
+      - name: Commit data/running.json if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- data/running.json data/workouts.json data/.strava_sync_state.json; then
-            git add data/running.json data/workouts.json data/.strava_sync_state.json
+          if ! git diff --quiet -- data/running.json data/.strava_sync_state.json; then
+            git add data/running.json data/.strava_sync_state.json
             git commit -m "Sync Strava activity data"
             git push
           else

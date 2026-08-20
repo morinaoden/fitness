@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Fetch activities from the Strava API and write them to data/running.json
-(Run/TrailRun) and data/workouts.json (everything else, e.g. strength
-training recorded on Apple Watch and auto-synced to Strava via Apple
-Health).
+"""Fetch activities from the Strava API and write Run/TrailRun activities to
+data/running.json. Non-running activities (strength training etc.) are not
+collected.
 
 Xiaomi/Zepp band data itself has no public developer API, and as of 2026 the
 Mi Fitness companion app has known connectivity bugs. Instead this assumes
@@ -41,7 +40,6 @@ TOKEN_URL = "https://www.strava.com/oauth/token"
 ACTIVITIES_URL = "https://www.strava.com/api/v3/athlete/activities"
 
 DATA_PATH = "data/running.json"
-WORKOUT_DATA_PATH = "data/workouts.json"
 STATE_PATH = "data/.strava_sync_state.json"
 
 # Re-check the last few days on every run, in case a run synced from the
@@ -135,55 +133,6 @@ def to_series(activities):
     return series
 
 
-def to_workout_series(activities):
-    """Non-running activities (WeightTraining, Workout, Crossfit, etc.) --
-    i.e. strength training and anything else, typically recorded on Apple
-    Watch and synced to Strava via Apple Health."""
-    by_day = {}
-    for act in activities:
-        t = act.get("type") or act.get("sport_type")
-        if t in RUN_TYPES:
-            continue
-        day = act["start_date_local"][:10]
-        bucket = by_day.setdefault(day, {
-            "moving_time_s": 0,
-            "calories": 0.0,
-            "hr_weighted_sum": 0.0,
-            "hr_weight": 0.0,
-            "max_hr": None,
-            "sessions": 0,
-            "types": set(),
-        })
-        moving = act.get("moving_time", 0) or 0
-        bucket["moving_time_s"] += moving
-        cal = act.get("calories")
-        if cal:
-            bucket["calories"] += cal
-        hr = act.get("average_heartrate")
-        if hr and moving:
-            bucket["hr_weighted_sum"] += hr * moving
-            bucket["hr_weight"] += moving
-        max_hr = act.get("max_heartrate")
-        if max_hr:
-            bucket["max_hr"] = max(bucket["max_hr"] or 0, max_hr)
-        bucket["sessions"] += 1
-        bucket["types"].add(t)
-
-    series = []
-    for day, b in sorted(by_day.items()):
-        entry = {
-            "date": day,
-            "duration_min": round(b["moving_time_s"] / 60, 1),
-            "calories": round(b["calories"]) if b["calories"] else None,
-            "avg_heartrate": round(b["hr_weighted_sum"] / b["hr_weight"], 1) if b["hr_weight"] else None,
-            "max_heartrate": b["max_hr"],
-            "sessions": b["sessions"],
-            "types": sorted(b["types"]),
-        }
-        series.append(entry)
-    return series
-
-
 def load_state():
     if os.path.exists(STATE_PATH):
         with open(STATE_PATH) as f:
@@ -220,10 +169,8 @@ def main():
     access_token, new_refresh_token = refresh_access_token()
     activities = fetch_activities(access_token, after=after)
     updated_days = to_series(activities)
-    updated_workout_days = to_workout_series(activities)
 
     series = merge_and_write(DATA_PATH, updated_days)
-    workout_series = merge_and_write(WORKOUT_DATA_PATH, updated_workout_days)
 
     latest_start = max(
         (int(datetime.datetime.fromisoformat(a["start_date"].replace("Z", "+00:00")).timestamp())
@@ -241,8 +188,7 @@ def main():
 
     print(
         f"Fetched {len(activities)} activities, {len(updated_days)} updated running day(s) "
-        f"and {len(updated_workout_days)} updated workout day(s) (after={after}); "
-        f"{len(series)} running day(s) and {len(workout_series)} workout day(s) stored total"
+        f"(after={after}); {len(series)} running day(s) stored total"
     )
 
 

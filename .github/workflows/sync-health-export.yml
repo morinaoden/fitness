@@ -26,14 +26,14 @@ jobs:
           PAYLOAD: ${{ toJson(github.event.client_payload) }}
         run: python3 scripts/sync_health_export.py
 
-      - name: Commit data/running.json and data/workouts.json if changed
+      - name: Commit data/running.json if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet -- data/running.json data/workouts.json; then
-            git add data/running.json data/workouts.json
-            git commit -m "Sync Apple Health workout data"
+          if ! git diff --quiet -- data/running.json; then
+            git add data/running.json
+            git commit -m "Sync Apple Health running data"
             git push
           else
-            echo "No change in workout data"
+            echo "No change in running data"
           fi

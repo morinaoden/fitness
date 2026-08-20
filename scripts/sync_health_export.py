@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Merge a "Health Exporter & Shortcuts" export payload into
-data/running.json and data/workouts.json.
+data/running.json. Non-running workouts in the payload are ignored (not
+collected).
 
 Triggered by the "Sync Apple Health Export Data" GitHub Actions workflow,
 which runs on a `repository_dispatch` event of type `health-export`. The
@@ -38,12 +39,11 @@ import sys
 from datetime import datetime, timedelta, timezone
 
 RUNNING_DATA_PATH = "data/running.json"
-WORKOUT_DATA_PATH = "data/workouts.json"
 
 JST = timezone(timedelta(hours=9))
 
 # HealthKit activityType values (camelCase) treated as "running" for
-# data/running.json; everything else goes to data/workouts.json.
+# data/running.json; everything else is ignored.
 RUN_ACTIVITY_TYPES = {"running"}
 
 # Apple Watch itself won't save a workout shorter than this, but data from
@@ -100,7 +100,6 @@ def main():
     print(f"Received {len(workouts)} workout(s)")
 
     run_by_day = {}
-    workout_by_day = {}
 
     for w in workouts:
         activity_type = str(w.get("activityType", "")).strip()
@@ -118,37 +117,19 @@ def main():
             continue
         duration_min = duration_s / 60
 
+        if activity_type not in RUN_ACTIVITY_TYPES:
+            continue
+
         day = (start.astimezone(JST)).date().isoformat()
         statistics = w.get("statistics") or {}
-
-        calories = stat(statistics, "HKQuantityTypeIdentifierActiveEnergyBurned").get("sum")
         distance_m = stat(statistics, "HKQuantityTypeIdentifierDistanceWalkingRunning").get("sum")
-        hr = stat(statistics, "HKQuantityTypeIdentifierHeartRate")
-        avg_hr, max_hr = hr.get("average"), hr.get("max")
 
-        if activity_type in RUN_ACTIVITY_TYPES:
-            bucket = run_by_day.setdefault(day, {
-                "distance_km": 0.0, "duration_min": 0.0, "elevation_gain_m": 0.0, "runs": 0
-            })
-            bucket["distance_km"] += (distance_m or 0) / 1000
-            bucket["duration_min"] += duration_min
-            bucket["runs"] += 1
-        else:
-            bucket = workout_by_day.setdefault(day, {
-                "duration_min": 0.0, "calories": 0.0, "hr_weighted_sum": 0.0,
-                "hr_weight": 0.0, "max_hr": None, "sessions": 0, "types": set()
-            })
-            bucket["duration_min"] += duration_min
-            if calories:
-                bucket["calories"] += calories
-            if avg_hr and duration_min:
-                bucket["hr_weighted_sum"] += avg_hr * duration_min
-                bucket["hr_weight"] += duration_min
-            if max_hr:
-                bucket["max_hr"] = max(bucket["max_hr"] or 0, max_hr)
-            bucket["sessions"] += 1
-            if activity_type:
-                bucket["types"].add(activity_type)
+        bucket = run_by_day.setdefault(day, {
+            "distance_km": 0.0, "duration_min": 0.0, "elevation_gain_m": 0.0, "runs": 0
+        })
+        bucket["distance_km"] += (distance_m or 0) / 1000
+        bucket["duration_min"] += duration_min
+        bucket["runs"] += 1
 
     updated_run_days = []
     for day, b in run_by_day.items():
@@ -162,31 +143,14 @@ def main():
             "runs": b["runs"],
         })
 
-    updated_workout_days = []
-    for day, b in workout_by_day.items():
-        updated_workout_days.append({
-            "date": day,
-            "duration_min": round(b["duration_min"], 1),
-            "calories": round(b["calories"]) if b["calories"] else None,
-            "avg_heartrate": round(b["hr_weighted_sum"] / b["hr_weight"], 1) if b["hr_weight"] else None,
-            "max_heartrate": b["max_hr"],
-            "sessions": b["sessions"],
-            "types": sorted(b["types"]),
-        })
-
     run_by_day_existing = load_by_day(RUNNING_DATA_PATH)
     for e in updated_run_days:
         run_by_day_existing[e["date"]] = e
     running_series = write_series(RUNNING_DATA_PATH, run_by_day_existing)
 
-    workout_by_day_existing = load_by_day(WORKOUT_DATA_PATH)
-    for e in updated_workout_days:
-        workout_by_day_existing[e["date"]] = e
-    workout_series = write_series(WORKOUT_DATA_PATH, workout_by_day_existing)
-
     print(
-        f"Updated {len(updated_run_days)} running day(s), {len(updated_workout_days)} workout day(s); "
-        f"{len(running_series)} running day(s) and {len(workout_series)} workout day(s) stored total"
+        f"Updated {len(updated_run_days)} running day(s); "
+        f"{len(running_series)} running day(s) stored total"
     )
 
 
