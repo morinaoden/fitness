@@ -742,7 +742,7 @@
         }));
         weightSeries.data.setAll(chartData);
         fatSeries.data.setAll(chartData);
-        applyPeriod();
+        weightSeries.events.once('datavalidated', () => applyPeriod());
       })
       .catch(() => {
         emptyEl.hidden = false;
@@ -915,7 +915,7 @@
         }));
         distanceSeries.data.setAll(chartData);
         paceSeries.data.setAll(chartData);
-        applyPeriod();
+        distanceSeries.events.once('datavalidated', () => applyPeriod());
       })
       .catch(() => {
         emptyEl.hidden = false;
@@ -1078,7 +1078,7 @@
         }));
         durationSeries.data.setAll(chartData);
         hrSeries.data.setAll(chartData);
-        applyPeriod();
+        durationSeries.events.once('datavalidated', () => applyPeriod());
       })
       .catch(() => {
         emptyEl.hidden = false;
