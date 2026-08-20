@@ -165,6 +165,20 @@
     font-weight: 600;
     padding-top: 10px;
   }
+  .day-card.optional {
+    border-style: dashed;
+  }
+  .day-badge.optional {
+    background: transparent;
+    border: 1px solid var(--sub);
+    color: var(--sub);
+    box-shadow: none;
+  }
+  .optional-note {
+    font-size: 0.75rem;
+    color: var(--sub);
+    margin: -4px 0 12px;
+  }
   .section {
     margin-top: 26px;
   }
@@ -351,7 +365,22 @@
 </header>
 
 <h1>週3日トレーニングプログラム</h1>
-<p class="lead">水・土・日 / 各回1時間目安(有酸素15〜20分込み)</p>
+<p class="lead">水・土・日 / 各回1時間目安(有酸素15〜20分込み)<br>月・木は疲労がなく余裕がある時だけの任意メニュー</p>
+
+<div class="day-card optional">
+  <div class="day-title">
+    <span class="day-badge optional">月曜</span>
+    <span class="day-name">下半身(補助)</span>
+  </div>
+  <p class="optional-note">疲労がなく余裕があれば実施</p>
+  <table>
+    <tr><th class="chk-col"></th><th class="col-ex">種目</th><th class="col-set">セット×回数</th><th class="col-w">重量目安</th></tr>
+    <tr data-key="mon-1"><td class="chk-col"><input type="checkbox"></td><td>レッグエクステンション or レッグカール</td><td>2×12-15</td><td>10〜15kg</td></tr>
+    <tr data-key="mon-2"><td class="chk-col"><input type="checkbox"></td><td>レッグプレス</td><td>2×15</td><td>30〜40kg</td></tr>
+    <tr data-key="mon-3"><td class="chk-col"><input type="checkbox"></td><td>アブダクター/アダクター</td><td>各2×12-15</td><td>15〜20kg</td></tr>
+    <tr class="cardio-row" data-key="mon-4"><td class="chk-col"><input type="checkbox"></td><td colspan="2">有酸素</td><td>20-25分</td></tr>
+  </table>
+</div>
 
 <div class="day-card">
   <div class="day-title">
@@ -365,6 +394,20 @@
     <tr data-key="wed-3"><td class="chk-col"><input type="checkbox"></td><td>ショルダープレス</td><td>3×10</td><td>10〜15kg</td></tr>
     <tr data-key="wed-4"><td class="chk-col"><input type="checkbox"></td><td>アブドミナル</td><td>3×15</td><td>自重〜15kg</td></tr>
     <tr class="cardio-row" data-key="wed-5"><td class="chk-col"><input type="checkbox"></td><td colspan="2">有酸素(エリプティカル or バイク)</td><td>15〜20分</td></tr>
+  </table>
+</div>
+
+<div class="day-card optional">
+  <div class="day-title">
+    <span class="day-badge optional">木曜</span>
+    <span class="day-name">上半身(プル系・補助)</span>
+  </div>
+  <p class="optional-note">疲労がなく余裕があれば実施</p>
+  <table>
+    <tr><th class="chk-col"></th><th class="col-ex">種目</th><th class="col-set">セット×回数</th><th class="col-w">重量目安</th></tr>
+    <tr data-key="thu-1"><td class="chk-col"><input type="checkbox"></td><td>ラットプルダウン</td><td>2×10-12</td><td>15〜20kg</td></tr>
+    <tr data-key="thu-2"><td class="chk-col"><input type="checkbox"></td><td>シーテッドロウ</td><td>2×12</td><td>15〜20kg</td></tr>
+    <tr class="cardio-row" data-key="thu-3"><td class="chk-col"><input type="checkbox"></td><td colspan="2">有酸素</td><td>20-25分</td></tr>
   </table>
 </div>
 
