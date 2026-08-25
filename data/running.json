@@ -48,6 +48,14 @@
     "runs": 1
   },
   {
+    "date": "2026-08-21",
+    "distance_km": 3.42,
+    "duration_min": 32.0,
+    "pace_min_per_km": 9.36,
+    "elevation_gain_m": 0.0,
+    "runs": 1
+  },
+  {
     "date": "2026-08-22",
     "distance_km": 4.01,
     "duration_min": 31.2,
