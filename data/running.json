@@ -118,5 +118,21 @@
     "pace_min_per_km": 7.96,
     "elevation_gain_m": 0.0,
     "runs": 1
+  },
+  {
+    "date": "2026-08-31",
+    "distance_km": 4.1,
+    "duration_min": 44.4,
+    "pace_min_per_km": 10.83,
+    "elevation_gain_m": 0.0,
+    "runs": 1
+  },
+  {
+    "date": "2026-09-01",
+    "distance_km": 4.74,
+    "duration_min": 38.0,
+    "pace_min_per_km": 8.02,
+    "elevation_gain_m": 0.0,
+    "runs": 1
   }
 ]
