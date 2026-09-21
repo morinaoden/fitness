@@ -347,6 +347,94 @@
     top: 0;
     background: var(--card);
   }
+
+  /* --- running calendar --- */
+  .cal-wrap {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 16px;
+  }
+  .cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .cal-nav {
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .cal-nav:hover { background: var(--surface); }
+  .cal-month-label {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .cal-weekdays, .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+  }
+  .cal-weekdays {
+    font-size: 0.7rem;
+    color: var(--sub);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .cal-cell {
+    position: relative;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cal-cell.empty { visibility: hidden; }
+  .cal-day-num {
+    font-size: 0.82rem;
+    color: var(--ink);
+    width: 30px;
+    height: 30px;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cal-cell.today .cal-day-num {
+    border: 1px solid var(--accent2);
+    color: var(--accent2);
+    font-weight: 700;
+  }
+  .cal-cell.has-run .cal-day-num {
+    background: var(--accent);
+    color: var(--ink-inverse);
+    font-weight: 700;
+  }
+  .cal-cell.has-run.today .cal-day-num {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--ink-inverse);
+  }
+  .cal-legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-size: 0.72rem;
+    color: var(--sub);
+  }
+  .cal-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 9999px;
+    background: var(--accent);
+  }
 </style>
 </head>
 <body>
@@ -457,12 +545,30 @@
     <div class="run-stat pace" id="runStat3"></div>
   </div>
 
-  <div class="chart-wrap">
+  <div class="period-row" id="runViewRow">
+    <button class="period-btn active" data-view="calendar">カレンダー</button>
+    <button class="period-btn" data-view="chart">グラフ</button>
+    <button class="period-btn" data-view="table">表</button>
+  </div>
+
+  <div class="cal-wrap" id="runCalendarWrap">
+    <div class="cal-header">
+      <button class="cal-nav" id="calPrev" type="button">‹</button>
+      <div class="cal-month-label" id="calMonthLabel"></div>
+      <button class="cal-nav" id="calNext" type="button">›</button>
+    </div>
+    <div class="cal-weekdays">
+      <span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+    <div class="cal-legend"><span class="cal-legend-dot"></span>ランニングを実施した日</div>
+  </div>
+
+  <div class="chart-wrap" id="runChartWrap" hidden>
     <div id="runningChartRoot"></div>
     <div class="chart-empty" id="runChartEmpty" hidden>まだデータがありません(Strava連携の初回同期をお待ちください)</div>
   </div>
 
-  <button class="btn-secondary" id="runTableToggle" type="button" style="display:block;margin:14px auto 0;">表で見る</button>
   <div class="running-table-wrap" id="runTableWrap" hidden>
     <table>
       <thead><tr><th>日付</th><th>距離</th><th>ペース</th><th>獲得標高</th></tr></thead>
@@ -720,20 +826,29 @@
       });
   })();
 
-  // --- running distance / pace chart (amCharts 5) ---
+  // --- running distance / pace / calendar (amCharts 5 for the chart view) ---
   (function () {
     const periodRow = document.getElementById('runPeriodRow');
-    const tableToggle = document.getElementById('runTableToggle');
+    const viewRow = document.getElementById('runViewRow');
+    const calendarWrap = document.getElementById('runCalendarWrap');
+    const chartWrap = document.getElementById('runChartWrap');
     const tableWrap = document.getElementById('runTableWrap');
     const tableBody = document.getElementById('runTableBody');
     const emptyEl = document.getElementById('runChartEmpty');
     const runStat1 = document.getElementById('runStat1');
     const runStat2 = document.getElementById('runStat2');
     const runStat3 = document.getElementById('runStat3');
+    const calPrev = document.getElementById('calPrev');
+    const calNext = document.getElementById('calNext');
+    const calMonthLabel = document.getElementById('calMonthLabel');
+    const calGrid = document.getElementById('calGrid');
 
     let currentDays = 90;
+    let currentView = 'calendar';
     let rawData = []; // [{date, distance_km, duration_min, pace_min_per_km, elevation_gain_m, runs}]
-    let root, xAxis, distanceSeries, paceSeries;
+    let byDate = {}; // 'YYYY-MM-DD' -> entry
+    let calMonth = null; // Date, first-of-month currently shown
+    let root, xAxis, distanceSeries, paceSeries, chartInitialized = false;
 
     function formatPace(p) {
       if (p == null) return '-';
@@ -806,6 +921,62 @@
       chart.appear(600, 100);
     }
 
+    function pad2(n) { return String(n).padStart(2, '0'); }
+
+    function todayISO() {
+      const d = new Date();
+      return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+    }
+
+    function renderCalendar() {
+      if (!calMonth) return;
+      const year = calMonth.getFullYear();
+      const month = calMonth.getMonth();
+      calMonthLabel.textContent = `${year}年${month + 1}月`;
+
+      const firstWeekday = (new Date(year, month, 1).getDay() + 6) % 7; // Monday = 0
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const todayStr = todayISO();
+
+      calGrid.innerHTML = '';
+      for (let i = 0; i < firstWeekday; i++) {
+        const cell = document.createElement('div');
+        cell.className = 'cal-cell empty';
+        calGrid.appendChild(cell);
+      }
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = `${year}-${pad2(month + 1)}-${pad2(d)}`;
+        const entry = byDate[dateStr];
+        const cell = document.createElement('div');
+        cell.className = 'cal-cell' + (entry ? ' has-run' : '') + (dateStr === todayStr ? ' today' : '');
+        if (entry) {
+          cell.title = `${entry.distance_km.toFixed(2)}km / ${formatPace(entry.pace_min_per_km)}`;
+        }
+        cell.innerHTML = `<span class="cal-day-num">${d}</span>`;
+        calGrid.appendChild(cell);
+      }
+    }
+
+    function setView(view) {
+      currentView = view;
+      viewRow.querySelectorAll('.period-btn').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+      calendarWrap.hidden = view !== 'calendar';
+      chartWrap.hidden = view !== 'chart';
+      tableWrap.hidden = view !== 'table';
+      if (view === 'chart' && !chartInitialized && rawData.length) {
+        initChart();
+        chartInitialized = true;
+        const chartData = rawData.map(d => ({
+          ts: new Date(d.date).getTime(),
+          distance_km: d.distance_km,
+          pace_min_per_km: d.pace_min_per_km
+        }));
+        distanceSeries.data.setAll(chartData);
+        paceSeries.data.setAll(chartData);
+        distanceSeries.events.once('datavalidated', () => applyPeriod());
+      }
+    }
+
     function periodCutoff() {
       if (!rawData.length) return -Infinity;
       if (currentDays === 0) return -Infinity;
@@ -843,13 +1014,15 @@
     }
 
     function applyPeriod() {
-      if (!xAxis || !rawData.length) return;
-      if (currentDays === 0) {
-        xAxis.zoom(0, 1);
-      } else {
-        const maxTs = new Date(rawData[rawData.length - 1].date).getTime();
-        const minTs = maxTs - currentDays * 86400000;
-        xAxis.zoomToDates(new Date(minTs), new Date(maxTs + 86400000));
+      if (!rawData.length) return;
+      if (xAxis) {
+        if (currentDays === 0) {
+          xAxis.zoom(0, 1);
+        } else {
+          const maxTs = new Date(rawData[rawData.length - 1].date).getTime();
+          const minTs = maxTs - currentDays * 86400000;
+          xAxis.zoomToDates(new Date(minTs), new Date(maxTs + 86400000));
+        }
       }
       renderStats();
       renderTable();
@@ -864,28 +1037,37 @@
       applyPeriod();
     });
 
-    tableToggle.addEventListener('click', () => {
-      tableWrap.hidden = !tableWrap.hidden;
-      tableToggle.textContent = tableWrap.hidden ? '表で見る' : '表を閉じる';
+    viewRow.addEventListener('click', e => {
+      const btn = e.target.closest('.period-btn');
+      if (!btn) return;
+      setView(btn.dataset.view);
+    });
+
+    calPrev.addEventListener('click', () => {
+      calMonth.setMonth(calMonth.getMonth() - 1);
+      renderCalendar();
+    });
+    calNext.addEventListener('click', () => {
+      calMonth.setMonth(calMonth.getMonth() + 1);
+      renderCalendar();
     });
 
     fetch('data/running.json')
       .then(r => r.ok ? r.json() : [])
       .then(data => {
         rawData = data;
+        byDate = {};
+        for (const d of rawData) byDate[d.date] = d;
+
+        const lastDate = rawData.length ? new Date(rawData[rawData.length - 1].date) : new Date();
+        calMonth = new Date(lastDate.getFullYear(), lastDate.getMonth(), 1);
+        renderCalendar();
+
         if (!rawData.length) {
           emptyEl.hidden = false;
           return;
         }
-        initChart();
-        const chartData = rawData.map(d => ({
-          ts: new Date(d.date).getTime(),
-          distance_km: d.distance_km,
-          pace_min_per_km: d.pace_min_per_km
-        }));
-        distanceSeries.data.setAll(chartData);
-        paceSeries.data.setAll(chartData);
-        distanceSeries.events.once('datavalidated', () => applyPeriod());
+        applyPeriod();
       })
       .catch(() => {
         emptyEl.hidden = false;
