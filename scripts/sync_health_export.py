@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Merge a "Health Auto Export" REST API automation payload into
-data/running.json. Non-running workouts in the payload are ignored (not
-collected).
+data/running.json. Running and walking workouts are merged into the same
+per-day buckets (the dashboard shows one combined cardio record); every
+other workout type is ignored (not collected).
 
 Triggered by the "Sync Apple Health Export Data" GitHub Actions workflow,
 which runs on a `repository_dispatch` event of type `health-export`. The
@@ -61,22 +62,23 @@ RUNNING_DATA_PATH = "data/running.json"
 
 JST = timezone(timedelta(hours=9))
 
-# HealthKit activityType values (camelCase) treated as "running" for
+# HealthKit activityType values (camelCase) treated as trackable cardio for
 # data/running.json; everything else is ignored. Only used for the older
 # payload shape, which has a raw activityType identifier.
-RUN_ACTIVITY_TYPES = {"running"}
+TRACKABLE_ACTIVITY_TYPES = {"running", "walking"}
 
 # Substrings (case-insensitive) that mark a workout's localized "name" field
-# as a run, e.g. an English "Outdoor Run" / "Indoor Run".
-RUNNING_NAME_MARKERS = ("running",)
+# as running or walking, e.g. an English "Outdoor Run" / "Indoor Walk".
+TRACKABLE_NAME_MARKERS = ("running", "walking")
 
 # Apple's actual Japanese name for a run workout is the short form "ラン"
 # (confirmed from a real export on 2026-09-21: "屋内 ラン" / "屋外 ラン"),
 # NOT "ランニング" as originally assumed -- that assumption silently dropped
 # every real run for about a week (2026-09-12 to 2026-09-20 went unsynced).
-# Matched as a whole space-separated token rather than a bare substring,
+# Walking uses the verb form "歩く" ("屋内 歩く" / "屋外 歩く"). Both are
+# matched as a whole space-separated token rather than a bare substring,
 # since "ラン" also appears inside unrelated words (e.g. "トランポリン").
-RUNNING_NAME_EXACT_TOKENS = {"ラン", "run"}
+TRACKABLE_NAME_EXACT_TOKENS = {"ラン", "run", "歩く", "walk"}
 
 # Apple Watch itself won't save a workout shorter than this, but data from
 # other sources (Zepp, manual Health entries, etc.) isn't bound by that rule
@@ -89,14 +91,14 @@ def stat(statistics, key):
     return (statistics or {}).get(key) or {}
 
 
-def is_running_workout(w):
+def is_trackable_workout(w):
     name = str(w.get("name") or "").strip().lower()
-    if any(marker in name for marker in RUNNING_NAME_MARKERS):
+    if any(marker in name for marker in TRACKABLE_NAME_MARKERS):
         return True
-    if any(tok in RUNNING_NAME_EXACT_TOKENS for tok in name.split()):
+    if any(tok in TRACKABLE_NAME_EXACT_TOKENS for tok in name.split()):
         return True
     activity_type = str(w.get("activityType") or "").strip()
-    return activity_type in RUN_ACTIVITY_TYPES
+    return activity_type in TRACKABLE_ACTIVITY_TYPES
 
 
 def workout_distance_km(w):
@@ -173,7 +175,7 @@ def main():
             continue
         duration_min = duration_s / 60
 
-        if not is_running_workout(w):
+        if not is_trackable_workout(w):
             continue
 
         day = (start.astimezone(JST)).date().isoformat()

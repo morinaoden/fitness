@@ -42,8 +42,8 @@ Strava API           Withings API      Health Auto Export(iOS)
   - 木曜(任意): 上半身(プル系・補助)
   - 各種目に完了チェックボックスがあり、`localStorage`（キー: `checklist:<day>-<n>`）に保存。「今日のチェックをリセット」ボタンで全クリア
   - 「重量の決め方」「運用メモ」セクションに漸進性過負荷の目安をテキストで記載
-- **ランニング記録セクション**: `data/running.json` を`fetch`し、amCharts5で距離・ペースの推移をグラフ化。期間切り替え(1ヶ月/3ヶ月/6ヶ月/1年/全期間)、表形式トグルあり
-  - データソースは2系統（StravaとApple Health経由）が同じファイルにマージされる。詳細は [health-export-pipeline.md](./health-export-pipeline.md) を参照
+- **ランニング・ウォーキング記録セクション**: `data/running.json` を`fetch`し、デフォルトはカレンダー表示（実施日にマーカー、月送りナビ）、ユーザー操作でグラフ(amCharts5、距離・ペース推移)/表に切り替え可能。期間切り替え(1ヶ月/3ヶ月/6ヶ月/1年/全期間)あり
+  - データソースは2系統（StravaとApple Health経由）が同じファイルの同じ日別バケットにマージされる。Apple Health経由はランニングとウォーキングの両方を集計、Strava経由はランニングのみ。詳細は [health-export-pipeline.md](./health-export-pipeline.md) を参照
 - **体重・体脂肪率セクション**: `data/weight.json` を`fetch`し、amCharts5で二軸(体重/体脂肪率)グラフ化。同様に期間切り替え・表トグルあり
 
 ### `meals.html` — 食事管理

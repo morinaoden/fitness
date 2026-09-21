@@ -530,7 +530,7 @@
 </div>
 
 <div class="section">
-  <h2>ランニング記録(Xiaomi Band → Zepp → Strava)</h2>
+  <h2>ランニング・ウォーキング記録</h2>
   <div class="period-row" id="runPeriodRow">
     <button class="period-btn" data-days="30">1ヶ月</button>
     <button class="period-btn active" data-days="90">3ヶ月</button>
@@ -561,12 +561,12 @@
       <span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span>
     </div>
     <div class="cal-grid" id="calGrid"></div>
-    <div class="cal-legend"><span class="cal-legend-dot"></span>ランニングを実施した日</div>
+    <div class="cal-legend"><span class="cal-legend-dot"></span>ランニング・ウォーキングを実施した日</div>
   </div>
 
   <div class="chart-wrap" id="runChartWrap" hidden>
     <div id="runningChartRoot"></div>
-    <div class="chart-empty" id="runChartEmpty" hidden>まだデータがありません(Strava連携の初回同期をお待ちください)</div>
+    <div class="chart-empty" id="runChartEmpty" hidden>まだデータがありません(初回同期をお待ちください)</div>
   </div>
 
   <div class="running-table-wrap" id="runTableWrap" hidden>
@@ -997,7 +997,7 @@
       const totalRuns = pts.reduce((s, d) => s + d.runs, 0);
       const avgPace = totalDistance > 0 ? totalDuration / totalDistance : null;
       runStat1.innerHTML = `<div class="num">${totalDistance.toFixed(1)}km</div><div class="label">期間の合計距離</div>`;
-      runStat2.innerHTML = `<div class="num">${totalRuns}回</div><div class="label">期間のラン回数</div>`;
+      runStat2.innerHTML = `<div class="num">${totalRuns}回</div><div class="label">期間の実施回数</div>`;
       runStat3.innerHTML = `<div class="num">${formatPace(avgPace)}</div><div class="label">平均ペース</div>`;
     }
 
