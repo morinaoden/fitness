@@ -15,9 +15,10 @@ below as a fallback since the app may change format again):
       "data": {
         "workouts": [
           {
-            "name": "屋外 ランニング" | "屋内 歩く" | ... (LOCALIZED display
-                name -- there is no raw HealthKit activityType identifier in
-                this shape, so running detection matches on this string),
+            "name": "屋内 ラン" | "屋内 歩く" | ... (LOCALIZED display name --
+                there is no raw HealthKit activityType identifier in this
+                shape, so running detection matches on this string. Apple's
+                actual Japanese short form is "ラン", not "ランニング"),
             "start": "2026-09-21 07:30:53 +0900",
             "end": "2026-09-21 08:02:28 +0900",
             "duration": 1891.3,  (seconds, float, already flat -- not nested)
@@ -66,11 +67,16 @@ JST = timezone(timedelta(hours=9))
 RUN_ACTIVITY_TYPES = {"running"}
 
 # Substrings (case-insensitive) that mark a workout's localized "name" field
-# as a run, e.g. "屋外 ランニング" (Outdoor Run), "屋内 ランニング" (Indoor
-# Run), or an English "Outdoor Run" / "Indoor Run". This is the only way to
-# identify a running workout in the newer payload shape, which has no raw
-# activityType identifier.
-RUNNING_NAME_MARKERS = ("ランニング", "run")
+# as a run, e.g. an English "Outdoor Run" / "Indoor Run".
+RUNNING_NAME_MARKERS = ("running",)
+
+# Apple's actual Japanese name for a run workout is the short form "ラン"
+# (confirmed from a real export on 2026-09-21: "屋内 ラン" / "屋外 ラン"),
+# NOT "ランニング" as originally assumed -- that assumption silently dropped
+# every real run for about a week (2026-09-12 to 2026-09-20 went unsynced).
+# Matched as a whole space-separated token rather than a bare substring,
+# since "ラン" also appears inside unrelated words (e.g. "トランポリン").
+RUNNING_NAME_EXACT_TOKENS = {"ラン", "run"}
 
 # Apple Watch itself won't save a workout shorter than this, but data from
 # other sources (Zepp, manual Health entries, etc.) isn't bound by that rule
@@ -85,7 +91,9 @@ def stat(statistics, key):
 
 def is_running_workout(w):
     name = str(w.get("name") or "").strip().lower()
-    if any(marker.lower() in name for marker in RUNNING_NAME_MARKERS):
+    if any(marker in name for marker in RUNNING_NAME_MARKERS):
+        return True
+    if any(tok in RUNNING_NAME_EXACT_TOKENS for tok in name.split()):
         return True
     activity_type = str(w.get("activityType") or "").strip()
     return activity_type in RUN_ACTIVITY_TYPES
