@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Merge a "Health Exporter & Shortcuts" export payload into
+"""Merge a "Health Auto Export" REST API automation payload into
 data/running.json. Non-running workouts in the payload are ignored (not
 collected).
 
@@ -7,23 +7,41 @@ Triggered by the "Sync Apple Health Export Data" GitHub Actions workflow,
 which runs on a `repository_dispatch` event of type `health-export`. The
 event's `client_payload` is passed in via the $PAYLOAD env var (as JSON).
 
-Confirmed shape (from a real export on 2026-08-16), NOT the generic HealthKit
-export format some other apps use:
+Confirmed shape (from a real export on 2026-09-21, app's "v1" API export
+format -- this replaced an earlier flatter shape seen on 2026-08-16, kept
+below as a fallback since the app may change format again):
 
     {
-      "exportInfo": {"startDate": "...", "endDate": "...", "workoutCount": N, ...},
+      "data": {
+        "workouts": [
+          {
+            "name": "屋外 ランニング" | "屋内 歩く" | ... (LOCALIZED display
+                name -- there is no raw HealthKit activityType identifier in
+                this shape, so running detection matches on this string),
+            "start": "2026-09-21 07:30:53 +0900",
+            "end": "2026-09-21 08:02:28 +0900",
+            "duration": 1891.3,  (seconds, float, already flat -- not nested)
+            "distance": {"qty": 2.44, "units": "km"},
+            "isIndoor": true,
+            ...
+          },
+          ...
+        ]
+      }
+    }
+
+Older shape (2026-08-16, kept as a fallback):
+
+    {
       "workouts": [
         {
           "activityType": "running" | "coreTraining" | ... (HealthKit camelCase type),
           "duration": <seconds, float>,
           "startDate": "2026-08-09T22:08:55Z",
           "endDate": "2026-08-09T22:47:38Z",
-          "source": "Zepp" | "<name>'s Apple Watch" | "ヘルスケア" | ...,
-          "events": [{"type": "lap", "startDate": "...", "endDate": "..."}],
           "statistics": {
-            "HKQuantityTypeIdentifierActiveEnergyBurned": {"sum": 331, "unit": "kcal"},
             "HKQuantityTypeIdentifierDistanceWalkingRunning": {"sum": 3180, "unit": "m"},
-            "HKQuantityTypeIdentifierHeartRate": {"average": 84.0, "max": 89, "min": 80, "unit": "count/min"}
+            ...
           }
         },
         ...
@@ -43,8 +61,16 @@ RUNNING_DATA_PATH = "data/running.json"
 JST = timezone(timedelta(hours=9))
 
 # HealthKit activityType values (camelCase) treated as "running" for
-# data/running.json; everything else is ignored.
+# data/running.json; everything else is ignored. Only used for the older
+# payload shape, which has a raw activityType identifier.
 RUN_ACTIVITY_TYPES = {"running"}
+
+# Substrings (case-insensitive) that mark a workout's localized "name" field
+# as a run, e.g. "屋外 ランニング" (Outdoor Run), "屋内 ランニング" (Indoor
+# Run), or an English "Outdoor Run" / "Indoor Run". This is the only way to
+# identify a running workout in the newer payload shape, which has no raw
+# activityType identifier.
+RUNNING_NAME_MARKERS = ("ランニング", "run")
 
 # Apple Watch itself won't save a workout shorter than this, but data from
 # other sources (Zepp, manual Health entries, etc.) isn't bound by that rule
@@ -55,6 +81,29 @@ MIN_DURATION_S = 60
 
 def stat(statistics, key):
     return (statistics or {}).get(key) or {}
+
+
+def is_running_workout(w):
+    name = str(w.get("name") or "").strip().lower()
+    if any(marker.lower() in name for marker in RUNNING_NAME_MARKERS):
+        return True
+    activity_type = str(w.get("activityType") or "").strip()
+    return activity_type in RUN_ACTIVITY_TYPES
+
+
+def workout_distance_km(w):
+    d = w.get("distance")
+    if isinstance(d, dict) and d.get("qty") is not None:
+        qty = d["qty"]
+        units = str(d.get("units") or "km").lower()
+        if units in ("mi", "mile", "miles"):
+            return qty * 1.609344
+        if units in ("m", "meter", "meters"):
+            return qty / 1000
+        return qty  # km, or unrecognized unit -- assume km
+
+    meters = stat(w.get("statistics"), "HKQuantityTypeIdentifierDistanceWalkingRunning").get("sum")
+    return (meters or 0) / 1000
 
 
 def parse_iso(s):
@@ -96,38 +145,36 @@ def main():
         print(f"Failed to parse PAYLOAD as JSON: {e}", file=sys.stderr)
         sys.exit(1)
 
-    workouts = payload.get("workouts") or []
+    workouts = payload.get("workouts") or (payload.get("data") or {}).get("workouts") or []
     print(f"Received {len(workouts)} workout(s)")
 
     run_by_day = {}
 
     for w in workouts:
-        activity_type = str(w.get("activityType", "")).strip()
-        start = parse_iso(w.get("startDate"))
+        start = parse_iso(w.get("startDate") or w.get("start"))
         if not start:
-            print(f"Skipping workout with unparseable startDate: {w}", file=sys.stderr)
+            print(f"Skipping workout with unparseable start date: {w}", file=sys.stderr)
             continue
 
         duration_s = w.get("duration")
         if duration_s is None:
-            end = parse_iso(w.get("endDate"))
+            end = parse_iso(w.get("endDate") or w.get("end"))
             duration_s = (end - start).total_seconds() if end else 0
         if duration_s < MIN_DURATION_S:
             print(f"Skipping workout shorter than {MIN_DURATION_S}s: {w}", file=sys.stderr)
             continue
         duration_min = duration_s / 60
 
-        if activity_type not in RUN_ACTIVITY_TYPES:
+        if not is_running_workout(w):
             continue
 
         day = (start.astimezone(JST)).date().isoformat()
-        statistics = w.get("statistics") or {}
-        distance_m = stat(statistics, "HKQuantityTypeIdentifierDistanceWalkingRunning").get("sum")
+        distance_km = workout_distance_km(w)
 
         bucket = run_by_day.setdefault(day, {
             "distance_km": 0.0, "duration_min": 0.0, "elevation_gain_m": 0.0, "runs": 0
         })
-        bucket["distance_km"] += (distance_m or 0) / 1000
+        bucket["distance_km"] += distance_km
         bucket["duration_min"] += duration_min
         bucket["runs"] += 1
 
