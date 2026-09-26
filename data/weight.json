@@ -5934,5 +5934,10 @@
     "date": "2026-09-24",
     "weight_kg": 74.2,
     "body_fat_pct": 17.8
+  },
+  {
+    "date": "2026-09-25",
+    "weight_kg": 74.0,
+    "body_fat_pct": 18.4
   }
 ]
