@@ -90,7 +90,7 @@ Withings側の初回発行手順は本リポジトリにスクリプト化され
 | Health Auto Export（iOSアプリ、買い切りBasicプラン） | Apple Healthのワークアウトデータをエクスポート | アプリ内設定（このリポジトリでは管理しない） |
 | Cloudflare Workers（`quiet-heart-6386`） | Health Auto ExportのPOSTをGitHub repository_dispatch形式に変換して中継 | Cloudflareダッシュボードの環境変数/シークレット（`SHARED_SECRET`, `GITHUB_PAT`, `GH_OWNER`, `GH_REPO`） |
 | Open Food Facts API | バーコードからの食品情報取得（`meals.html`から直接呼び出し、認証不要） | なし（公開API） |
-| Google Sheets API（任意・現状未設定） | 体重データをスプレッドシートにミラー | GitHub repo secrets (`GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_KEY`) |
+| Google Sheets API（稼働中） | 体重データをスプレッドシートにミラー（`sync-withings.yml`の最終ステップから`scripts/update_sheet.py`が毎日実行） | GitHub repo secrets (`GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_KEY`) |
 | amCharts 5（CDN読み込み） | グラフ描画ライブラリ | 非商用無料版、チャートにamCharts帰属リンクが表示される |
 | GitHub Pages | サイトホスティング | リポジトリ設定（`main`ブランチのルートを配信） |
 
