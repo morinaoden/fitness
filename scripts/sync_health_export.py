@@ -158,7 +158,8 @@ def main():
     workouts = payload.get("workouts") or (payload.get("data") or {}).get("workouts") or []
     print(f"Received {len(workouts)} workout(s)")
 
-    run_by_day = {}
+    # day -> {workout_id: (distance_km, duration_min)}
+    payload_by_day = {}
 
     for w in workouts:
         start = parse_iso(w.get("startDate") or w.get("start"))
@@ -173,40 +174,53 @@ def main():
         if duration_s < MIN_DURATION_S:
             print(f"Skipping workout shorter than {MIN_DURATION_S}s: {w}", file=sys.stderr)
             continue
-        duration_min = duration_s / 60
 
         if not is_trackable_workout(w):
             continue
 
         day = (start.astimezone(JST)).date().isoformat()
-        distance_km = workout_distance_km(w)
+        wid = str(w.get("id") or start.isoformat())
+        payload_by_day.setdefault(day, {})[wid] = (workout_distance_km(w), duration_s / 60)
 
-        bucket = run_by_day.setdefault(day, {
-            "distance_km": 0.0, "duration_min": 0.0, "elevation_gain_m": 0.0, "runs": 0
-        })
-        bucket["distance_km"] += distance_km
-        bucket["duration_min"] += duration_min
-        bucket["runs"] += 1
+    existing = load_by_day(RUNNING_DATA_PATH)
+    updated_days = 0
+    for day, items in payload_by_day.items():
+        old = existing.get(day)
+        if old and old.get("workout_ids"):
+            # Merge by workout id. The export only covers a rolling 7-day
+            # window, so on the day it slides past the morning workout of a
+            # two-workout day only the evening one is re-sent; replacing the
+            # whole day would silently drop the morning one.
+            known = set(old["workout_ids"])
+            ids = list(old["workout_ids"])
+            dist, dur = old["distance_km"], old["duration_min"]
+            for wid, (d, m) in items.items():
+                if wid not in known:
+                    ids.append(wid)
+                    dist += d
+                    dur += m
+        elif old and old.get("runs", 0) > len(items):
+            continue  # legacy entry (no ids) already has more workouts than this partial payload
+        else:
+            ids = list(items)
+            dist = sum(d for d, _ in items.values())
+            dur = sum(m for _, m in items.values())
 
-    updated_run_days = []
-    for day, b in run_by_day.items():
-        distance_km = b["distance_km"]
-        updated_run_days.append({
+        existing[day] = {
             "date": day,
-            "distance_km": round(distance_km, 2),
-            "duration_min": round(b["duration_min"], 1),
-            "pace_min_per_km": round(b["duration_min"] / distance_km, 2) if distance_km > 0 else None,
+            "distance_km": round(dist, 2),
+            "duration_min": round(dur, 1),
+            "pace_min_per_km": round(dur / dist, 2) if dist > 0 else None,
             "elevation_gain_m": 0.0,  # not present in this export format
-            "runs": b["runs"],
-        })
+            "runs": len(ids),
+            "workout_ids": ids,
+        }
+        updated_days += 1
 
-    run_by_day_existing = load_by_day(RUNNING_DATA_PATH)
-    for e in updated_run_days:
-        run_by_day_existing[e["date"]] = e
-    running_series = write_series(RUNNING_DATA_PATH, run_by_day_existing)
+    running_series = write_series(RUNNING_DATA_PATH, existing)
 
     print(
-        f"Updated {len(updated_run_days)} running day(s); "
+        f"Updated {updated_days} running day(s); "
         f"{len(running_series)} running day(s) stored total"
     )
 
