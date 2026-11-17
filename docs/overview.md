@@ -18,12 +18,12 @@
        ▼
   data/*.json ← GitHub Actions が自動更新してコミット
        ▲
-  ┌────┴─────────────────┬──────────────────────┐
-  │                       │                      │
-Strava API           Withings API      Health Auto Export(iOS)
-(ランニング)         (体重・体脂肪率)   → Cloudflare Worker
-                                        → GitHub repository_dispatch
-                                        (ランニング, Apple Watch経由)
+  ┌────┴─────────────────┐
+  │                       │
+Withings API      Health Auto Export(iOS)
+(体重・体脂肪率)   → Cloudflare Worker
+                    → GitHub repository_dispatch
+                    (ランニング・ウォーキング, Apple Watch経由)
 ```
 
 トレーニングメニューの実施チェックと、食事記録・目標PFC値は**ブラウザのlocalStorageのみに保存**され、
@@ -43,7 +43,7 @@ Strava API           Withings API      Health Auto Export(iOS)
   - 各種目に完了チェックボックスがあり、`localStorage`（キー: `checklist:<day>-<n>`）に保存。「今日のチェックをリセット」ボタンで全クリア
   - 「重量の決め方」「運用メモ」セクションに漸進性過負荷の目安をテキストで記載
 - **ランニング・ウォーキング記録セクション**: `data/running.json` を`fetch`し、デフォルトはカレンダー表示（実施日にマーカー、月送りナビ）、ユーザー操作でグラフ(amCharts5、距離・ペース推移)/表に切り替え可能。期間切り替え(1ヶ月/3ヶ月/6ヶ月/1年/全期間)あり
-  - データソースは2系統（StravaとApple Health経由）が同じファイルの同じ日別バケットにマージされる。Apple Health経由はランニングとウォーキングの両方を集計、Strava経由はランニングのみ。詳細は [health-export-pipeline.md](./health-export-pipeline.md) を参照
+  - データソースはApple Health経由（Health Auto Export）のみで、ランニングとウォーキングを同じ日別バケットに集計する。詳細は [health-export-pipeline.md](./health-export-pipeline.md) を参照
 - **体重・体脂肪率セクション**: `data/weight.json` を`fetch`し、amCharts5で二軸(体重/体脂肪率)グラフ化。同様に期間切り替え・表トグルあり
 
 ### `meals.html` — 食事管理
@@ -59,36 +59,33 @@ Strava API           Withings API      Health Auto Export(iOS)
 
 | ファイル | 内容 | 更新元 | 備考 |
 |---|---|---|---|
-| `running.json` | 日別: 距離・時間・ペース・獲得標高・回数 | Strava sync + Apple Health export sync（同じファイルに日付キーでマージ、後勝ち） | |
+| `running.json` | 日別: 距離・時間・ペース・獲得標高・回数 | Apple Health export sync（ワークアウトIDごとに日付キーへマージ） | |
 | `weight.json` | 日別: 体重(kg)・体脂肪率(%) | Withings sync | 2019年からの継続データ、1186日分(2026-09時点) |
 | `food_db.json` | 食品名・エイリアス・単位・kcal/PFC | 手動メンテナンス（文科省データ由来） | アプリからは読み取り専用。ユーザー追加分は`localStorage`側 |
 | `workouts.json` | 非ランニング系ワークアウトの日別集計 | 過去のApple Health同期（**現在は更新停止**） | 2026-09-21時点で履歴として残置のみ。「Stop collecting non-running workout data」の変更でランニング以外は収集対象外に |
 | `.sync_state.json` | Withings sync の増分同期カーソル | Withings sync | 内部状態、UIでは未使用 |
-| （`.strava_sync_state.json`） | Strava sync の増分同期カーソル | Strava sync | 同上 |
 
 ## 自動同期パイプライン（GitHub Actions）
 
 | ワークフロー | トリガー | 概要 |
 |---|---|---|
-| `sync-strava.yml` | 毎日 08:00 JST（cron）+ 手動実行 | Strava APIからRun/TrailRunを取得し`running.json`を更新。トークンはリフレッシュのたびローテーションするため、新トークンを`WITHINGS_GH_PAT`（fine-grained PAT）経由でリポジトリシークレットに書き戻す |
 | `sync-withings.yml` | 毎日 08:00 JST（cron）+ 手動実行 | Withings APIから体重・体脂肪率を取得し`weight.json`を更新。同様にトークンをローテーション。任意でGoogleスプレッドシートにもミラー(`update_sheet.py`、シークレット未設定なら自動スキップ) |
 | `sync-health-export.yml` | `repository_dispatch`（外部からのWebhook経由、Apple Watchでのワークアウト完了を起点にiOS Shortcutsから即時実行） | Health Auto Exportアプリ(iOS)がCloudflare Worker経由で送るワークアウトJSONを`running.json`にマージ。**詳細な構成・障害対応履歴は [health-export-pipeline.md](./health-export-pipeline.md) を参照** |
 
 いずれも変更があった場合のみ`data/*.json`をコミット・pushする（差分なしなら何もしない）。
 
-### Strava/Withingsのトークン運用について
+### Withingsのトークン運用について
 
-両APIともOAuthのrefresh_tokenが**使用の都度失効・再発行**される方式のため、ワークフロー実行後に新しいrefresh_tokenを
+WithingsのOAuth refresh_tokenは**使用の都度失効・再発行**される方式のため、ワークフロー実行後に新しいrefresh_tokenを
 `gh secret set`でリポジトリシークレットへ書き戻している。この書き戻し操作には、リポジトリの「Secrets: Read and write」権限を持つ
-fine-grained PAT（`WITHINGS_GH_PAT`という名前のシークレットに保存、Strava/Withings両方のワークフローで共用）が必要。
+fine-grained PAT（`WITHINGS_GH_PAT`という名前のシークレットに保存、Withingsワークフローで使用）が必要。
 
-初回のrefresh_token発行には `scripts/strava_get_refresh_token.py`（対話式、ローカルで一度だけ実行）を使う。Withings側の初回発行手順は本リポジトリにスクリプト化されていない。
+Withings側の初回発行手順は本リポジトリにスクリプト化されていない。
 
 ## 外部サービス依存一覧
 
 | サービス | 用途 | 認証情報の保存場所 |
 |---|---|---|
-| Strava API | ランニング活動データ取得 | GitHub repo secrets (`STRAVA_CLIENT_ID`/`SECRET`/`REFRESH_TOKEN`) |
 | Withings API | 体重・体脂肪率データ取得 | GitHub repo secrets (`WITHINGS_CLIENT_ID`/`SECRET`/`REFRESH_TOKEN`) |
 | Health Auto Export（iOSアプリ、買い切りBasicプラン） | Apple Healthのワークアウトデータをエクスポート | アプリ内設定（このリポジトリでは管理しない） |
 | Cloudflare Workers（`quiet-heart-6386`） | Health Auto ExportのPOSTをGitHub repository_dispatch形式に変換して中継 | Cloudflareダッシュボードの環境変数/シークレット（`SHARED_SECRET`, `GITHUB_PAT`, `GH_OWNER`, `GH_REPO`） |
