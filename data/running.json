@@ -458,56 +458,61 @@
   {
     "date": "2026-11-11",
     "distance_km": 0,
-    "duration_min": 30.0,
+    "duration_min": 60.0,
     "pace_min_per_km": null,
     "elevation_gain_m": 0.0,
-    "runs": 1,
+    "runs": 2,
     "workout_ids": [
-      "A9327F8E-DA38-484D-AB23-E7DC9B27CDCB"
+      "A9327F8E-DA38-484D-AB23-E7DC9B27CDCB",
+      "DBF9CD67-51E9-4533-BD12-68D7413779B0"
     ]
   },
   {
     "date": "2026-11-13",
-    "distance_km": 2.74,
-    "duration_min": 37.7,
-    "pace_min_per_km": 13.74,
+    "distance_km": 5.48,
+    "duration_min": 75.4,
+    "pace_min_per_km": 13.75,
     "elevation_gain_m": 0.0,
-    "runs": 1,
+    "runs": 2,
     "workout_ids": [
-      "D73AD769-FC81-4EC6-9252-5B27224A6FCF"
+      "D73AD769-FC81-4EC6-9252-5B27224A6FCF",
+      "79DF295F-A3F8-4F04-92DB-5BA9C4ABFEAC"
     ]
   },
   {
     "date": "2026-11-14",
-    "distance_km": 2.52,
-    "duration_min": 37.4,
+    "distance_km": 5.04,
+    "duration_min": 74.8,
     "pace_min_per_km": 14.84,
     "elevation_gain_m": 0.0,
-    "runs": 1,
+    "runs": 2,
     "workout_ids": [
-      "3E184757-8AD9-4D5D-9595-C90E738E36A2"
+      "3E184757-8AD9-4D5D-9595-C90E738E36A2",
+      "E3F3C305-57ED-4DA6-A02A-AC5B23173CA5"
     ]
   },
   {
     "date": "2026-11-15",
-    "distance_km": 2.4,
-    "duration_min": 30.1,
-    "pace_min_per_km": 12.52,
+    "distance_km": 4.8,
+    "duration_min": 60.2,
+    "pace_min_per_km": 12.53,
     "elevation_gain_m": 0.0,
-    "runs": 1,
+    "runs": 2,
     "workout_ids": [
-      "86FB15C7-6878-4498-91B9-BDACAC80085C"
+      "86FB15C7-6878-4498-91B9-BDACAC80085C",
+      "83D52096-3202-4534-AC4B-EC266BB8218A"
     ]
   },
   {
     "date": "2026-11-17",
-    "distance_km": 2.29,
-    "duration_min": 30.5,
+    "distance_km": 4.58,
+    "duration_min": 61.0,
     "pace_min_per_km": 13.32,
     "elevation_gain_m": 0.0,
-    "runs": 1,
+    "runs": 2,
     "workout_ids": [
-      "08BB6776-93A6-43B8-8203-49526E6336C6"
+      "08BB6776-93A6-43B8-8203-49526E6336C6",
+      "0E1EA0B5-DC94-4F27-AA2B-AFB1F35A4065"
     ]
   }
 ]
