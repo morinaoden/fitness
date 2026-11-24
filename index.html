@@ -802,7 +802,7 @@
       tableToggle.textContent = tableWrap.hidden ? '表で見る' : '表を閉じる';
     });
 
-    fetch('data/weight.json')
+    fetch('data/weight.json', { cache: 'no-store' })
       .then(r => r.ok ? r.json() : [])
       .then(data => {
         rawData = data;
@@ -1052,7 +1052,7 @@
       renderCalendar();
     });
 
-    fetch('data/running.json')
+    fetch('data/running.json', { cache: 'no-store' })
       .then(r => r.ok ? r.json() : [])
       .then(data => {
         rawData = data;
