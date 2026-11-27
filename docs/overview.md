@@ -1,6 +1,6 @@
 # DYNAMIC TONE FITNESS 仕様書（サービス全体像）
 
-最終更新: 2026-09-21
+最終更新: 2026-11-27
 
 個人用フィットネス管理サイト。トレーニング・ランニング・体重・食事を1つのダッシュボードで管理する。
 静的HTML + JSONデータファイル + 外部APIとの自動同期（GitHub Actions）で構成され、サーバーは持たない。
@@ -60,7 +60,7 @@ Withings API      Health Auto Export(iOS)
 | ファイル | 内容 | 更新元 | 備考 |
 |---|---|---|---|
 | `running.json` | 日別: 距離・時間・ペース・獲得標高・回数 | Apple Health export sync（ワークアウトの開始時刻で重複判定し、日付キーへマージ。IDはエクスポートのたびに変わるため使わない） | |
-| `weight.json` | 日別: 体重(kg)・体脂肪率(%) | Withings sync | 2019年からの継続データ、1186日分(2026-09時点) |
+| `weight.json` | 日別: 体重(kg)・体脂肪率(%) | Withings sync | 2019年からの継続データ、1295日分(2026-11-27時点) |
 | `food_db.json` | 食品名・エイリアス・単位・kcal/PFC | 手動メンテナンス（文科省データ由来） | アプリからは読み取り専用。ユーザー追加分は`localStorage`側 |
 | `workouts.json` | 非ランニング系ワークアウトの日別集計 | 過去のApple Health同期（**現在は更新停止**） | 2026-09-21時点で履歴として残置のみ。「Stop collecting non-running workout data」の変更でランニング以外は収集対象外に |
 | `.sync_state.json` | Withings sync の増分同期カーソル | Withings sync | 内部状態、UIでは未使用 |
@@ -81,6 +81,26 @@ WithingsのOAuth refresh_tokenは**使用の都度失効・再発行**される�
 fine-grained PAT（`WITHINGS_GH_PAT`という名前のシークレットに保存、Withingsワークフローで使用）が必要。
 
 Withings側の初回発行手順は本リポジトリにスクリプト化されていない。
+
+### Withingsの全件再取得（`full_resync`）
+
+通常の同期は前回以降に追加・変更された測定だけを取得してマージする。日付の扱いを変えた場合など、過去データも作り直したいときは
+全件再取得を手動実行する。
+
+```bash
+gh workflow run sync-withings.yml -f full_resync=true
+gh run list --workflow=sync-withings.yml --event=workflow_dispatch --limit 1  # 実行IDを確認
+gh run watch <実行ID> --exit-status
+git pull --ff-only
+```
+
+GitHubのActions画面から「Sync Withings Weight」を手動実行し、`full_resync`にチェックを入れてもよい。
+
+- `weight.json`はマージではなく、取得結果で**丸ごと置き換える**。Withings側で削除・編集した測定も反映され、`weight.json`を手で直した内容は残らない
+- Googleスプレッドシートを設定している場合は、1枚目のタブも同じ内容で上書きされる
+- 取得結果の日数が既存の95%未満の場合は、ファイルを書き換えずに失敗終了する（ローテーション後のrefresh_tokenは保存される）
+- 元に戻す場合は、再取得で作られたコミットを`git revert`する（シートには次回のWithings同期が成功した時点で反映される）
+- ローカルで`sync_withings.py`を直接実行しない。refresh_tokenがローテーションされるため、新しいトークンをシークレットへ書き戻さないと以降の同期が失敗する
 
 ## 外部サービス依存一覧
 
