@@ -3,7 +3,12 @@ name: Sync Withings Weight
 on:
   schedule:
     - cron: "0 23 * * *"  # 08:00 JST daily (measurements happen 5-7am JST; 1hr buffer for Withings cloud sync lag)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      full_resync:
+        description: "Fetch the full history and rebuild data/weight.json"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -24,6 +29,7 @@ jobs:
           WITHINGS_CLIENT_ID: ${{ secrets.WITHINGS_CLIENT_ID }}
           WITHINGS_CLIENT_SECRET: ${{ secrets.WITHINGS_CLIENT_SECRET }}
           WITHINGS_REFRESH_TOKEN: ${{ secrets.WITHINGS_REFRESH_TOKEN }}
+          FULL_RESYNC: ${{ inputs.full_resync }}
         run: python3 scripts/sync_withings.py
 
       - name: Commit data/weight.json if changed
@@ -43,6 +49,7 @@ jobs:
       # Requires a repo secret WITHINGS_GH_PAT: a fine-grained PAT scoped to
       # this repository only, with "Secrets: Read and write" permission.
       - name: Persist rotated refresh_token
+        if: ${{ !cancelled() && steps.sync.outputs.new_refresh_token != '' }}
         env:
           GH_TOKEN: ${{ secrets.WITHINGS_GH_PAT }}
         run: |

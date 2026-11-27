@@ -9,6 +9,9 @@ only pulls measures added/changed since then, instead of the full history.
 measurement that reaches Withings' servers late (scale/app sync lag) still
 gets picked up on the next run instead of being silently missed.
 
+With $FULL_RESYNC=true (or no saved cursor), the whole history is fetched and
+data/weight.json is rebuilt from it rather than merged into.
+
 Withings rotates the refresh_token on every use: each call to the token
 endpoint returns a *new* refresh_token and invalidates the old one. This
 script writes the new refresh_token to $GITHUB_OUTPUT (as `new_refresh_token`)
@@ -130,19 +133,39 @@ def load_existing_by_day():
     return {}
 
 
+def write_refresh_token(token):
+    github_output = os.environ.get("GITHUB_OUTPUT")
+    if github_output:
+        with open(github_output, "a") as f:
+            f.write(f"new_refresh_token={token}\n")
+
+
 def main():
     run_started = int(time.time())
     state = load_state()
-    lastupdate = state.get("last_sync") or None
+    full_resync = os.environ.get("FULL_RESYNC") == "true"
+    lastupdate = None if full_resync else state.get("last_sync") or None
 
     access_token, new_refresh_token = refresh_access_token()
     measuregrps = fetch_measures(access_token, lastupdate=lastupdate)
     updated_days = to_series(measuregrps)
 
-    by_day = load_existing_by_day()
+    existing = load_existing_by_day()
+    # A full fetch replaces the file, so entries under outdated dates don't linger.
+    by_day = {} if lastupdate is None else dict(existing)
     for entry in updated_days:
         by_day[entry["date"]] = entry
     series = [by_day[d] for d in sorted(by_day)]
+
+    # Refuse to overwrite the history with a suspiciously short response.
+    if len(series) < len(existing) * 0.95:
+        print(
+            f"Aborting: result has {len(series)} days, stored has {len(existing)}",
+            file=sys.stderr,
+        )
+        # The refresh_token is already rotated, so it must still be persisted.
+        write_refresh_token(new_refresh_token)
+        sys.exit(1)
 
     os.makedirs("data", exist_ok=True)
     with open(DATA_PATH, "w") as f:
@@ -153,10 +176,7 @@ def main():
         json.dump({"last_sync": run_started - CLOCK_SKEW_BUFFER_SEC}, f)
         f.write("\n")
 
-    github_output = os.environ.get("GITHUB_OUTPUT")
-    if github_output:
-        with open(github_output, "a") as f:
-            f.write(f"new_refresh_token={new_refresh_token}\n")
+    write_refresh_token(new_refresh_token)
 
     print(
         f"Fetched {len(updated_days)} updated day(s) "
