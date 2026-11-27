@@ -1,433 +1,437 @@
 [
   {
     "date": "2019-05-23",
-    "weight_kg": 77.0,
-    "body_fat_pct": 17.3
+    "weight_kg": 77.5,
+    "body_fat_pct": 16.8
   },
   {
     "date": "2019-05-24",
-    "weight_kg": 77.1,
-    "body_fat_pct": 16.1
-  },
-  {
-    "date": "2019-05-25",
-    "weight_kg": 76.5,
-    "body_fat_pct": 17.9
-  },
-  {
-    "date": "2019-05-26",
-    "weight_kg": 76.5,
-    "body_fat_pct": 17.9
-  },
-  {
-    "date": "2019-05-27",
-    "weight_kg": 77.3,
-    "body_fat_pct": 15.4
-  },
-  {
-    "date": "2019-05-28",
-    "weight_kg": 77.5,
-    "body_fat_pct": 16.3
-  },
-  {
-    "date": "2019-05-29",
-    "weight_kg": 76.0,
+    "weight_kg": 76.2,
     "body_fat_pct": 17.8
   },
   {
+    "date": "2019-05-25",
+    "weight_kg": 77.0,
+    "body_fat_pct": 16.7
+  },
+  {
+    "date": "2019-05-26",
+    "weight_kg": 76.3,
+    "body_fat_pct": 18.5
+  },
+  {
+    "date": "2019-05-27",
+    "weight_kg": 76.2,
+    "body_fat_pct": 17.8
+  },
+  {
+    "date": "2019-05-28",
+    "weight_kg": 77.6,
+    "body_fat_pct": 15.5
+  },
+  {
+    "date": "2019-05-29",
+    "weight_kg": 76.7,
+    "body_fat_pct": 17.1
+  },
+  {
     "date": "2019-05-30",
-    "weight_kg": 75.6,
-    "body_fat_pct": 17.6
+    "weight_kg": 75.7,
+    "body_fat_pct": 17.7
   },
   {
     "date": "2019-05-31",
     "weight_kg": 75.9,
-    "body_fat_pct": 16.8
+    "body_fat_pct": 16.9
   },
   {
     "date": "2019-06-01",
-    "weight_kg": 76.3,
-    "body_fat_pct": 18.1
-  },
-  {
-    "date": "2019-06-02",
-    "weight_kg": 75.7,
-    "body_fat_pct": 18.2
-  },
-  {
-    "date": "2019-06-03",
-    "weight_kg": 76.3,
-    "body_fat_pct": 16.3
-  },
-  {
-    "date": "2019-06-04",
-    "weight_kg": 75.9,
-    "body_fat_pct": 15.8
-  },
-  {
-    "date": "2019-06-05",
-    "weight_kg": 75.3,
-    "body_fat_pct": 16.6
-  },
-  {
-    "date": "2019-06-06",
-    "weight_kg": 74.8,
-    "body_fat_pct": 15.6
-  },
-  {
-    "date": "2019-06-07",
-    "weight_kg": 75.5,
-    "body_fat_pct": 17.5
-  },
-  {
-    "date": "2019-06-08",
-    "weight_kg": 75.4,
-    "body_fat_pct": 17.9
-  },
-  {
-    "date": "2019-06-09",
-    "weight_kg": 75.3,
-    "body_fat_pct": 17.8
-  },
-  {
-    "date": "2019-06-10",
-    "weight_kg": 75.7,
-    "body_fat_pct": 17.4
-  },
-  {
-    "date": "2019-06-11",
-    "weight_kg": 75.7,
-    "body_fat_pct": 17.1
-  },
-  {
-    "date": "2019-06-12",
-    "weight_kg": 76.5,
-    "body_fat_pct": 17.4
-  },
-  {
-    "date": "2019-06-13",
-    "weight_kg": 76.1,
-    "body_fat_pct": 17.0
-  },
-  {
-    "date": "2019-06-14",
-    "weight_kg": 75.5,
-    "body_fat_pct": 17.2
-  },
-  {
-    "date": "2019-06-15",
-    "weight_kg": 75.8,
-    "body_fat_pct": 17.5
-  },
-  {
-    "date": "2019-06-16",
     "weight_kg": 76.0,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2019-06-17",
-    "weight_kg": 75.1,
+    "date": "2019-06-02",
+    "weight_kg": 75.9,
+    "body_fat_pct": 18.4
+  },
+  {
+    "date": "2019-06-03",
+    "weight_kg": 76.2,
+    "body_fat_pct": 16.5
+  },
+  {
+    "date": "2019-06-04",
+    "weight_kg": 75.6,
+    "body_fat_pct": 16.9
+  },
+  {
+    "date": "2019-06-05",
+    "weight_kg": 75.9,
+    "body_fat_pct": 15.7
+  },
+  {
+    "date": "2019-06-06",
+    "weight_kg": 74.8,
+    "body_fat_pct": 17.6
+  },
+  {
+    "date": "2019-06-07",
+    "weight_kg": 75.2,
+    "body_fat_pct": 16.1
+  },
+  {
+    "date": "2019-06-08",
+    "weight_kg": 75.3,
+    "body_fat_pct": 17.7
+  },
+  {
+    "date": "2019-06-09",
+    "weight_kg": 75.2,
+    "body_fat_pct": 17.9
+  },
+  {
+    "date": "2019-06-10",
+    "weight_kg": 75.9,
+    "body_fat_pct": 17.7
+  },
+  {
+    "date": "2019-06-11",
+    "weight_kg": 75.7,
+    "body_fat_pct": 16.9
+  },
+  {
+    "date": "2019-06-12",
+    "weight_kg": 76.0,
+    "body_fat_pct": 17.3
+  },
+  {
+    "date": "2019-06-13",
+    "weight_kg": 76.3,
     "body_fat_pct": 17.2
   },
   {
+    "date": "2019-06-14",
+    "weight_kg": 75.7,
+    "body_fat_pct": 16.9
+  },
+  {
+    "date": "2019-06-15",
+    "weight_kg": 75.6,
+    "body_fat_pct": 17.5
+  },
+  {
+    "date": "2019-06-16",
+    "weight_kg": 75.9,
+    "body_fat_pct": 17.8
+  },
+  {
+    "date": "2019-06-17",
+    "weight_kg": 75.4,
+    "body_fat_pct": 17.1
+  },
+  {
     "date": "2019-06-18",
-    "weight_kg": 75.8,
-    "body_fat_pct": 16.0
+    "weight_kg": 75.1,
+    "body_fat_pct": 17.7
   },
   {
     "date": "2019-06-19",
     "weight_kg": 75.8,
-    "body_fat_pct": 15.8
+    "body_fat_pct": 16.0
   },
   {
     "date": "2019-06-20",
-    "weight_kg": 75.1,
-    "body_fat_pct": 17.9
+    "weight_kg": 75.7,
+    "body_fat_pct": 15.8
   },
   {
     "date": "2019-06-21",
-    "weight_kg": 76.6,
-    "body_fat_pct": 15.4
-  },
-  {
-    "date": "2019-06-22",
-    "weight_kg": 75.5,
-    "body_fat_pct": 17.1
-  },
-  {
-    "date": "2019-06-23",
-    "weight_kg": 75.1,
-    "body_fat_pct": 17.8
-  },
-  {
-    "date": "2019-06-24",
-    "weight_kg": 75.4,
-    "body_fat_pct": 16.5
-  },
-  {
-    "date": "2019-06-25",
-    "weight_kg": 75.0,
-    "body_fat_pct": 17.1
-  },
-  {
-    "date": "2019-06-26",
-    "weight_kg": 74.2,
-    "body_fat_pct": 17.5
-  },
-  {
-    "date": "2019-06-27",
-    "weight_kg": 74.9,
-    "body_fat_pct": 17.2
-  },
-  {
-    "date": "2019-06-28",
-    "weight_kg": 75.1,
-    "body_fat_pct": 16.5
-  },
-  {
-    "date": "2019-06-29",
-    "weight_kg": 74.1,
+    "weight_kg": 74.8,
     "body_fat_pct": 17.9
   },
   {
-    "date": "2019-06-30",
-    "weight_kg": 74.6,
+    "date": "2019-06-22",
+    "weight_kg": 76.0,
+    "body_fat_pct": 16.1
+  },
+  {
+    "date": "2019-06-23",
+    "weight_kg": 75.2,
     "body_fat_pct": 18.0
   },
   {
-    "date": "2019-07-01",
-    "weight_kg": 74.5,
-    "body_fat_pct": 17.2
+    "date": "2019-06-24",
+    "weight_kg": 75.3,
+    "body_fat_pct": 16.7
   },
   {
-    "date": "2019-07-02",
-    "weight_kg": 74.1,
+    "date": "2019-06-25",
+    "weight_kg": 75.2,
     "body_fat_pct": 16.9
   },
   {
+    "date": "2019-06-26",
+    "weight_kg": 74.6,
+    "body_fat_pct": 17.7
+  },
+  {
+    "date": "2019-06-27",
+    "weight_kg": 74.8,
+    "body_fat_pct": 17.0
+  },
+  {
+    "date": "2019-06-28",
+    "weight_kg": 75.0,
+    "body_fat_pct": 16.8
+  },
+  {
+    "date": "2019-06-29",
+    "weight_kg": 74.6,
+    "body_fat_pct": 17.7
+  },
+  {
+    "date": "2019-06-30",
+    "weight_kg": 74.3,
+    "body_fat_pct": 17.8
+  },
+  {
+    "date": "2019-07-01",
+    "weight_kg": 74.6,
+    "body_fat_pct": 17.6
+  },
+  {
+    "date": "2019-07-02",
+    "weight_kg": 74.4,
+    "body_fat_pct": 17.1
+  },
+  {
     "date": "2019-07-03",
+    "weight_kg": 73.4,
+    "body_fat_pct": 17.2
+  },
+  {
+    "date": "2019-07-04",
     "weight_kg": 74.3,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2019-07-04",
-    "weight_kg": 73.9,
+    "date": "2019-07-05",
+    "weight_kg": 74.2,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2019-07-05",
-    "weight_kg": 74.3,
-    "body_fat_pct": 16.7
-  },
-  {
     "date": "2019-07-06",
-    "weight_kg": 73.6,
-    "body_fat_pct": 17.4
+    "weight_kg": 73.8,
+    "body_fat_pct": 17.3
   },
   {
     "date": "2019-07-07",
-    "weight_kg": 74.3,
-    "body_fat_pct": 17.1
+    "weight_kg": 74.1,
+    "body_fat_pct": 17.3
   },
   {
     "date": "2019-07-08",
-    "weight_kg": 74.2,
-    "body_fat_pct": 16.0
+    "weight_kg": 74.3,
+    "body_fat_pct": 16.3
   },
   {
     "date": "2019-07-09",
     "weight_kg": 73.8,
-    "body_fat_pct": 15.5
-  },
-  {
-    "date": "2019-07-10",
-    "weight_kg": 73.4,
     "body_fat_pct": 16.5
   },
   {
-    "date": "2019-07-11",
+    "date": "2019-07-10",
     "weight_kg": 73.8,
-    "body_fat_pct": 16.1
+    "body_fat_pct": 15.5
+  },
+  {
+    "date": "2019-07-11",
+    "weight_kg": 73.7,
+    "body_fat_pct": 16.4
   },
   {
     "date": "2019-07-12",
-    "weight_kg": 73.3,
-    "body_fat_pct": 15.7
+    "weight_kg": 73.2,
+    "body_fat_pct": 16.7
   },
   {
     "date": "2019-07-13",
-    "weight_kg": 73.8,
-    "body_fat_pct": 16.9
+    "weight_kg": 73.6,
+    "body_fat_pct": 15.9
   },
   {
     "date": "2019-07-14",
-    "weight_kg": 74.5,
+    "weight_kg": 74.3,
     "body_fat_pct": 16.8
   },
   {
     "date": "2019-07-15",
     "weight_kg": 74.2,
-    "body_fat_pct": 17.3
+    "body_fat_pct": 17.1
   },
   {
     "date": "2019-07-16",
-    "weight_kg": 74.0,
-    "body_fat_pct": 16.2
+    "weight_kg": 74.1,
+    "body_fat_pct": 16.6
   },
   {
     "date": "2019-07-17",
-    "weight_kg": 73.7,
-    "body_fat_pct": 15.7
+    "weight_kg": 73.8,
+    "body_fat_pct": 15.9
   },
   {
     "date": "2019-07-18",
-    "weight_kg": 73.7,
-    "body_fat_pct": 16.2
-  },
-  {
-    "date": "2019-07-19",
-    "weight_kg": 73.6,
-    "body_fat_pct": 15.1
-  },
-  {
-    "date": "2019-07-20",
-    "weight_kg": 74.0,
-    "body_fat_pct": 16.9
-  },
-  {
-    "date": "2019-07-22",
-    "weight_kg": 73.8,
+    "weight_kg": 73.9,
     "body_fat_pct": 16.0
   },
   {
+    "date": "2019-07-19",
+    "weight_kg": 73.0,
+    "body_fat_pct": 17.0
+  },
+  {
+    "date": "2019-07-20",
+    "weight_kg": 73.9,
+    "body_fat_pct": 15.6
+  },
+  {
+    "date": "2019-07-21",
+    "weight_kg": 73.6,
+    "body_fat_pct": 17.1
+  },
+  {
+    "date": "2019-07-22",
+    "weight_kg": 74.2,
+    "body_fat_pct": 15.4
+  },
+  {
     "date": "2019-07-23",
-    "weight_kg": 73.7,
+    "weight_kg": 73.8,
     "body_fat_pct": 15.9
   },
   {
     "date": "2019-07-24",
-    "weight_kg": 73.1,
-    "body_fat_pct": 16.0
+    "weight_kg": 73.3,
+    "body_fat_pct": 15.8
   },
   {
     "date": "2019-07-25",
-    "weight_kg": 73.7,
-    "body_fat_pct": 15.2
-  },
-  {
-    "date": "2019-07-26",
-    "weight_kg": 73.5,
-    "body_fat_pct": 16.3
-  },
-  {
-    "date": "2019-07-27",
-    "weight_kg": 73.6,
-    "body_fat_pct": 17.3
-  },
-  {
-    "date": "2019-07-28",
-    "weight_kg": 74.5,
+    "weight_kg": 72.8,
     "body_fat_pct": 17.0
   },
   {
+    "date": "2019-07-26",
+    "weight_kg": 73.8,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2019-07-27",
+    "weight_kg": 73.5,
+    "body_fat_pct": 17.0
+  },
+  {
+    "date": "2019-07-28",
+    "weight_kg": 74.1,
+    "body_fat_pct": 17.1
+  },
+  {
     "date": "2019-07-29",
-    "weight_kg": 74.0,
-    "body_fat_pct": 16.1
+    "weight_kg": 74.2,
+    "body_fat_pct": 16.2
   },
   {
     "date": "2019-07-30",
-    "weight_kg": 73.4,
-    "body_fat_pct": 16.4
-  },
-  {
-    "date": "2019-08-01",
-    "weight_kg": 73.2,
-    "body_fat_pct": 17.8
-  },
-  {
-    "date": "2019-08-02",
-    "weight_kg": 73.3,
-    "body_fat_pct": 15.7
-  },
-  {
-    "date": "2019-08-03",
-    "weight_kg": 71.8,
-    "body_fat_pct": 15.9
-  },
-  {
-    "date": "2019-08-04",
-    "weight_kg": 72.9,
-    "body_fat_pct": 16.0
-  },
-  {
-    "date": "2019-08-05",
-    "weight_kg": 74.3,
+    "weight_kg": 73.7,
     "body_fat_pct": 16.6
   },
   {
-    "date": "2019-08-06",
+    "date": "2019-07-31",
+    "weight_kg": 73.0,
+    "body_fat_pct": 16.7
+  },
+  {
+    "date": "2019-08-02",
     "weight_kg": 73.6,
-    "body_fat_pct": 15.8
+    "body_fat_pct": 16.7
+  },
+  {
+    "date": "2019-08-03",
+    "weight_kg": 72.6
+  },
+  {
+    "date": "2019-08-04",
+    "weight_kg": 72.0,
+    "body_fat_pct": 15.6
+  },
+  {
+    "date": "2019-08-05",
+    "weight_kg": 74.0,
+    "body_fat_pct": 16.4
+  },
+  {
+    "date": "2019-08-06",
+    "weight_kg": 74.3,
+    "body_fat_pct": 16.0
   },
   {
     "date": "2019-08-07",
     "weight_kg": 73.7,
-    "body_fat_pct": 16.1
+    "body_fat_pct": 16.3
   },
   {
     "date": "2019-08-08",
-    "weight_kg": 73.2,
-    "body_fat_pct": 16.5
+    "weight_kg": 73.4,
+    "body_fat_pct": 16.2
   },
   {
     "date": "2019-08-09",
-    "weight_kg": 74.0,
-    "body_fat_pct": 15.0
+    "weight_kg": 72.8,
+    "body_fat_pct": 17.0
   },
   {
     "date": "2019-08-10",
-    "weight_kg": 73.4,
-    "body_fat_pct": 17.2
+    "weight_kg": 73.9,
+    "body_fat_pct": 15.6
   },
   {
     "date": "2019-08-11",
-    "weight_kg": 74.2,
-    "body_fat_pct": 16.7
+    "weight_kg": 73.0,
+    "body_fat_pct": 17.5
   },
   {
     "date": "2019-08-12",
     "weight_kg": 74.3,
-    "body_fat_pct": 17.0
+    "body_fat_pct": 16.8
   },
   {
     "date": "2019-08-13",
-    "weight_kg": 73.2,
-    "body_fat_pct": 15.9
+    "weight_kg": 73.8,
+    "body_fat_pct": 16.1
   },
   {
     "date": "2019-08-14",
-    "weight_kg": 73.6,
-    "body_fat_pct": 16.2
+    "weight_kg": 73.5,
+    "body_fat_pct": 16.1
   },
   {
     "date": "2019-08-15",
-    "weight_kg": 73.8,
-    "body_fat_pct": 16.3
+    "weight_kg": 73.2,
+    "body_fat_pct": 17.2
   },
   {
     "date": "2019-08-16",
-    "weight_kg": 73.8,
-    "body_fat_pct": 17.5
+    "weight_kg": 74.0,
+    "body_fat_pct": 16.6
   },
   {
     "date": "2019-08-17",
-    "weight_kg": 73.3,
-    "body_fat_pct": 15.8
+    "weight_kg": 73.5,
+    "body_fat_pct": 16.2
   },
   {
     "date": "2019-08-18",
-    "weight_kg": 74.8,
-    "body_fat_pct": 16.3
+    "weight_kg": 74.0,
+    "body_fat_pct": 16.4
   },
   {
     "date": "2019-08-19",
@@ -436,8 +440,8 @@
   },
   {
     "date": "2019-08-20",
-    "weight_kg": 74.2,
-    "body_fat_pct": 15.6
+    "weight_kg": 74.5,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2019-08-21",
@@ -446,173 +450,173 @@
   },
   {
     "date": "2019-08-22",
-    "weight_kg": 73.4,
+    "weight_kg": 73.7,
     "body_fat_pct": 15.7
   },
   {
     "date": "2019-08-23",
-    "weight_kg": 73.5,
-    "body_fat_pct": 15.0
+    "weight_kg": 73.2,
+    "body_fat_pct": 16.7
   },
   {
     "date": "2019-08-24",
+    "weight_kg": 73.7,
+    "body_fat_pct": 15.3
+  },
+  {
+    "date": "2019-08-25",
     "weight_kg": 73.8,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2019-08-25",
-    "weight_kg": 73.9,
-    "body_fat_pct": 16.5
-  },
-  {
     "date": "2019-08-26",
-    "weight_kg": 74.9,
-    "body_fat_pct": 16.4
-  },
-  {
-    "date": "2019-08-27",
-    "weight_kg": 74.3,
-    "body_fat_pct": 17.2
-  },
-  {
-    "date": "2019-08-28",
-    "weight_kg": 73.8,
-    "body_fat_pct": 15.7
-  },
-  {
-    "date": "2019-08-29",
-    "weight_kg": 73.5,
-    "body_fat_pct": 15.9
-  },
-  {
-    "date": "2019-08-30",
-    "weight_kg": 74.2,
-    "body_fat_pct": 14.3
-  },
-  {
-    "date": "2019-08-31",
-    "weight_kg": 73.9,
-    "body_fat_pct": 16.9
-  },
-  {
-    "date": "2019-09-01",
     "weight_kg": 74.6,
     "body_fat_pct": 16.4
   },
   {
+    "date": "2019-08-27",
+    "weight_kg": 74.4,
+    "body_fat_pct": 17.2
+  },
+  {
+    "date": "2019-08-28",
+    "weight_kg": 74.2,
+    "body_fat_pct": 16.0
+  },
+  {
+    "date": "2019-08-29",
+    "weight_kg": 73.5,
+    "body_fat_pct": 15.8
+  },
+  {
+    "date": "2019-08-30",
+    "weight_kg": 73.2,
+    "body_fat_pct": 16.9
+  },
+  {
+    "date": "2019-08-31",
+    "weight_kg": 74.0,
+    "body_fat_pct": 15.7
+  },
+  {
+    "date": "2019-09-01",
+    "weight_kg": 74.4,
+    "body_fat_pct": 16.8
+  },
+  {
     "date": "2019-09-02",
-    "weight_kg": 73.8,
-    "body_fat_pct": 16.1
+    "weight_kg": 74.2,
+    "body_fat_pct": 16.2
   },
   {
     "date": "2019-09-03",
-    "weight_kg": 73.4,
+    "weight_kg": 73.6,
     "body_fat_pct": 16.2
   },
   {
     "date": "2019-09-04",
-    "weight_kg": 73.8,
-    "body_fat_pct": 15.0
+    "weight_kg": 73.0,
+    "body_fat_pct": 17.0
   },
   {
     "date": "2019-09-05",
-    "weight_kg": 72.8,
-    "body_fat_pct": 16.2
+    "weight_kg": 73.6,
+    "body_fat_pct": 15.1
   },
   {
     "date": "2019-09-06",
-    "weight_kg": 73.7,
-    "body_fat_pct": 16.6
+    "weight_kg": 73.3,
+    "body_fat_pct": 16.5
   },
   {
     "date": "2019-09-07",
-    "weight_kg": 74.1,
-    "body_fat_pct": 17.3
+    "weight_kg": 74.0,
+    "body_fat_pct": 17.0
   },
   {
     "date": "2019-09-08",
-    "weight_kg": 74.2,
+    "weight_kg": 74.1,
     "body_fat_pct": 17.3
   },
   {
     "date": "2019-09-09",
     "weight_kg": 73.9,
-    "body_fat_pct": 16.8
+    "body_fat_pct": 16.9
   },
   {
     "date": "2019-09-10",
-    "weight_kg": 73.0,
-    "body_fat_pct": 15.9
+    "weight_kg": 73.6,
+    "body_fat_pct": 17.4
   },
   {
     "date": "2019-09-11",
-    "weight_kg": 73.5,
-    "body_fat_pct": 16.1
+    "weight_kg": 73.4,
+    "body_fat_pct": 15.4
   },
   {
     "date": "2019-09-12",
     "weight_kg": 73.6,
-    "body_fat_pct": 15.9
+    "body_fat_pct": 16.2
   },
   {
     "date": "2019-09-13",
-    "weight_kg": 74.5,
-    "body_fat_pct": 16.5
+    "weight_kg": 74.1,
+    "body_fat_pct": 16.3
   },
   {
     "date": "2019-09-14",
-    "weight_kg": 75.2,
-    "body_fat_pct": 17.3
+    "weight_kg": 74.6,
+    "body_fat_pct": 17.2
   },
   {
     "date": "2019-09-15",
-    "weight_kg": 74.2,
-    "body_fat_pct": 17.5
+    "weight_kg": 74.5,
+    "body_fat_pct": 17.4
   },
   {
     "date": "2019-09-16",
-    "weight_kg": 74.3,
+    "weight_kg": 74.1,
     "body_fat_pct": 17.1
   },
   {
     "date": "2019-09-17",
-    "weight_kg": 73.9,
-    "body_fat_pct": 14.8
+    "weight_kg": 74.0,
+    "body_fat_pct": 17.6
   },
   {
     "date": "2019-09-18",
-    "weight_kg": 73.8,
-    "body_fat_pct": 16.3
+    "weight_kg": 74.1,
+    "body_fat_pct": 15.0
   },
   {
     "date": "2019-09-19",
-    "weight_kg": 72.9,
-    "body_fat_pct": 16.7
+    "weight_kg": 73.2,
+    "body_fat_pct": 16.5
   },
   {
     "date": "2019-09-20",
-    "weight_kg": 73.1,
-    "body_fat_pct": 15.2
+    "weight_kg": 72.6,
+    "body_fat_pct": 17.4
   },
   {
     "date": "2019-09-21",
     "weight_kg": 73.3,
-    "body_fat_pct": 16.9
+    "body_fat_pct": 15.7
   },
   {
     "date": "2019-09-22",
     "weight_kg": 73.4,
-    "body_fat_pct": 16.5
+    "body_fat_pct": 16.8
   },
   {
     "date": "2019-09-23",
-    "weight_kg": 74.1,
-    "body_fat_pct": 17.0
+    "weight_kg": 73.8,
+    "body_fat_pct": 16.7
   },
   {
     "date": "2019-09-24",
-    "weight_kg": 73.1,
-    "body_fat_pct": 15.5
+    "weight_kg": 73.7,
+    "body_fat_pct": 15.9
   },
   {
     "date": "2019-09-25",
@@ -621,71 +625,76 @@
   },
   {
     "date": "2019-09-26",
-    "weight_kg": 72.1,
-    "body_fat_pct": 16.0
+    "weight_kg": 72.4,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2019-09-27",
-    "weight_kg": 72.9,
-    "body_fat_pct": 16.2
+    "weight_kg": 72.6,
+    "body_fat_pct": 16.3
   },
   {
     "date": "2019-09-28",
-    "weight_kg": 73.3,
-    "body_fat_pct": 16.4
+    "weight_kg": 72.9,
+    "body_fat_pct": 16.3
   },
   {
     "date": "2019-09-29",
-    "weight_kg": 73.0,
-    "body_fat_pct": 16.6
+    "weight_kg": 73.2,
+    "body_fat_pct": 16.8
   },
   {
     "date": "2019-09-30",
-    "weight_kg": 73.0,
-    "body_fat_pct": 16.6
+    "weight_kg": 73.2,
+    "body_fat_pct": 16.5
   },
   {
     "date": "2019-10-01",
     "weight_kg": 73.0,
-    "body_fat_pct": 14.9
+    "body_fat_pct": 15.4
   },
   {
-    "date": "2019-10-04",
-    "weight_kg": 72.8,
-    "body_fat_pct": 16.8
+    "date": "2019-10-02",
+    "weight_kg": 72.4,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2019-10-05",
-    "weight_kg": 73.5,
-    "body_fat_pct": 16.7
+    "weight_kg": 73.4,
+    "body_fat_pct": 16.5
   },
   {
     "date": "2019-10-06",
-    "weight_kg": 73.5,
-    "body_fat_pct": 16.9
+    "weight_kg": 73.4,
+    "body_fat_pct": 17.3
   },
   {
     "date": "2019-10-07",
-    "weight_kg": 73.5,
-    "body_fat_pct": 16.1
+    "weight_kg": 73.6,
+    "body_fat_pct": 16.3
   },
   {
     "date": "2019-10-08",
+    "weight_kg": 73.0,
+    "body_fat_pct": 16.4
+  },
+  {
+    "date": "2019-10-09",
     "weight_kg": 72.6,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2019-10-09",
-    "weight_kg": 73.0,
-    "body_fat_pct": 14.7
-  },
-  {
     "date": "2019-10-10",
-    "weight_kg": 72.1,
-    "body_fat_pct": 16.1
+    "weight_kg": 72.8,
+    "body_fat_pct": 14.8
   },
   {
     "date": "2019-10-11",
+    "weight_kg": 71.8,
+    "body_fat_pct": 17.0
+  },
+  {
+    "date": "2019-10-12",
     "weight_kg": 72.0,
     "body_fat_pct": 15.8
   },
@@ -696,43 +705,43 @@
   },
   {
     "date": "2019-10-14",
-    "weight_kg": 72.7,
-    "body_fat_pct": 16.8
+    "weight_kg": 73.0,
+    "body_fat_pct": 17.0
   },
   {
     "date": "2019-10-15",
     "weight_kg": 72.4,
-    "body_fat_pct": 16.0
+    "body_fat_pct": 15.9
   },
   {
     "date": "2019-10-16",
-    "weight_kg": 73.2,
-    "body_fat_pct": 16.1
+    "weight_kg": 73.0,
+    "body_fat_pct": 16.4
   },
   {
     "date": "2019-10-17",
-    "weight_kg": 72.6,
-    "body_fat_pct": 15.6
+    "weight_kg": 72.8,
+    "body_fat_pct": 15.5
   },
   {
     "date": "2019-10-18",
-    "weight_kg": 72.5,
-    "body_fat_pct": 15.9
+    "weight_kg": 72.6,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2019-10-19",
-    "weight_kg": 72.8,
-    "body_fat_pct": 16.1
+    "weight_kg": 72.7,
+    "body_fat_pct": 16.2
   },
   {
     "date": "2019-10-20",
-    "weight_kg": 73.3,
-    "body_fat_pct": 15.3
+    "weight_kg": 73.0,
+    "body_fat_pct": 15.5
   },
   {
     "date": "2019-10-21",
-    "weight_kg": 72.9,
-    "body_fat_pct": 15.9
+    "weight_kg": 73.2,
+    "body_fat_pct": 15.6
   },
   {
     "date": "2019-10-22",
@@ -741,38 +750,38 @@
   },
   {
     "date": "2019-10-23",
-    "weight_kg": 71.9,
-    "body_fat_pct": 15.3
+    "weight_kg": 72.2,
+    "body_fat_pct": 16.3
   },
   {
     "date": "2019-10-24",
-    "weight_kg": 72.4,
-    "body_fat_pct": 15.5
+    "weight_kg": 72.3,
+    "body_fat_pct": 15.2
   },
   {
     "date": "2019-10-25",
-    "weight_kg": 71.6,
+    "weight_kg": 72.0,
     "body_fat_pct": 16.1
   },
   {
     "date": "2019-10-26",
-    "weight_kg": 72.4,
-    "body_fat_pct": 16.0
+    "weight_kg": 71.0,
+    "body_fat_pct": 15.8
   },
   {
     "date": "2019-10-27",
     "weight_kg": 72.7,
-    "body_fat_pct": 16.6
+    "body_fat_pct": 16.2
   },
   {
     "date": "2019-10-28",
-    "weight_kg": 72.5,
-    "body_fat_pct": 15.6
+    "weight_kg": 72.8,
+    "body_fat_pct": 16.1
   },
   {
     "date": "2019-10-29",
-    "weight_kg": 72.1,
-    "body_fat_pct": 15.3
+    "weight_kg": 72.2,
+    "body_fat_pct": 15.4
   },
   {
     "date": "2019-10-30",
@@ -781,78 +790,83 @@
   },
   {
     "date": "2019-10-31",
+    "weight_kg": 72.1,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2019-11-01",
     "weight_kg": 71.9,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2019-11-01",
-    "weight_kg": 72.0,
-    "body_fat_pct": 15.6
-  },
-  {
     "date": "2019-11-02",
-    "weight_kg": 72.8,
-    "body_fat_pct": 15.9
+    "weight_kg": 72.1,
+    "body_fat_pct": 16.0
   },
   {
     "date": "2019-11-03",
     "weight_kg": 72.0,
-    "body_fat_pct": 16.0
+    "body_fat_pct": 15.8
   },
   {
     "date": "2019-11-04",
-    "weight_kg": 72.2,
-    "body_fat_pct": 16.3
+    "weight_kg": 72.4,
+    "body_fat_pct": 16.2
   },
   {
     "date": "2019-11-05",
-    "weight_kg": 71.7,
-    "body_fat_pct": 15.5
+    "weight_kg": 71.8,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2019-11-06",
-    "weight_kg": 71.5,
-    "body_fat_pct": 15.4
+    "weight_kg": 71.7,
+    "body_fat_pct": 15.3
   },
   {
     "date": "2019-11-07",
     "weight_kg": 71.3,
-    "body_fat_pct": 15.2
+    "body_fat_pct": 15.3
   },
   {
     "date": "2019-11-08",
-    "weight_kg": 71.6,
-    "body_fat_pct": 14.3
+    "weight_kg": 71.0,
+    "body_fat_pct": 15.8
   },
   {
     "date": "2019-11-09",
-    "weight_kg": 72.0,
-    "body_fat_pct": 15.6
+    "weight_kg": 71.9,
+    "body_fat_pct": 14.6
   },
   {
     "date": "2019-11-10",
-    "weight_kg": 72.7,
-    "body_fat_pct": 15.1
+    "weight_kg": 72.5,
+    "body_fat_pct": 15.5
   },
   {
     "date": "2019-11-11",
-    "weight_kg": 71.8,
-    "body_fat_pct": 14.9
+    "weight_kg": 72.1,
+    "body_fat_pct": 14.7
   },
   {
     "date": "2019-11-12",
     "weight_kg": 71.9,
-    "body_fat_pct": 14.9
+    "body_fat_pct": 15.2
   },
   {
     "date": "2019-11-13",
-    "weight_kg": 71.4,
+    "weight_kg": 71.6,
     "body_fat_pct": 14.8
   },
   {
     "date": "2019-11-14",
-    "weight_kg": 71.1,
-    "body_fat_pct": 15.1
+    "weight_kg": 71.2,
+    "body_fat_pct": 14.9
+  },
+  {
+    "date": "2019-11-15",
+    "weight_kg": 70.8,
+    "body_fat_pct": 15.5
   },
   {
     "date": "2019-11-16",
@@ -860,23 +874,23 @@
   },
   {
     "date": "2019-11-17",
-    "weight_kg": 71.9,
-    "body_fat_pct": 15.5
+    "weight_kg": 72.0,
+    "body_fat_pct": 15.4
   },
   {
     "date": "2019-11-18",
-    "weight_kg": 72.2,
-    "body_fat_pct": 14.7
+    "weight_kg": 71.8,
+    "body_fat_pct": 15.6
   },
   {
     "date": "2019-11-19",
-    "weight_kg": 71.7,
-    "body_fat_pct": 14.6
+    "weight_kg": 72.2,
+    "body_fat_pct": 14.4
   },
   {
     "date": "2019-11-20",
     "weight_kg": 71.7,
-    "body_fat_pct": 14.8
+    "body_fat_pct": 14.9
   },
   {
     "date": "2019-11-21",
@@ -885,188 +899,203 @@
   },
   {
     "date": "2019-11-22",
-    "weight_kg": 71.5,
-    "body_fat_pct": 14.7
+    "weight_kg": 71.2,
+    "body_fat_pct": 15.2
   },
   {
     "date": "2019-11-23",
-    "weight_kg": 71.8,
-    "body_fat_pct": 15.2
+    "weight_kg": 71.7,
+    "body_fat_pct": 14.7
   },
   {
     "date": "2019-11-24",
-    "weight_kg": 72.3,
-    "body_fat_pct": 16.0
+    "weight_kg": 72.1,
+    "body_fat_pct": 16.1
   },
   {
     "date": "2019-11-25",
-    "weight_kg": 71.9,
-    "body_fat_pct": 14.3
+    "weight_kg": 72.1,
+    "body_fat_pct": 14.7
   },
   {
     "date": "2019-11-26",
-    "weight_kg": 71.5,
-    "body_fat_pct": 14.8
-  },
-  {
-    "date": "2019-11-27",
-    "weight_kg": 71.4,
-    "body_fat_pct": 14.0
-  },
-  {
-    "date": "2019-11-28",
-    "weight_kg": 71.3,
-    "body_fat_pct": 14.7
-  },
-  {
-    "date": "2019-11-30",
-    "weight_kg": 71.8,
-    "body_fat_pct": 14.9
-  },
-  {
-    "date": "2019-12-01",
-    "weight_kg": 71.9,
-    "body_fat_pct": 15.2
-  },
-  {
-    "date": "2019-12-02",
-    "weight_kg": 71.5,
-    "body_fat_pct": 14.8
-  },
-  {
-    "date": "2019-12-03",
-    "weight_kg": 71.2,
-    "body_fat_pct": 13.9
-  },
-  {
-    "date": "2019-12-04",
-    "weight_kg": 71.5,
-    "body_fat_pct": 14.8
-  },
-  {
-    "date": "2019-12-05",
-    "weight_kg": 71.2,
-    "body_fat_pct": 14.8
-  },
-  {
-    "date": "2019-12-07",
-    "weight_kg": 71.8,
-    "body_fat_pct": 15.2
-  },
-  {
-    "date": "2019-12-08",
-    "weight_kg": 71.6,
-    "body_fat_pct": 14.9
-  },
-  {
-    "date": "2019-12-09",
-    "weight_kg": 71.6,
-    "body_fat_pct": 13.7
-  },
-  {
-    "date": "2019-12-10",
-    "weight_kg": 71.2,
-    "body_fat_pct": 15.2
-  },
-  {
-    "date": "2019-12-11",
-    "weight_kg": 71.2,
-    "body_fat_pct": 14.8
-  },
-  {
-    "date": "2019-12-12",
-    "weight_kg": 70.4,
-    "body_fat_pct": 15.1
-  },
-  {
-    "date": "2019-12-13",
-    "weight_kg": 70.8,
-    "body_fat_pct": 14.4
-  },
-  {
-    "date": "2019-12-14",
-    "weight_kg": 71.2,
-    "body_fat_pct": 15.7
-  },
-  {
-    "date": "2019-12-15",
-    "weight_kg": 71.0,
-    "body_fat_pct": 15.5
-  },
-  {
-    "date": "2019-12-16",
-    "weight_kg": 71.2,
-    "body_fat_pct": 14.2
-  },
-  {
-    "date": "2019-12-17",
-    "weight_kg": 71.4,
-    "body_fat_pct": 14.4
-  },
-  {
-    "date": "2019-12-18",
-    "weight_kg": 70.9,
-    "body_fat_pct": 14.7
-  },
-  {
-    "date": "2019-12-19",
-    "weight_kg": 71.5,
-    "body_fat_pct": 14.7
-  },
-  {
-    "date": "2019-12-20",
-    "weight_kg": 71.2,
-    "body_fat_pct": 14.9
-  },
-  {
-    "date": "2019-12-21",
-    "weight_kg": 70.4,
-    "body_fat_pct": 15.1
-  },
-  {
-    "date": "2019-12-22",
-    "weight_kg": 71.0,
-    "body_fat_pct": 15.8
-  },
-  {
-    "date": "2019-12-23",
     "weight_kg": 71.6,
     "body_fat_pct": 14.5
   },
   {
-    "date": "2019-12-24",
+    "date": "2019-11-27",
     "weight_kg": 71.2,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2019-11-28",
+    "weight_kg": 71.5,
+    "body_fat_pct": 14.0
+  },
+  {
+    "date": "2019-11-29",
+    "weight_kg": 71.0,
+    "body_fat_pct": 15.5
+  },
+  {
+    "date": "2019-11-30",
+    "weight_kg": 71.9,
+    "body_fat_pct": 14.9
+  },
+  {
+    "date": "2019-12-01",
+    "weight_kg": 72.0,
+    "body_fat_pct": 15.0
+  },
+  {
+    "date": "2019-12-02",
+    "weight_kg": 71.7,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2019-12-03",
+    "weight_kg": 71.0,
+    "body_fat_pct": 14.9
+  },
+  {
+    "date": "2019-12-04",
+    "weight_kg": 71.5,
+    "body_fat_pct": 14.2
+  },
+  {
+    "date": "2019-12-05",
+    "weight_kg": 71.2,
+    "body_fat_pct": 14.6
+  },
+  {
+    "date": "2019-12-06",
+    "weight_kg": 70.8,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2019-12-25",
-    "weight_kg": 71.9,
-    "body_fat_pct": 15.6
+    "date": "2019-12-07",
+    "weight_kg": 72.4,
+    "body_fat_pct": 14.4
   },
   {
-    "date": "2019-12-26",
-    "weight_kg": 72.2,
+    "date": "2019-12-08",
+    "weight_kg": 71.6,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2019-12-09",
+    "weight_kg": 71.2,
+    "body_fat_pct": 15.2
+  },
+  {
+    "date": "2019-12-10",
+    "weight_kg": 71.6,
     "body_fat_pct": 14.1
   },
   {
-    "date": "2019-12-27",
-    "weight_kg": 71.7,
-    "body_fat_pct": 15.6
+    "date": "2019-12-11",
+    "weight_kg": 71.3,
+    "body_fat_pct": 14.9
   },
   {
-    "date": "2019-12-28",
-    "weight_kg": 71.8,
+    "date": "2019-12-12",
+    "weight_kg": 70.6,
+    "body_fat_pct": 15.3
+  },
+  {
+    "date": "2019-12-13",
+    "weight_kg": 70.4,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2019-12-14",
+    "weight_kg": 71.0,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2019-12-15",
+    "weight_kg": 71.1,
+    "body_fat_pct": 15.5
+  },
+  {
+    "date": "2019-12-16",
+    "weight_kg": 70.8,
+    "body_fat_pct": 15.5
+  },
+  {
+    "date": "2019-12-17",
+    "weight_kg": 71.5,
+    "body_fat_pct": 14.0
+  },
+  {
+    "date": "2019-12-18",
+    "weight_kg": 71.1,
+    "body_fat_pct": 14.7
+  },
+  {
+    "date": "2019-12-19",
+    "weight_kg": 71.3,
+    "body_fat_pct": 14.6
+  },
+  {
+    "date": "2019-12-20",
+    "weight_kg": 71.0,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2019-12-21",
+    "weight_kg": 70.2,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2019-12-22",
+    "weight_kg": 70.8,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2019-12-23",
+    "weight_kg": 71.0,
     "body_fat_pct": 15.8
   },
   {
+    "date": "2019-12-24",
+    "weight_kg": 71.6,
+    "body_fat_pct": 14.6
+  },
+  {
+    "date": "2019-12-25",
+    "weight_kg": 71.6,
+    "body_fat_pct": 15.5
+  },
+  {
+    "date": "2019-12-26",
+    "weight_kg": 71.4,
+    "body_fat_pct": 16.0
+  },
+  {
+    "date": "2019-12-27",
+    "weight_kg": 71.9,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2019-12-28",
+    "weight_kg": 71.0,
+    "body_fat_pct": 15.5
+  },
+  {
     "date": "2019-12-29",
-    "weight_kg": 71.8,
-    "body_fat_pct": 16.2
+    "weight_kg": 72.2,
+    "body_fat_pct": 16.1
   },
   {
     "date": "2019-12-30",
-    "weight_kg": 71.7,
+    "weight_kg": 71.8,
     "body_fat_pct": 16.3
+  },
+  {
+    "date": "2019-12-31",
+    "weight_kg": 71.2,
+    "body_fat_pct": 16.0
   },
   {
     "date": "2020-01-01",
@@ -1080,103 +1109,123 @@
   },
   {
     "date": "2020-01-03",
-    "weight_kg": 72.6,
-    "body_fat_pct": 15.9
+    "weight_kg": 72.7,
+    "body_fat_pct": 16.0
+  },
+  {
+    "date": "2020-01-04",
+    "weight_kg": 72.4,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2020-01-05",
-    "weight_kg": 72.5,
+    "weight_kg": 72.4,
     "body_fat_pct": 16.3
   },
   {
     "date": "2020-01-06",
-    "weight_kg": 72.9,
-    "body_fat_pct": 15.6
+    "weight_kg": 73.0,
+    "body_fat_pct": 15.8
   },
   {
     "date": "2020-01-07",
-    "weight_kg": 72.6,
-    "body_fat_pct": 15.3
+    "weight_kg": 72.7,
+    "body_fat_pct": 15.5
   },
   {
     "date": "2020-01-08",
-    "weight_kg": 73.2,
-    "body_fat_pct": 14.5
-  },
-  {
-    "date": "2020-01-09",
-    "weight_kg": 72.3,
-    "body_fat_pct": 15.3
-  },
-  {
-    "date": "2020-01-11",
-    "weight_kg": 72.1,
-    "body_fat_pct": 15.9
-  },
-  {
-    "date": "2020-01-12",
-    "weight_kg": 72.2,
-    "body_fat_pct": 16.1
-  },
-  {
-    "date": "2020-01-13",
-    "weight_kg": 72.5,
-    "body_fat_pct": 15.6
-  },
-  {
-    "date": "2020-01-14",
-    "weight_kg": 72.1,
-    "body_fat_pct": 15.1
-  },
-  {
-    "date": "2020-01-15",
-    "weight_kg": 71.8,
-    "body_fat_pct": 15.6
-  },
-  {
-    "date": "2020-01-16",
-    "weight_kg": 71.9,
-    "body_fat_pct": 15.4
-  },
-  {
-    "date": "2020-01-18",
-    "weight_kg": 72.5,
-    "body_fat_pct": 15.4
-  },
-  {
-    "date": "2020-01-19",
-    "weight_kg": 72.6,
-    "body_fat_pct": 15.7
-  },
-  {
-    "date": "2020-01-20",
     "weight_kg": 72.7,
     "body_fat_pct": 15.0
   },
   {
-    "date": "2020-01-21",
-    "weight_kg": 72.1,
-    "body_fat_pct": 15.4
-  },
-  {
-    "date": "2020-01-22",
-    "weight_kg": 71.5,
+    "date": "2020-01-09",
+    "weight_kg": 72.4,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2020-01-23",
+    "date": "2020-01-10",
+    "weight_kg": 72.2,
+    "body_fat_pct": 15.5
+  },
+  {
+    "date": "2020-01-11",
+    "weight_kg": 72.2,
+    "body_fat_pct": 15.9
+  },
+  {
+    "date": "2020-01-12",
+    "weight_kg": 72.0,
+    "body_fat_pct": 15.8
+  },
+  {
+    "date": "2020-01-13",
+    "weight_kg": 72.6,
+    "body_fat_pct": 15.7
+  },
+  {
+    "date": "2020-01-14",
+    "weight_kg": 72.2,
+    "body_fat_pct": 15.2
+  },
+  {
+    "date": "2020-01-15",
+    "weight_kg": 72.0,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2020-01-16",
+    "weight_kg": 71.9,
+    "body_fat_pct": 15.7
+  },
+  {
+    "date": "2020-01-17",
+    "weight_kg": 71.4,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2020-01-18",
+    "weight_kg": 72.7,
+    "body_fat_pct": 15.3
+  },
+  {
+    "date": "2020-01-19",
+    "weight_kg": 72.6,
+    "body_fat_pct": 15.8
+  },
+  {
+    "date": "2020-01-20",
+    "weight_kg": 72.2,
+    "body_fat_pct": 15.5
+  },
+  {
+    "date": "2020-01-21",
+    "weight_kg": 72.7,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2020-01-22",
     "weight_kg": 71.7,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2020-01-23",
+    "weight_kg": 71.6,
     "body_fat_pct": 15.8
   },
   {
     "date": "2020-01-24",
     "weight_kg": 71.6,
-    "body_fat_pct": 15.1
+    "body_fat_pct": 15.2
+  },
+  {
+    "date": "2020-01-25",
+    "weight_kg": 71.2,
+    "body_fat_pct": 15.4
   },
   {
     "date": "2020-01-26",
-    "weight_kg": 72.3,
-    "body_fat_pct": 15.8
+    "weight_kg": 72.6,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2020-01-27",
@@ -1185,111 +1234,121 @@
   },
   {
     "date": "2020-01-28",
-    "weight_kg": 71.4,
-    "body_fat_pct": 15.1
+    "weight_kg": 71.9,
+    "body_fat_pct": 15.3
   },
   {
     "date": "2020-01-29",
     "weight_kg": 71.3,
-    "body_fat_pct": 14.9
+    "body_fat_pct": 15.0
   },
   {
     "date": "2020-01-30",
-    "weight_kg": 71.4,
-    "body_fat_pct": 14.6
-  },
-  {
-    "date": "2020-01-31",
-    "weight_kg": 71.4,
-    "body_fat_pct": 15.1
-  },
-  {
-    "date": "2020-02-01",
-    "weight_kg": 72.0,
-    "body_fat_pct": 15.4
-  },
-  {
-    "date": "2020-02-02",
-    "weight_kg": 72.2,
+    "weight_kg": 71.0,
     "body_fat_pct": 15.2
   },
   {
+    "date": "2020-01-31",
+    "weight_kg": 71.7,
+    "body_fat_pct": 14.6
+  },
+  {
+    "date": "2020-02-01",
+    "weight_kg": 71.6,
+    "body_fat_pct": 15.5
+  },
+  {
+    "date": "2020-02-02",
+    "weight_kg": 71.6,
+    "body_fat_pct": 15.4
+  },
+  {
     "date": "2020-02-03",
-    "weight_kg": 72.9,
-    "body_fat_pct": 14.8
+    "weight_kg": 72.7,
+    "body_fat_pct": 14.9
   },
   {
     "date": "2020-02-04",
-    "weight_kg": 72.0,
-    "body_fat_pct": 15.3
+    "weight_kg": 72.4,
+    "body_fat_pct": 15.0
   },
   {
     "date": "2020-02-05",
+    "weight_kg": 71.4,
+    "body_fat_pct": 15.7
+  },
+  {
+    "date": "2020-02-06",
     "weight_kg": 72.1,
     "body_fat_pct": 15.6
   },
   {
     "date": "2020-02-08",
-    "weight_kg": 71.8,
-    "body_fat_pct": 15.2
+    "weight_kg": 71.4,
+    "body_fat_pct": 14.8
   },
   {
     "date": "2020-02-09",
-    "weight_kg": 71.8,
-    "body_fat_pct": 15.9
+    "weight_kg": 72.2,
+    "body_fat_pct": 15.5
   },
   {
     "date": "2020-02-10",
-    "weight_kg": 72.4,
-    "body_fat_pct": 15.2
+    "weight_kg": 72.1,
+    "body_fat_pct": 15.5
   },
   {
     "date": "2020-02-11",
-    "weight_kg": 71.2,
-    "body_fat_pct": 15.3
+    "weight_kg": 71.0,
+    "body_fat_pct": 15.5
   },
   {
     "date": "2020-02-12",
+    "weight_kg": 71.4,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2020-02-13",
     "weight_kg": 71.2,
     "body_fat_pct": 14.3
   },
   {
-    "date": "2020-02-13",
-    "weight_kg": 71.6,
-    "body_fat_pct": 15.1
-  },
-  {
     "date": "2020-02-14",
-    "weight_kg": 71.4,
-    "body_fat_pct": 15.0
+    "weight_kg": 71.8,
+    "body_fat_pct": 14.8
   },
   {
     "date": "2020-02-15",
-    "weight_kg": 71.9,
-    "body_fat_pct": 15.6
+    "weight_kg": 71.7,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2020-02-16",
-    "weight_kg": 71.8,
-    "body_fat_pct": 15.6
+    "weight_kg": 71.4,
+    "body_fat_pct": 15.4
   },
   {
     "date": "2020-02-17",
-    "weight_kg": 71.7,
-    "body_fat_pct": 15.2
-  },
-  {
-    "date": "2020-02-18",
-    "weight_kg": 72.0,
+    "weight_kg": 71.9,
     "body_fat_pct": 15.3
   },
   {
+    "date": "2020-02-18",
+    "weight_kg": 71.4,
+    "body_fat_pct": 15.4
+  },
+  {
     "date": "2020-02-19",
-    "weight_kg": 72.4,
-    "body_fat_pct": 14.6
+    "weight_kg": 72.2,
+    "body_fat_pct": 14.7
   },
   {
     "date": "2020-02-20",
+    "weight_kg": 72.4,
+    "body_fat_pct": 15.2
+  },
+  {
+    "date": "2020-02-21",
     "weight_kg": 71.8,
     "body_fat_pct": 15.3
   },
@@ -1300,88 +1359,98 @@
   },
   {
     "date": "2020-02-23",
-    "weight_kg": 72.1,
-    "body_fat_pct": 15.7
+    "weight_kg": 71.8,
+    "body_fat_pct": 15.3
   },
   {
     "date": "2020-02-24",
-    "weight_kg": 72.6,
-    "body_fat_pct": 15.6
+    "weight_kg": 72.7,
+    "body_fat_pct": 15.8
   },
   {
     "date": "2020-02-25",
-    "weight_kg": 72.1,
-    "body_fat_pct": 14.7
+    "weight_kg": 72.3,
+    "body_fat_pct": 14.8
   },
   {
     "date": "2020-02-26",
-    "weight_kg": 71.4,
-    "body_fat_pct": 15.4
+    "weight_kg": 71.8,
+    "body_fat_pct": 15.3
   },
   {
     "date": "2020-02-27",
-    "weight_kg": 71.6,
+    "weight_kg": 71.4,
     "body_fat_pct": 15.4
   },
   {
     "date": "2020-02-28",
-    "weight_kg": 71.4,
+    "weight_kg": 71.9,
     "body_fat_pct": 14.9
   },
   {
     "date": "2020-02-29",
-    "weight_kg": 72.4,
-    "body_fat_pct": 15.5
+    "weight_kg": 71.5,
+    "body_fat_pct": 15.4
   },
   {
     "date": "2020-03-01",
-    "weight_kg": 71.9,
+    "weight_kg": 71.4,
     "body_fat_pct": 15.7
   },
   {
     "date": "2020-03-02",
-    "weight_kg": 72.5,
-    "body_fat_pct": 15.4
-  },
-  {
-    "date": "2020-03-03",
-    "weight_kg": 72.0,
-    "body_fat_pct": 15.3
-  },
-  {
-    "date": "2020-03-04",
-    "weight_kg": 72.0,
-    "body_fat_pct": 14.9
-  },
-  {
-    "date": "2020-03-06",
-    "weight_kg": 72.1,
-    "body_fat_pct": 15.8
-  },
-  {
-    "date": "2020-03-07",
-    "weight_kg": 72.4,
+    "weight_kg": 72.8,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2020-03-08",
+    "date": "2020-03-03",
+    "weight_kg": 71.8,
+    "body_fat_pct": 15.6
+  },
+  {
+    "date": "2020-03-04",
+    "weight_kg": 72.1,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2020-03-05",
+    "weight_kg": 71.6,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2020-03-06",
+    "weight_kg": 72.8,
+    "body_fat_pct": 15.7
+  },
+  {
+    "date": "2020-03-07",
+    "weight_kg": 71.9,
+    "body_fat_pct": 15.7
+  },
+  {
+    "date": "2020-03-09",
     "weight_kg": 72.2,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2020-03-09",
-    "weight_kg": 72.9,
+    "date": "2020-03-10",
+    "weight_kg": 73.0,
     "body_fat_pct": 14.8
   },
   {
-    "date": "2020-03-10",
-    "weight_kg": 72.6,
-    "body_fat_pct": 15.0
+    "date": "2020-03-11",
+    "weight_kg": 72.0,
+    "body_fat_pct": 15.3
   },
   {
     "date": "2020-03-12",
-    "weight_kg": 72.4,
-    "body_fat_pct": 15.5
+    "weight_kg": 72.2,
+    "body_fat_pct": 15.2
+  },
+  {
+    "date": "2020-03-13",
+    "weight_kg": 72.6,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2020-03-14",
@@ -1390,18 +1459,23 @@
   },
   {
     "date": "2020-03-15",
-    "weight_kg": 72.3,
-    "body_fat_pct": 16.5
+    "weight_kg": 72.0,
+    "body_fat_pct": 16.4
   },
   {
     "date": "2020-03-16",
-    "weight_kg": 72.4,
-    "body_fat_pct": 16.0
+    "weight_kg": 72.6,
+    "body_fat_pct": 16.5
   },
   {
     "date": "2020-03-17",
-    "weight_kg": 71.8,
+    "weight_kg": 72.4,
     "body_fat_pct": 15.5
+  },
+  {
+    "date": "2020-03-18",
+    "weight_kg": 71.2,
+    "body_fat_pct": 16.0
   },
   {
     "date": "2020-03-21",
@@ -1409,44 +1483,44 @@
     "body_fat_pct": 15.9
   },
   {
-    "date": "2020-03-22",
-    "weight_kg": 71.8,
-    "body_fat_pct": 15.6
-  },
-  {
     "date": "2020-03-23",
-    "weight_kg": 71.8,
-    "body_fat_pct": 14.9
+    "weight_kg": 72.0,
+    "body_fat_pct": 15.1
   },
   {
     "date": "2020-03-24",
-    "weight_kg": 71.5,
-    "body_fat_pct": 14.5
+    "weight_kg": 71.7,
+    "body_fat_pct": 14.6
   },
   {
     "date": "2020-03-25",
-    "weight_kg": 71.3,
-    "body_fat_pct": 15.2
+    "weight_kg": 71.4,
+    "body_fat_pct": 14.8
   },
   {
-    "date": "2020-03-28",
-    "weight_kg": 71.4,
-    "body_fat_pct": 15.7
+    "date": "2020-03-26",
+    "weight_kg": 70.8,
+    "body_fat_pct": 15.5
   },
   {
     "date": "2020-03-29",
-    "weight_kg": 71.7,
+    "weight_kg": 71.8,
     "body_fat_pct": 16.0
   },
   {
     "date": "2020-03-30",
-    "weight_kg": 70.8,
-    "body_fat_pct": 15.0
+    "weight_kg": 71.2,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2020-03-31",
-    "weight_kg": 70.8,
-    "body_fat_pct": 14.8
+    "weight_kg": 70.9,
+    "body_fat_pct": 14.7
+  },
+  {
+    "date": "2020-04-01",
+    "weight_kg": 70.6,
+    "body_fat_pct": 15.3
   },
   {
     "date": "2020-04-02",
@@ -1461,110 +1535,135 @@
   {
     "date": "2020-04-04",
     "weight_kg": 71.0,
-    "body_fat_pct": 14.8
+    "body_fat_pct": 14.4
   },
   {
     "date": "2020-04-05",
-    "weight_kg": 70.6,
-    "body_fat_pct": 15.6
+    "weight_kg": 71.0,
+    "body_fat_pct": 15.2
   },
   {
     "date": "2020-04-06",
-    "weight_kg": 70.7,
-    "body_fat_pct": 14.8
+    "weight_kg": 71.1,
+    "body_fat_pct": 15.1
   },
   {
     "date": "2020-04-07",
     "weight_kg": 70.5,
-    "body_fat_pct": 15.3
+    "body_fat_pct": 15.0
+  },
+  {
+    "date": "2020-04-08",
+    "weight_kg": 70.0,
+    "body_fat_pct": 15.4
   },
   {
     "date": "2020-04-09",
-    "weight_kg": 70.5,
-    "body_fat_pct": 15.2
+    "weight_kg": 70.6,
+    "body_fat_pct": 15.3
   },
   {
     "date": "2020-04-10",
+    "weight_kg": 70.2,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2020-04-11",
     "weight_kg": 70.4,
     "body_fat_pct": 14.5
   },
   {
     "date": "2020-04-12",
     "weight_kg": 70.8,
-    "body_fat_pct": 15.1
+    "body_fat_pct": 14.7
   },
   {
     "date": "2020-04-13",
-    "weight_kg": 71.1,
-    "body_fat_pct": 14.9
+    "weight_kg": 71.2,
+    "body_fat_pct": 15.0
   },
   {
     "date": "2020-04-14",
     "weight_kg": 70.6,
-    "body_fat_pct": 15.0
+    "body_fat_pct": 15.3
   },
   {
     "date": "2020-04-15",
     "weight_kg": 71.3,
-    "body_fat_pct": 15.3
+    "body_fat_pct": 15.4
   },
   {
     "date": "2020-04-16",
-    "weight_kg": 70.8,
-    "body_fat_pct": 15.3
+    "weight_kg": 71.0,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2020-04-17",
+    "weight_kg": 70.2,
+    "body_fat_pct": 15.1
   },
   {
     "date": "2020-04-19",
-    "weight_kg": 71.1,
-    "body_fat_pct": 15.0
+    "weight_kg": 70.8,
+    "body_fat_pct": 14.7
   },
   {
     "date": "2020-04-20",
-    "weight_kg": 71.5,
-    "body_fat_pct": 14.5
+    "weight_kg": 71.7,
+    "body_fat_pct": 14.9
   },
   {
     "date": "2020-04-21",
-    "weight_kg": 71.6,
-    "body_fat_pct": 15.1
+    "weight_kg": 71.7,
+    "body_fat_pct": 14.9
   },
   {
     "date": "2020-04-22",
-    "weight_kg": 71.0,
-    "body_fat_pct": 15.1
+    "weight_kg": 71.2,
+    "body_fat_pct": 15.2
   },
   {
     "date": "2020-04-23",
-    "weight_kg": 70.6,
-    "body_fat_pct": 15.0
+    "weight_kg": 70.4,
+    "body_fat_pct": 14.8
   },
   {
     "date": "2020-04-24",
-    "weight_kg": 70.5,
-    "body_fat_pct": 15.0
+    "weight_kg": 70.7,
+    "body_fat_pct": 14.6
   },
   {
     "date": "2020-04-25",
-    "weight_kg": 71.0,
-    "body_fat_pct": 15.2
+    "weight_kg": 70.6,
+    "body_fat_pct": 15.6
   },
   {
     "date": "2020-04-26",
     "weight_kg": 71.4,
-    "body_fat_pct": 14.9
+    "body_fat_pct": 15.3
   },
   {
     "date": "2020-04-27",
+    "weight_kg": 71.4,
+    "body_fat_pct": 14.3
+  },
+  {
+    "date": "2020-04-28",
     "weight_kg": 70.6,
     "body_fat_pct": 14.4
   },
   {
     "date": "2020-04-29",
-    "weight_kg": 70.3,
-    "body_fat_pct": 14.2
+    "weight_kg": 70.4,
+    "body_fat_pct": 14.3
   },
   {
     "date": "2020-04-30",
+    "weight_kg": 70.2,
+    "body_fat_pct": 14.0
+  },
+  {
+    "date": "2020-05-01",
     "weight_kg": 70.0,
     "body_fat_pct": 13.7
   },
@@ -1575,8 +1674,13 @@
   },
   {
     "date": "2020-05-03",
-    "weight_kg": 70.7,
+    "weight_kg": 70.8,
     "body_fat_pct": 15.0
+  },
+  {
+    "date": "2020-05-04",
+    "weight_kg": 70.4,
+    "body_fat_pct": 15.1
   },
   {
     "date": "2020-05-05",
@@ -1585,13 +1689,13 @@
   },
   {
     "date": "2020-05-06",
-    "weight_kg": 70.1,
-    "body_fat_pct": 14.5
+    "weight_kg": 70.3,
+    "body_fat_pct": 14.8
   },
   {
     "date": "2020-05-07",
-    "weight_kg": 70.6,
-    "body_fat_pct": 15.0
+    "weight_kg": 70.2,
+    "body_fat_pct": 14.5
   },
   {
     "date": "2020-05-08",
@@ -1605,113 +1709,128 @@
   },
   {
     "date": "2020-05-10",
-    "weight_kg": 69.7,
-    "body_fat_pct": 13.6
+    "weight_kg": 69.4,
+    "body_fat_pct": 13.5
   },
   {
     "date": "2020-05-11",
-    "weight_kg": 70.5,
-    "body_fat_pct": 13.9
+    "weight_kg": 70.4,
+    "body_fat_pct": 13.6
   },
   {
     "date": "2020-05-12",
-    "weight_kg": 70.5,
-    "body_fat_pct": 14.5
+    "weight_kg": 70.6,
+    "body_fat_pct": 14.4
   },
   {
     "date": "2020-05-13",
-    "weight_kg": 70.4,
-    "body_fat_pct": 13.9
+    "weight_kg": 70.0,
+    "body_fat_pct": 14.3
   },
   {
     "date": "2020-05-14",
-    "weight_kg": 70.8,
+    "weight_kg": 70.9,
+    "body_fat_pct": 14.0
+  },
+  {
+    "date": "2020-05-15",
+    "weight_kg": 70.2,
     "body_fat_pct": 14.0
   },
   {
     "date": "2020-05-17",
     "weight_kg": 69.9,
-    "body_fat_pct": 14.0
+    "body_fat_pct": 13.8
   },
   {
     "date": "2020-05-18",
-    "weight_kg": 70.9,
-    "body_fat_pct": 14.5
+    "weight_kg": 70.8,
+    "body_fat_pct": 14.3
   },
   {
     "date": "2020-05-19",
-    "weight_kg": 70.3,
-    "body_fat_pct": 14.1
+    "weight_kg": 70.4,
+    "body_fat_pct": 14.3
   },
   {
     "date": "2020-05-20",
+    "weight_kg": 70.0,
+    "body_fat_pct": 14.3
+  },
+  {
+    "date": "2020-05-21",
     "weight_kg": 69.6,
     "body_fat_pct": 14.7
   },
   {
-    "date": "2020-05-21",
-    "weight_kg": 69.3,
-    "body_fat_pct": 14.6
+    "date": "2020-05-22",
+    "weight_kg": 69.0,
+    "body_fat_pct": 14.5
   },
   {
     "date": "2020-05-24",
-    "weight_kg": 69.2,
+    "weight_kg": 69.0,
     "body_fat_pct": 14.2
   },
   {
     "date": "2020-05-25",
-    "weight_kg": 69.6,
+    "weight_kg": 69.7,
     "body_fat_pct": 13.9
   },
   {
     "date": "2020-05-26",
     "weight_kg": 69.2,
-    "body_fat_pct": 13.6
+    "body_fat_pct": 14.2
   },
   {
     "date": "2020-05-27",
+    "weight_kg": 69.2,
+    "body_fat_pct": 13.6
+  },
+  {
+    "date": "2020-05-28",
     "weight_kg": 69.6,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2020-05-28",
+    "date": "2020-05-29",
     "weight_kg": 70.4,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2020-05-29",
+    "date": "2020-05-30",
     "weight_kg": 68.6,
     "body_fat_pct": 14.6
   },
   {
     "date": "2020-05-31",
-    "weight_kg": 69.1,
-    "body_fat_pct": 15.1
+    "weight_kg": 69.2,
+    "body_fat_pct": 15.6
   },
   {
     "date": "2020-06-01",
-    "weight_kg": 69.3,
+    "weight_kg": 69.4,
     "body_fat_pct": 14.4
   },
   {
     "date": "2020-06-02",
     "weight_kg": 69.2,
-    "body_fat_pct": 14.0
+    "body_fat_pct": 14.2
   },
   {
     "date": "2020-06-03",
-    "weight_kg": 69.3,
-    "body_fat_pct": 13.9
+    "weight_kg": 69.2,
+    "body_fat_pct": 13.7
   },
   {
     "date": "2020-06-04",
-    "weight_kg": 69.0,
-    "body_fat_pct": 14.1
+    "weight_kg": 69.2,
+    "body_fat_pct": 14.0
   },
   {
     "date": "2020-06-05",
-    "weight_kg": 69.4,
-    "body_fat_pct": 13.5
+    "weight_kg": 69.0,
+    "body_fat_pct": 14.1
   },
   {
     "date": "2020-06-06",
@@ -1720,178 +1839,198 @@
   },
   {
     "date": "2020-06-07",
-    "weight_kg": 69.0,
-    "body_fat_pct": 14.2
+    "weight_kg": 68.4,
+    "body_fat_pct": 13.7
   },
   {
     "date": "2020-06-08",
-    "weight_kg": 68.8,
-    "body_fat_pct": 13.4
+    "weight_kg": 69.1,
+    "body_fat_pct": 14.1
   },
   {
-    "date": "2020-06-09",
+    "date": "2020-06-10",
     "weight_kg": 68.4,
     "body_fat_pct": 14.0
   },
   {
-    "date": "2020-06-10",
+    "date": "2020-06-11",
     "weight_kg": 67.8,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2020-06-11",
+    "date": "2020-06-12",
     "weight_kg": 68.1,
     "body_fat_pct": 13.9
   },
   {
     "date": "2020-06-13",
-    "weight_kg": 68.6,
-    "body_fat_pct": 14.3
-  },
-  {
-    "date": "2020-06-14",
     "weight_kg": 69.0,
     "body_fat_pct": 14.2
   },
   {
+    "date": "2020-06-14",
+    "weight_kg": 68.2,
+    "body_fat_pct": 14.4
+  },
+  {
     "date": "2020-06-15",
-    "weight_kg": 68.3,
-    "body_fat_pct": 13.6
+    "weight_kg": 68.8,
+    "body_fat_pct": 13.7
   },
   {
     "date": "2020-06-16",
+    "weight_kg": 68.0,
+    "body_fat_pct": 14.1
+  },
+  {
+    "date": "2020-06-17",
     "weight_kg": 67.6,
     "body_fat_pct": 13.6
   },
   {
-    "date": "2020-06-17",
+    "date": "2020-06-18",
     "weight_kg": 67.4,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2020-06-18",
+    "date": "2020-06-19",
     "weight_kg": 67.2,
     "body_fat_pct": 13.4
   },
   {
     "date": "2020-06-20",
-    "weight_kg": 67.5,
-    "body_fat_pct": 13.8
+    "weight_kg": 67.0,
+    "body_fat_pct": 13.1
   },
   {
     "date": "2020-06-21",
     "weight_kg": 68.0,
-    "body_fat_pct": 13.8
+    "body_fat_pct": 14.4
   },
   {
     "date": "2020-06-22",
-    "weight_kg": 68.4,
-    "body_fat_pct": 13.5
+    "weight_kg": 68.2,
+    "body_fat_pct": 13.6
   },
   {
-    "date": "2020-06-23",
+    "date": "2020-06-24",
     "weight_kg": 67.3,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2020-06-24",
-    "weight_kg": 67.4,
-    "body_fat_pct": 13.4
-  },
-  {
     "date": "2020-06-25",
-    "weight_kg": 67.8,
+    "weight_kg": 67.7,
     "body_fat_pct": 12.7
   },
   {
     "date": "2020-06-26",
     "weight_kg": 67.6,
+    "body_fat_pct": 13.3
+  },
+  {
+    "date": "2020-06-27",
+    "weight_kg": 67.6,
     "body_fat_pct": 13.9
   },
   {
     "date": "2020-06-28",
-    "weight_kg": 67.6,
-    "body_fat_pct": 14.4
+    "weight_kg": 67.2,
+    "body_fat_pct": 14.6
   },
   {
     "date": "2020-06-29",
-    "weight_kg": 67.8,
-    "body_fat_pct": 14.2
+    "weight_kg": 68.0,
+    "body_fat_pct": 14.1
   },
   {
     "date": "2020-06-30",
-    "weight_kg": 67.7,
-    "body_fat_pct": 13.6
+    "weight_kg": 67.9,
+    "body_fat_pct": 13.7
   },
   {
     "date": "2020-07-01",
+    "weight_kg": 67.4,
+    "body_fat_pct": 13.9
+  },
+  {
+    "date": "2020-07-02",
     "weight_kg": 67.2,
     "body_fat_pct": 14.0
   },
   {
-    "date": "2020-07-02",
+    "date": "2020-07-03",
     "weight_kg": 67.7,
     "body_fat_pct": 13.1
   },
   {
-    "date": "2020-07-03",
+    "date": "2020-07-04",
     "weight_kg": 67.2,
     "body_fat_pct": 13.7
   },
   {
     "date": "2020-07-05",
-    "weight_kg": 67.9,
-    "body_fat_pct": 13.2
+    "weight_kg": 67.8,
+    "body_fat_pct": 12.7
   },
   {
     "date": "2020-07-06",
-    "weight_kg": 67.8,
+    "weight_kg": 68.0,
     "body_fat_pct": 13.8
   },
   {
     "date": "2020-07-07",
-    "weight_kg": 67.2,
-    "body_fat_pct": 13.4
+    "weight_kg": 67.8,
+    "body_fat_pct": 13.8
   },
   {
     "date": "2020-07-08",
-    "weight_kg": 67.0,
-    "body_fat_pct": 13.0
+    "weight_kg": 67.3,
+    "body_fat_pct": 12.9
   },
   {
     "date": "2020-07-09",
+    "weight_kg": 66.6,
+    "body_fat_pct": 13.5
+  },
+  {
+    "date": "2020-07-10",
     "weight_kg": 66.8,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2020-07-10",
+    "date": "2020-07-11",
     "weight_kg": 66.9,
     "body_fat_pct": 13.0
   },
   {
     "date": "2020-07-12",
-    "weight_kg": 67.5,
-    "body_fat_pct": 12.7
+    "weight_kg": 67.0,
+    "body_fat_pct": 12.2
   },
   {
     "date": "2020-07-13",
-    "weight_kg": 67.0,
-    "body_fat_pct": 12.7
+    "weight_kg": 67.7,
+    "body_fat_pct": 12.8
   },
   {
     "date": "2020-07-14",
-    "weight_kg": 66.8,
-    "body_fat_pct": 13.2
-  },
-  {
-    "date": "2020-07-15",
-    "weight_kg": 66.8,
+    "weight_kg": 66.6,
     "body_fat_pct": 12.9
   },
   {
-    "date": "2020-07-16",
+    "date": "2020-07-15",
     "weight_kg": 67.0,
-    "body_fat_pct": 12.4
+    "body_fat_pct": 13.0
+  },
+  {
+    "date": "2020-07-16",
+    "weight_kg": 66.9,
+    "body_fat_pct": 12.6
+  },
+  {
+    "date": "2020-07-17",
+    "weight_kg": 66.6,
+    "body_fat_pct": 12.6
   },
   {
     "date": "2020-07-18",
@@ -1900,21 +2039,26 @@
   },
   {
     "date": "2020-07-19",
-    "weight_kg": 67.5,
-    "body_fat_pct": 13.0
+    "weight_kg": 67.4,
+    "body_fat_pct": 13.1
   },
   {
     "date": "2020-07-20",
-    "weight_kg": 67.3,
-    "body_fat_pct": 12.8
+    "weight_kg": 67.6,
+    "body_fat_pct": 12.7
   },
   {
     "date": "2020-07-21",
-    "weight_kg": 67.0,
-    "body_fat_pct": 13.0
+    "weight_kg": 67.3,
+    "body_fat_pct": 12.9
   },
   {
     "date": "2020-07-22",
+    "weight_kg": 66.4,
+    "body_fat_pct": 13.3
+  },
+  {
+    "date": "2020-07-23",
     "weight_kg": 66.8,
     "body_fat_pct": 13.2
   },
@@ -1924,82 +2068,87 @@
     "body_fat_pct": 13.4
   },
   {
-    "date": "2020-07-25",
+    "date": "2020-07-26",
     "weight_kg": 66.8,
     "body_fat_pct": 13.8
   },
   {
-    "date": "2020-07-26",
+    "date": "2020-07-27",
     "weight_kg": 66.6,
     "body_fat_pct": 12.9
   },
   {
-    "date": "2020-07-27",
+    "date": "2020-07-28",
     "weight_kg": 67.2,
     "body_fat_pct": 11.9
   },
   {
-    "date": "2020-07-28",
-    "weight_kg": 66.8,
-    "body_fat_pct": 13.8
-  },
-  {
     "date": "2020-07-29",
-    "weight_kg": 66.7,
-    "body_fat_pct": 12.7
+    "weight_kg": 67.0,
+    "body_fat_pct": 13.1
   },
   {
     "date": "2020-07-30",
-    "weight_kg": 66.2,
+    "weight_kg": 66.3,
     "body_fat_pct": 12.5
   },
   {
     "date": "2020-07-31",
+    "weight_kg": 66.0,
+    "body_fat_pct": 13.0
+  },
+  {
+    "date": "2020-08-01",
     "weight_kg": 66.4,
     "body_fat_pct": 12.3
   },
   {
     "date": "2020-08-02",
-    "weight_kg": 66.9,
+    "weight_kg": 66.8,
     "body_fat_pct": 12.3
   },
   {
     "date": "2020-08-03",
-    "weight_kg": 67.2,
-    "body_fat_pct": 13.1
+    "weight_kg": 67.1,
+    "body_fat_pct": 12.7
   },
   {
     "date": "2020-08-04",
-    "weight_kg": 66.8,
-    "body_fat_pct": 12.6
+    "weight_kg": 66.4,
+    "body_fat_pct": 12.0
   },
   {
     "date": "2020-08-05",
-    "weight_kg": 66.9,
-    "body_fat_pct": 12.6
-  },
-  {
-    "date": "2020-08-06",
-    "weight_kg": 66.1,
-    "body_fat_pct": 12.9
-  },
-  {
-    "date": "2020-08-07",
-    "weight_kg": 66.2,
-    "body_fat_pct": 13.3
-  },
-  {
-    "date": "2020-08-08",
     "weight_kg": 67.2,
     "body_fat_pct": 12.5
   },
   {
+    "date": "2020-08-06",
+    "weight_kg": 66.5,
+    "body_fat_pct": 12.9
+  },
+  {
+    "date": "2020-08-07",
+    "weight_kg": 65.8,
+    "body_fat_pct": 13.1
+  },
+  {
+    "date": "2020-08-08",
+    "weight_kg": 66.2,
+    "body_fat_pct": 13.3
+  },
+  {
     "date": "2020-08-09",
+    "weight_kg": 67.2,
+    "body_fat_pct": 12.5
+  },
+  {
+    "date": "2020-08-10",
     "weight_kg": 66.8,
     "body_fat_pct": 12.3
   },
   {
-    "date": "2020-08-10",
+    "date": "2020-08-11",
     "weight_kg": 67.2,
     "body_fat_pct": 12.2
   },
@@ -2010,38 +2159,38 @@
   },
   {
     "date": "2020-08-13",
-    "weight_kg": 67.1,
-    "body_fat_pct": 12.2
+    "weight_kg": 67.4,
+    "body_fat_pct": 11.3
   },
   {
     "date": "2020-08-14",
-    "weight_kg": 66.4,
-    "body_fat_pct": 12.5
+    "weight_kg": 66.8,
+    "body_fat_pct": 12.6
   },
   {
     "date": "2020-08-15",
-    "weight_kg": 67.2,
-    "body_fat_pct": 12.5
+    "weight_kg": 66.6,
+    "body_fat_pct": 12.8
   },
   {
     "date": "2020-08-16",
     "weight_kg": 67.3,
-    "body_fat_pct": 13.3
+    "body_fat_pct": 13.2
   },
   {
     "date": "2020-08-17",
-    "weight_kg": 66.7,
-    "body_fat_pct": 12.3
+    "weight_kg": 67.1,
+    "body_fat_pct": 12.8
   },
   {
     "date": "2020-08-18",
     "weight_kg": 66.4,
-    "body_fat_pct": 13.6
+    "body_fat_pct": 12.3
   },
   {
     "date": "2020-08-19",
-    "weight_kg": 66.2,
-    "body_fat_pct": 13.3
+    "weight_kg": 66.4,
+    "body_fat_pct": 13.6
   },
   {
     "date": "2020-08-20",
@@ -2049,72 +2198,77 @@
     "body_fat_pct": 12.8
   },
   {
-    "date": "2020-08-22",
+    "date": "2020-08-21",
+    "weight_kg": 66.2,
+    "body_fat_pct": 13.3
+  },
+  {
+    "date": "2020-08-23",
     "weight_kg": 66.8,
     "body_fat_pct": 12.9
   },
   {
-    "date": "2020-08-23",
+    "date": "2020-08-24",
     "weight_kg": 67.0,
     "body_fat_pct": 12.8
   },
   {
-    "date": "2020-08-24",
+    "date": "2020-08-25",
     "weight_kg": 66.4,
     "body_fat_pct": 13.0
   },
   {
-    "date": "2020-08-25",
-    "weight_kg": 66.6,
-    "body_fat_pct": 12.3
-  },
-  {
     "date": "2020-08-26",
-    "weight_kg": 66.5,
-    "body_fat_pct": 13.0
+    "weight_kg": 66.4,
+    "body_fat_pct": 12.7
   },
   {
     "date": "2020-08-27",
-    "weight_kg": 66.8,
-    "body_fat_pct": 12.4
+    "weight_kg": 67.0,
+    "body_fat_pct": 12.2
   },
   {
     "date": "2020-08-28",
-    "weight_kg": 65.8,
-    "body_fat_pct": 13.1
+    "weight_kg": 66.4,
+    "body_fat_pct": 12.6
   },
   {
     "date": "2020-08-29",
     "weight_kg": 66.2,
-    "body_fat_pct": 12.4
+    "body_fat_pct": 12.8
   },
   {
     "date": "2020-08-30",
-    "weight_kg": 66.2,
-    "body_fat_pct": 12.7
+    "weight_kg": 65.8,
+    "body_fat_pct": 12.2
   },
   {
     "date": "2020-08-31",
-    "weight_kg": 66.5,
-    "body_fat_pct": 12.9
+    "weight_kg": 66.2,
+    "body_fat_pct": 12.5
   },
   {
     "date": "2020-09-01",
     "weight_kg": 67.1,
-    "body_fat_pct": 12.5
+    "body_fat_pct": 12.8
   },
   {
     "date": "2020-09-02",
-    "weight_kg": 66.7,
-    "body_fat_pct": 12.4
+    "weight_kg": 66.9,
+    "body_fat_pct": 12.6
   },
   {
     "date": "2020-09-03",
+    "weight_kg": 66.4,
+    "body_fat_pct": 12.6
+  },
+  {
+    "date": "2020-09-04",
     "weight_kg": 65.8,
     "body_fat_pct": 12.5
   },
   {
-    "date": "2020-09-06",
+    "date": "2020-09-07",
     "weight_kg": 66.8,
     "body_fat_pct": 12.9
   },
@@ -2124,17 +2278,17 @@
     "body_fat_pct": 12.2
   },
   {
-    "date": "2020-09-09",
-    "weight_kg": 66.6,
-    "body_fat_pct": 12.6
-  },
-  {
     "date": "2020-09-10",
-    "weight_kg": 67.1,
-    "body_fat_pct": 12.2
+    "weight_kg": 66.9,
+    "body_fat_pct": 12.0
   },
   {
     "date": "2020-09-11",
+    "weight_kg": 67.0,
+    "body_fat_pct": 13.1
+  },
+  {
+    "date": "2020-09-12",
     "weight_kg": 65.8,
     "body_fat_pct": 13.1
   },
@@ -2145,148 +2299,163 @@
   },
   {
     "date": "2020-09-14",
-    "weight_kg": 66.7,
-    "body_fat_pct": 12.7
+    "weight_kg": 67.0,
+    "body_fat_pct": 12.2
   },
   {
     "date": "2020-09-15",
-    "weight_kg": 66.7,
-    "body_fat_pct": 12.9
+    "weight_kg": 66.8,
+    "body_fat_pct": 13.0
   },
   {
     "date": "2020-09-16",
     "weight_kg": 66.6,
-    "body_fat_pct": 12.3
+    "body_fat_pct": 12.6
   },
   {
     "date": "2020-09-17",
-    "weight_kg": 66.8,
-    "body_fat_pct": 12.3
+    "weight_kg": 66.2,
+    "body_fat_pct": 12.4
   },
   {
     "date": "2020-09-18",
     "weight_kg": 67.0,
-    "body_fat_pct": 13.0
+    "body_fat_pct": 12.8
   },
   {
     "date": "2020-09-19",
+    "weight_kg": 66.6,
+    "body_fat_pct": 12.6
+  },
+  {
+    "date": "2020-09-20",
     "weight_kg": 66.8,
     "body_fat_pct": 13.2
   },
   {
     "date": "2020-09-21",
-    "weight_kg": 67.5,
-    "body_fat_pct": 12.9
+    "weight_kg": 67.4,
+    "body_fat_pct": 12.4
   },
   {
     "date": "2020-09-22",
-    "weight_kg": 67.8,
-    "body_fat_pct": 12.8
+    "weight_kg": 67.9,
+    "body_fat_pct": 13.0
   },
   {
     "date": "2020-09-23",
+    "weight_kg": 67.4,
+    "body_fat_pct": 13.1
+  },
+  {
+    "date": "2020-09-24",
     "weight_kg": 67.0,
     "body_fat_pct": 12.8
   },
   {
-    "date": "2020-09-24",
+    "date": "2020-09-25",
     "weight_kg": 66.8,
     "body_fat_pct": 12.9
   },
   {
-    "date": "2020-09-25",
+    "date": "2020-09-26",
     "weight_kg": 66.0,
     "body_fat_pct": 12.1
   },
   {
     "date": "2020-09-27",
-    "weight_kg": 67.2,
-    "body_fat_pct": 13.1
+    "weight_kg": 66.6,
+    "body_fat_pct": 13.2
   },
   {
     "date": "2020-09-28",
-    "weight_kg": 67.7,
-    "body_fat_pct": 12.6
+    "weight_kg": 68.0,
+    "body_fat_pct": 12.4
   },
   {
     "date": "2020-09-29",
     "weight_kg": 67.5,
-    "body_fat_pct": 12.9
-  },
-  {
-    "date": "2020-09-30",
-    "weight_kg": 68.0,
-    "body_fat_pct": 14.1
-  },
-  {
-    "date": "2020-10-01",
-    "weight_kg": 67.3,
-    "body_fat_pct": 12.6
-  },
-  {
-    "date": "2020-10-02",
-    "weight_kg": 66.4,
-    "body_fat_pct": 13.0
-  },
-  {
-    "date": "2020-10-03",
-    "weight_kg": 67.1,
-    "body_fat_pct": 13.1
-  },
-  {
-    "date": "2020-10-04",
-    "weight_kg": 67.3,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2020-10-05",
+    "date": "2020-09-30",
     "weight_kg": 67.2,
     "body_fat_pct": 12.8
   },
   {
-    "date": "2020-10-06",
-    "weight_kg": 66.9,
-    "body_fat_pct": 13.0
+    "date": "2020-10-01",
+    "weight_kg": 67.8,
+    "body_fat_pct": 13.3
   },
   {
-    "date": "2020-10-07",
+    "date": "2020-10-02",
+    "weight_kg": 67.0,
+    "body_fat_pct": 12.8
+  },
+  {
+    "date": "2020-10-03",
+    "weight_kg": 66.9,
+    "body_fat_pct": 12.7
+  },
+  {
+    "date": "2020-10-04",
+    "weight_kg": 67.2,
+    "body_fat_pct": 13.5
+  },
+  {
+    "date": "2020-10-05",
     "weight_kg": 67.0,
     "body_fat_pct": 13.1
   },
   {
+    "date": "2020-10-06",
+    "weight_kg": 67.2,
+    "body_fat_pct": 12.8
+  },
+  {
+    "date": "2020-10-07",
+    "weight_kg": 66.6,
+    "body_fat_pct": 13.2
+  },
+  {
     "date": "2020-10-08",
+    "weight_kg": 67.0,
+    "body_fat_pct": 13.1
+  },
+  {
+    "date": "2020-10-09",
     "weight_kg": 66.6,
     "body_fat_pct": 12.6
   },
   {
-    "date": "2020-10-09",
+    "date": "2020-10-10",
     "weight_kg": 66.6,
     "body_fat_pct": 12.3
   },
   {
     "date": "2020-10-11",
-    "weight_kg": 66.9,
-    "body_fat_pct": 13.5
+    "weight_kg": 66.6,
+    "body_fat_pct": 13.2
   },
   {
     "date": "2020-10-12",
+    "weight_kg": 67.2,
+    "body_fat_pct": 13.7
+  },
+  {
+    "date": "2020-10-13",
     "weight_kg": 67.0,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2020-10-13",
+    "date": "2020-10-14",
     "weight_kg": 67.2,
     "body_fat_pct": 12.8
   },
   {
-    "date": "2020-10-14",
-    "weight_kg": 66.6,
-    "body_fat_pct": 12.9
-  },
-  {
     "date": "2020-10-15",
-    "weight_kg": 67.2,
-    "body_fat_pct": 12.2
+    "weight_kg": 66.9,
+    "body_fat_pct": 12.6
   },
   {
     "date": "2020-10-16",
@@ -2300,36 +2469,46 @@
   },
   {
     "date": "2020-10-19",
-    "weight_kg": 67.6,
-    "body_fat_pct": 12.9
+    "weight_kg": 67.8,
+    "body_fat_pct": 12.7
   },
   {
     "date": "2020-10-20",
+    "weight_kg": 67.4,
+    "body_fat_pct": 13.1
+  },
+  {
+    "date": "2020-10-21",
     "weight_kg": 67.8,
     "body_fat_pct": 13.3
   },
   {
-    "date": "2020-10-21",
-    "weight_kg": 66.8,
-    "body_fat_pct": 13.2
+    "date": "2020-10-22",
+    "weight_kg": 67.0,
+    "body_fat_pct": 12.4
   },
   {
-    "date": "2020-10-22",
-    "weight_kg": 66.8,
-    "body_fat_pct": 12.3
+    "date": "2020-10-23",
+    "weight_kg": 66.4,
+    "body_fat_pct": 13.0
   },
   {
     "date": "2020-10-25",
-    "weight_kg": 67.8,
-    "body_fat_pct": 13.0
+    "weight_kg": 67.2,
+    "body_fat_pct": 12.8
   },
   {
     "date": "2020-10-26",
+    "weight_kg": 68.4,
+    "body_fat_pct": 13.2
+  },
+  {
+    "date": "2020-10-27",
     "weight_kg": 67.8,
     "body_fat_pct": 13.0
   },
   {
-    "date": "2020-10-27",
+    "date": "2020-10-28",
     "weight_kg": 66.8,
     "body_fat_pct": 12.6
   },
@@ -2345,21 +2524,31 @@
   },
   {
     "date": "2020-11-01",
-    "weight_kg": 68.0,
-    "body_fat_pct": 13.1
+    "weight_kg": 67.8,
+    "body_fat_pct": 13.0
+  },
+  {
+    "date": "2020-11-02",
+    "weight_kg": 68.2,
+    "body_fat_pct": 13.2
   },
   {
     "date": "2020-11-03",
-    "weight_kg": 68.5,
-    "body_fat_pct": 13.6
+    "weight_kg": 68.2,
+    "body_fat_pct": 13.8
   },
   {
     "date": "2020-11-04",
+    "weight_kg": 68.8,
+    "body_fat_pct": 13.4
+  },
+  {
+    "date": "2020-11-05",
     "weight_kg": 68.0,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2020-11-05",
+    "date": "2020-11-06",
     "weight_kg": 68.0,
     "body_fat_pct": 13.2
   },
@@ -2370,26 +2559,31 @@
   },
   {
     "date": "2020-11-08",
-    "weight_kg": 68.4,
-    "body_fat_pct": 13.0
+    "weight_kg": 68.2,
+    "body_fat_pct": 12.9
   },
   {
     "date": "2020-11-09",
+    "weight_kg": 68.6,
+    "body_fat_pct": 13.1
+  },
+  {
+    "date": "2020-11-10",
     "weight_kg": 68.0,
     "body_fat_pct": 12.9
   },
   {
-    "date": "2020-11-10",
+    "date": "2020-11-11",
     "weight_kg": 67.4,
     "body_fat_pct": 13.1
   },
   {
-    "date": "2020-11-11",
+    "date": "2020-11-12",
     "weight_kg": 66.6,
     "body_fat_pct": 12.9
   },
   {
-    "date": "2020-11-12",
+    "date": "2020-11-13",
     "weight_kg": 66.6,
     "body_fat_pct": 12.6
   },
@@ -2400,53 +2594,58 @@
   },
   {
     "date": "2020-11-15",
-    "weight_kg": 67.2,
-    "body_fat_pct": 12.8
-  },
-  {
-    "date": "2020-11-16",
     "weight_kg": 66.8,
     "body_fat_pct": 12.6
   },
   {
+    "date": "2020-11-16",
+    "weight_kg": 67.6,
+    "body_fat_pct": 13.0
+  },
+  {
     "date": "2020-11-17",
+    "weight_kg": 66.8,
+    "body_fat_pct": 12.6
+  },
+  {
+    "date": "2020-11-18",
     "weight_kg": 66.8,
     "body_fat_pct": 12.9
   },
   {
-    "date": "2020-11-18",
+    "date": "2020-11-19",
     "weight_kg": 66.4,
     "body_fat_pct": 12.3
   },
   {
-    "date": "2020-11-20",
+    "date": "2020-11-21",
     "weight_kg": 67.0,
     "body_fat_pct": 12.5
   },
   {
     "date": "2020-11-22",
-    "weight_kg": 67.3,
-    "body_fat_pct": 12.6
+    "weight_kg": 67.0,
+    "body_fat_pct": 12.2
   },
   {
     "date": "2020-11-23",
+    "weight_kg": 67.6,
+    "body_fat_pct": 13.0
+  },
+  {
+    "date": "2020-11-24",
     "weight_kg": 68.2,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2020-11-24",
+    "date": "2020-11-25",
     "weight_kg": 67.2,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2020-11-25",
-    "weight_kg": 66.4,
-    "body_fat_pct": 13.0
-  },
-  {
     "date": "2020-11-26",
     "weight_kg": 66.4,
-    "body_fat_pct": 12.6
+    "body_fat_pct": 13.0
   },
   {
     "date": "2020-11-27",
@@ -2454,44 +2653,54 @@
     "body_fat_pct": 12.6
   },
   {
+    "date": "2020-11-28",
+    "weight_kg": 66.4,
+    "body_fat_pct": 12.6
+  },
+  {
     "date": "2020-11-29",
-    "weight_kg": 66.8,
-    "body_fat_pct": 12.4
+    "weight_kg": 66.4,
+    "body_fat_pct": 12.3
   },
   {
     "date": "2020-11-30",
+    "weight_kg": 67.2,
+    "body_fat_pct": 12.5
+  },
+  {
+    "date": "2020-12-01",
     "weight_kg": 66.6,
     "body_fat_pct": 12.9
   },
   {
-    "date": "2020-12-01",
+    "date": "2020-12-02",
     "weight_kg": 66.2,
     "body_fat_pct": 12.4
   },
   {
-    "date": "2020-12-02",
+    "date": "2020-12-03",
     "weight_kg": 66.0,
     "body_fat_pct": 12.7
   },
   {
-    "date": "2020-12-03",
+    "date": "2020-12-04",
     "weight_kg": 66.6,
     "body_fat_pct": 12.6
   },
   {
-    "date": "2020-12-04",
+    "date": "2020-12-05",
     "weight_kg": 65.8,
     "body_fat_pct": 12.8
   },
   {
     "date": "2020-12-06",
-    "weight_kg": 67.1,
-    "body_fat_pct": 12.8
+    "weight_kg": 67.2,
+    "body_fat_pct": 12.5
   },
   {
     "date": "2020-12-07",
-    "weight_kg": 67.4,
-    "body_fat_pct": 12.8
+    "weight_kg": 67.0,
+    "body_fat_pct": 13.1
   },
   {
     "date": "2020-12-08",
@@ -2500,11 +2709,16 @@
   },
   {
     "date": "2020-12-09",
+    "weight_kg": 67.4,
+    "body_fat_pct": 12.8
+  },
+  {
+    "date": "2020-12-10",
     "weight_kg": 66.4,
     "body_fat_pct": 12.3
   },
   {
-    "date": "2020-12-10",
+    "date": "2020-12-11",
     "weight_kg": 66.8,
     "body_fat_pct": 12.6
   },
@@ -2514,14 +2728,9 @@
     "body_fat_pct": 12.3
   },
   {
-    "date": "2020-12-13",
+    "date": "2020-12-14",
     "weight_kg": 67.6,
     "body_fat_pct": 12.4
-  },
-  {
-    "date": "2020-12-14",
-    "weight_kg": 67.0,
-    "body_fat_pct": 12.5
   },
   {
     "date": "2020-12-15",
@@ -2530,11 +2739,16 @@
   },
   {
     "date": "2020-12-16",
+    "weight_kg": 67.0,
+    "body_fat_pct": 12.5
+  },
+  {
+    "date": "2020-12-17",
     "weight_kg": 66.8,
     "body_fat_pct": 12.6
   },
   {
-    "date": "2020-12-17",
+    "date": "2020-12-18",
     "weight_kg": 66.4,
     "body_fat_pct": 12.6
   },
@@ -2545,26 +2759,31 @@
   },
   {
     "date": "2020-12-20",
-    "weight_kg": 67.0,
-    "body_fat_pct": 12.7
+    "weight_kg": 66.8,
+    "body_fat_pct": 13.2
   },
   {
     "date": "2020-12-21",
     "weight_kg": 67.2,
-    "body_fat_pct": 12.8
+    "body_fat_pct": 12.2
   },
   {
     "date": "2020-12-22",
+    "weight_kg": 67.2,
+    "body_fat_pct": 12.8
+  },
+  {
+    "date": "2020-12-23",
     "weight_kg": 67.6,
     "body_fat_pct": 13.0
   },
   {
-    "date": "2020-12-23",
+    "date": "2020-12-24",
     "weight_kg": 67.0,
     "body_fat_pct": 12.5
   },
   {
-    "date": "2020-12-24",
+    "date": "2020-12-25",
     "weight_kg": 66.8,
     "body_fat_pct": 12.6
   },
@@ -2575,8 +2794,13 @@
   },
   {
     "date": "2020-12-27",
-    "weight_kg": 66.9,
+    "weight_kg": 66.8,
     "body_fat_pct": 12.9
+  },
+  {
+    "date": "2020-12-28",
+    "weight_kg": 67.0,
+    "body_fat_pct": 12.8
   },
   {
     "date": "2020-12-29",
@@ -2599,69 +2823,74 @@
     "body_fat_pct": 13.3
   },
   {
-    "date": "2021-01-04",
+    "date": "2021-01-05",
     "weight_kg": 67.8,
     "body_fat_pct": 13.0
   },
   {
-    "date": "2021-01-05",
+    "date": "2021-01-06",
     "weight_kg": 67.2,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-01-06",
+    "date": "2021-01-07",
     "weight_kg": 66.6,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2021-01-07",
+    "date": "2021-01-08",
     "weight_kg": 67.2,
     "body_fat_pct": 12.8
   },
   {
-    "date": "2021-01-10",
+    "date": "2021-01-11",
     "weight_kg": 67.8,
     "body_fat_pct": 13.6
   },
   {
-    "date": "2021-01-11",
+    "date": "2021-01-12",
     "weight_kg": 67.6,
     "body_fat_pct": 12.7
   },
   {
-    "date": "2021-01-12",
+    "date": "2021-01-13",
     "weight_kg": 65.8,
     "body_fat_pct": 13.1
   },
   {
-    "date": "2021-01-13",
+    "date": "2021-01-14",
     "weight_kg": 66.6,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2021-01-14",
+    "date": "2021-01-15",
     "weight_kg": 66.8,
     "body_fat_pct": 12.3
   },
   {
     "date": "2021-01-16",
-    "weight_kg": 66.3,
-    "body_fat_pct": 12.7
+    "weight_kg": 66.0,
+    "body_fat_pct": 12.1
   },
   {
     "date": "2021-01-17",
+    "weight_kg": 66.6,
+    "body_fat_pct": 13.2
+  },
+  {
+    "date": "2021-01-18",
     "weight_kg": 67.2,
     "body_fat_pct": 13.1
   },
   {
-    "date": "2021-01-18",
+    "date": "2021-01-19",
     "weight_kg": 66.8,
     "body_fat_pct": 12.9
   },
   {
     "date": "2021-01-20",
     "weight_kg": 66.4,
-    "body_fat_pct": 12.5
+    "body_fat_pct": 12.3
   },
   {
     "date": "2021-01-21",
@@ -2670,43 +2899,48 @@
   },
   {
     "date": "2021-01-22",
+    "weight_kg": 66.4,
+    "body_fat_pct": 12.6
+  },
+  {
+    "date": "2021-01-23",
     "weight_kg": 66.6,
     "body_fat_pct": 12.6
   },
   {
-    "date": "2021-01-24",
+    "date": "2021-01-25",
     "weight_kg": 67.8,
     "body_fat_pct": 13.0
   },
   {
-    "date": "2021-01-25",
+    "date": "2021-01-26",
     "weight_kg": 66.8,
     "body_fat_pct": 12.3
   },
   {
-    "date": "2021-01-26",
+    "date": "2021-01-27",
     "weight_kg": 66.4,
     "body_fat_pct": 12.6
   },
   {
-    "date": "2021-01-27",
+    "date": "2021-01-28",
     "weight_kg": 66.6,
     "body_fat_pct": 12.9
   },
   {
-    "date": "2021-01-28",
+    "date": "2021-01-29",
     "weight_kg": 66.4,
     "body_fat_pct": 12.6
   },
   {
-    "date": "2021-01-29",
+    "date": "2021-01-30",
     "weight_kg": 66.2,
     "body_fat_pct": 13.3
   },
   {
     "date": "2021-01-31",
-    "weight_kg": 67.2,
-    "body_fat_pct": 13.2
+    "weight_kg": 66.6,
+    "body_fat_pct": 12.9
   },
   {
     "date": "2021-02-01",
@@ -2715,36 +2949,46 @@
   },
   {
     "date": "2021-02-02",
+    "weight_kg": 67.8,
+    "body_fat_pct": 13.6
+  },
+  {
+    "date": "2021-02-03",
     "weight_kg": 67.4,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-02-03",
+    "date": "2021-02-04",
     "weight_kg": 67.2,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-02-04",
+    "date": "2021-02-05",
     "weight_kg": 66.8,
     "body_fat_pct": 13.2
   },
   {
     "date": "2021-02-07",
-    "weight_kg": 68.2,
-    "body_fat_pct": 13.5
+    "weight_kg": 67.8,
+    "body_fat_pct": 13.6
   },
   {
     "date": "2021-02-08",
+    "weight_kg": 68.6,
+    "body_fat_pct": 13.4
+  },
+  {
+    "date": "2021-02-09",
     "weight_kg": 67.8,
     "body_fat_pct": 13.3
   },
   {
-    "date": "2021-02-10",
+    "date": "2021-02-11",
     "weight_kg": 67.4,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-02-11",
+    "date": "2021-02-12",
     "weight_kg": 68.0,
     "body_fat_pct": 13.5
   },
@@ -2754,27 +2998,27 @@
     "body_fat_pct": 13.3
   },
   {
-    "date": "2021-02-14",
+    "date": "2021-02-15",
     "weight_kg": 69.0,
     "body_fat_pct": 13.3
   },
   {
-    "date": "2021-02-15",
+    "date": "2021-02-16",
     "weight_kg": 67.6,
     "body_fat_pct": 13.0
   },
   {
-    "date": "2021-02-16",
+    "date": "2021-02-17",
     "weight_kg": 67.2,
     "body_fat_pct": 12.8
   },
   {
-    "date": "2021-02-17",
+    "date": "2021-02-18",
     "weight_kg": 67.2,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-02-18",
+    "date": "2021-02-19",
     "weight_kg": 67.4
   },
   {
@@ -2783,126 +3027,141 @@
     "body_fat_pct": 13.1
   },
   {
-    "date": "2021-02-21",
+    "date": "2021-02-22",
     "weight_kg": 68.2,
     "body_fat_pct": 13.5
   },
   {
     "date": "2021-02-23",
     "weight_kg": 67.4,
-    "body_fat_pct": 13.4
+    "body_fat_pct": 13.1
   },
   {
     "date": "2021-02-24",
+    "weight_kg": 67.4,
+    "body_fat_pct": 13.7
+  },
+  {
+    "date": "2021-02-25",
     "weight_kg": 67.0,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-02-25",
+    "date": "2021-02-26",
     "weight_kg": 66.8,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2021-02-26",
+    "date": "2021-02-27",
     "weight_kg": 67.4,
     "body_fat_pct": 12.8
   },
   {
-    "date": "2021-03-01",
+    "date": "2021-03-02",
     "weight_kg": 68.2,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2021-03-02",
+    "date": "2021-03-03",
     "weight_kg": 67.4,
     "body_fat_pct": 13.1
   },
   {
-    "date": "2021-03-03",
+    "date": "2021-03-04",
     "weight_kg": 67.4,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-03-04",
+    "date": "2021-03-05",
     "weight_kg": 67.0,
     "body_fat_pct": 12.8
   },
   {
     "date": "2021-03-07",
     "weight_kg": 67.6,
-    "body_fat_pct": 13.6
+    "body_fat_pct": 13.3
   },
   {
-    "date": "2021-03-09",
+    "date": "2021-03-08",
+    "weight_kg": 67.6,
+    "body_fat_pct": 13.9
+  },
+  {
+    "date": "2021-03-10",
     "weight_kg": 67.9,
     "body_fat_pct": 12.8
   },
   {
-    "date": "2021-03-10",
+    "date": "2021-03-11",
     "weight_kg": 67.3,
     "body_fat_pct": 13.6
   },
   {
-    "date": "2021-03-11",
+    "date": "2021-03-12",
     "weight_kg": 67.1
   },
   {
-    "date": "2021-03-15",
+    "date": "2021-03-16",
     "weight_kg": 67.7,
     "body_fat_pct": 14.1
   },
   {
-    "date": "2021-03-16",
+    "date": "2021-03-17",
     "weight_kg": 67.6,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-03-17",
+    "date": "2021-03-18",
     "weight_kg": 67.6,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-03-18",
+    "date": "2021-03-19",
     "weight_kg": 67.9,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2021-03-21",
+    "date": "2021-03-22",
     "weight_kg": 68.1,
     "body_fat_pct": 13.8
   },
   {
-    "date": "2021-03-22",
+    "date": "2021-03-23",
     "weight_kg": 68.0,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-03-24",
+    "date": "2021-03-25",
     "weight_kg": 67.7,
     "body_fat_pct": 13.5
   },
   {
-    "date": "2021-03-25",
+    "date": "2021-03-26",
     "weight_kg": 67.2,
     "body_fat_pct": 13.6
   },
   {
     "date": "2021-03-28",
-    "weight_kg": 67.4,
-    "body_fat_pct": 13.3
+    "weight_kg": 67.3,
+    "body_fat_pct": 13.2
   },
   {
     "date": "2021-03-29",
+    "weight_kg": 67.4,
+    "body_fat_pct": 13.4
+  },
+  {
+    "date": "2021-03-30",
     "weight_kg": 67.3,
     "body_fat_pct": 13.6
   },
   {
-    "date": "2021-03-30",
+    "date": "2021-03-31",
     "weight_kg": 67.8,
     "body_fat_pct": 13.6
   },
   {
-    "date": "2021-03-31",
+    "date": "2021-04-01",
     "weight_kg": 67.8,
     "body_fat_pct": 12.9
   },
@@ -2917,82 +3176,82 @@
     "body_fat_pct": 12.9
   },
   {
-    "date": "2021-04-04",
+    "date": "2021-04-05",
     "weight_kg": 68.2,
     "body_fat_pct": 13.8
   },
   {
-    "date": "2021-04-05",
+    "date": "2021-04-06",
     "weight_kg": 67.5,
     "body_fat_pct": 13.5
   },
   {
-    "date": "2021-04-06",
+    "date": "2021-04-07",
     "weight_kg": 67.4,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-04-07",
+    "date": "2021-04-08",
     "weight_kg": 67.9,
     "body_fat_pct": 13.3
   },
   {
-    "date": "2021-04-08",
+    "date": "2021-04-09",
     "weight_kg": 68.0,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2021-04-11",
+    "date": "2021-04-12",
     "weight_kg": 67.8,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-04-12",
+    "date": "2021-04-13",
     "weight_kg": 67.5,
     "body_fat_pct": 13.0
   },
   {
-    "date": "2021-04-13",
+    "date": "2021-04-14",
     "weight_kg": 67.5,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-04-15",
+    "date": "2021-04-16",
     "weight_kg": 67.4,
     "body_fat_pct": 13.1
   },
   {
-    "date": "2021-04-18",
+    "date": "2021-04-19",
     "weight_kg": 68.5,
     "body_fat_pct": 13.5
   },
   {
-    "date": "2021-04-20",
+    "date": "2021-04-21",
     "weight_kg": 67.7,
     "body_fat_pct": 13.5
   },
   {
-    "date": "2021-04-21",
+    "date": "2021-04-22",
     "weight_kg": 68.3,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-04-22",
+    "date": "2021-04-23",
     "weight_kg": 67.6,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-04-25",
+    "date": "2021-04-26",
     "weight_kg": 68.1,
     "body_fat_pct": 14.2
   },
   {
-    "date": "2021-04-26",
+    "date": "2021-04-27",
     "weight_kg": 67.7,
     "body_fat_pct": 13.3
   },
   {
-    "date": "2021-04-27",
+    "date": "2021-04-28",
     "weight_kg": 68.5,
     "body_fat_pct": 13.0
   },
@@ -3002,27 +3261,27 @@
     "body_fat_pct": 13.6
   },
   {
-    "date": "2021-05-03",
+    "date": "2021-05-04",
     "weight_kg": 67.9,
     "body_fat_pct": 14.0
   },
   {
-    "date": "2021-05-04",
+    "date": "2021-05-05",
     "weight_kg": 67.8,
     "body_fat_pct": 14.1
   },
   {
-    "date": "2021-05-05",
+    "date": "2021-05-06",
     "weight_kg": 68.1,
     "body_fat_pct": 13.9
   },
   {
-    "date": "2021-05-06",
+    "date": "2021-05-07",
     "weight_kg": 68.0,
     "body_fat_pct": 14.1
   },
   {
-    "date": "2021-05-07",
+    "date": "2021-05-08",
     "weight_kg": 67.2,
     "body_fat_pct": 14.3
   },
@@ -3032,237 +3291,247 @@
     "body_fat_pct": 14.4
   },
   {
-    "date": "2021-05-10",
+    "date": "2021-05-11",
     "weight_kg": 68.0,
     "body_fat_pct": 13.4
   },
   {
-    "date": "2021-05-11",
+    "date": "2021-05-12",
     "weight_kg": 67.8,
     "body_fat_pct": 13.3
   },
   {
-    "date": "2021-05-15",
+    "date": "2021-05-16",
     "weight_kg": 68.4,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2021-05-16",
+    "date": "2021-05-17",
     "weight_kg": 67.8,
     "body_fat_pct": 13.6
-  },
-  {
-    "date": "2021-05-17",
-    "weight_kg": 67.6,
-    "body_fat_pct": 13.2
   },
   {
     "date": "2021-05-18",
     "weight_kg": 67.6,
-    "body_fat_pct": 13.4
+    "body_fat_pct": 13.2
   },
   {
     "date": "2021-05-19",
+    "weight_kg": 67.6,
+    "body_fat_pct": 13.4
+  },
+  {
+    "date": "2021-05-20",
     "weight_kg": 68.1,
     "body_fat_pct": 13.5
   },
   {
-    "date": "2021-05-20",
+    "date": "2021-05-21",
     "weight_kg": 67.6,
     "body_fat_pct": 13.6
   },
   {
-    "date": "2021-05-25",
+    "date": "2021-05-26",
     "weight_kg": 67.8,
     "body_fat_pct": 13.3
   },
   {
-    "date": "2021-05-26",
+    "date": "2021-05-27",
     "weight_kg": 68.3,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-05-27",
+    "date": "2021-05-28",
     "weight_kg": 68.1,
     "body_fat_pct": 13.2
   },
   {
-    "date": "2021-05-31",
+    "date": "2021-06-01",
     "weight_kg": 67.9,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2021-06-01",
+    "date": "2021-06-02",
     "weight_kg": 68.5,
     "body_fat_pct": 13.6
   },
   {
-    "date": "2021-06-02",
+    "date": "2021-06-03",
     "weight_kg": 68.5,
     "body_fat_pct": 14.3
   },
   {
-    "date": "2021-06-03",
+    "date": "2021-06-04",
     "weight_kg": 68.0,
     "body_fat_pct": 14.7
   },
   {
-    "date": "2021-06-07",
+    "date": "2021-06-08",
     "weight_kg": 67.6,
     "body_fat_pct": 13.8
   },
   {
-    "date": "2021-06-09",
+    "date": "2021-06-10",
     "weight_kg": 68.3,
     "body_fat_pct": 14.3
   },
   {
-    "date": "2021-06-14",
+    "date": "2021-06-15",
     "weight_kg": 68.6,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-06-16",
+    "date": "2021-06-17",
     "weight_kg": 68.8,
     "body_fat_pct": 13.8
   },
   {
-    "date": "2021-06-17",
+    "date": "2021-06-18",
     "weight_kg": 68.0,
     "body_fat_pct": 13.9
   },
   {
-    "date": "2021-06-22",
+    "date": "2021-06-23",
     "weight_kg": 68.4,
     "body_fat_pct": 14.2
   },
   {
-    "date": "2021-06-24",
+    "date": "2021-06-25",
     "weight_kg": 68.8,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2021-06-27",
+    "date": "2021-06-28",
     "weight_kg": 69.1,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2021-06-28",
+    "date": "2021-06-29",
     "weight_kg": 68.4,
     "body_fat_pct": 14.2
   },
   {
-    "date": "2021-07-01",
+    "date": "2021-07-02",
     "weight_kg": 68.6,
     "body_fat_pct": 14.5
   },
   {
-    "date": "2021-07-02",
+    "date": "2021-07-03",
     "weight_kg": 67.9,
     "body_fat_pct": 15.1
   },
   {
     "date": "2021-07-07",
-    "weight_kg": 68.6,
-    "body_fat_pct": 14.5
+    "weight_kg": 68.3,
+    "body_fat_pct": 14.0
   },
   {
     "date": "2021-07-08",
+    "weight_kg": 68.9,
+    "body_fat_pct": 14.9
+  },
+  {
+    "date": "2021-07-09",
     "weight_kg": 68.5,
     "body_fat_pct": 14.7
   },
   {
-    "date": "2021-07-12",
+    "date": "2021-07-13",
     "weight_kg": 69.0,
     "body_fat_pct": 13.9
   },
   {
-    "date": "2021-07-19",
+    "date": "2021-07-20",
     "weight_kg": 68.4,
     "body_fat_pct": 13.9
   },
   {
-    "date": "2021-07-24",
+    "date": "2021-07-25",
     "weight_kg": 68.8,
     "body_fat_pct": 14.0
   },
   {
-    "date": "2021-07-27",
+    "date": "2021-07-28",
     "weight_kg": 68.6,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-07-29",
+    "date": "2021-07-30",
     "weight_kg": 68.3,
     "body_fat_pct": 14.6
   },
   {
-    "date": "2021-08-01",
+    "date": "2021-08-02",
     "weight_kg": 69.8,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2021-08-02",
+    "date": "2021-08-03",
     "weight_kg": 68.7,
     "body_fat_pct": 13.6
   },
   {
-    "date": "2021-08-03",
+    "date": "2021-08-04",
     "weight_kg": 68.7,
     "body_fat_pct": 13.9
   },
   {
-    "date": "2021-08-05",
+    "date": "2021-08-06",
     "weight_kg": 68.6,
     "body_fat_pct": 13.6
   },
   {
-    "date": "2021-08-07",
+    "date": "2021-08-08",
     "weight_kg": 69.1,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2021-08-09",
+    "date": "2021-08-10",
     "weight_kg": 68.5,
     "body_fat_pct": 13.8
   },
   {
-    "date": "2021-08-11",
+    "date": "2021-08-12",
     "weight_kg": 68.7,
     "body_fat_pct": 13.8
   },
   {
-    "date": "2021-08-13",
+    "date": "2021-08-14",
     "weight_kg": 69.1,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2021-08-17",
+    "date": "2021-08-18",
     "weight_kg": 68.7,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2021-08-18",
+    "date": "2021-08-19",
     "weight_kg": 68.9,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2021-08-19",
+    "date": "2021-08-20",
     "weight_kg": 68.6,
     "body_fat_pct": 14.3
   },
   {
     "date": "2021-08-22",
-    "weight_kg": 68.7,
-    "body_fat_pct": 14.5
+    "weight_kg": 68.5,
+    "body_fat_pct": 14.8
   },
   {
     "date": "2021-08-23",
+    "weight_kg": 68.9,
+    "body_fat_pct": 14.3
+  },
+  {
+    "date": "2021-08-24",
     "weight_kg": 69.9,
     "body_fat_pct": 14.1
   },
   {
-    "date": "2021-08-24",
+    "date": "2021-08-25",
     "weight_kg": 69.1,
     "body_fat_pct": 14.2
   },
@@ -3272,111 +3541,111 @@
     "body_fat_pct": 13.9
   },
   {
-    "date": "2021-08-29",
+    "date": "2021-08-30",
     "weight_kg": 69.9,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2021-08-30",
+    "date": "2021-08-31",
     "weight_kg": 68.7,
     "body_fat_pct": 14.5
   },
   {
-    "date": "2021-08-31",
+    "date": "2021-09-01",
     "weight_kg": 69.5,
     "body_fat_pct": 14.6
   },
   {
-    "date": "2021-09-02",
+    "date": "2021-09-03",
     "weight_kg": 69.2,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2021-09-05",
+    "date": "2021-09-06",
     "weight_kg": 69.5
   },
   {
-    "date": "2021-09-07",
+    "date": "2021-09-08",
     "weight_kg": 69.1,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2021-09-12",
+    "date": "2021-09-13",
     "weight_kg": 69.8,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2021-09-13",
+    "date": "2021-09-14",
     "weight_kg": 69.5,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2021-09-14",
+    "date": "2021-09-15",
     "weight_kg": 69.4,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2021-09-15",
+    "date": "2021-09-16",
     "weight_kg": 69.9,
     "body_fat_pct": 15.1
   },
   {
-    "date": "2021-09-20",
+    "date": "2021-09-21",
     "weight_kg": 70.1,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2021-09-21",
+    "date": "2021-09-22",
     "weight_kg": 69.4,
     "body_fat_pct": 15.1
   },
   {
-    "date": "2021-09-26",
+    "date": "2021-09-27",
     "weight_kg": 70.6,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2021-09-27",
+    "date": "2021-09-28",
     "weight_kg": 69.4,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2021-09-30",
+    "date": "2021-10-01",
     "weight_kg": 69.8,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2021-10-04",
-    "weight_kg": 70.6,
-    "body_fat_pct": 14.6
-  },
-  {
     "date": "2021-10-05",
-    "weight_kg": 70.5,
+    "weight_kg": 70.6,
     "body_fat_pct": 14.6
   },
   {
     "date": "2021-10-06",
     "weight_kg": 70.5,
-    "body_fat_pct": 14.8
+    "body_fat_pct": 14.6
   },
   {
     "date": "2021-10-07",
+    "weight_kg": 70.5,
+    "body_fat_pct": 14.8
+  },
+  {
+    "date": "2021-10-08",
     "weight_kg": 69.8,
     "body_fat_pct": 14.7
   },
   {
-    "date": "2021-10-11",
+    "date": "2021-10-12",
     "weight_kg": 69.1,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2021-10-12",
+    "date": "2021-10-13",
     "weight_kg": 69.4,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2021-10-13",
+    "date": "2021-10-14",
     "weight_kg": 69.0,
     "body_fat_pct": 15.0
   },
@@ -3386,392 +3655,397 @@
     "body_fat_pct": 14.8
   },
   {
-    "date": "2021-10-18",
+    "date": "2021-10-19",
     "weight_kg": 69.8,
     "body_fat_pct": 14.8
   },
   {
-    "date": "2021-10-19",
+    "date": "2021-10-20",
     "weight_kg": 69.6,
     "body_fat_pct": 14.0
   },
   {
-    "date": "2021-10-24",
+    "date": "2021-10-25",
     "weight_kg": 70.3,
     "body_fat_pct": 15.1
   },
   {
-    "date": "2021-10-25",
+    "date": "2021-10-26",
     "weight_kg": 70.4,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2021-10-27",
+    "date": "2021-10-28",
     "weight_kg": 69.4,
-    "body_fat_pct": 15.0
-  },
-  {
-    "date": "2021-10-31",
-    "weight_kg": 69.9,
     "body_fat_pct": 15.0
   },
   {
     "date": "2021-11-01",
+    "weight_kg": 69.9,
+    "body_fat_pct": 15.0
+  },
+  {
+    "date": "2021-11-02",
     "weight_kg": 69.5,
     "body_fat_pct": 14.7
   },
   {
-    "date": "2021-11-04",
+    "date": "2021-11-05",
     "weight_kg": 69.4,
     "body_fat_pct": 13.7
   },
   {
-    "date": "2021-11-07",
+    "date": "2021-11-08",
     "weight_kg": 70.0,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2021-11-08",
+    "date": "2021-11-09",
     "weight_kg": 69.2,
-    "body_fat_pct": 14.4
-  },
-  {
-    "date": "2021-11-14",
-    "weight_kg": 69.8,
     "body_fat_pct": 14.4
   },
   {
     "date": "2021-11-15",
+    "weight_kg": 69.8,
+    "body_fat_pct": 14.4
+  },
+  {
+    "date": "2021-11-16",
     "weight_kg": 68.8,
     "body_fat_pct": 14.3
   },
   {
-    "date": "2021-11-21",
+    "date": "2021-11-22",
     "weight_kg": 69.5,
     "body_fat_pct": 14.8
   },
   {
-    "date": "2021-11-23",
+    "date": "2021-11-24",
     "weight_kg": 68.9,
     "body_fat_pct": 15.1
   },
   {
-    "date": "2021-11-24",
+    "date": "2021-11-25",
     "weight_kg": 68.8,
     "body_fat_pct": 14.3
   },
   {
-    "date": "2021-11-29",
+    "date": "2021-11-30",
     "weight_kg": 68.9,
     "body_fat_pct": 14.5
   },
   {
-    "date": "2021-11-30",
+    "date": "2021-12-01",
     "weight_kg": 69.1,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2021-12-01",
+    "date": "2021-12-02",
     "weight_kg": 68.5,
     "body_fat_pct": 13.8
   },
   {
-    "date": "2021-12-06",
+    "date": "2021-12-07",
     "weight_kg": 69.3,
     "body_fat_pct": 13.8
   },
   {
-    "date": "2021-12-07",
+    "date": "2021-12-08",
     "weight_kg": 68.6,
     "body_fat_pct": 14.0
   },
   {
-    "date": "2021-12-09",
+    "date": "2021-12-10",
     "weight_kg": 68.7,
     "body_fat_pct": 14.3
-  },
-  {
-    "date": "2021-12-13",
-    "weight_kg": 69.2,
-    "body_fat_pct": 13.6
   },
   {
     "date": "2021-12-14",
     "weight_kg": 69.2,
-    "body_fat_pct": 14.2
+    "body_fat_pct": 13.6
   },
   {
     "date": "2021-12-15",
+    "weight_kg": 69.2,
+    "body_fat_pct": 14.2
+  },
+  {
+    "date": "2021-12-16",
     "weight_kg": 68.7,
     "body_fat_pct": 14.0
   },
   {
-    "date": "2021-12-22",
+    "date": "2021-12-23",
     "weight_kg": 68.2,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2022-01-05",
+    "date": "2022-01-06",
     "weight_kg": 69.3,
     "body_fat_pct": 14.7
   },
   {
-    "date": "2022-01-10",
+    "date": "2022-01-11",
     "weight_kg": 69.9,
     "body_fat_pct": 14.6
   },
   {
-    "date": "2022-01-11",
+    "date": "2022-01-12",
     "weight_kg": 69.3,
     "body_fat_pct": 14.3
   },
   {
-    "date": "2022-01-12",
+    "date": "2022-01-13",
     "weight_kg": 68.7,
     "body_fat_pct": 14.3
   },
   {
-    "date": "2022-01-16",
+    "date": "2022-01-17",
     "weight_kg": 69.3,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2022-01-24",
+    "date": "2022-01-25",
     "weight_kg": 69.7,
     "body_fat_pct": 14.5
   },
   {
-    "date": "2022-01-26",
+    "date": "2022-01-27",
     "weight_kg": 69.2,
     "body_fat_pct": 14.7
   },
   {
-    "date": "2022-01-31",
+    "date": "2022-02-01",
     "weight_kg": 69.8,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-02-01",
+    "date": "2022-02-02",
     "weight_kg": 69.6,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2022-02-02",
+    "date": "2022-02-03",
     "weight_kg": 69.2,
     "body_fat_pct": 14.5
   },
   {
-    "date": "2022-02-03",
+    "date": "2022-02-04",
     "weight_kg": 69.6,
     "body_fat_pct": 14.8
   },
   {
-    "date": "2022-02-07",
+    "date": "2022-02-08",
     "weight_kg": 69.6,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2022-02-08",
+    "date": "2022-02-09",
     "weight_kg": 69.7,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2022-02-14",
+    "date": "2022-02-15",
     "weight_kg": 69.8,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-02-15",
+    "date": "2022-02-16",
     "weight_kg": 69.2,
     "body_fat_pct": 15.0
   },
   {
-    "date": "2022-02-17",
+    "date": "2022-02-18",
     "weight_kg": 69.1,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2022-02-20",
+    "date": "2022-02-21",
     "weight_kg": 70.2,
     "body_fat_pct": 15.0
   },
   {
-    "date": "2022-02-21",
+    "date": "2022-02-22",
     "weight_kg": 69.1,
     "body_fat_pct": 14.6
   },
   {
-    "date": "2022-02-27",
+    "date": "2022-02-28",
     "weight_kg": 70.1,
     "body_fat_pct": 14.8
   },
   {
-    "date": "2022-03-02",
+    "date": "2022-03-03",
     "weight_kg": 69.0,
     "body_fat_pct": 14.8
   },
   {
-    "date": "2022-03-08",
+    "date": "2022-03-09",
     "weight_kg": 68.9,
     "body_fat_pct": 14.5
   },
   {
-    "date": "2022-03-09",
+    "date": "2022-03-10",
     "weight_kg": 69.1,
     "body_fat_pct": 14.8
   },
   {
-    "date": "2022-03-10",
+    "date": "2022-03-11",
     "weight_kg": 70.2,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-03-17",
+    "date": "2022-03-18",
     "weight_kg": 68.6,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2022-03-29",
+    "date": "2022-03-30",
     "weight_kg": 69.5,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2022-03-31",
+    "date": "2022-04-01",
     "weight_kg": 69.5,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2022-04-03",
+    "date": "2022-04-04",
     "weight_kg": 70.3,
-    "body_fat_pct": 15.3
-  },
-  {
-    "date": "2022-04-05",
-    "weight_kg": 69.0,
     "body_fat_pct": 15.3
   },
   {
     "date": "2022-04-06",
+    "weight_kg": 69.0,
+    "body_fat_pct": 15.3
+  },
+  {
+    "date": "2022-04-07",
     "weight_kg": 69.4,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2022-04-11",
+    "date": "2022-04-12",
     "weight_kg": 70.0,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-04-12",
+    "date": "2022-04-13",
     "weight_kg": 69.4,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2022-04-17",
+    "date": "2022-04-18",
     "weight_kg": 70.2,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2022-04-19",
+    "date": "2022-04-20",
     "weight_kg": 69.9,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2022-04-21",
+    "date": "2022-04-22",
     "weight_kg": 70.0,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2022-04-25",
+    "date": "2022-04-26",
     "weight_kg": 70.2,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2022-04-26",
+    "date": "2022-04-27",
     "weight_kg": 69.8,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2022-04-27",
+    "date": "2022-04-28",
     "weight_kg": 69.5,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2022-05-04",
+    "date": "2022-05-05",
     "weight_kg": 70.6,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2022-05-08",
+    "date": "2022-05-09",
     "weight_kg": 70.4,
     "body_fat_pct": 16.2
   },
   {
-    "date": "2022-05-09",
+    "date": "2022-05-10",
     "weight_kg": 70.3,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2022-05-10",
+    "date": "2022-05-11",
     "weight_kg": 70.4,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2022-05-11",
+    "date": "2022-05-12",
     "weight_kg": 70.8,
     "body_fat_pct": 15.8
   },
   {
-    "date": "2022-05-15",
+    "date": "2022-05-16",
     "weight_kg": 71.0,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2022-05-16",
+    "date": "2022-05-17",
     "weight_kg": 70.3,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2022-05-19",
+    "date": "2022-05-20",
     "weight_kg": 69.8,
     "body_fat_pct": 15.8
   },
   {
-    "date": "2022-05-20",
+    "date": "2022-05-21",
     "weight_kg": 70.0,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2022-05-22",
+    "date": "2022-05-23",
     "weight_kg": 70.6,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2022-05-25",
+    "date": "2022-05-26",
     "weight_kg": 69.9,
     "body_fat_pct": 15.8
   },
   {
     "date": "2022-05-28",
-    "weight_kg": 70.2,
-    "body_fat_pct": 15.4
+    "weight_kg": 70.6,
+    "body_fat_pct": 15.2
   },
   {
     "date": "2022-05-29",
-    "weight_kg": 70.7,
-    "body_fat_pct": 15.3
+    "weight_kg": 69.9,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2022-05-30",
     "weight_kg": 70.7,
-    "body_fat_pct": 15.4
+    "body_fat_pct": 15.3
   },
   {
     "date": "2022-05-31",
+    "weight_kg": 70.7,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2022-06-01",
     "weight_kg": 69.8,
     "body_fat_pct": 14.4
   },
   {
-    "date": "2022-06-02",
+    "date": "2022-06-03",
     "weight_kg": 70.0,
     "body_fat_pct": 15.1
   },
@@ -3786,37 +4060,47 @@
     "body_fat_pct": 14.7
   },
   {
-    "date": "2022-06-06",
+    "date": "2022-06-07",
     "weight_kg": 70.5,
     "body_fat_pct": 15.3
   },
   {
     "date": "2022-06-08",
-    "weight_kg": 70.3,
-    "body_fat_pct": 14.8
+    "weight_kg": 70.8,
+    "body_fat_pct": 14.2
   },
   {
     "date": "2022-06-09",
+    "weight_kg": 69.9,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2022-06-10",
     "weight_kg": 69.7,
     "body_fat_pct": 15.3
   },
   {
     "date": "2022-06-12",
-    "weight_kg": 71.2,
-    "body_fat_pct": 15.1
+    "weight_kg": 70.9,
+    "body_fat_pct": 14.7
   },
   {
     "date": "2022-06-13",
+    "weight_kg": 71.6,
+    "body_fat_pct": 15.4
+  },
+  {
+    "date": "2022-06-14",
     "weight_kg": 70.3,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2022-06-15",
+    "date": "2022-06-16",
     "weight_kg": 69.9,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-06-16",
+    "date": "2022-06-17",
     "weight_kg": 70.0,
     "body_fat_pct": 14.9
   },
@@ -3826,131 +4110,131 @@
     "body_fat_pct": 14.5
   },
   {
-    "date": "2022-06-20",
+    "date": "2022-06-21",
     "weight_kg": 70.1,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-06-22",
+    "date": "2022-06-23",
     "weight_kg": 69.8,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2022-06-26",
+    "date": "2022-06-27",
     "weight_kg": 71.5
   },
   {
-    "date": "2022-06-30",
+    "date": "2022-07-01",
     "weight_kg": 69.9,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2022-07-03",
+    "date": "2022-07-04",
     "weight_kg": 71.4,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-07-04",
+    "date": "2022-07-05",
     "weight_kg": 70.5,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2022-07-06",
+    "date": "2022-07-07",
     "weight_kg": 70.7,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2022-07-11",
+    "date": "2022-07-12",
     "weight_kg": 71.0,
     "body_fat_pct": 15.8
   },
   {
-    "date": "2022-07-13",
+    "date": "2022-07-14",
     "weight_kg": 70.6,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2022-07-14",
+    "date": "2022-07-15",
     "weight_kg": 70.2,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2022-07-22",
+    "date": "2022-07-23",
     "weight_kg": 69.7,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2022-07-27",
+    "date": "2022-07-28",
     "weight_kg": 70.3,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2022-07-29",
+    "date": "2022-07-30",
     "weight_kg": 70.1,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2022-08-01",
+    "date": "2022-08-02",
     "weight_kg": 70.5,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2022-08-02",
+    "date": "2022-08-03",
     "weight_kg": 69.5,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-08-09",
+    "date": "2022-08-10",
     "weight_kg": 69.8,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2022-08-15",
+    "date": "2022-08-16",
     "weight_kg": 70.8,
     "body_fat_pct": 15.8
   },
   {
-    "date": "2022-08-16",
+    "date": "2022-08-17",
     "weight_kg": 69.9,
     "body_fat_pct": 15.0
   },
   {
-    "date": "2022-08-21",
+    "date": "2022-08-22",
     "weight_kg": 70.5,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2022-08-22",
+    "date": "2022-08-23",
     "weight_kg": 70.6,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2022-08-23",
+    "date": "2022-08-24",
     "weight_kg": 69.5,
     "body_fat_pct": 15.0
   },
   {
-    "date": "2022-08-24",
+    "date": "2022-08-25",
     "weight_kg": 71.2,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2022-09-05",
+    "date": "2022-09-06",
     "weight_kg": 70.3,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2022-09-10",
+    "date": "2022-09-11",
     "weight_kg": 70.3,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2022-09-12",
+    "date": "2022-09-13",
     "weight_kg": 70.9,
     "body_fat_pct": 16.2
   },
   {
-    "date": "2022-09-14",
+    "date": "2022-09-15",
     "weight_kg": 70.8,
     "body_fat_pct": 16.4
   },
@@ -3960,77 +4244,77 @@
     "body_fat_pct": 15.9
   },
   {
-    "date": "2022-09-29",
+    "date": "2022-09-30",
     "weight_kg": 70.5,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-10-11",
+    "date": "2022-10-12",
     "weight_kg": 70.6,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2022-10-24",
+    "date": "2022-10-25",
     "weight_kg": 71.8,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2022-10-26",
+    "date": "2022-10-27",
     "weight_kg": 71.0,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2022-10-31",
+    "date": "2022-11-01",
     "weight_kg": 71.0,
     "body_fat_pct": 15.1
   },
   {
-    "date": "2022-11-07",
+    "date": "2022-11-08",
     "weight_kg": 71.3,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2022-11-08",
+    "date": "2022-11-09",
     "weight_kg": 70.9,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2022-11-10",
+    "date": "2022-11-11",
     "weight_kg": 70.5,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2022-11-15",
+    "date": "2022-11-16",
     "weight_kg": 71.4,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2022-11-16",
+    "date": "2022-11-17",
     "weight_kg": 71.3,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2022-11-27",
+    "date": "2022-11-28",
     "weight_kg": 71.9,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2022-12-04",
+    "date": "2022-12-05",
     "weight_kg": 72.1,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2022-12-12",
+    "date": "2022-12-13",
     "weight_kg": 72.2,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2022-12-18",
+    "date": "2022-12-19",
     "weight_kg": 72.0,
     "body_fat_pct": 15.8
   },
   {
-    "date": "2022-12-19",
+    "date": "2022-12-20",
     "weight_kg": 71.6,
     "body_fat_pct": 15.9
   },
@@ -4039,37 +4323,37 @@
     "weight_kg": 74.9
   },
   {
-    "date": "2023-01-10",
+    "date": "2023-01-11",
     "weight_kg": 72.3,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2023-01-11",
+    "date": "2023-01-12",
     "weight_kg": 72.3,
     "body_fat_pct": 16.6
   },
   {
-    "date": "2023-01-16",
+    "date": "2023-01-17",
     "weight_kg": 72.3,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2023-01-22",
+    "date": "2023-01-23",
     "weight_kg": 71.9,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2023-01-24",
+    "date": "2023-01-25",
     "weight_kg": 72.1,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2023-01-30",
+    "date": "2023-01-31",
     "weight_kg": 71.9,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2023-02-01",
+    "date": "2023-02-02",
     "weight_kg": 71.5,
     "body_fat_pct": 16.4
   },
@@ -4079,102 +4363,102 @@
     "body_fat_pct": 16.6
   },
   {
-    "date": "2023-02-06",
+    "date": "2023-02-07",
     "weight_kg": 72.2,
     "body_fat_pct": 16.2
   },
   {
-    "date": "2023-02-07",
+    "date": "2023-02-08",
     "weight_kg": 71.8,
     "body_fat_pct": 16.2
   },
   {
-    "date": "2023-02-15",
+    "date": "2023-02-16",
     "weight_kg": 72.1,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2023-03-06",
+    "date": "2023-03-07",
     "weight_kg": 71.7,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2023-03-13",
+    "date": "2023-03-14",
     "weight_kg": 71.5,
     "body_fat_pct": 16.2
   },
   {
-    "date": "2023-04-11",
+    "date": "2023-04-12",
     "weight_kg": 72.7,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2023-04-12",
+    "date": "2023-04-13",
     "weight_kg": 72.4,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2023-04-14",
+    "date": "2023-04-15",
     "weight_kg": 72.1,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2023-04-15",
+    "date": "2023-04-16",
     "weight_kg": 72.2,
     "body_fat_pct": 16.4
   },
   {
-    "date": "2023-04-16",
+    "date": "2023-04-17",
     "weight_kg": 72.9,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2023-04-18",
+    "date": "2023-04-19",
     "weight_kg": 71.9,
     "body_fat_pct": 16.5
   },
   {
-    "date": "2023-04-20",
+    "date": "2023-04-21",
     "weight_kg": 71.9,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2023-04-23",
+    "date": "2023-04-24",
     "weight_kg": 72.9,
     "body_fat_pct": 16.6
   },
   {
-    "date": "2023-04-27",
+    "date": "2023-04-28",
     "weight_kg": 70.5,
     "body_fat_pct": 17.2
   },
   {
-    "date": "2023-05-01",
+    "date": "2023-05-02",
     "weight_kg": 71.0,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2023-05-07",
+    "date": "2023-05-08",
     "weight_kg": 71.5,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2023-05-08",
+    "date": "2023-05-09",
     "weight_kg": 72.1,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2023-05-09",
+    "date": "2023-05-10",
     "weight_kg": 71.7,
     "body_fat_pct": 14.7
   },
   {
-    "date": "2023-05-10",
+    "date": "2023-05-11",
     "weight_kg": 71.7,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2023-05-11",
+    "date": "2023-05-12",
     "weight_kg": 71.0,
     "body_fat_pct": 15.0
   },
@@ -4184,17 +4468,17 @@
     "body_fat_pct": 16.5
   },
   {
-    "date": "2023-05-15",
+    "date": "2023-05-16",
     "weight_kg": 71.4,
     "body_fat_pct": 16.2
   },
   {
-    "date": "2023-05-16",
+    "date": "2023-05-17",
     "weight_kg": 71.1,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2023-05-18",
+    "date": "2023-05-19",
     "weight_kg": 71.2,
     "body_fat_pct": 15.8
   },
@@ -4204,57 +4488,57 @@
     "body_fat_pct": 16.8
   },
   {
-    "date": "2023-05-21",
+    "date": "2023-05-22",
     "weight_kg": 72.8,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2023-05-22",
+    "date": "2023-05-23",
     "weight_kg": 71.9,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2023-05-23",
+    "date": "2023-05-24",
     "weight_kg": 71.8,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2023-05-24",
+    "date": "2023-05-25",
     "weight_kg": 71.5,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2023-05-25",
+    "date": "2023-05-26",
     "weight_kg": 71.6,
     "body_fat_pct": 16.5
   },
   {
-    "date": "2023-05-26",
+    "date": "2023-05-27",
     "weight_kg": 70.7,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2023-05-28",
+    "date": "2023-05-29",
     "weight_kg": 72.1,
     "body_fat_pct": 16.2
   },
   {
-    "date": "2023-05-29",
+    "date": "2023-05-30",
     "weight_kg": 71.7,
     "body_fat_pct": 16.6
   },
   {
-    "date": "2023-05-30",
+    "date": "2023-05-31",
     "weight_kg": 71.4,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2023-05-31",
+    "date": "2023-06-01",
     "weight_kg": 72.2,
     "body_fat_pct": 15.8
   },
   {
-    "date": "2023-06-01",
+    "date": "2023-06-02",
     "weight_kg": 71.5,
     "body_fat_pct": 15.6
   },
@@ -4264,346 +4548,351 @@
     "body_fat_pct": 17.4
   },
   {
-    "date": "2023-06-13",
+    "date": "2023-06-14",
     "weight_kg": 71.9,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2023-06-14",
+    "date": "2023-06-15",
     "weight_kg": 71.9
   },
   {
-    "date": "2023-06-15",
+    "date": "2023-06-16",
     "weight_kg": 71.6,
     "body_fat_pct": 16.6
   },
   {
-    "date": "2023-06-21",
+    "date": "2023-06-22",
     "weight_kg": 71.1,
     "body_fat_pct": 15.9
   },
   {
-    "date": "2023-06-26",
+    "date": "2023-06-27",
     "weight_kg": 72.0,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2023-06-27",
+    "date": "2023-06-28",
     "weight_kg": 71.7,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2023-06-28",
+    "date": "2023-06-29",
     "weight_kg": 71.3,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2023-07-02",
-    "weight_kg": 73.3,
-    "body_fat_pct": 17.0
-  },
-  {
     "date": "2023-07-03",
-    "weight_kg": 72.8,
-    "body_fat_pct": 15.6
+    "weight_kg": 73.3,
+    "body_fat_pct": 15.7
   },
   {
     "date": "2023-07-04",
+    "weight_kg": 72.4,
+    "body_fat_pct": 16.7
+  },
+  {
+    "date": "2023-07-05",
     "weight_kg": 72.3,
     "body_fat_pct": 17.0
   },
   {
-    "date": "2023-07-05",
+    "date": "2023-07-06",
     "weight_kg": 71.8,
     "body_fat_pct": 16.4
   },
   {
-    "date": "2023-07-06",
+    "date": "2023-07-07",
     "weight_kg": 72.3,
     "body_fat_pct": 15.8
   },
   {
-    "date": "2023-07-09",
+    "date": "2023-07-10",
     "weight_kg": 73.5,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2023-07-10",
+    "date": "2023-07-11",
     "weight_kg": 72.7,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2023-07-11",
+    "date": "2023-07-12",
     "weight_kg": 72.1,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2023-07-12",
+    "date": "2023-07-13",
     "weight_kg": 72.6,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2023-07-13",
+    "date": "2023-07-14",
     "weight_kg": 73.2,
     "body_fat_pct": 17.2
   },
   {
-    "date": "2023-07-17",
+    "date": "2023-07-18",
     "weight_kg": 73.3,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2023-07-18",
+    "date": "2023-07-19",
     "weight_kg": 72.6,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2023-07-19",
+    "date": "2023-07-20",
     "weight_kg": 72.4,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2023-07-20",
+    "date": "2023-07-21",
     "weight_kg": 72.8,
     "body_fat_pct": 15.8
   },
   {
-    "date": "2023-07-23",
+    "date": "2023-07-24",
     "weight_kg": 74.3,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2023-07-24",
+    "date": "2023-07-25",
     "weight_kg": 72.3,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2023-07-26",
+    "date": "2023-07-27",
     "weight_kg": 73.1,
     "body_fat_pct": 17.1
   },
   {
-    "date": "2023-07-30",
+    "date": "2023-07-31",
     "weight_kg": 72.8,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2023-07-31",
+    "date": "2023-08-01",
     "weight_kg": 71.9,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2023-08-02",
+    "date": "2023-08-03",
     "weight_kg": 72.4,
     "body_fat_pct": 17.1
   },
   {
-    "date": "2023-08-03",
+    "date": "2023-08-04",
     "weight_kg": 72.1,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2023-08-06",
+    "date": "2023-08-07",
     "weight_kg": 73.4,
     "body_fat_pct": 17.2
   },
   {
-    "date": "2023-08-07",
+    "date": "2023-08-08",
     "weight_kg": 73.0,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2023-08-09",
+    "date": "2023-08-10",
     "weight_kg": 72.9,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2023-08-13",
+    "date": "2023-08-14",
     "weight_kg": 72.8,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2023-08-14",
+    "date": "2023-08-15",
     "weight_kg": 72.2,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2023-08-15",
+    "date": "2023-08-16",
     "weight_kg": 71.3,
     "body_fat_pct": 16.6
   },
   {
-    "date": "2023-08-16",
+    "date": "2023-08-17",
     "weight_kg": 72.2,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2023-08-27",
+    "date": "2023-08-28",
     "weight_kg": 73.3,
     "body_fat_pct": 17.2
   },
   {
-    "date": "2023-08-28",
+    "date": "2023-08-29",
     "weight_kg": 72.7,
     "body_fat_pct": 17.2
   },
   {
-    "date": "2023-08-30",
+    "date": "2023-08-31",
     "weight_kg": 72.7,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2023-08-31",
+    "date": "2023-09-01",
     "weight_kg": 72.8,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2023-09-03",
+    "date": "2023-09-04",
     "weight_kg": 73.1,
     "body_fat_pct": 17.7
   },
   {
-    "date": "2023-09-04",
+    "date": "2023-09-05",
     "weight_kg": 72.2,
     "body_fat_pct": 17.0
   },
   {
-    "date": "2023-09-06",
+    "date": "2023-09-07",
     "weight_kg": 72.0,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2023-09-10",
+    "date": "2023-09-11",
     "weight_kg": 72.2,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2023-09-11",
+    "date": "2023-09-12",
     "weight_kg": 72.1,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2023-09-13",
+    "date": "2023-09-14",
     "weight_kg": 72.5,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2023-09-18",
+    "date": "2023-09-19",
     "weight_kg": 72.4,
     "body_fat_pct": 17.7
   },
   {
-    "date": "2023-09-20",
+    "date": "2023-09-21",
     "weight_kg": 72.1,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2023-09-25",
+    "date": "2023-09-26",
     "weight_kg": 72.8,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2023-09-27",
+    "date": "2023-09-28",
     "weight_kg": 72.5,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2023-10-01",
+    "date": "2023-10-02",
     "weight_kg": 72.6,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2023-10-02",
+    "date": "2023-10-03",
     "weight_kg": 71.6,
     "body_fat_pct": 16.5
   },
   {
-    "date": "2023-10-04",
+    "date": "2023-10-05",
     "weight_kg": 71.4,
     "body_fat_pct": 17.1
   },
   {
-    "date": "2023-10-09",
+    "date": "2023-10-10",
     "weight_kg": 72.6,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2023-10-10",
+    "date": "2023-10-11",
     "weight_kg": 72.0,
     "body_fat_pct": 16.4
   },
   {
-    "date": "2023-10-11",
+    "date": "2023-10-12",
     "weight_kg": 72.3,
     "body_fat_pct": 17.2
   },
   {
-    "date": "2023-10-15",
+    "date": "2023-10-16",
     "weight_kg": 72.7,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2023-10-19",
+    "date": "2023-10-20",
     "weight_kg": 72.2,
     "body_fat_pct": 16.5
   },
   {
-    "date": "2023-10-23",
+    "date": "2023-10-24",
     "weight_kg": 72.7,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2023-10-25",
+    "date": "2023-10-26",
     "weight_kg": 71.7,
     "body_fat_pct": 16.4
   },
   {
-    "date": "2023-10-26",
+    "date": "2023-10-27",
     "weight_kg": 71.8,
     "body_fat_pct": 16.1
   },
   {
     "date": "2024-01-15",
-    "weight_kg": 73.1,
-    "body_fat_pct": 16.3
+    "weight_kg": 73.4,
+    "body_fat_pct": 15.9
   },
   {
-    "date": "2024-01-17",
+    "date": "2024-01-16",
+    "weight_kg": 72.8,
+    "body_fat_pct": 16.7
+  },
+  {
+    "date": "2024-01-18",
     "weight_kg": 73.3,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2024-01-18",
+    "date": "2024-01-19",
     "weight_kg": 72.3,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2024-01-22",
+    "date": "2024-01-23",
     "weight_kg": 73.3,
     "body_fat_pct": 17.6
   },
   {
-    "date": "2024-01-24",
+    "date": "2024-01-25",
     "weight_kg": 72.8,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2024-01-29",
+    "date": "2024-01-30",
     "weight_kg": 73.1,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2024-02-07",
+    "date": "2024-02-08",
     "weight_kg": 73.2,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2024-02-08",
+    "date": "2024-02-09",
     "weight_kg": 73.3,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2024-02-09",
+    "date": "2024-02-10",
     "weight_kg": 72.7,
     "body_fat_pct": 17.4
   },
@@ -4614,36 +4903,46 @@
   },
   {
     "date": "2024-02-12",
-    "weight_kg": 73.2,
-    "body_fat_pct": 17.1
+    "weight_kg": 73.4,
+    "body_fat_pct": 16.9
   },
   {
     "date": "2024-02-13",
-    "weight_kg": 72.8,
-    "body_fat_pct": 17.0
+    "weight_kg": 73.0,
+    "body_fat_pct": 17.3
   },
   {
     "date": "2024-02-14",
     "weight_kg": 72.8,
-    "body_fat_pct": 16.8
+    "body_fat_pct": 17.0
   },
   {
     "date": "2024-02-15",
-    "weight_kg": 73.1,
+    "weight_kg": 72.8,
     "body_fat_pct": 16.8
   },
   {
     "date": "2024-02-16",
+    "weight_kg": 73.1,
+    "body_fat_pct": 16.8
+  },
+  {
+    "date": "2024-02-17",
     "weight_kg": 72.8,
     "body_fat_pct": 16.9
   },
   {
     "date": "2024-02-18",
-    "weight_kg": 73.3,
-    "body_fat_pct": 16.7
+    "weight_kg": 72.9,
+    "body_fat_pct": 16.4
   },
   {
     "date": "2024-02-19",
+    "weight_kg": 73.7,
+    "body_fat_pct": 16.9
+  },
+  {
+    "date": "2024-02-20",
     "weight_kg": 72.9,
     "body_fat_pct": 16.4
   },
@@ -4653,57 +4952,57 @@
     "body_fat_pct": 16.7
   },
   {
-    "date": "2024-03-03",
+    "date": "2024-03-04",
     "weight_kg": 72.9,
     "body_fat_pct": 16.0
   },
   {
-    "date": "2024-03-04",
+    "date": "2024-03-05",
     "weight_kg": 72.0,
     "body_fat_pct": 15.0
   },
   {
-    "date": "2024-03-06",
+    "date": "2024-03-07",
     "weight_kg": 72.1,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2024-03-07",
+    "date": "2024-03-08",
     "weight_kg": 71.8,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2024-03-08",
+    "date": "2024-03-09",
     "weight_kg": 71.2,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2024-03-09",
+    "date": "2024-03-10",
     "weight_kg": 72.2,
     "body_fat_pct": 14.9
-  },
-  {
-    "date": "2024-03-10",
-    "weight_kg": 72.4,
-    "body_fat_pct": 15.1
   },
   {
     "date": "2024-03-11",
     "weight_kg": 72.4,
-    "body_fat_pct": 14.9
+    "body_fat_pct": 15.1
   },
   {
     "date": "2024-03-12",
+    "weight_kg": 72.4,
+    "body_fat_pct": 14.9
+  },
+  {
+    "date": "2024-03-13",
     "weight_kg": 72.2,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2024-03-13",
+    "date": "2024-03-14",
     "weight_kg": 71.5,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2024-03-14",
+    "date": "2024-03-15",
     "weight_kg": 71.8,
     "body_fat_pct": 15.0
   },
@@ -4713,79 +5012,74 @@
     "body_fat_pct": 14.9
   },
   {
-    "date": "2024-03-17",
+    "date": "2024-03-18",
     "weight_kg": 72.2,
     "body_fat_pct": 15.1
   },
   {
-    "date": "2024-03-18",
+    "date": "2024-03-19",
     "weight_kg": 72.0,
     "body_fat_pct": 14.9
   },
   {
-    "date": "2024-03-21",
+    "date": "2024-03-22",
     "weight_kg": 71.7,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2024-03-24",
+    "date": "2024-03-25",
     "weight_kg": 71.6,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2024-03-25",
+    "date": "2024-03-26",
     "weight_kg": 72.3,
     "body_fat_pct": 15.0
   },
   {
-    "date": "2024-04-01",
+    "date": "2024-04-02",
     "weight_kg": 72.4,
     "body_fat_pct": 15.5
   },
   {
-    "date": "2024-04-02",
+    "date": "2024-04-03",
     "weight_kg": 72.0,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2024-04-04",
+    "date": "2024-04-05",
     "weight_kg": 72.2,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2024-04-08",
+    "date": "2024-04-09",
     "weight_kg": 71.8,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2024-04-10",
+    "date": "2024-04-11",
     "weight_kg": 71.4,
     "body_fat_pct": 15.1
   },
   {
-    "date": "2024-04-11",
+    "date": "2024-04-12",
     "weight_kg": 71.6,
     "body_fat_pct": 15.3
   },
   {
-    "date": "2024-04-17",
+    "date": "2024-04-18",
     "weight_kg": 71.7,
     "body_fat_pct": 16.1
   },
   {
-    "date": "2024-04-25",
+    "date": "2024-04-26",
     "weight_kg": 71.8,
     "body_fat_pct": 15.4
   },
   {
-    "date": "2024-04-30",
+    "date": "2024-05-01",
     "weight_kg": 71.9,
     "body_fat_pct": 15.0
-  },
-  {
-    "date": "2024-05-01",
-    "weight_kg": 71.1,
-    "body_fat_pct": 15.1
   },
   {
     "date": "2024-05-02",
@@ -4793,117 +5087,122 @@
     "body_fat_pct": 15.1
   },
   {
-    "date": "2024-05-07",
+    "date": "2024-05-03",
+    "weight_kg": 71.1,
+    "body_fat_pct": 15.1
+  },
+  {
+    "date": "2024-05-08",
     "weight_kg": 71.5,
     "body_fat_pct": 15.6
   },
   {
-    "date": "2024-05-08",
+    "date": "2024-05-09",
     "weight_kg": 71.4,
     "body_fat_pct": 15.7
   },
   {
-    "date": "2024-05-10",
+    "date": "2024-05-11",
     "weight_kg": 71.4,
     "body_fat_pct": 15.1
   },
   {
-    "date": "2024-05-13",
+    "date": "2024-05-14",
     "weight_kg": 71.6,
     "body_fat_pct": 16.2
   },
   {
-    "date": "2024-05-21",
+    "date": "2024-05-22",
     "weight_kg": 72.6,
     "body_fat_pct": 15.2
   },
   {
-    "date": "2024-05-23",
+    "date": "2024-05-24",
     "weight_kg": 73.0,
     "body_fat_pct": 16.2
   },
   {
-    "date": "2024-05-26",
+    "date": "2024-05-27",
     "weight_kg": 73.2,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2024-06-03",
+    "date": "2024-06-04",
     "weight_kg": 73.0,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2024-09-09",
+    "date": "2024-09-10",
     "weight_kg": 74.2,
     "body_fat_pct": 18.1
   },
   {
-    "date": "2024-09-10",
+    "date": "2024-09-11",
     "weight_kg": 73.6,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2024-09-11",
+    "date": "2024-09-12",
     "weight_kg": 74.6,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2024-09-12",
+    "date": "2024-09-13",
     "weight_kg": 73.8,
     "body_fat_pct": 17.9
   },
   {
-    "date": "2024-09-17",
+    "date": "2024-09-18",
     "weight_kg": 73.8,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2024-09-19",
+    "date": "2024-09-20",
     "weight_kg": 74.0,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2024-09-20",
+    "date": "2024-09-21",
     "weight_kg": 74.2,
     "body_fat_pct": 17.0
   },
   {
-    "date": "2024-09-23",
+    "date": "2024-09-24",
     "weight_kg": 75.2,
     "body_fat_pct": 18.9
   },
   {
-    "date": "2024-09-25",
+    "date": "2024-09-26",
     "weight_kg": 74.8,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2024-09-26",
+    "date": "2024-09-27",
     "weight_kg": 74.0,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2024-10-01",
+    "date": "2024-10-02",
     "weight_kg": 74.4,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2024-10-02",
+    "date": "2024-10-03",
     "weight_kg": 74.0,
     "body_fat_pct": 18.6
   },
   {
-    "date": "2024-10-03",
+    "date": "2024-10-04",
     "weight_kg": 74.2,
     "body_fat_pct": 18.3
   },
   {
-    "date": "2024-10-07",
+    "date": "2024-10-08",
     "weight_kg": 74.6,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2024-11-28",
+    "date": "2024-11-29",
     "weight_kg": 74.4,
     "body_fat_pct": 18.3
   },
@@ -4917,104 +5216,99 @@
     "body_fat_pct": 29.3
   },
   {
-    "date": "2025-06-03",
-    "weight_kg": 76.2,
-    "body_fat_pct": 18.3
-  },
-  {
     "date": "2025-06-04",
-    "weight_kg": 76.6,
-    "body_fat_pct": 18.6
+    "weight_kg": 76.4,
+    "body_fat_pct": 18.3
   },
   {
     "date": "2025-06-05",
-    "weight_kg": 76.1,
-    "body_fat_pct": 18.3
+    "weight_kg": 76.4,
+    "body_fat_pct": 18.2
   },
   {
     "date": "2025-06-06",
-    "weight_kg": 75.9,
-    "body_fat_pct": 18.4
+    "weight_kg": 76.1,
+    "body_fat_pct": 18.5
   },
   {
     "date": "2025-06-07",
+    "weight_kg": 75.4,
+    "body_fat_pct": 18.6
+  },
+  {
+    "date": "2025-06-08",
     "weight_kg": 76.0,
     "body_fat_pct": 19.2
   },
   {
-    "date": "2025-06-08",
-    "weight_kg": 76.6,
-    "body_fat_pct": 18.3
-  },
-  {
     "date": "2025-06-09",
-    "weight_kg": 76.7,
-    "body_fat_pct": 17.3
+    "weight_kg": 76.9,
+    "body_fat_pct": 17.6
   },
   {
     "date": "2025-06-10",
+    "weight_kg": 76.2,
+    "body_fat_pct": 17.8
+  },
+  {
+    "date": "2025-06-11",
     "weight_kg": 76.4,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2025-06-11",
+    "date": "2025-06-12",
     "weight_kg": 76.2,
     "body_fat_pct": 18.6
   },
   {
-    "date": "2025-06-12",
-    "weight_kg": 76.0,
-    "body_fat_pct": 18.7
-  },
-  {
     "date": "2025-06-13",
-    "weight_kg": 76.5,
-    "body_fat_pct": 17.6
+    "weight_kg": 76.4,
+    "body_fat_pct": 18.1
   },
   {
     "date": "2025-06-14",
     "weight_kg": 76.2,
-    "body_fat_pct": 18.1
+    "body_fat_pct": 17.8
   },
   {
     "date": "2025-06-15",
-    "weight_kg": 76.6,
-    "body_fat_pct": 18.5
+    "weight_kg": 76.2,
+    "body_fat_pct": 18.1
   },
   {
     "date": "2025-06-16",
-    "weight_kg": 76.5,
-    "body_fat_pct": 17.6
+    "weight_kg": 76.7,
+    "body_fat_pct": 17.9
   },
   {
     "date": "2025-06-17",
-    "weight_kg": 76.2,
-    "body_fat_pct": 17.5
+    "weight_kg": 76.5,
+    "body_fat_pct": 17.8
   },
   {
     "date": "2025-06-18",
-    "weight_kg": 76.7,
-    "body_fat_pct": 18.3
+    "weight_kg": 76.4,
+    "body_fat_pct": 17.7
   },
   {
     "date": "2025-06-19",
+    "weight_kg": 76.2,
+    "body_fat_pct": 18.6
+  },
+  {
+    "date": "2025-06-20",
     "weight_kg": 75.2,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2025-06-20",
+    "date": "2025-06-21",
     "weight_kg": 76.0,
     "body_fat_pct": 19.2
   },
   {
-    "date": "2025-06-21",
+    "date": "2025-06-22",
     "weight_kg": 75.4,
     "body_fat_pct": 19.1
-  },
-  {
-    "date": "2025-06-22",
-    "weight_kg": 75.8,
-    "body_fat_pct": 18.5
   },
   {
     "date": "2025-06-23",
@@ -5023,63 +5317,63 @@
   },
   {
     "date": "2025-06-24",
-    "weight_kg": 75.9,
-    "body_fat_pct": 17.7
+    "weight_kg": 76.1,
+    "body_fat_pct": 17.6
   },
   {
     "date": "2025-06-25",
-    "weight_kg": 76.5,
+    "weight_kg": 76.2,
     "body_fat_pct": 18.2
   },
   {
     "date": "2025-06-26",
-    "weight_kg": 77.2,
-    "body_fat_pct": 17.1
-  },
-  {
-    "date": "2025-06-27",
-    "weight_kg": 76.1,
-    "body_fat_pct": 17.4
-  },
-  {
-    "date": "2025-06-28",
-    "weight_kg": 75.0,
-    "body_fat_pct": 17.9
-  },
-  {
-    "date": "2025-06-29",
-    "weight_kg": 76.5,
-    "body_fat_pct": 19.5
-  },
-  {
-    "date": "2025-06-30",
     "weight_kg": 76.0,
     "body_fat_pct": 18.4
   },
   {
-    "date": "2025-07-01",
+    "date": "2025-06-27",
+    "weight_kg": 77.0,
+    "body_fat_pct": 16.6
+  },
+  {
+    "date": "2025-06-28",
     "weight_kg": 75.4,
-    "body_fat_pct": 17.5
+    "body_fat_pct": 18.6
+  },
+  {
+    "date": "2025-06-29",
+    "weight_kg": 76.0,
+    "body_fat_pct": 18.8
+  },
+  {
+    "date": "2025-06-30",
+    "weight_kg": 76.2,
+    "body_fat_pct": 18.8
+  },
+  {
+    "date": "2025-07-01",
+    "weight_kg": 75.6,
+    "body_fat_pct": 18.5
   },
   {
     "date": "2025-07-02",
-    "weight_kg": 76.0,
-    "body_fat_pct": 18.3
+    "weight_kg": 75.9,
+    "body_fat_pct": 17.8
   },
   {
     "date": "2025-07-03",
+    "weight_kg": 75.6,
+    "body_fat_pct": 18.5
+  },
+  {
+    "date": "2025-07-04",
     "weight_kg": 75.8,
     "body_fat_pct": 19.0
   },
   {
-    "date": "2025-07-04",
-    "weight_kg": 75.3,
-    "body_fat_pct": 18.2
-  },
-  {
     "date": "2025-07-05",
     "weight_kg": 75.5,
-    "body_fat_pct": 18.5
+    "body_fat_pct": 18.6
   },
   {
     "date": "2025-07-06",
@@ -5088,557 +5382,577 @@
   },
   {
     "date": "2025-07-07",
-    "weight_kg": 76.6,
-    "body_fat_pct": 18.4
+    "weight_kg": 76.2,
+    "body_fat_pct": 17.8
   },
   {
     "date": "2025-07-08",
-    "weight_kg": 75.6,
-    "body_fat_pct": 16.7
+    "weight_kg": 76.0,
+    "body_fat_pct": 18.7
   },
   {
     "date": "2025-07-09",
     "weight_kg": 75.6,
-    "body_fat_pct": 18.8
+    "body_fat_pct": 16.7
   },
   {
     "date": "2025-07-10",
-    "weight_kg": 75.4,
+    "weight_kg": 75.6,
     "body_fat_pct": 18.8
   },
   {
     "date": "2025-07-11",
-    "weight_kg": 74.7,
-    "body_fat_pct": 17.9
+    "weight_kg": 75.6,
+    "body_fat_pct": 18.7
   },
   {
     "date": "2025-07-12",
-    "weight_kg": 74.8,
-    "body_fat_pct": 17.6
-  },
-  {
-    "date": "2025-07-13",
-    "weight_kg": 75.8,
-    "body_fat_pct": 19.2
-  },
-  {
-    "date": "2025-07-14",
-    "weight_kg": 75.3,
-    "body_fat_pct": 17.4
-  },
-  {
-    "date": "2025-07-15",
-    "weight_kg": 74.8,
-    "body_fat_pct": 17.6
-  },
-  {
-    "date": "2025-07-16",
-    "weight_kg": 75.7,
-    "body_fat_pct": 18.5
-  },
-  {
-    "date": "2025-07-17",
-    "weight_kg": 76.0,
-    "body_fat_pct": 17.4
-  },
-  {
-    "date": "2025-07-19",
-    "weight_kg": 75.5,
+    "weight_kg": 74.3,
     "body_fat_pct": 17.7
   },
   {
+    "date": "2025-07-13",
+    "weight_kg": 75.6,
+    "body_fat_pct": 18.4
+  },
+  {
+    "date": "2025-07-14",
+    "weight_kg": 75.5,
+    "body_fat_pct": 17.9
+  },
+  {
+    "date": "2025-07-15",
+    "weight_kg": 75.0,
+    "body_fat_pct": 18.1
+  },
+  {
+    "date": "2025-07-16",
+    "weight_kg": 75.6,
+    "body_fat_pct": 18.0
+  },
+  {
+    "date": "2025-07-17",
+    "weight_kg": 75.9,
+    "body_fat_pct": 17.7
+  },
+  {
+    "date": "2025-07-18",
+    "weight_kg": 75.2,
+    "body_fat_pct": 18.1
+  },
+  {
+    "date": "2025-07-19",
+    "weight_kg": 75.4,
+    "body_fat_pct": 17.5
+  },
+  {
     "date": "2025-07-20",
-    "weight_kg": 75.8,
+    "weight_kg": 75.9,
     "body_fat_pct": 18.7
   },
   {
     "date": "2025-07-21",
-    "weight_kg": 75.8,
-    "body_fat_pct": 18.5
-  },
-  {
-    "date": "2025-07-22",
     "weight_kg": 75.4,
-    "body_fat_pct": 17.4
-  },
-  {
-    "date": "2025-07-23",
-    "weight_kg": 75.0,
-    "body_fat_pct": 18.9
-  },
-  {
-    "date": "2025-07-24",
-    "weight_kg": 74.9,
     "body_fat_pct": 18.0
   },
   {
-    "date": "2025-07-25",
+    "date": "2025-07-22",
+    "weight_kg": 75.9,
+    "body_fat_pct": 17.9
+  },
+  {
+    "date": "2025-07-23",
     "weight_kg": 74.8,
-    "body_fat_pct": 16.7
+    "body_fat_pct": 17.4
+  },
+  {
+    "date": "2025-07-24",
+    "weight_kg": 75.1,
+    "body_fat_pct": 18.2
+  },
+  {
+    "date": "2025-07-25",
+    "weight_kg": 75.0,
+    "body_fat_pct": 17.6
   },
   {
     "date": "2025-07-26",
+    "weight_kg": 74.2,
+    "body_fat_pct": 16.7
+  },
+  {
+    "date": "2025-07-27",
     "weight_kg": 75.2,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2025-07-27",
-    "weight_kg": 75.4,
-    "body_fat_pct": 18.3
-  },
-  {
     "date": "2025-07-28",
-    "weight_kg": 75.4,
-    "body_fat_pct": 17.5
+    "weight_kg": 75.6,
+    "body_fat_pct": 17.7
   },
   {
     "date": "2025-07-29",
-    "weight_kg": 74.8,
-    "body_fat_pct": 16.8
+    "weight_kg": 75.0,
+    "body_fat_pct": 17.9
   },
   {
     "date": "2025-07-30",
-    "weight_kg": 75.7,
-    "body_fat_pct": 16.9
-  },
-  {
-    "date": "2025-07-31",
-    "weight_kg": 75.6,
+    "weight_kg": 75.4,
     "body_fat_pct": 16.4
   },
   {
+    "date": "2025-07-31",
+    "weight_kg": 75.8,
+    "body_fat_pct": 16.4
+  },
+  {
+    "date": "2025-08-01",
+    "weight_kg": 75.0,
+    "body_fat_pct": 17.9
+  },
+  {
     "date": "2025-08-02",
-    "weight_kg": 74.8,
-    "body_fat_pct": 17.7
+    "weight_kg": 74.4,
+    "body_fat_pct": 18.3
   },
   {
     "date": "2025-08-03",
     "weight_kg": 75.8,
-    "body_fat_pct": 18.2
+    "body_fat_pct": 17.5
+  },
+  {
+    "date": "2025-08-04",
+    "weight_kg": 75.2,
+    "body_fat_pct": 18.4
   },
   {
     "date": "2025-08-08",
-    "weight_kg": 75.2,
-    "body_fat_pct": 17.8
+    "weight_kg": 75.0,
+    "body_fat_pct": 18.4
   },
   {
     "date": "2025-08-09",
     "weight_kg": 75.4,
-    "body_fat_pct": 17.8
+    "body_fat_pct": 17.2
   },
   {
     "date": "2025-08-10",
     "weight_kg": 75.4,
-    "body_fat_pct": 17.2
+    "body_fat_pct": 17.8
   },
   {
     "date": "2025-08-11",
+    "weight_kg": 75.4,
+    "body_fat_pct": 17.2
+  },
+  {
+    "date": "2025-08-12",
     "weight_kg": 75.2,
     "body_fat_pct": 17.6
   },
   {
-    "date": "2025-08-12",
+    "date": "2025-08-13",
     "weight_kg": 74.8,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2025-08-13",
+    "date": "2025-08-14",
     "weight_kg": 75.0,
     "body_fat_pct": 18.7
   },
   {
-    "date": "2025-08-14",
+    "date": "2025-08-15",
     "weight_kg": 75.4,
     "body_fat_pct": 19.1
   },
   {
-    "date": "2025-08-15",
+    "date": "2025-08-16",
     "weight_kg": 74.4,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2025-08-16",
+    "date": "2025-08-17",
     "weight_kg": 74.8,
     "body_fat_pct": 17.6
   },
   {
-    "date": "2025-08-17",
+    "date": "2025-08-18",
     "weight_kg": 75.2,
     "body_fat_pct": 19.1
   },
   {
-    "date": "2025-08-18",
+    "date": "2025-08-19",
     "weight_kg": 75.2,
     "body_fat_pct": 18.6
   },
   {
-    "date": "2025-08-19",
+    "date": "2025-08-20",
     "weight_kg": 74.4,
     "body_fat_pct": 17.2
   },
   {
-    "date": "2025-08-20",
+    "date": "2025-08-21",
     "weight_kg": 75.6,
     "body_fat_pct": 17.7
   },
   {
-    "date": "2025-08-21",
+    "date": "2025-08-22",
     "weight_kg": 75.6,
     "body_fat_pct": 18.0
   },
   {
     "date": "2025-08-23",
-    "weight_kg": 75.3,
-    "body_fat_pct": 17.3
+    "weight_kg": 75.0,
+    "body_fat_pct": 17.1
   },
   {
-    "date": "2025-08-27",
+    "date": "2025-08-24",
+    "weight_kg": 75.6,
+    "body_fat_pct": 17.5
+  },
+  {
+    "date": "2025-08-28",
     "weight_kg": 75.6,
     "body_fat_pct": 17.7
   },
   {
-    "date": "2025-08-28",
+    "date": "2025-08-29",
     "weight_kg": 75.8,
     "body_fat_pct": 18.5
   },
   {
-    "date": "2025-08-31",
-    "weight_kg": 75.6,
-    "body_fat_pct": 18.0
-  },
-  {
     "date": "2025-09-01",
-    "weight_kg": 75.4,
+    "weight_kg": 75.6,
     "body_fat_pct": 18.0
   },
   {
     "date": "2025-09-02",
+    "weight_kg": 75.4,
+    "body_fat_pct": 18.0
+  },
+  {
+    "date": "2025-09-03",
     "weight_kg": 74.8,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2025-09-03",
+    "date": "2025-09-04",
     "weight_kg": 75.0,
     "body_fat_pct": 18.1
   },
   {
-    "date": "2025-09-04",
+    "date": "2025-09-05",
     "weight_kg": 75.4,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2025-09-05",
+    "date": "2025-09-06",
     "weight_kg": 75.0,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2025-09-09",
+    "date": "2025-09-10",
     "weight_kg": 74.6,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2025-09-10",
+    "date": "2025-09-11",
     "weight_kg": 75.2,
     "body_fat_pct": 18.6
   },
   {
-    "date": "2025-09-11",
+    "date": "2025-09-12",
     "weight_kg": 74.6,
     "body_fat_pct": 18.0
   },
   {
-    "date": "2025-09-13",
+    "date": "2025-09-14",
     "weight_kg": 74.6,
     "body_fat_pct": 19.6
   },
   {
-    "date": "2025-09-14",
+    "date": "2025-09-15",
     "weight_kg": 75.6,
     "body_fat_pct": 19.0
   },
   {
-    "date": "2025-09-17",
+    "date": "2025-09-18",
     "weight_kg": 76.0,
     "body_fat_pct": 18.4
   },
   {
-    "date": "2025-09-18",
+    "date": "2025-09-19",
     "weight_kg": 76.2,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2025-09-19",
+    "date": "2025-09-20",
     "weight_kg": 75.2,
     "body_fat_pct": 18.4
   },
   {
-    "date": "2025-09-29",
+    "date": "2025-09-30",
     "weight_kg": 75.4,
     "body_fat_pct": 18.6
   },
   {
-    "date": "2025-10-02",
+    "date": "2025-10-03",
     "weight_kg": 75.6,
     "body_fat_pct": 19.0
-  },
-  {
-    "date": "2025-10-09",
-    "weight_kg": 75.6,
-    "body_fat_pct": 18.3
   },
   {
     "date": "2025-10-10",
     "weight_kg": 75.6,
+    "body_fat_pct": 18.3
+  },
+  {
+    "date": "2025-10-11",
+    "weight_kg": 75.6,
     "body_fat_pct": 18.0
   },
   {
-    "date": "2025-10-12",
+    "date": "2025-10-13",
     "weight_kg": 75.0,
     "body_fat_pct": 18.9
   },
   {
-    "date": "2025-10-14",
+    "date": "2025-10-15",
     "weight_kg": 74.8,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2025-10-27",
+    "date": "2025-10-28",
     "weight_kg": 75.2,
     "body_fat_pct": 19.1
   },
   {
-    "date": "2025-11-03",
+    "date": "2025-11-04",
     "weight_kg": 75.6,
     "body_fat_pct": 18.5
   },
   {
-    "date": "2025-11-04",
+    "date": "2025-11-05",
     "weight_kg": 75.2,
     "body_fat_pct": 18.4
   },
   {
-    "date": "2025-11-06",
+    "date": "2025-11-07",
     "weight_kg": 75.0,
     "body_fat_pct": 18.9
   },
   {
-    "date": "2025-11-10",
+    "date": "2025-11-11",
     "weight_kg": 74.8,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2025-11-12",
+    "date": "2025-11-13",
     "weight_kg": 75.4,
     "body_fat_pct": 18.3
   },
   {
-    "date": "2026-05-12",
+    "date": "2026-05-13",
     "weight_kg": 77.0,
     "body_fat_pct": 19.2
   },
   {
-    "date": "2026-05-13",
+    "date": "2026-05-14",
     "weight_kg": 76.6,
     "body_fat_pct": 18.8
   },
   {
-    "date": "2026-05-14",
+    "date": "2026-05-15",
     "weight_kg": 76.2,
     "body_fat_pct": 18.4
   },
   {
-    "date": "2026-05-15",
+    "date": "2026-05-16",
     "weight_kg": 75.6,
     "body_fat_pct": 18.3
   },
   {
-    "date": "2026-05-16",
+    "date": "2026-05-17",
     "weight_kg": 76.4
   },
   {
-    "date": "2026-05-17",
+    "date": "2026-05-18",
     "weight_kg": 76.2,
     "body_fat_pct": 18.6
   },
   {
-    "date": "2026-05-18",
+    "date": "2026-05-19",
     "weight_kg": 76.4,
     "body_fat_pct": 18.3
   },
   {
-    "date": "2026-05-19",
+    "date": "2026-05-20",
     "weight_kg": 76.1,
     "body_fat_pct": 17.6
   },
   {
-    "date": "2026-05-20",
+    "date": "2026-05-21",
     "weight_kg": 75.8,
     "body_fat_pct": 18.7
   },
   {
-    "date": "2026-05-21",
+    "date": "2026-05-22",
     "weight_kg": 75.2,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2026-05-22",
-    "weight_kg": 75.8,
-    "body_fat_pct": 18.2
-  },
-  {
     "date": "2026-05-23",
-    "weight_kg": 76.0,
+    "weight_kg": 75.8,
     "body_fat_pct": 18.2
   },
   {
     "date": "2026-05-24",
-    "weight_kg": 76.4,
-    "body_fat_pct": 18.3
-  },
-  {
-    "date": "2026-05-25",
-    "weight_kg": 76.0,
-    "body_fat_pct": 18.4
-  },
-  {
-    "date": "2026-05-28",
-    "weight_kg": 75.6,
-    "body_fat_pct": 18.5
-  },
-  {
-    "date": "2026-05-31",
-    "weight_kg": 77.0,
-    "body_fat_pct": 18.4
-  },
-  {
-    "date": "2026-06-01",
-    "weight_kg": 76.2,
-    "body_fat_pct": 18.4
-  },
-  {
-    "date": "2026-06-03",
-    "weight_kg": 75.8,
-    "body_fat_pct": 19.0
-  },
-  {
-    "date": "2026-06-04",
-    "weight_kg": 75.8,
-    "body_fat_pct": 18.7
-  },
-  {
-    "date": "2026-06-05",
-    "weight_kg": 75.6,
-    "body_fat_pct": 19.0
-  },
-  {
-    "date": "2026-06-06",
-    "weight_kg": 75.8,
-    "body_fat_pct": 18.7
-  },
-  {
-    "date": "2026-06-07",
     "weight_kg": 76.0,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2026-06-08",
-    "weight_kg": 75.4,
+    "date": "2026-05-25",
+    "weight_kg": 76.4,
     "body_fat_pct": 18.3
   },
   {
-    "date": "2026-06-09",
-    "weight_kg": 75.0,
-    "body_fat_pct": 18.1
+    "date": "2026-05-26",
+    "weight_kg": 76.0,
+    "body_fat_pct": 18.4
   },
   {
-    "date": "2026-06-10",
-    "weight_kg": 75.8,
+    "date": "2026-05-29",
+    "weight_kg": 75.6,
     "body_fat_pct": 18.5
   },
   {
-    "date": "2026-06-15",
-    "weight_kg": 75.6,
-    "body_fat_pct": 18.3
+    "date": "2026-06-01",
+    "weight_kg": 77.0,
+    "body_fat_pct": 18.4
   },
   {
-    "date": "2026-06-16",
+    "date": "2026-06-02",
+    "weight_kg": 76.2,
+    "body_fat_pct": 18.4
+  },
+  {
+    "date": "2026-06-04",
     "weight_kg": 75.8,
     "body_fat_pct": 19.0
   },
   {
-    "date": "2026-06-18",
+    "date": "2026-06-05",
+    "weight_kg": 75.8,
+    "body_fat_pct": 18.7
+  },
+  {
+    "date": "2026-06-06",
+    "weight_kg": 75.6,
+    "body_fat_pct": 19.0
+  },
+  {
+    "date": "2026-06-07",
+    "weight_kg": 75.8,
+    "body_fat_pct": 18.7
+  },
+  {
+    "date": "2026-06-08",
+    "weight_kg": 76.0,
+    "body_fat_pct": 18.2
+  },
+  {
+    "date": "2026-06-09",
+    "weight_kg": 75.4,
+    "body_fat_pct": 18.3
+  },
+  {
+    "date": "2026-06-10",
+    "weight_kg": 75.0,
+    "body_fat_pct": 18.1
+  },
+  {
+    "date": "2026-06-11",
+    "weight_kg": 75.8,
+    "body_fat_pct": 18.5
+  },
+  {
+    "date": "2026-06-16",
     "weight_kg": 75.6,
     "body_fat_pct": 18.3
   },
   {
+    "date": "2026-06-17",
+    "weight_kg": 75.8,
+    "body_fat_pct": 19.0
+  },
+  {
     "date": "2026-06-19",
-    "weight_kg": 75.2,
-    "body_fat_pct": 18.6
+    "weight_kg": 75.6,
+    "body_fat_pct": 18.3
   },
   {
     "date": "2026-06-20",
-    "weight_kg": 75.4,
+    "weight_kg": 75.2,
     "body_fat_pct": 18.6
   },
   {
     "date": "2026-06-21",
     "weight_kg": 75.4,
-    "body_fat_pct": 19.4
+    "body_fat_pct": 18.6
   },
   {
     "date": "2026-06-22",
     "weight_kg": 75.4,
-    "body_fat_pct": 18.6
+    "body_fat_pct": 19.4
   },
   {
     "date": "2026-06-23",
+    "weight_kg": 75.4,
+    "body_fat_pct": 18.6
+  },
+  {
+    "date": "2026-06-24",
     "weight_kg": 75.2,
     "body_fat_pct": 18.1
   },
   {
-    "date": "2026-06-24",
+    "date": "2026-06-25",
     "weight_kg": 74.8,
     "body_fat_pct": 18.7
   },
   {
-    "date": "2026-06-25",
+    "date": "2026-06-26",
     "weight_kg": 75.4,
     "body_fat_pct": 18.3
   },
   {
-    "date": "2026-06-27",
+    "date": "2026-06-28",
     "weight_kg": 75.2,
     "body_fat_pct": 18.4
   },
   {
-    "date": "2026-06-28",
+    "date": "2026-06-29",
     "weight_kg": 75.4,
     "body_fat_pct": 18.3
   },
   {
-    "date": "2026-06-30",
+    "date": "2026-07-01",
     "weight_kg": 74.6,
     "body_fat_pct": 19.0
   },
   {
-    "date": "2026-07-01",
+    "date": "2026-07-02",
     "weight_kg": 75.6,
     "body_fat_pct": 18.8
   },
   {
-    "date": "2026-07-02",
+    "date": "2026-07-03",
     "weight_kg": 75.4,
     "body_fat_pct": 18.6
   },
   {
-    "date": "2026-07-06",
+    "date": "2026-07-07",
     "weight_kg": 75.0,
     "body_fat_pct": 18.4
-  },
-  {
-    "date": "2026-07-08",
-    "weight_kg": 74.4,
-    "body_fat_pct": 18.8
   },
   {
     "date": "2026-07-09",
@@ -5648,107 +5962,112 @@
   {
     "date": "2026-07-10",
     "weight_kg": 74.4,
-    "body_fat_pct": 18.5
+    "body_fat_pct": 18.8
   },
   {
     "date": "2026-07-11",
     "weight_kg": 74.4,
+    "body_fat_pct": 18.5
+  },
+  {
+    "date": "2026-07-12",
+    "weight_kg": 74.4,
     "body_fat_pct": 18.8
   },
   {
-    "date": "2026-07-13",
+    "date": "2026-07-14",
     "weight_kg": 74.8,
     "body_fat_pct": 17.9
   },
   {
-    "date": "2026-07-14",
+    "date": "2026-07-15",
     "weight_kg": 75.8,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2026-07-15",
+    "date": "2026-07-16",
     "weight_kg": 75.2,
     "body_fat_pct": 18.1
   },
   {
-    "date": "2026-07-16",
+    "date": "2026-07-17",
     "weight_kg": 74.6,
     "body_fat_pct": 17.7
   },
   {
-    "date": "2026-07-21",
+    "date": "2026-07-22",
     "weight_kg": 75.0,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2026-07-22",
+    "date": "2026-07-23",
     "weight_kg": 75.0,
     "body_fat_pct": 18.7
   },
   {
-    "date": "2026-07-23",
+    "date": "2026-07-24",
     "weight_kg": 74.8,
     "body_fat_pct": 18.4
   },
   {
-    "date": "2026-07-24",
+    "date": "2026-07-25",
     "weight_kg": 74.4,
     "body_fat_pct": 18.0
   },
   {
-    "date": "2026-07-26",
+    "date": "2026-07-27",
     "weight_kg": 75.6,
     "body_fat_pct": 17.7
   },
   {
-    "date": "2026-07-27",
+    "date": "2026-07-28",
     "weight_kg": 75.2,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2026-07-30",
+    "date": "2026-07-31",
     "weight_kg": 74.6,
     "body_fat_pct": 18.5
   },
   {
     "date": "2026-08-01",
     "weight_kg": 74.4,
-    "body_fat_pct": 18.4
+    "body_fat_pct": 18.5
   },
   {
-    "date": "2026-08-03",
-    "weight_kg": 74.8,
-    "body_fat_pct": 17.6
+    "date": "2026-08-02",
+    "weight_kg": 74.4,
+    "body_fat_pct": 18.3
   },
   {
     "date": "2026-08-04",
     "weight_kg": 74.8,
-    "body_fat_pct": 16.8
+    "body_fat_pct": 17.6
   },
   {
     "date": "2026-08-05",
+    "weight_kg": 74.8,
+    "body_fat_pct": 16.8
+  },
+  {
+    "date": "2026-08-06",
     "weight_kg": 75.4,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2026-08-06",
+    "date": "2026-08-07",
     "weight_kg": 75.0,
     "body_fat_pct": 17.1
   },
   {
-    "date": "2026-08-08",
+    "date": "2026-08-09",
     "weight_kg": 75.2,
     "body_fat_pct": 18.6
   },
   {
-    "date": "2026-08-09",
+    "date": "2026-08-10",
     "weight_kg": 75.0,
     "body_fat_pct": 17.1
-  },
-  {
-    "date": "2026-08-10",
-    "weight_kg": 75.2,
-    "body_fat_pct": 17.0
   },
   {
     "date": "2026-08-11",
@@ -5757,103 +6076,103 @@
   },
   {
     "date": "2026-08-12",
+    "weight_kg": 75.2,
+    "body_fat_pct": 17.0
+  },
+  {
+    "date": "2026-08-13",
     "weight_kg": 75.0,
     "body_fat_pct": 17.9
   },
   {
-    "date": "2026-08-13",
+    "date": "2026-08-14",
     "weight_kg": 74.0,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2026-08-14",
+    "date": "2026-08-15",
     "weight_kg": 73.4,
     "body_fat_pct": 16.3
   },
   {
-    "date": "2026-08-15",
+    "date": "2026-08-16",
     "weight_kg": 74.2,
     "body_fat_pct": 17.0
   },
   {
-    "date": "2026-08-16",
+    "date": "2026-08-17",
     "weight_kg": 75.2,
     "body_fat_pct": 17.6
   },
   {
-    "date": "2026-08-17",
+    "date": "2026-08-18",
     "weight_kg": 74.6,
     "body_fat_pct": 17.2
   },
   {
-    "date": "2026-08-18",
+    "date": "2026-08-19",
     "weight_kg": 74.0,
     "body_fat_pct": 17.8
-  },
-  {
-    "date": "2026-08-20",
-    "weight_kg": 74.6,
-    "body_fat_pct": 17.7
   },
   {
     "date": "2026-08-21",
     "weight_kg": 74.6,
-    "body_fat_pct": 16.9
+    "body_fat_pct": 17.7
   },
   {
     "date": "2026-08-22",
-    "weight_kg": 75.2,
-    "body_fat_pct": 16.8
+    "weight_kg": 74.6,
+    "body_fat_pct": 16.9
   },
   {
     "date": "2026-08-23",
     "weight_kg": 75.2,
-    "body_fat_pct": 17.8
+    "body_fat_pct": 16.8
   },
   {
     "date": "2026-08-24",
+    "weight_kg": 75.2,
+    "body_fat_pct": 17.8
+  },
+  {
+    "date": "2026-08-25",
     "weight_kg": 74.8,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2026-08-25",
+    "date": "2026-08-26",
     "weight_kg": 74.2,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2026-08-26",
+    "date": "2026-08-27",
     "weight_kg": 74.6,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2026-08-27",
+    "date": "2026-08-28",
     "weight_kg": 74.2,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2026-08-28",
+    "date": "2026-08-29",
     "weight_kg": 74.0,
     "body_fat_pct": 17.6
   },
   {
-    "date": "2026-08-29",
+    "date": "2026-08-30",
     "weight_kg": 75.0,
     "body_fat_pct": 17.1
   },
   {
-    "date": "2026-08-30",
+    "date": "2026-08-31",
     "weight_kg": 74.8,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2026-08-31",
+    "date": "2026-09-01",
     "weight_kg": 75.0,
     "body_fat_pct": 17.9
-  },
-  {
-    "date": "2026-09-01",
-    "weight_kg": 74.6,
-    "body_fat_pct": 17.2
   },
   {
     "date": "2026-09-02",
@@ -5862,7 +6181,7 @@
   },
   {
     "date": "2026-09-03",
-    "weight_kg": 74.4,
+    "weight_kg": 74.6,
     "body_fat_pct": 17.2
   },
   {
@@ -5871,14 +6190,14 @@
     "body_fat_pct": 17.2
   },
   {
-    "date": "2026-09-08",
-    "weight_kg": 75.4,
-    "body_fat_pct": 17.5
+    "date": "2026-09-05",
+    "weight_kg": 74.4,
+    "body_fat_pct": 17.2
   },
   {
     "date": "2026-09-09",
-    "weight_kg": 75.0,
-    "body_fat_pct": 17.9
+    "weight_kg": 75.4,
+    "body_fat_pct": 17.5
   },
   {
     "date": "2026-09-10",
@@ -5887,141 +6206,146 @@
   },
   {
     "date": "2026-09-11",
+    "weight_kg": 75.0,
+    "body_fat_pct": 17.9
+  },
+  {
+    "date": "2026-09-12",
     "weight_kg": 75.2,
     "body_fat_pct": 18.1
   },
   {
-    "date": "2026-09-12",
+    "date": "2026-09-13",
     "weight_kg": 74.8,
     "body_fat_pct": 18.4
   },
   {
-    "date": "2026-09-14",
+    "date": "2026-09-15",
     "weight_kg": 74.6,
     "body_fat_pct": 18.5
   },
   {
-    "date": "2026-09-15",
+    "date": "2026-09-16",
     "weight_kg": 73.6,
     "body_fat_pct": 17.9
   },
   {
-    "date": "2026-09-17",
+    "date": "2026-09-18",
     "weight_kg": 73.4,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2026-09-18",
+    "date": "2026-09-19",
     "weight_kg": 75.0,
     "body_fat_pct": 18.1
   },
   {
-    "date": "2026-09-20",
+    "date": "2026-09-21",
     "weight_kg": 74.6,
     "body_fat_pct": 18.0
   },
   {
-    "date": "2026-09-22",
+    "date": "2026-09-23",
     "weight_kg": 75.0,
     "body_fat_pct": 17.9
   },
   {
-    "date": "2026-09-23",
+    "date": "2026-09-24",
     "weight_kg": 75.0,
     "body_fat_pct": 18.1
   },
   {
-    "date": "2026-09-24",
+    "date": "2026-09-25",
     "weight_kg": 74.2,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2026-09-25",
+    "date": "2026-09-26",
     "weight_kg": 74.0,
     "body_fat_pct": 18.4
   },
   {
-    "date": "2026-09-27",
+    "date": "2026-09-28",
     "weight_kg": 75.0,
     "body_fat_pct": 18.1
   },
   {
-    "date": "2026-09-28",
+    "date": "2026-09-29",
     "weight_kg": 74.6,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2026-09-29",
+    "date": "2026-09-30",
     "weight_kg": 74.6,
     "body_fat_pct": 17.7
-  },
-  {
-    "date": "2026-09-30",
-    "weight_kg": 73.8,
-    "body_fat_pct": 17.9
   },
   {
     "date": "2026-10-01",
     "weight_kg": 73.8,
+    "body_fat_pct": 17.9
+  },
+  {
+    "date": "2026-10-02",
+    "weight_kg": 73.8,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2026-10-03",
+    "date": "2026-10-04",
     "weight_kg": 74.2,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2026-10-06",
-    "weight_kg": 74.8,
-    "body_fat_pct": 17.9
-  },
-  {
     "date": "2026-10-07",
-    "weight_kg": 75.0,
+    "weight_kg": 74.8,
     "body_fat_pct": 17.9
   },
   {
     "date": "2026-10-08",
+    "weight_kg": 75.0,
+    "body_fat_pct": 17.9
+  },
+  {
+    "date": "2026-10-09",
     "weight_kg": 74.4,
     "body_fat_pct": 17.7
   },
   {
-    "date": "2026-10-10",
+    "date": "2026-10-11",
     "weight_kg": 74.4,
     "body_fat_pct": 17.7
   },
   {
-    "date": "2026-10-12",
+    "date": "2026-10-13",
     "weight_kg": 74.6,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2026-10-16",
+    "date": "2026-10-17",
     "weight_kg": 74.0,
     "body_fat_pct": 17.6
   },
   {
-    "date": "2026-10-17",
+    "date": "2026-10-18",
     "weight_kg": 74.8,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2026-10-20",
+    "date": "2026-10-21",
     "weight_kg": 75.2,
     "body_fat_pct": 17.8
   },
   {
-    "date": "2026-10-21",
+    "date": "2026-10-22",
     "weight_kg": 74.8,
     "body_fat_pct": 18.2
   },
   {
-    "date": "2026-10-22",
+    "date": "2026-10-23",
     "weight_kg": 74.6,
     "body_fat_pct": 17.7
   },
   {
-    "date": "2026-10-23",
+    "date": "2026-10-24",
     "weight_kg": 74.0,
     "body_fat_pct": 17.8
   },
@@ -6031,112 +6355,112 @@
     "body_fat_pct": 17.8
   },
   {
-    "date": "2026-10-27",
+    "date": "2026-10-28",
     "weight_kg": 75.4,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2026-10-28",
+    "date": "2026-10-29",
     "weight_kg": 74.6,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2026-10-29",
+    "date": "2026-10-30",
     "weight_kg": 73.8,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2026-10-31",
-    "weight_kg": 74.8,
-    "body_fat_pct": 17.4
-  },
-  {
     "date": "2026-11-01",
-    "weight_kg": 74.6,
+    "weight_kg": 74.8,
     "body_fat_pct": 17.4
   },
   {
     "date": "2026-11-02",
+    "weight_kg": 74.6,
+    "body_fat_pct": 17.4
+  },
+  {
+    "date": "2026-11-03",
     "weight_kg": 74.0,
     "body_fat_pct": 17.6
   },
   {
-    "date": "2026-11-04",
+    "date": "2026-11-05",
     "weight_kg": 74.8,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2026-11-05",
+    "date": "2026-11-06",
     "weight_kg": 74.0,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2026-11-06",
+    "date": "2026-11-07",
     "weight_kg": 74.2,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2026-11-08",
+    "date": "2026-11-09",
     "weight_kg": 75.2,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2026-11-09",
+    "date": "2026-11-10",
     "weight_kg": 75.0,
     "body_fat_pct": 17.1
   },
   {
-    "date": "2026-11-11",
+    "date": "2026-11-12",
     "weight_kg": 73.4,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2026-11-12",
+    "date": "2026-11-13",
     "weight_kg": 73.6,
     "body_fat_pct": 17.1
   },
   {
-    "date": "2026-11-13",
+    "date": "2026-11-14",
     "weight_kg": 73.4,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2026-11-16",
+    "date": "2026-11-17",
     "weight_kg": 74.6,
     "body_fat_pct": 16.9
   },
   {
-    "date": "2026-11-17",
+    "date": "2026-11-18",
     "weight_kg": 74.4,
     "body_fat_pct": 16.7
   },
   {
-    "date": "2026-11-18",
+    "date": "2026-11-19",
     "weight_kg": 73.8,
     "body_fat_pct": 16.8
   },
   {
-    "date": "2026-11-20",
+    "date": "2026-11-21",
     "weight_kg": 74.2,
     "body_fat_pct": 17.3
   },
   {
-    "date": "2026-11-22",
+    "date": "2026-11-23",
     "weight_kg": 74.4,
     "body_fat_pct": 17.5
   },
   {
-    "date": "2026-11-24",
+    "date": "2026-11-25",
     "weight_kg": 74.1,
     "body_fat_pct": 17.4
   },
   {
-    "date": "2026-11-25",
+    "date": "2026-11-26",
     "weight_kg": 74.0,
     "body_fat_pct": 17.0
   },
   {
-    "date": "2026-11-26",
+    "date": "2026-11-27",
     "weight_kg": 73.6,
     "body_fat_pct": 17.4
   }
