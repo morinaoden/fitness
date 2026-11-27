@@ -548,35 +548,49 @@
   },
   {
     "date": "2026-11-21",
-    "distance_km": 2.51,
-    "duration_min": 38.2,
-    "pace_min_per_km": 15.24,
+    "distance_km": 5.02,
+    "duration_min": 76.4,
+    "pace_min_per_km": 15.23,
     "elevation_gain_m": 0.0,
-    "runs": 1,
+    "runs": 2,
     "workout_ids": [
-      "C424F122-8E0B-4BFB-AB31-A1414BF638F3"
+      "C424F122-8E0B-4BFB-AB31-A1414BF638F3",
+      "AA6A905D-9174-4F91-B33A-50F28E7ABD6F"
     ]
   },
   {
     "date": "2026-11-22",
-    "distance_km": 2.42,
-    "duration_min": 30.3,
+    "distance_km": 4.84,
+    "duration_min": 60.6,
     "pace_min_per_km": 12.52,
     "elevation_gain_m": 0.0,
-    "runs": 1,
+    "runs": 2,
     "workout_ids": [
-      "DBDCF23B-A042-4C35-B111-8697B1EC4A36"
+      "DBDCF23B-A042-4C35-B111-8697B1EC4A36",
+      "5463D12C-692A-4587-BE6B-02BA63A2523A"
     ]
   },
   {
     "date": "2026-11-23",
-    "distance_km": 2.39,
-    "duration_min": 30.1,
+    "distance_km": 4.78,
+    "duration_min": 60.2,
     "pace_min_per_km": 12.6,
+    "elevation_gain_m": 0.0,
+    "runs": 2,
+    "workout_ids": [
+      "F5CEF009-EB5B-4F7B-90F1-0FC03262F75D",
+      "DE45957A-8A84-455C-909F-0B080F5A2D13"
+    ]
+  },
+  {
+    "date": "2026-11-25",
+    "distance_km": 2.4,
+    "duration_min": 30.6,
+    "pace_min_per_km": 12.74,
     "elevation_gain_m": 0.0,
     "runs": 1,
     "workout_ids": [
-      "F5CEF009-EB5B-4F7B-90F1-0FC03262F75D"
+      "88BD3729-8E1C-418A-8046-9E65842B9DBB"
     ]
   }
 ]
