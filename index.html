@@ -238,6 +238,17 @@
     transition: background 0.15s ease;
   }
   .btn-secondary:hover { background: var(--surface); }
+  .btn-secondary:disabled { opacity: 0.5; cursor: wait; }
+  /* Wide enough for every label, so the header doesn't reflow while reloading. */
+  .reload-btn { min-width: 11em; }
+  .topbar-actions {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+  }
 
   /* --- weight/fat chart --- */
   .period-row {
@@ -445,10 +456,13 @@
       <div class="brand">DYNAMIC <span>TONE</span> FITNESS</div>
       <span class="brand-sub">PERSONAL TRAINING LOG</span>
     </div>
-    <nav class="topnav">
-      <a href="index.html" class="topnav-link active">トレーニング</a>
-      <a href="meals.html" class="topnav-link">食事</a>
-    </nav>
+    <div class="topbar-actions">
+      <button class="btn-secondary reload-btn" id="reloadBtn" type="button"><span id="reloadLabel" aria-live="polite">データ再読み込み</span></button>
+      <nav class="topnav">
+        <a href="index.html" class="topnav-link active">トレーニング</a>
+        <a href="meals.html" class="topnav-link">食事</a>
+      </nav>
+    </div>
   </div>
 </header>
 
@@ -663,6 +677,9 @@
 
   loadState();
 
+  // Each data section registers its loader here; the reload button re-runs them all.
+  const dataLoaders = [];
+
   // --- weight / body-fat dual-axis chart (amCharts 5) ---
   (function () {
     const periodRow = document.getElementById('periodRow');
@@ -802,28 +819,38 @@
       tableToggle.textContent = tableWrap.hidden ? '表で見る' : '表を閉じる';
     });
 
-    fetch('data/weight.json', { cache: 'no-store' })
-      .then(r => r.ok ? r.json() : [])
-      .then(data => {
+    const emptyText = emptyEl.textContent;
+
+    function showData(data) {
         rawData = data;
-        if (!rawData.length) {
-          emptyEl.hidden = false;
-          return;
-        }
-        initChart();
+        emptyEl.textContent = emptyText;
+        emptyEl.hidden = rawData.length > 0;
+        if (!rawData.length) return;
+        if (!root) initChart();
         const chartData = rawData.map(d => ({
           ts: new Date(d.date).getTime(),
           weight_kg: d.weight_kg != null ? d.weight_kg : null,
           body_fat_pct: d.body_fat_pct != null ? d.body_fat_pct : null
         }));
+        weightSeries.events.once('datavalidated', () => applyPeriod());
         weightSeries.data.setAll(chartData);
         fatSeries.data.setAll(chartData);
-        weightSeries.events.once('datavalidated', () => applyPeriod());
+    }
+
+    dataLoaders.push(() => fetch('data/weight.json', { cache: 'no-store' })
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
       })
-      .catch(() => {
-        emptyEl.hidden = false;
-        emptyEl.textContent = 'データの取得に失敗しました';
-      });
+      .then(showData)
+      .catch(err => {
+        // Keep what is already on screen if a reload fails.
+        if (!rawData.length) {
+          emptyEl.hidden = false;
+          emptyEl.textContent = 'データの取得に失敗しました';
+        }
+        throw err;
+      }));
   })();
 
   // --- running distance / pace / calendar (amCharts 5 for the chart view) ---
@@ -966,15 +993,19 @@
       if (view === 'chart' && !chartInitialized && rawData.length) {
         initChart();
         chartInitialized = true;
-        const chartData = rawData.map(d => ({
-          ts: new Date(d.date).getTime(),
-          distance_km: d.distance_km,
-          pace_min_per_km: d.pace_min_per_km
-        }));
-        distanceSeries.data.setAll(chartData);
-        paceSeries.data.setAll(chartData);
-        distanceSeries.events.once('datavalidated', () => applyPeriod());
+        updateChart();
       }
+    }
+
+    function updateChart() {
+      const chartData = rawData.map(d => ({
+        ts: new Date(d.date).getTime(),
+        distance_km: d.distance_km,
+        pace_min_per_km: d.pace_min_per_km
+      }));
+      distanceSeries.events.once('datavalidated', () => applyPeriod());
+      distanceSeries.data.setAll(chartData);
+      paceSeries.data.setAll(chartData);
     }
 
     function periodCutoff() {
@@ -1052,27 +1083,69 @@
       renderCalendar();
     });
 
-    fetch('data/running.json', { cache: 'no-store' })
-      .then(r => r.ok ? r.json() : [])
-      .then(data => {
-        rawData = data;
-        byDate = {};
-        for (const d of rawData) byDate[d.date] = d;
+    const emptyText = emptyEl.textContent;
 
-        const lastDate = rawData.length ? new Date(rawData[rawData.length - 1].date) : new Date();
-        calMonth = new Date(lastDate.getFullYear(), lastDate.getMonth(), 1);
-        renderCalendar();
+    function latestMonth() {
+      const lastDate = rawData.length ? new Date(rawData[rawData.length - 1].date) : new Date();
+      return new Date(lastDate.getFullYear(), lastDate.getMonth(), 1);
+    }
 
+    function showData(data) {
+      // Follow new data to a new month, unless the user has browsed to another one.
+      const followLatest = !calMonth || calMonth.getTime() === latestMonth().getTime();
+      rawData = data;
+      byDate = {};
+      for (const d of rawData) byDate[d.date] = d;
+      if (followLatest) calMonth = latestMonth();
+      renderCalendar();
+
+      emptyEl.textContent = emptyText;
+      emptyEl.hidden = rawData.length > 0;
+      if (!rawData.length) return;
+      if (chartInitialized) updateChart();
+      else setView(currentView);
+      applyPeriod();
+    }
+
+    dataLoaders.push(() => fetch('data/running.json', { cache: 'no-store' })
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then(showData)
+      .catch(err => {
         if (!rawData.length) {
           emptyEl.hidden = false;
-          return;
+          emptyEl.textContent = 'データの取得に失敗しました';
         }
-        applyPeriod();
-      })
-      .catch(() => {
-        emptyEl.hidden = false;
-        emptyEl.textContent = 'データの取得に失敗しました';
-      });
+        throw err;
+      }));
+  })();
+
+  // --- data (re)loading ---
+  (function () {
+    const reloadBtn = document.getElementById('reloadBtn');
+    const reloadLabel = document.getElementById('reloadLabel');
+    const idleText = reloadLabel.textContent;
+    let resetTimer;
+
+    async function loadAll(isReload) {
+      clearTimeout(resetTimer);
+      reloadBtn.disabled = true;
+      reloadLabel.textContent = '読み込み中…';
+      const results = await Promise.allSettled(dataLoaders.map(load => load()));
+      const failed = results.some(r => r.status === 'rejected');
+      reloadBtn.disabled = false;
+      if (!failed && !isReload) {
+        reloadLabel.textContent = idleText;
+        return;
+      }
+      reloadLabel.textContent = failed ? '読み込み失敗' : '更新しました';
+      resetTimer = setTimeout(() => { reloadLabel.textContent = idleText; }, 3000);
+    }
+
+    reloadBtn.addEventListener('click', () => loadAll(true));
+    loadAll(false);
   })();
 </script>
 
