@@ -59,7 +59,7 @@ Withings API      Health Auto Export(iOS)
 
 | ファイル | 内容 | 更新元 | 備考 |
 |---|---|---|---|
-| `running.json` | 日別: 距離・時間・ペース・獲得標高・回数 | Apple Health export sync（ワークアウトIDごとに日付キーへマージ） | |
+| `running.json` | 日別: 距離・時間・ペース・獲得標高・回数 | Apple Health export sync（ワークアウトの開始時刻で重複判定し、日付キーへマージ。IDはエクスポートのたびに変わるため使わない） | |
 | `weight.json` | 日別: 体重(kg)・体脂肪率(%) | Withings sync | 2019年からの継続データ、1186日分(2026-09時点) |
 | `food_db.json` | 食品名・エイリアス・単位・kcal/PFC | 手動メンテナンス（文科省データ由来） | アプリからは読み取り専用。ユーザー追加分は`localStorage`側 |
 | `workouts.json` | 非ランニング系ワークアウトの日別集計 | 過去のApple Health同期（**現在は更新停止**） | 2026-09-21時点で履歴として残置のみ。「Stop collecting non-running workout data」の変更でランニング以外は収集対象外に |

@@ -36,6 +36,9 @@ STATE_PATH = "data/.sync_state.json"
 # Withings' clock disagree slightly.
 CLOCK_SKEW_BUFFER_SEC = 3600
 
+# Measurement days are JST dates: a morning weigh-in is still the previous day in UTC.
+JST = datetime.timezone(datetime.timedelta(hours=9))
+
 # Withings measure type codes
 WEIGHT_MEASTYPE = 1     # kg
 FAT_RATIO_MEASTYPE = 6  # %
@@ -96,7 +99,7 @@ def fetch_measures(access_token, lastupdate=None):
 def to_series(measuregrps):
     by_day = {}  # day -> {field: [values]}
     for grp in measuregrps:
-        day = datetime.datetime.utcfromtimestamp(grp["date"]).strftime("%Y-%m-%d")
+        day = datetime.datetime.fromtimestamp(grp["date"], JST).strftime("%Y-%m-%d")
         for m in grp["measures"]:
             field = FIELD_BY_TYPE.get(m["type"])
             if field is None:

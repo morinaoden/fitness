@@ -158,7 +158,7 @@ def main():
     workouts = payload.get("workouts") or (payload.get("data") or {}).get("workouts") or []
     print(f"Received {len(workouts)} workout(s)")
 
-    # day -> {workout_id: (distance_km, duration_min)}
+    # day -> {start time (UTC ISO): (distance_km, duration_min)}
     payload_by_day = {}
 
     for w in workouts:
@@ -179,30 +179,31 @@ def main():
             continue
 
         day = (start.astimezone(JST)).date().isoformat()
-        wid = str(w.get("id") or start.isoformat())
-        payload_by_day.setdefault(day, {})[wid] = (workout_distance_km(w), duration_s / 60)
+        # Identify workouts by start time: Health Auto Export assigns a new
+        # "id" to the same workout on every export.
+        key = start.astimezone(timezone.utc).isoformat()
+        payload_by_day.setdefault(day, {})[key] = (workout_distance_km(w), duration_s / 60)
 
     existing = load_by_day(RUNNING_DATA_PATH)
     updated_days = 0
     for day, items in payload_by_day.items():
         old = existing.get(day)
-        if old and old.get("workout_ids"):
-            # Merge by workout id. The export only covers a rolling 7-day
+        if old and old.get("workout_starts"):
+            # Merge by start time. The export only covers a rolling 7-day
             # window, so on the day it slides past the morning workout of a
             # two-workout day only the evening one is re-sent; replacing the
             # whole day would silently drop the morning one.
-            known = set(old["workout_ids"])
-            ids = list(old["workout_ids"])
-            dist, dur = old["distance_km"], old["duration_min"]
-            for wid, (d, m) in items.items():
-                if wid not in known:
-                    ids.append(wid)
-                    dist += d
-                    dur += m
+            known = set(old["workout_starts"])
+            new = {k: v for k, v in items.items() if k not in known}
+            if not new:
+                continue
+            starts = old["workout_starts"] + list(new)
+            dist = old["distance_km"] + sum(d for d, _ in new.values())
+            dur = old["duration_min"] + sum(m for _, m in new.values())
         elif old and old.get("runs", 0) > len(items):
-            continue  # legacy entry (no ids) already has more workouts than this partial payload
+            continue  # legacy entry (no start times) already has more workouts than this partial payload
         else:
-            ids = list(items)
+            starts = list(items)
             dist = sum(d for d, _ in items.values())
             dur = sum(m for _, m in items.values())
 
@@ -212,8 +213,8 @@ def main():
             "duration_min": round(dur, 1),
             "pace_min_per_km": round(dur / dist, 2) if dist > 0 else None,
             "elevation_gain_m": 0.0,  # not present in this export format
-            "runs": len(ids),
-            "workout_ids": ids,
+            "runs": len(starts),
+            "workout_starts": sorted(starts),
         }
         updated_days += 1
 
