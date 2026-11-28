@@ -744,5 +744,16 @@
     "workout_starts": [
       "2026-11-27T10:27:33+00:00"
     ]
+  },
+  {
+    "date": "2026-11-28",
+    "distance_km": 2.53,
+    "duration_min": 35.2,
+    "pace_min_per_km": 13.88,
+    "elevation_gain_m": 0.0,
+    "runs": 1,
+    "workout_starts": [
+      "2026-11-27T22:24:16+00:00"
+    ]
   }
 ]
